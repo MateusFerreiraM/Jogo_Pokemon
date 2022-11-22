@@ -12,8 +12,9 @@ public enum Tipos {
     INSETO,
     GELO,
     FANTASMA,
-    FERRO,
+    ACO,
     DRAGAO,
     SOMBRIO,
-    FADA
+    FADA,
+    VOADOR
 }
