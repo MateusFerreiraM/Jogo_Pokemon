@@ -1,0 +1,11 @@
+{
+    "json.schemas": [
+    ],
+    "java.project.sourcePaths": [
+        "src"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "src\\imports\\json-simple-1.1.1.jar"
+    ]
+}
