@@ -3,9 +3,9 @@ public class Ginasio extends Identificacao {
     public static int ginasiosTotal;
     private String regiao;
     private LiderGin lider;
-    private Tipos especialidade;//A especialidade de um ginásio é a especialidade de seu lider
+    private Tipos especialidade;// A especialidade de um ginásio é a especialidade de seu lider
 
-    public Ginasio(String nome, String regiao) { //Cria um ginásio sem lider
+    public Ginasio(String nome, String regiao) { // Cria um ginásio sem lider
         this.id = ginasiosTotal;
         this.nome = nome;
         this.regiao = regiao;
@@ -14,7 +14,7 @@ public class Ginasio extends Identificacao {
         ginasiosTotal++;
     }
 
-    public Ginasio(String nome, String regiao, LiderGin lider) { //Cria um ginásio com lider
+    public Ginasio(String nome, String regiao, LiderGin lider) { // Cria um ginásio com lider
         this.id = ginasiosTotal;
         this.nome = nome;
         this.regiao = regiao;
@@ -31,7 +31,7 @@ public class Ginasio extends Identificacao {
         return lider;
     }
 
-    public void setLider(LiderGin lider){
+    public void setLider(LiderGin lider) {
         this.lider = lider;
         this.especialidade = lider.getEspecialidade();
     }

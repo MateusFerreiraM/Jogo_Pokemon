@@ -26,11 +26,11 @@ public class Treinador extends Identificacao {
         return time;
     }
 
-    public static int getTotalTreinadores(){
+    public static int getTotalTreinadores() {
         return TotalTreinadores;
     }
 
-    public void addPokemon(Pokemon pokemon){
+    public void addPokemon(Pokemon pokemon) {
         this.time.add(pokemon);
     }
 }

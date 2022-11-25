@@ -1,0 +1,22 @@
+[
+  {
+    "Id": 1,
+    "Nome": "Mateus",
+    "Pokemon": "Arcanine"
+  },
+  {
+    "Id": 2,
+    "Nome": "Vitoria",
+    "Pokemon": "Gengar"
+  },
+  {
+    "Id": 3,
+    "Nome": "Cael",
+    "Pokemon": "Rapidash"
+  },
+  {
+    "Id": 4,
+    "Nome": "Maria",
+    "Pokemon": "Pikachu"
+  }
+]
