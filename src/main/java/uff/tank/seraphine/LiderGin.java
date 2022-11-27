@@ -1,3 +1,5 @@
+package uff.tank.seraphine;
+
 public class LiderGin extends Treinador {// Lider de Ginásio é um tipo especial de treinador
 
     private Tipos especialidade;// Tipo de pokemon q o lider foca

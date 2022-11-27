@@ -1,3 +1,4 @@
+package uff.tank.seraphine;
 public enum Tipos {
     NORMAL,
     FOGO,

@@ -1,3 +1,7 @@
+package uff.tank.seraphine;
+import uff.tank.seraphine.Identificacao;
+
+
 public class Ginasio extends Identificacao {
 
     public static int ginasiosTotal;

@@ -1,3 +1,5 @@
+package uff.tank.seraphine;
+
 import java.util.ArrayList;
 
 public class Treinador extends Identificacao {
