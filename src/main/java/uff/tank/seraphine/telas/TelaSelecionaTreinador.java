@@ -1,8 +1,11 @@
 package uff.tank.seraphine.telas;
 
+import uff.tank.seraphine.telas.Tela;
+import uff.tank.seraphine.telas.TelaContext;
+
 import java.util.Scanner;
 
-public class SelecionaTreinador implements Tela {
+public class TelaSelecionaTreinador extends Tela {
     static void mudaTela(){
         boolean naTela = true;
         Scanner teclado = new Scanner(System.in);
@@ -11,5 +14,9 @@ public class SelecionaTreinador implements Tela {
             naTela = false;
         }
         teclado.close();
+    }
+
+    public TelaSelecionaTreinador(TelaContext contexto){
+        super(contexto);
     }
 }
