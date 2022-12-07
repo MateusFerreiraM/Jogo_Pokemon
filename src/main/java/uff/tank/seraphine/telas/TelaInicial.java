@@ -1,20 +1,18 @@
 package uff.tank.seraphine.telas;
 
-import java.util.Scanner;
-
 //Primeira tela que o programa abre
 public class TelaInicial extends Tela {
     @Override
     public void mostrarTela() {
-        Scanner teclado = new Scanner(System.in);
         System.out.println("---------- Tela Inicial ----------");
+        System.out.println("INCOMPLETO! POSSÍVEIS LOOPS EM CERTAS TELAS");
         System.out.println("Selecione uma opção:");
         System.out.println("1- Selecionar Treinador");
         System.out.println("2- Criar treinador");
         System.out.println("X- Sair");
         System.out.print("\n>");
 
-        String escolha = teclado.next();
+        String escolha = this.contexto.getInput().nextLine();
         escolha = escolha.trim();//Remove qualquer espaço antes e depois da escolha
 
         switch (escolha){
@@ -26,11 +24,11 @@ public class TelaInicial extends Tela {
                 break;
             case "X":
             case "x":
+                this.contexto.sairPrograma();
                 break;
             default:
                 System.out.println("Por favor, insira um valor válido!");
         }
-        teclado.close();
     }
     public TelaInicial(TelaContext context){
         super(context);
