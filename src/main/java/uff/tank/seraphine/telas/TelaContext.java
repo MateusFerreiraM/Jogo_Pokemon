@@ -60,6 +60,12 @@ public class TelaContext {
         this.rodando = false;
     }
 
+    String getUserInput(){
+        String ret = this.input.nextLine();
+        ret = ret.trim();
+        return ret;
+    }
+
     Scanner getInput(){
         return this.input;
     }
