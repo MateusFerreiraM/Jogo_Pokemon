@@ -12,8 +12,7 @@ public class TelaInicial extends Tela {
         System.out.println("X- Sair");
         System.out.print("\n>");
 
-        String escolha = this.contexto.getInput().nextLine();
-        escolha = escolha.trim();//Remove qualquer espaço antes e depois da escolha
+        String escolha = this.contexto.getUserInput();
 
         switch (escolha){
             case "1":

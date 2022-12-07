@@ -6,15 +6,13 @@ public class TelaCriarTreinador extends Tela {
     public void mostrarTela() {
         System.out.println("---------- Tela Cadastro ----------");
 
-        System.out.println("Nome Treinador: ");
-        System.out.print(">");
+        System.out.print("Nome Treinador: ");
 
-        String nome = this.contexto.getInput().nextLine();
-        nome = nome.trim(); //Limpa o nome de qualquer espaço
+        String nome = this.contexto.getUserInput();
 
-        System.out.println("Região: ");
-        String regiao = this.contexto.getInput().nextLine();
-        regiao = regiao.trim();
+        System.out.print("Região: ");
+
+        String regiao = this.contexto.getUserInput();
 
         Treinador novoTreinador = new Treinador(nome, regiao);
         this.contexto.setTreinador(novoTreinador);

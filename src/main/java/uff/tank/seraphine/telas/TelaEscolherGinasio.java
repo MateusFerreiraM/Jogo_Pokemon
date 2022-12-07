@@ -7,8 +7,23 @@ public class TelaEscolherGinasio extends Tela {
         System.out.println("Selecione um Ginásio:");
         //TODO: Função para recuperar o número de ginásios
         //TODO: Função para listar os ginásios com paginação
+        System.out.println("V- Voltar ao menu principal");
         System.out.println("X- Sair");
-        System.out.println("\n\n\n\n");
+
+        String escolha = contexto.getUserInput();
+
+        switch (escolha){
+            case "v":
+            case "V":
+                this.trocarTela(new TelaMenuPrincipal(this.contexto));
+                break;
+            case "x":
+            case "X":
+                this.contexto.sairPrograma();
+                break;
+            default:
+                System.out.println("Por favor insira um valor válido");
+        }
     }
     public TelaEscolherGinasio(TelaContext context){
         super(context);
