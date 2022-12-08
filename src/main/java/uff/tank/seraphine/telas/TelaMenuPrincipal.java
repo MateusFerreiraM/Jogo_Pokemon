@@ -3,9 +3,9 @@ package uff.tank.seraphine.telas;
 //Menu pós login/criação de treinador
 
 public class TelaMenuPrincipal extends Tela {
-    public void mostrarTela(){
-        System.out.println("=====Menu Principal=====");
-        System.out.println("Olá, " + this.contexto.getTreinador().getNome()+ "\n");
+    public void mostrarTela() {
+        System.out.println("---------- Menu Principal ----------");
+        System.out.println("Olá, " + this.contexto.getTreinador().getNome() + "\n");
         System.out.println("1- Selecionar Pokémon atual");
         System.out.println("2- Abrir Pokédex");
         System.out.println("3- Batalhar Ginásio");
@@ -13,7 +13,7 @@ public class TelaMenuPrincipal extends Tela {
 
         String escolha = this.contexto.getUserInput();
 
-        switch (escolha){
+        switch (escolha) {
             case "1":
                 this.trocarTela(new TelaSelecionarPokemon(this.contexto));
                 break;
@@ -32,7 +32,8 @@ public class TelaMenuPrincipal extends Tela {
                 break;
         }
     }
-    public TelaMenuPrincipal(TelaContext context){
+
+    public TelaMenuPrincipal(TelaContext context) {
         super(context);
     }
 }
