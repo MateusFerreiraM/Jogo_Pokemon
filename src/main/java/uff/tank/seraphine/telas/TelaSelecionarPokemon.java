@@ -1,21 +1,22 @@
 package uff.tank.seraphine.telas;
 
-public class TelaSelecionarPokemon extends Tela{
+import java.util.Scanner;
+
+public class TelaSelecionaTreinador extends Tela {
     @Override
-    public void mostrarTela(){
-        System.out.println("=====Selecionar Pokemon=====");
-        //TODO: Metodo para mostrar pokemon disponiveis para troca
-        //TODO: Troca de pokemon
+    public void mostrarTela() {
+        System.out.println("---------- Selecionar Treinador ----------");
         System.out.println("INCOMPLETO");
-        System.out.println("V- Voltar ao menu principal");
+        // TODO: Exibir lista treinadores
+        System.out.println("V- Voltar para a tela inicial");
         System.out.println("X- Sair");
 
         String escolha = this.contexto.getUserInput();
 
-        switch (escolha){
+        switch (escolha) {
             case "v":
             case "V":
-                this.trocarTela(new TelaMenuPrincipal(this.contexto));
+                this.trocarTela(new TelaInicial(this.contexto));
                 break;
             case "x":
             case "X":
@@ -27,7 +28,7 @@ public class TelaSelecionarPokemon extends Tela{
         }
     }
 
-    public TelaSelecionarPokemon(TelaContext context){
-        super(context);
+    public TelaSelecionaTreinador(TelaContext contexto) {
+        super(contexto);
     }
 }
