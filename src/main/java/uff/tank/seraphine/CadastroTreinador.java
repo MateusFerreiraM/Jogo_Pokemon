@@ -7,13 +7,14 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Logger;
 import javax.print.DocFlavor.STRING;
 import org.json.*;
 
-public class CadastroTreinador{
-   
-    public static void cadastrarTreinador(Treinador treinador){
+public class CadastroTreinador {
+
+    public static void cadastrarTreinador(Treinador treinador) {
         // Salvar treinador no arquivo
         FileWriter writeFile = null;
         JSONObject obetoJson = new JSONObject();
@@ -21,6 +22,7 @@ public class CadastroTreinador{
         obetoJson.put("id", treinador.getId());
         obetoJson.put("nome", treinador.getNome());
         obetoJson.put("regiao", treinador.getRegiao());
+        obetoJson.put("pokemons", treinador.getPokemons());
 
         try {
             writeFile = new FileWriter("assets/dados.json");
@@ -30,15 +32,15 @@ public class CadastroTreinador{
             e.printStackTrace();
         }
 
-        System.out.println(obetoJson.toJSONString());        
+        System.out.println(obetoJson.toJSONString());
     }
-    
-    public void lerTreinador(){
-        // Lê treinador do arquivo  
+
+    public void lerTreinador() {
+        // Lê treinador do arquivo
         JSONObject obetoJson;
         JSONParser parser = new JSONParser();
 
-        try{
+        try {
 
             obetoJson = (JSONObject) parser.parse(new FileReader("assets/dados.json"));
             int id = Integer.parseInt((String) obetoJson.get("id"));
@@ -46,11 +48,11 @@ public class CadastroTreinador{
 
             System.out.println("Treinador criado = " + treinador.toString());
 
-        }catch(FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-        }catch (ParseException e) {
+        } catch (ParseException e) {
             e.printStackTrace();
         }
     }
