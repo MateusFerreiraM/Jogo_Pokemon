@@ -3,15 +3,15 @@ package uff.tank.seraphine.telas;
 public class TelaPokedex extends Tela {
     @Override
     public void mostrarTela() {
-        System.out.println("---------- Pokedex ----------");
-        System.out.println("1- Ver Pokémon");
-        System.out.println("2- Ver Informações do Treinador");
-        System.out.println("V- Voltar ao menu principal");
-        System.out.println("X- Sair");
+        System.out.println("---------- Pokedex ----------\n");
+        System.out.println("1 - Ver Pokémon");
+        System.out.println("2 - Ver Informações do Treinador");
+        System.out.println("V - Voltar ao menu principal");
+        System.out.println("X - Sair");
 
         String escolha = this.contexto.getUserInput();
 
-        switch (escolha){
+        switch (escolha) {
             case "1":
                 this.trocarTela(new TelaListaPokemon(this.contexto));
                 break;
@@ -31,7 +31,8 @@ public class TelaPokedex extends Tela {
                 break;
         }
     }
-    public TelaPokedex(TelaContext context){
+
+    public TelaPokedex(TelaContext context) {
         super(context);
     }
 }
