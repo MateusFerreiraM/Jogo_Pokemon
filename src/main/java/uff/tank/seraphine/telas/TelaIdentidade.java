@@ -1,15 +1,20 @@
 package uff.tank.seraphine.telas;
 
+import org.json.simple.JSONObject;
+
+import uff.tank.seraphine.CadastroTreinador;
+
 public class TelaIdentidade extends Tela {
     @Override
     public void mostrarTela() {
-        System.out.println("---------- Identidade ----------");
-        System.out.println("Nome: " + this.contexto.getTreinador().getNome());
-        System.out.println("Regiao: " + this.contexto.getTreinador().getRegiao());
-        System.out.println("ID: " + this.contexto.getTreinador().getId());
+        JSONObject obj = CadastroTreinador.lerTreinador();
+        System.out.println("---------- Identidade ----------\n");
+        System.out.println("Nome: " + obj.get("nome"));
+        System.out.println("Regiao: " + obj.get("regiao"));
+        System.out.println("ID: " + obj.get("id"));
         System.out.println("Número de Pokémon obtidos: " + this.contexto.getTreinador().qtdPokemon);
-        System.out.println("V- Voltar à pokédex");
-        System.out.println("X- Sair");
+        System.out.println("\nV - Voltar à pokédex");
+        System.out.println("X - Sair");
 
         String escolha = this.contexto.getUserInput();
 
