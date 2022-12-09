@@ -1,14 +1,17 @@
 package uff.tank.seraphine.telas;
 
+import org.json.simple.JSONObject;
+
+import uff.tank.seraphine.verPokedex;
+
 public class TelaSelecionarPokemon extends Tela {
     @Override
     public void mostrarTela() {
-        System.out.println("---------- Selecionar Pokemon ----------");
-        // TODO: Metodo para mostrar pokemon disponiveis para troca
-        // TODO: Troca de pokemon
-        System.out.println("INCOMPLETO");
-        System.out.println("V- Voltar ao menu principal");
-        System.out.println("X- Sair");
+        System.out.println("---------- Selecionar Pokemon ----------\n");
+        JSONObject obj = verPokedex.mostrarPokedex();
+        System.out.println("Lista de Pokemons : " + obj.get("pokemons"));
+        System.out.println("\nV - Voltar ao menu principal");
+        System.out.println("X - Sair");
 
         String escolha = this.contexto.getUserInput();
 
