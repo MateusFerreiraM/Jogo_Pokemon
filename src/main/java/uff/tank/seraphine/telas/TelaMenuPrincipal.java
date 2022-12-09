@@ -4,12 +4,12 @@ package uff.tank.seraphine.telas;
 
 public class TelaMenuPrincipal extends Tela {
     public void mostrarTela() {
-        System.out.println("---------- Menu Principal ----------");
-        System.out.println("Olá, " + this.contexto.getTreinador().getNome() + "\n");
-        System.out.println("1- Selecionar Pokémon atual");
-        System.out.println("2- Abrir Pokédex");
-        System.out.println("3- Batalhar Ginásio");
-        System.out.println("X- Sair");
+        System.out.println("---------- Menu Principal ----------\n");
+        System.out.println("Olá, " + this.contexto.getTreinador().getNome() + "!\n");
+        System.out.println("1 - Selecionar Pokémon atual");
+        System.out.println("2 - Abrir Pokédex");
+        System.out.println("3 - Batalhar Ginásio");
+        System.out.println("X - Sair");
 
         String escolha = this.contexto.getUserInput();
 
