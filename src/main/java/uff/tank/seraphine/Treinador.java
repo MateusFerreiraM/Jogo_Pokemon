@@ -6,7 +6,6 @@ public class Treinador extends Identificacao {
     private static int TotalTreinadores = 0;
     private String regiao;
     public ArrayList<Pokemon> pokemons;
-    public int qtdPokemon;
     public Pokemon pokemonAtual;
 
     public Treinador(String nome, String regiao) {
@@ -49,6 +48,14 @@ public class Treinador extends Identificacao {
     }
 
     public void addPokemon(Pokemon pokemon) {
+        this.pokemons.add(pokemon);
+    }
+
+    public void adicionarPokemon(Pokemon pokemon){
+        if(pokemons.size() == 0){
+            //Quando não se tem outro pokemon na lista, o pokemon atual é o recebido
+            this.pokemonAtual = pokemon;
+        }
         this.pokemons.add(pokemon);
     }
 
