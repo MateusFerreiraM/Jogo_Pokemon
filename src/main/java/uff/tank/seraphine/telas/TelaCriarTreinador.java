@@ -1,10 +1,11 @@
 package uff.tank.seraphine.telas;
+
 import uff.tank.seraphine.Treinador;
 
 public class TelaCriarTreinador extends Tela {
     @Override
     public void mostrarTela() {
-        System.out.println("---------- Tela Cadastro ----------");
+        System.out.println("---------- Tela Cadastro ----------\n");
 
         System.out.print("Nome Treinador: ");
 
@@ -17,9 +18,10 @@ public class TelaCriarTreinador extends Tela {
         Treinador novoTreinador = new Treinador(nome, regiao);
         this.contexto.setTreinador(novoTreinador);
 
-        this.trocarTela(new TelaMenuPrincipal(this.contexto));
+        this.trocarTela(new TelaPrimeiraEscolha(this.contexto));
     }
-    public TelaCriarTreinador(TelaContext context){
+
+    public TelaCriarTreinador(TelaContext context) {
         super(context);
     }
 }
