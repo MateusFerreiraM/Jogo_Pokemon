@@ -5,11 +5,11 @@ import java.util.Scanner;
 public class TelaSelecionaTreinador extends Tela {
     @Override
     public void mostrarTela() {
-        System.out.println("---------- Selecionar Treinador ----------");
+        System.out.println("---------- Selecionar Treinador ----------\n");
         System.out.println("INCOMPLETO");
         // TODO: Exibir lista treinadores
-        System.out.println("V- Voltar para a tela inicial");
-        System.out.println("X- Sair");
+        System.out.println("\nV - Voltar para a tela inicial");
+        System.out.println("X - Sair");
 
         String escolha = this.contexto.getUserInput();
 
