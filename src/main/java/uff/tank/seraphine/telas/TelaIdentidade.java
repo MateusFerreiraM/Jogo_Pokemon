@@ -12,7 +12,7 @@ public class TelaIdentidade extends Tela {
         System.out.println("Nome: " + obj.get("nome"));
         System.out.println("Regiao: " + obj.get("regiao"));
         System.out.println("ID: " + obj.get("id"));
-        System.out.println("Número de Pokémon obtidos: " + this.contexto.getTreinador().qtdPokemon);
+        System.out.println("Número de Pokémon obtidos: " + this.contexto.getTreinador().getQtdPokemon());
         System.out.println("\nV - Voltar à pokédex");
         System.out.println("X - Sair");
 

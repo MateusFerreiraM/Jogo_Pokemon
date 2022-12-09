@@ -61,6 +61,7 @@ public class TelaContext {
     }
 
     String getUserInput(){
+        //Retorna uma string com o input do usuário
         String ret = this.input.nextLine();
         ret = ret.trim();
         return ret;
@@ -68,6 +69,6 @@ public class TelaContext {
 
     Scanner getInput(){
         return this.input;
-    }
+    } //Retorna o Scanner desse objeto
 
 }
