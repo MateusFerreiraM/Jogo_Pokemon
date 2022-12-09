@@ -35,25 +35,24 @@ public class CadastroTreinador {
         System.out.println(obetoJson.toJSONString());
     }
 
-    public void lerTreinador() {
+    public static JSONObject lerTreinador() {
         // Lê treinador do arquivo
-        JSONObject obetoJson;
         JSONParser parser = new JSONParser();
-
+        JSONObject obj = new JSONObject();
         try {
 
-            obetoJson = (JSONObject) parser.parse(new FileReader("assets/dados.json"));
-            int id = Integer.parseInt((String) obetoJson.get("id"));
-            Treinador treinador = new Treinador((String) obetoJson.get("nome"), (String) obetoJson.get("regiao"), id);
-
-            System.out.println("Treinador criado = " + treinador.toString());
-
+            obj = (JSONObject) parser.parse(new FileReader("assets/dados.json"));
         } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (ParseException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+        return obj;
     }
 }
