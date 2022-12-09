@@ -4,17 +4,16 @@ package uff.tank.seraphine.telas;
 public class TelaInicial extends Tela {
     @Override
     public void mostrarTela() {
-        System.out.println("---------- Tela Inicial ----------");
-        System.out.println("INCOMPLETO! POSSÍVEIS LOOPS EM CERTAS TELAS");
+        System.out.println("---------- Tela Inicial ----------\n");
         System.out.println("Selecione uma opção:");
-        System.out.println("1- Selecionar Treinador");
-        System.out.println("2- Criar treinador");
-        System.out.println("X- Sair");
+        System.out.println("1 - Selecionar Treinador");
+        System.out.println("2 - Criar treinador");
+        System.out.println("X - Sair");
         System.out.print("\n>");
 
         String escolha = this.contexto.getUserInput();
 
-        switch (escolha){
+        switch (escolha) {
             case "1":
                 this.trocarTela(new TelaSelecionaTreinador(this.contexto));
                 break;
@@ -29,7 +28,8 @@ public class TelaInicial extends Tela {
                 System.out.println("Por favor, insira um valor válido!");
         }
     }
-    public TelaInicial(TelaContext context){
+
+    public TelaInicial(TelaContext context) {
         super(context);
     }
 }
