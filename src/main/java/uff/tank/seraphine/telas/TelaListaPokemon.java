@@ -1,18 +1,20 @@
 package uff.tank.seraphine.telas;
 
+import org.json.simple.JSONObject;
+import uff.tank.seraphine.verPokedex;
+
 public class TelaListaPokemon extends Tela {
     @Override
     public void mostrarTela() {
-        System.out.println("\n\n\n\n---------- Selecione seu Pokemon ----------");
-        System.out.println("Lista de Pokemons: ");
-        //TODO: Criar função que retorna a lista de todos os pokemon do usuário.
-        //TODO: Criar função que adiciona paginação à essa lista
-        System.out.println("V- Voltar à Pokédex");
-        System.out.println("X- Sair");
+        System.out.println("---------- Selecione seu Pokemon ----------\n");
+        JSONObject obj = verPokedex.mostrarPokedex();
+        System.out.println("Lista de Pokemons: " + obj.get("pokemons"));
+        System.out.println("\nV - Voltar à Pokédex");
+        System.out.println("X - Sair");
 
         String escolha = this.contexto.getUserInput();
 
-        switch (escolha){
+        switch (escolha) {
             case "v":
             case "V":
                 this.trocarTela(new TelaPokedex(this.contexto));
@@ -26,7 +28,8 @@ public class TelaListaPokemon extends Tela {
                 break;
         }
     }
-    public TelaListaPokemon(TelaContext context){
+
+    public TelaListaPokemon(TelaContext context) {
         super(context);
     }
 }
