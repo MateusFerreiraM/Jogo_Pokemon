@@ -1,5 +1,6 @@
 package uff.tank.seraphine.telas;
 
+import uff.tank.seraphine.CadastroTreinador;
 import uff.tank.seraphine.Pokemon;
 import uff.tank.seraphine.utils.JSONUtils;
 
@@ -8,9 +9,6 @@ public class TelaPrimeiraEscolha extends Tela {
     private final String POKEMON_PATH = "assets/pokemon.json";
     @Override
     public void mostrarTela() {
-        System.out
-                .println(
-                        "!!!INCOMPLETO, PRECISA ADICIONAR O POKEMON ESCOLHIDO NA POKEDEX DO TREINADOR E NO ARQUIVO JSON!!!\n");
         System.out.println("Olá, " + this.contexto.getTreinador().getNome()
                 + "! Seja bem vindo(a) ao centro de escolha Pokémon!\nEscolha um dos Pokemons disponíveis em nosso laboratório para iniciar sua jornada.\n");
         System.out.println("1 - Charmander");
@@ -60,8 +58,11 @@ public class TelaPrimeiraEscolha extends Tela {
             default:
                 System.out.println("Por favor insira um valor válido");
         }
+
+        CadastroTreinador.cadastrarTreinador(this.contexto.getTreinador());
         System.out.println(this.contexto.getTreinador().pokemonAtual);
     }
+
 
     public TelaPrimeiraEscolha(TelaContext context) {
         super(context);

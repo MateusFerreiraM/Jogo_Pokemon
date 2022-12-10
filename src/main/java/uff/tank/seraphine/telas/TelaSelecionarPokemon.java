@@ -1,14 +1,16 @@
 package uff.tank.seraphine.telas;
 
-import java.util.Scanner;
+import org.json.simple.JSONObject;
 
-public class TelaSelecionaTreinador extends Tela {
+import uff.tank.seraphine.verPokedex;
+
+public class TelaSelecionarPokemon extends Tela {
     @Override
     public void mostrarTela() {
-        System.out.println("---------- Selecionar Treinador ----------\n");
-        System.out.println("INCOMPLETO");
-        // TODO: Exibir lista treinadores
-        System.out.println("\nV - Voltar para a tela inicial");
+        System.out.println("---------- Selecionar Pokemon ----------\n");
+        JSONObject obj = verPokedex.mostrarPokedex();
+        System.out.println("Lista de Pokemons : " + obj.get("pokemons"));
+        System.out.println("\nV - Voltar ao menu principal");
         System.out.println("X - Sair");
 
         String escolha = this.contexto.getUserInput();
@@ -16,7 +18,7 @@ public class TelaSelecionaTreinador extends Tela {
         switch (escolha) {
             case "v":
             case "V":
-                this.trocarTela(new TelaInicial(this.contexto));
+                this.trocarTela(new TelaMenuPrincipal(this.contexto));
                 break;
             case "x":
             case "X":
@@ -28,7 +30,7 @@ public class TelaSelecionaTreinador extends Tela {
         }
     }
 
-    public TelaSelecionaTreinador(TelaContext contexto) {
-        super(contexto);
+    public TelaSelecionarPokemon(TelaContext context) {
+        super(context);
     }
 }
