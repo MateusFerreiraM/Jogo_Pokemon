@@ -72,6 +72,9 @@ public class Treinador extends Identificacao {
     public void addPokemon(Pokemon pokemon) {
         this.pokemons.add(pokemon);
     }
+    public void setPokemonAtual(Pokemon pkmn){
+        this.pokemonAtual = pkmn;
+    }
 
     public void adicionarPokemon(Pokemon pokemon){
         if(pokemons.size() == 0){
@@ -83,10 +86,10 @@ public class Treinador extends Identificacao {
 
     public static Treinador getTreinadorFromJSONObject(JSONObject obj){
         int id = Integer.parseInt(obj.get("Id").toString());
-        String nome = obj.get("nome").toString();
-        String regiao = obj.get("regiao").toString();
+        String nome = obj.get("Nome").toString();
+        String regiao = obj.get("Regiao").toString();
 
-        ArrayList<String> listaPkmn= (ArrayList<String>) obj.get("pokemons");
+        ArrayList<String> listaPkmn= (ArrayList<String>) obj.get("Pokemons");
         ArrayList<Pokemon> pkmns = new ArrayList<Pokemon>();
 
         for(String pkmnNome : listaPkmn){

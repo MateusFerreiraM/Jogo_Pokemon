@@ -37,10 +37,10 @@ public class CadastroTreinador {
             treinador.setIdAtual(id);
 
             obetoJson.put("Id", treinador.getId());
-            obetoJson.put("nome", treinador.getNome());
-            obetoJson.put("regiao", treinador.getRegiao());
-            obetoJson.put("pokemons", treinador.getPokemons());
-            obetoJson.put("pokemons", pkmnNomes);
+            obetoJson.put("Nome", treinador.getNome());
+            obetoJson.put("Regiao", treinador.getRegiao());
+            //obetoJson.put("Pokemons", treinador.getPokemons());
+            obetoJson.put("Pokemons", pkmnNomes);
 
             objArray.add(obetoJson);
 
