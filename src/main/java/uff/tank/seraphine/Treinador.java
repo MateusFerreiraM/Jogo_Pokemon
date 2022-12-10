@@ -1,6 +1,11 @@
 package uff.tank.seraphine;
 
+import org.json.simple.JSONObject;
+
 import java.util.ArrayList;
+
+import static uff.tank.seraphine.utils.JSONUtils.getObjectByName;
+import static uff.tank.seraphine.utils.JSONUtils.tipoFromString;
 
 public class Treinador extends Identificacao {
     private static int TotalTreinadores = 0;
@@ -17,15 +22,16 @@ public class Treinador extends Identificacao {
         this.pokemons = new ArrayList<Pokemon>();
         TotalTreinadores++;
 
-        CadastroTreinador.cadastrarTreinador(this);
+        //Cadastro treinado é chamado também em TelaPrimeiraEscolha, o que cria informação dobrada no dados.json
+        //CadastroTreinador.cadastrarTreinador(this);
     }
 
-    public Treinador(String nome, String regiao, int id) {
+    public Treinador(String nome, String regiao, int id, ArrayList<Pokemon> pokemons) {
         // Instânciando treinador já existente
         this.nome = nome;
         this.regiao = regiao;
         this.id = id;
-        this.pokemons = new ArrayList<Pokemon>();
+        this.pokemons = pokemons;
     }
 
     public int getQtdPokemon() {
@@ -66,6 +72,26 @@ public class Treinador extends Identificacao {
             this.pokemonAtual = pokemon;
         }
         this.pokemons.add(pokemon);
+    }
+
+    public static Treinador getTreinadorFromJSONObject(JSONObject obj){
+        int id = Integer.parseInt(obj.get("Id").toString());
+        String nome = obj.get("nome").toString();
+        String regiao = obj.get("regiao").toString();
+
+        ArrayList<String> listaPkmn= (ArrayList<String>) obj.get("pokemons");
+        ArrayList<Pokemon> pkmns = new ArrayList<Pokemon>();
+
+        for(String pkmnNome : listaPkmn){
+            pkmns.add(
+                    Pokemon.getPokemonFromJSONObject(
+                            getObjectByName(pkmnNome, "assets/pokemon.json")
+                    )
+            );
+        }
+
+
+        return new Treinador(nome, regiao, id, pkmns);
     }
 
     @Override
