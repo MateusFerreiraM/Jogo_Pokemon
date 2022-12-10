@@ -1,7 +1,14 @@
 package uff.tank.seraphine;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import uff.tank.seraphine.utils.JSONUtils;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static uff.tank.seraphine.utils.JSONUtils.getObjectByName;
@@ -18,9 +25,9 @@ public class Treinador extends Identificacao {
         // Para criar um novo
         this.nome = nome;
         this.regiao = regiao;
-        this.id = TotalTreinadores;
+        this.id = JSONUtils.getLastId("assets/dados.json") + 1;
         this.pokemons = new ArrayList<Pokemon>();
-        TotalTreinadores++;
+        TotalTreinadores = JSONUtils.getTotalObjects("assets/dados.json");
 
         //Cadastro treinado é chamado também em TelaPrimeiraEscolha, o que cria informação dobrada no dados.json
         //CadastroTreinador.cadastrarTreinador(this);
