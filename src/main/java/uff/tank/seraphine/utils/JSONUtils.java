@@ -53,7 +53,7 @@ public class JSONUtils {
 
             for (Object i : objArray) {
                 obj = (JSONObject) i;
-                if (((JSONObject) i).get("nome") == nome) {
+                if (obj.get("Nome").toString().equals(nome)) {
                     System.out.println(obj);
                     break;
                 }
