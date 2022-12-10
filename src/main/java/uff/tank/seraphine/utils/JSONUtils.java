@@ -71,6 +71,58 @@ public class JSONUtils {
         return obj;
     }
 
+    public static int getLastId(String filePath){
+        JSONParser parser = new JSONParser();
+        JSONObject obj = new JSONObject();
+        JSONArray objArray = null;
+        int lastId = 0;
+        try {
+            objArray = (JSONArray) parser.parse(new FileReader(filePath));
+
+            for (Object i : objArray) {
+                obj = (JSONObject) i;
+                int objId = Integer.parseInt(obj.get("Id").toString());
+                if (objId > lastId) {
+                    lastId = objId;
+                }
+            }
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return lastId;
+    }
+
+
+    public static int getTotalObjects(String filePath){
+        JSONParser parser = new JSONParser();
+        JSONObject obj = new JSONObject();
+        JSONArray objArray = null;
+        int count = 0;
+        try {
+            objArray = (JSONArray) parser.parse(new FileReader("assets/pokemon.json"));
+
+            for (Object i : objArray) {
+                count++;
+            }
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return count;
+    }
     public static Tipos tipoFromString(String value){
         Tipos tipo = null;
         switch (value){
