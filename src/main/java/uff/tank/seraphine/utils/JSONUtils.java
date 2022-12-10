@@ -42,6 +42,35 @@ public class JSONUtils {
             return obj;
     }
 
+    public static JSONObject getObjectByName(String nome, String filePath){
+        //Dado um nome e o caminho do arquivo, obtem um objeto do arquivo JSON
+        JSONParser parser = new JSONParser();
+        JSONObject obj = new JSONObject();
+        JSONArray objArray = null;
+
+        try {
+            objArray = (JSONArray) parser.parse(new FileReader(filePath));
+
+            for (Object i : objArray) {
+                obj = (JSONObject) i;
+                if (((JSONObject) i).get("nome") == nome) {
+                    System.out.println(obj);
+                    break;
+                }
+            }
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return obj;
+    }
+
     public static Tipos tipoFromString(String value){
         Tipos tipo = null;
         switch (value){
