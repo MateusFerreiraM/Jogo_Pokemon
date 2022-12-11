@@ -2,21 +2,25 @@
   {
     "Id": 1,
     "Nome": "Mateus",
+    "Regiao": "",
     "Pokemon": "Arcanine"
   },
   {
     "Id": 2,
     "Nome": "Vitoria",
+    "Regiao": "",
     "Pokemon": "Gengar"
   },
   {
     "Id": 3,
     "Nome": "Cael",
+    "Regiao": "",
     "Pokemon": "Rapidash"
   },
   {
     "Id": 4,
     "Nome": "Maria",
+    "Regiao": "",
     "Pokemon": "Pikachu"
   }
 ]
