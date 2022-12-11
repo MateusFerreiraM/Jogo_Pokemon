@@ -21,7 +21,7 @@ public class TelaSelecionarPokemon extends Tela {
 
         System.out.println("Lista de Pokemons : " );
         for(Pokemon pkmn: this.contexto.getTreinador().getPokemons()){
-            System.out.println(pkmn.getId() + " - " + pkmn.getNome() + "/" + pkmn.getTipo());
+            System.out.println(pkmn.getId() + " - " + pkmn.getNome() + "/" + pkmn.getTipos());
         }
         System.out.println("\nV - Voltar ao menu principal");
         System.out.println("X - Sair");

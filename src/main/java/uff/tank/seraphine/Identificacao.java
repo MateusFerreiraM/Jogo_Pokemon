@@ -30,7 +30,7 @@ public class Identificacao {
         return nome;
     }
 
-    public List<Tipos> getTipo() {
+    public List<Tipos> getTipos() {
         return tipos;
     }
 
