@@ -1,0 +1,28 @@
+[
+    {
+      "Id": 1,
+      "Nome": "Guadalupe",
+      "Treinador": "Mateus"
+    },
+    {
+      "Id": 2,
+      "Nome": "Valadares",
+      "Treinador": "Vitoria"
+    },
+    {
+      "Id": 3,
+      "Nome": "Boa Viagem",
+      "Treinador": "Cael"
+    },
+    {
+      "Id": 4,
+      "Nome": "Seropedica",
+      "Treinador": "Maria"
+    },
+    {
+      "Id": 5,
+      "Nome": "Niteroi",
+      "Treinador": "Vania"
+    }
+  ]
+  
