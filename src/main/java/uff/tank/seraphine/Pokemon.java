@@ -38,8 +38,8 @@ public class Pokemon extends Identificacao {
         return movimentosList;
     }
 
-    public String getMovimento(int i){
-        return movimentosList.get(i).getCategoria().toString();
+    public Movimentos getMovimento(int i){
+        return movimentosList.get(i);
     }
 
     public boolean estaVivo() {
