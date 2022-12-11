@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.Iterator;
 
 public class JSONUtils {
+<<<<<<< HEAD
     public static JSONObject getObjectByID(int id, String filePath) {
         // Dado uma Id e o caminho do arquivo, obtem um objeto do arquivo JSON
         JSONParser parser = new JSONParser();
@@ -43,6 +44,40 @@ public class JSONUtils {
 
     public static JSONObject getObjectByName(String nome, String filePath) {
         // Dado um nome e o caminho do arquivo, obtem um objeto do arquivo JSON
+=======
+    public static JSONObject getObjectByID(int id, String filePath){
+            //Dado uma Id e o caminho do arquivo, obtem um objeto do arquivo JSON
+            JSONParser parser = new JSONParser();
+            JSONObject obj = new JSONObject();
+            JSONArray objArray = null;
+
+            try {
+                objArray = (JSONArray) parser.parse(new FileReader(filePath));
+
+                for (Object i : objArray) {
+                    obj = (JSONObject) i;
+                    int objId = Integer.parseInt(obj.get("Id").toString());
+                    if (objId == id) {
+                        System.out.println(obj);
+                        break;
+                    }
+                }
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (ParseException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            return obj;
+    }
+
+    public static JSONObject getObjectByName(String nome, String filePath){
+        //Dado um nome e o caminho do arquivo, obtem um objeto do arquivo JSON
+>>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
         JSONParser parser = new JSONParser();
         JSONObject obj = new JSONObject();
         JSONArray objArray = null;
@@ -53,6 +88,10 @@ public class JSONUtils {
             for (Object i : objArray) {
                 obj = (JSONObject) i;
                 if (obj.get("Nome").toString().equals(nome)) {
+<<<<<<< HEAD
+=======
+                    System.out.println(obj);
+>>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
                     break;
                 }
             }
@@ -69,7 +108,11 @@ public class JSONUtils {
         return obj;
     }
 
+<<<<<<< HEAD
     public static int getLastId(String filePath) {
+=======
+    public static int getLastId(String filePath){
+>>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
         JSONParser parser = new JSONParser();
         JSONObject obj = new JSONObject();
         JSONArray objArray = null;
@@ -97,7 +140,12 @@ public class JSONUtils {
         return lastId;
     }
 
+<<<<<<< HEAD
     public static int getTotalObjects(String filePath) {
+=======
+
+    public static int getTotalObjects(String filePath){
+>>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
         JSONParser parser = new JSONParser();
         JSONObject obj = new JSONObject();
         JSONArray objArray = null;
@@ -120,10 +168,16 @@ public class JSONUtils {
         }
         return count;
     }
+<<<<<<< HEAD
 
     public static Tipos tipoFromString(String value) {
         Tipos tipo = null;
         switch (value) {
+=======
+    public static Tipos tipoFromString(String value){
+        Tipos tipo = null;
+        switch (value){
+>>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
             case "Agua":
                 tipo = Tipos.AGUA;
                 break;

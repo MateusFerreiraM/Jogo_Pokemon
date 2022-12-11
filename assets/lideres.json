@@ -21,6 +21,7 @@
     "Id": 4,
     "Nome": "Maria",
     "Regiao": "",
+<<<<<<< HEAD
     "Pokemon": "Alakazam"
   },
   {
@@ -28,5 +29,8 @@
     "Nome": "Vania",
     "Regiao": "",
     "Pokemon": "Meowth"
+=======
+    "Pokemon": "Pikachu"
+>>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
   }
 ]
