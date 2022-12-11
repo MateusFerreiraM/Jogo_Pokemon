@@ -27,7 +27,7 @@ public class TelaSelecionaTreinador extends Tela {
                 obj = (JSONObject) i;
                 //System.out.println(obj.toString());
                 System.out.println(
-                        obj.get("Id").toString() + " - " + obj.get("nome").toString()
+                        obj.get("Id").toString() + " - " + obj.get("Nome").toString()
                 );
             }
 
