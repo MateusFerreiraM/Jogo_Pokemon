@@ -38,6 +38,7 @@ public class Treinador extends Identificacao {
         this.regiao = regiao;
         this.id = id;
         this.pokemons = pokemons;
+        this.pokemonAtual = pokemons.get(0);
     }
 
     public int getQtdPokemon() {
@@ -65,6 +66,10 @@ public class Treinador extends Identificacao {
     }
     public void setPokemonAtual(Pokemon pkmn){
         this.pokemonAtual = pkmn;
+    }
+
+    public Pokemon getPokemonAtual(){
+        return this.pokemonAtual;
     }
 
     public void adicionarPokemon(Pokemon pokemon){
