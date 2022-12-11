@@ -1,0 +1,58 @@
+ public void telaInicial(){
+        System.out.println("\n\n\n\n---------- Tela Inicial ----------");  
+        System.out.println("Selecione uma opção:");
+        System.out.println("1- Selecionar Treinador");
+        System.out.println("2- Criar treinador");
+        System.out.println("X- Sair");
+        System.out.println("\n\n\n\n");
+    }
+
+    public void telaCadastro(){
+        System.out.println("\n\n\n\n---------- Tela Cadastro ----------");  
+        System.out.println("Nome Treinador: ");
+        System.out.println("Região: ");
+        System.out.println("X- Sair");
+        System.out.println("\n\n\n\n");
+    }
+ 
+    public void telaPrincipal(){
+        System.out.println("\n\n\n\n---------- Pokemon ----------");  
+        System.out.println("Selecione uma opção:");
+        System.out.println("1- Selecionar Pokemon Principal");
+        System.out.println("2- Pokedex");
+        System.out.println("2- Batalhar em Ginásio");
+        System.out.println("X- Sair");
+        System.out.println("\n\n\n\n");
+    }
+   
+    public void telaSelecaoPokemon(){
+        System.out.println("\n\n\n\n---------- Selecione seu Pokemon ----------");  
+        System.out.println("Lista de Pokemons: ");
+        System.out.println("X- Sair");
+        System.out.println("\n\n\n\n");
+    }
+   
+    public void telaPokedex(){
+        System.out.println("\n\n\n\n---------- Pokedex ----------");  
+        System.out.println("Pokemons: ");
+        System.out.println("Informações do Treinador: ");
+        System.out.println("X- Sair");
+        System.out.println("\n\n\n\n");
+    }
+ 
+    public void telaSelecaoGinasio(){
+        System.out.println("\n\n\n\n---------- Ginásios ----------");  
+        System.out.println("Selecione um Ginásio:");
+        System.out.println("1- Ginásio 1");
+        System.out.println("2- Ginásio 2");
+        System.out.println("3- Ginásio 3");
+        System.out.println("4- Ginásio 4");
+        System.out.println("X- Sair");
+        System.out.println("\n\n\n\n");
+    }
+   
+    public void telaBatalha(){
+        System.out.println("\n\n\n\n---------- Batalha ----------");  
+        System.out.println("X- Sair");
+        System.out.println("\n\n\n\n");
+    }
