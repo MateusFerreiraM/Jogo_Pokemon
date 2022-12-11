@@ -9,12 +9,11 @@ public class TelaIdentidade extends Tela {
     @Override
     public void mostrarTela() {
 
-        int i = Treinador.getIdAtual();
-        JSONObject obj = JSONUtils.getObjectByID(i, "assets/dados.json");
+        JSONObject obj = JSONUtils.getObjectByID(this.contexto.getTreinador().getId(), "assets/dados.json");
 
         System.out.println("---------- Identidade ----------\n");
-        System.out.println("Nome: " + obj.get("nome"));
-        System.out.println("Regiao: " + obj.get("regiao"));
+        System.out.println("Nome: " + obj.get("Nome"));
+        System.out.println("Regiao: " + obj.get("Regiao"));
         System.out.println("ID: " + obj.get("Id"));
         System.out.println("Número de Pokémon obtidos: " + this.contexto.getTreinador().getQtdPokemon());
         System.out.println("\nV - Voltar à pokédex");
