@@ -19,7 +19,6 @@ public class Treinador extends Identificacao {
     private String regiao;
     public ArrayList<Pokemon> pokemons;
     public Pokemon pokemonAtual;
-    private static int idAtual;
 
     public Treinador(String nome, String regiao) {
         // Para criar um novo
@@ -59,14 +58,6 @@ public class Treinador extends Identificacao {
 
     public static int getTotalTreinadores() {
         return TotalTreinadores;
-    }
-
-    public static int getIdAtual() {
-        return idAtual;
-    }
-
-    public void setIdAtual(int idAtual) {
-        this.idAtual = idAtual;
     }
 
     public void addPokemon(Pokemon pokemon) {

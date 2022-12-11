@@ -32,10 +32,6 @@ public class CadastroTreinador {
         try {
             objArray = (JSONArray) parser.parse(new FileReader("assets/dados.json"));
 
-            id = objArray.size() + 1;
-
-            treinador.setIdAtual(id);
-
             obetoJson.put("Id", treinador.getId());
             obetoJson.put("Nome", treinador.getNome());
             obetoJson.put("Regiao", treinador.getRegiao());
