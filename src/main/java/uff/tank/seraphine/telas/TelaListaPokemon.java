@@ -1,6 +1,7 @@
 package uff.tank.seraphine.telas;
 
 import org.json.simple.JSONObject;
+import uff.tank.seraphine.Pokemon;
 import uff.tank.seraphine.verPokedex;
 
 public class TelaListaPokemon extends Tela {
@@ -8,7 +9,11 @@ public class TelaListaPokemon extends Tela {
     public void mostrarTela() {
         System.out.println("---------- Selecione seu Pokemon ----------\n");
         JSONObject obj = verPokedex.mostrarPokedex();
-        System.out.println("Lista de Pokemons: " + obj.get("pokemons"));
+        System.out.println("Lista de Pokemons: ");
+        int i = 1;
+        for(Pokemon pkmn : this.contexto.getTreinador().getPokemons()){
+            System.out.println(i + " - " + pkmn.getNome() + "/" + pkmn.getTipos().get(0));
+        }
         System.out.println("\nV - Voltar à Pokédex");
         System.out.println("X - Sair");
 
