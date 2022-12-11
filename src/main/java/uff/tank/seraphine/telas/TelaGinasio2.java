@@ -1,5 +1,8 @@
 package uff.tank.seraphine.telas;
 
+import uff.tank.seraphine.LiderGin;
+import uff.tank.seraphine.utils.JSONUtils;
+
 public class TelaGinasio2 extends Tela {
 
     // Tela do ginásio Valadares (Vitoria)
@@ -15,7 +18,10 @@ public class TelaGinasio2 extends Tela {
 
         switch (escolha) {
             case "1":
-                this.trocarTela(new TelaBatalha(this.contexto));
+                LiderGin oponente = LiderGin.getLiderFromJSONObject(
+                        JSONUtils.getObjectByID(2, "assets/lideres.json")
+                );
+                this.trocarTela(new TelaBatalha(this.contexto, oponente));
                 break;
             case "2":
                 this.trocarTela(new TelaEscolherGinasio(this.contexto));

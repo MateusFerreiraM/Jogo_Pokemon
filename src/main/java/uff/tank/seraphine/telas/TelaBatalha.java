@@ -13,33 +13,30 @@ import uff.tank.seraphine.utils.JSONUtils;
 
 //Tela exibida durante a batalha
 public class TelaBatalha extends Tela {
+    LiderGin oponente;
     @Override
     public void mostrarTela() {
         Treinador treinador = this.contexto.getTreinador();
-        LiderGin lider = new LiderGin(null, null, null);
 
-        JSONObject objPkmTreinador = JSONUtils.getObjectByName(treinador.pokemonAtual.getNome(), "assets/pokemon.json");
-        JSONObject objLider = JSONUtils.getObjectByID(i, "assets/lideres.json");
-
-        int hpTreinador = this.contexto.getTreinador().getPokemons().get(pkmSelecionado).getHpAtual();
-        int hpLider = 100;
+        int hpTreinador = treinador.getPokemonAtual().getHpAtual();
+        int hpLider = oponente.getPokemonAtual().getHpAtual();
         int contEspecial = 2, contEspecialLider = 2;
 
-        Batalha batalha = new Batalha(treinador.pokemonAtual, null);
+        Batalha batalha = new Batalha(treinador.getPokemonAtual(), oponente.getPokemonAtual());
 
         // TODO: Sistema de batalha
 
         System.out.println("---------- Batalha ----------");
-        System.out.println("Seu pokemon: " + objPkmTreinador.get("Nome"));
+        System.out.println("Seu pokemon: " + treinador.getPokemonAtual().getNome());
         System.out.println(
-                "Seu HP atual: " + objPkmTreinador.get("HP"));
-        System.out.println("Seu ataque: " + objPkmTreinador.get("Ataque"));
-        System.out.println("Sua defesa: " + objPkmTreinador.get("Defesa"));
+                "Seu HP atual: " + treinador.getPokemonAtual().getHpAtual());
+        System.out.println("Seu ataque: " + treinador.getPokemonAtual().getAtaque());
+        System.out.println("Sua defesa: " + treinador.getPokemonAtual().getDefesa());
         System.out.println("-----------------------------");
-        System.out.println("Pokemon inimigo: " + obj.get("Nome"));
-        System.out.println("HP atual do inimigo: " + obj.get("HP"));
-        System.out.println("Ataque do inimigo: " + obj.get("Ataque"));
-        System.out.println("Defesa do inimigo: " + obj.get("Defesa"));
+        System.out.println("Pokemon inimigo: " + oponente.getPokemonAtual().getNome());
+        System.out.println("HP atual do inimigo: " + oponente.getPokemonAtual().getHpAtual());
+        System.out.println("Ataque do inimigo: " + oponente.getPokemonAtual().getAtaque());
+        System.out.println("Defesa do inimigo: " + oponente.getPokemonAtual().getDefesa());
         System.out.println("-----------------------------\n");
         System.out.println("Escolha seu ataque");
         System.out.println("(1) - Físico");
@@ -73,17 +70,17 @@ public class TelaBatalha extends Tela {
             if (hpLider > 0) {
                 switch (randomLider) {
                     case "1":
-                        System.out.println("Líder " + lider.getNome() + " aplicou um ataque físico.");
-                        batalha.atacar(lider.pokemonAtual.getMovimento(0));
+                        System.out.println("Líder " + oponente.getNome() + " aplicou um ataque físico.");
+                        batalha.atacar(oponente.pokemonAtual.getMovimento(0));
                         break;
                     case "2":
                         if (contEspecialLider>0) {
-                            System.out.println("Líder " + lider.getNome() + " aplicou um ataque especial.");
-                            batalha.atacar(lider.pokemonAtual.getMovimento(1));
+                            System.out.println("Líder " + oponente.getNome() + " aplicou um ataque especial.");
+                            batalha.atacar(oponente.pokemonAtual.getMovimento(1));
                             contEspecialLider--;
                         } else {
-                            System.out.println("Líder " + lider.getNome() + " aplicou um ataque físico.");
-                            batalha.atacar(lider.pokemonAtual.getMovimento(0));
+                            System.out.println("Líder " + oponente.getNome() + " aplicou um ataque físico.");
+                            batalha.atacar(oponente.pokemonAtual.getMovimento(0));
                             break;
                         }
                         break;
@@ -98,7 +95,8 @@ public class TelaBatalha extends Tela {
 
     }
 
-    public TelaBatalha(TelaContext context) {
+    public TelaBatalha(TelaContext context, LiderGin oponente) {
         super(context);
+        this.oponente = oponente;
     }
 }
