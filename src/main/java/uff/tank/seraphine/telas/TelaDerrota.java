@@ -4,7 +4,7 @@ public class TelaDerrota extends Tela {
 
     @Override
     public void mostrarTela() {
-        System.out.println("=====Você perdeu!=====\n");
+        System.out.println("===== Você perdeu =====\n Treine mais e volte mais forte!");
         System.out.println("V- Voltar ao menu principal");
         System.out.println("X- Sair");
 

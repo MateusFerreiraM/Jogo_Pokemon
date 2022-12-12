@@ -12,15 +12,15 @@ import java.awt.*;
 public class TelaSelecionarPokemon extends Tela {
     @Override
     public void mostrarTela() {
-        System.out.println("---------- Selecionar Pokemon ----------\n");
-        if( this.contexto.getTreinador().pokemonAtual != null){
+        System.out.println("---------- Selecionar Pokémon ----------\n");
+        if (this.contexto.getTreinador().pokemonAtual != null) {
             System.out.println("Pokémon atual: " + this.contexto.getTreinador().pokemonAtual.getNome());
         } else {
             System.out.println("Você não possuí nenhum Pokémon selecionado!");
         }
 
-        System.out.println("Lista de Pokemons : " );
-        for(Pokemon pkmn: this.contexto.getTreinador().getPokemons()){
+        System.out.println("\nLista de Pokemons : ");
+        for (Pokemon pkmn : this.contexto.getTreinador().getPokemons()) {
             System.out.println(pkmn.getId() + " - " + pkmn.getNome() + "/" + pkmn.getTipos());
         }
         System.out.println("\nV - Voltar ao menu principal");
@@ -31,26 +31,25 @@ public class TelaSelecionarPokemon extends Tela {
 
         boolean isNumber = false;
 
-
         try {
-            //Tenta ver se o input é um número que pode ser Id
-            //Se o parse falhar, a string contém letras, logo, não é um Id
+            // Tenta ver se o input é um número que pode ser Id
+            // Se o parse falhar, a string contém letras, logo, não é um Id
             Integer.parseInt(escolha);
             isNumber = true;
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             isNumber = false;
         }
-        if(isNumber){
+        if (isNumber) {
             boolean naLista = false;
-            for(Pokemon i : this.contexto.getTreinador().getPokemons()){
-                if(i.getId() == Integer.parseInt(escolha)){
+            for (Pokemon i : this.contexto.getTreinador().getPokemons()) {
+                if (i.getId() == Integer.parseInt(escolha)) {
                     this.contexto.getTreinador().setPokemonAtual(i);
                     naLista = true;
                     break;
                 }
             }
 
-            if(!naLista){
+            if (!naLista) {
                 System.out.println("Pokémon não encontrado!");
             }
         } else {

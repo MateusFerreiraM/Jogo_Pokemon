@@ -7,9 +7,9 @@ import uff.tank.seraphine.verPokedex;
 public class TelaListaPokemon extends Tela {
     @Override
     public void mostrarTela() {
-        System.out.println("---------- Selecione seu Pokemon ----------\n");
+        System.out.println("---------- Seus Pokémons ----------\n");
         // JSONObject obj = verPokedex.mostrarPokedex();
-        System.out.println("Lista de Pokemons: ");
+        System.out.println("Lista de Pokémons: \n");
         int i = 1;
         for (Pokemon pkmn : this.contexto.getTreinador().getPokemons()) {
             System.out.println(i + " - " + pkmn.getNome() + "/" + pkmn.getTipos().get(0));

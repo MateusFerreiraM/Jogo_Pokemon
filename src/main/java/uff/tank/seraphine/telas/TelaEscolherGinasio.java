@@ -10,6 +10,8 @@ public class TelaEscolherGinasio extends Tela {
         System.out.println("3 - Boa Viagem");
         System.out.println("4 - Seropedica");
         System.out.println("5 - Niteroi");
+        System.out.println("6 - Misterioso");
+
         // TODO: Função para recuperar o número de ginásios
         // TODO: Função para listar os ginásios com paginação
         System.out.println("\nV - Voltar ao menu principal");
@@ -32,6 +34,9 @@ public class TelaEscolherGinasio extends Tela {
                 break;
             case "5":
                 this.trocarTela(new TelaGinasio5(this.contexto));
+                break;
+            case "6":
+                this.trocarTela(new TelaGinasio6(this.contexto));
                 break;
             case "v":
             case "V":

@@ -5,12 +5,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import uff.tank.seraphine.utils.JSONUtils;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import static uff.tank.seraphine.utils.JSONUtils.getObjectByName;
 import static uff.tank.seraphine.utils.JSONUtils.tipoFromString;
 
@@ -28,8 +26,9 @@ public class Treinador extends Identificacao {
         this.pokemons = new ArrayList<Pokemon>();
         TotalTreinadores = JSONUtils.getTotalObjects("assets/dados.json");
 
-        //Cadastro treinado é chamado também em TelaPrimeiraEscolha, o que cria informação dobrada no dados.json
-        //CadastroTreinador.cadastrarTreinador(this);
+        // Cadastro treinado é chamado também em TelaPrimeiraEscolha, o que cria
+        // informação dobrada no dados.json
+        // CadastroTreinador.cadastrarTreinador(this);
     }
 
     public Treinador(String nome, String regiao, int id, ArrayList<Pokemon> pokemons) {
@@ -64,38 +63,36 @@ public class Treinador extends Identificacao {
     public void addPokemon(Pokemon pokemon) {
         this.pokemons.add(pokemon);
     }
-    public void setPokemonAtual(Pokemon pkmn){
+
+    public void setPokemonAtual(Pokemon pkmn) {
         this.pokemonAtual = pkmn;
     }
 
-    public Pokemon getPokemonAtual(){
+    public Pokemon getPokemonAtual() {
         return this.pokemonAtual;
     }
 
-    public void adicionarPokemon(Pokemon pokemon){
-        if(pokemons.size() == 0){
-            //Quando não se tem outro pokemon na lista, o pokemon atual é o recebido
+    public void adicionarPokemon(Pokemon pokemon) {
+        if (pokemons.size() == 0) {
+            // Quando não se tem outro pokemon na lista, o pokemon atual é o recebido
             this.pokemonAtual = pokemon;
         }
         this.pokemons.add(pokemon);
     }
 
-    public static Treinador getTreinadorFromJSONObject(JSONObject obj){
+    public static Treinador getTreinadorFromJSONObject(JSONObject obj) {
         int id = Integer.parseInt(obj.get("Id").toString());
         String nome = obj.get("Nome").toString();
         String regiao = obj.get("Regiao").toString();
 
-        ArrayList<String> listaPkmn= (ArrayList<String>) obj.get("Pokemons");
+        ArrayList<String> listaPkmn = (ArrayList<String>) obj.get("Pokemons");
         ArrayList<Pokemon> pkmns = new ArrayList<Pokemon>();
 
-        for(String pkmnNome : listaPkmn){
+        for (String pkmnNome : listaPkmn) {
             pkmns.add(
                     Pokemon.getPokemonFromJSONObject(
-                            getObjectByName(pkmnNome, "assets/pokemon.json")
-                    )
-            );
+                            getObjectByName(pkmnNome, "assets/pokemon.json")));
         }
-
 
         return new Treinador(nome, regiao, id, pkmns);
     }

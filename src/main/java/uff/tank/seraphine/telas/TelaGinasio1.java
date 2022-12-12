@@ -10,7 +10,7 @@ public class TelaGinasio1 extends Tela {
     @Override
     public void mostrarTela() {
         System.out.println("Saudações, " + this.contexto.getTreinador().getNome()
-                + "! Este é o grande ginásio de Guadalupe!\nNosso mais forte líder de ginásio é o Mateus com seu astucioso Arcanine.\nTem certeza que consegue enfrentá-lo?\n");
+                + "! Este é o grande ginásio de Guadalupe!\nNosso mais forte líder de ginásio é o Mateus, com seu astucioso Arcanine.\nTem certeza que consegue enfrentá-lo?\n");
         System.out.println("1 - Claro! Manda ver!");
         System.out.println("2 - Eh... Não tenho certeza, acho que vou voltar.\n");
         System.out.println("X - Sair");

@@ -10,7 +10,7 @@ public class TelaGinasio4 extends Tela {
     @Override
     public void mostrarTela() {
         System.out.println("E ai, " + this.contexto.getTreinador().getNome()
-                + "? Chegamos ao vasto ginásio de Seropedica.\nEstamos na presença da poderosa Maria com seu Alakazam.\nTem certeza que consegue enfrentá-la?\n");
+                + "? Chegamos ao vasto ginásio de Seropedica.\nEstamos na presença da poderosa Maria, com seu Alakazam.\nTem certeza que consegue enfrentá-la?\n");
         System.out.println("1 - Claro! Manda ver!");
         System.out.println("2 - Eh... Não tenho certeza, acho que vou voltar.\n");
         System.out.println("X - Sair");

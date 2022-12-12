@@ -3,8 +3,8 @@ package uff.tank.seraphine.telas;
 public class TelaPokedex extends Tela {
     @Override
     public void mostrarTela() {
-        System.out.println("---------- Pokedex ----------\n");
-        System.out.println("1 - Ver Pokémon");
+        System.out.println("---------- Pokédex ----------\n");
+        System.out.println("1 - Ver seus Pokémons");
         System.out.println("2 - Ver Informações do Treinador");
         System.out.println("V - Voltar ao menu principal");
         System.out.println("X - Sair");

@@ -76,18 +76,6 @@ public class Batalha {
         return this.vitoria;
     }
 
-    public void imprimeVantagem(Pokemon quemAtk, Pokemon alvo, Movimentos atk) {
-        System.out.println("====================");
-        if (quemAtk.vantagem(alvo, atk) == 0) {
-            System.out.println("O ataque não teve efeito!");
-        } else if (quemAtk.vantagem(alvo, atk) == 0.5) {
-            System.out.println("O ataque quase não teve efeito!");
-        } else if (quemAtk.vantagem(alvo, atk) == 2) {
-            System.out.println("O ataquem foi muito efetivo!");
-        }
-        System.out.println("====================");
-    }
-
     public int getContEspecial() {
         return this.contEspecial;
     }

@@ -8,8 +8,8 @@ public class TelaVitoria extends Tela {
 
     @Override
     public void mostrarTela() {
-        System.out.println("===== Você Ganhou! =====\n");
-        System.out.println("Como recompensa, você recebeu:");
+        System.out.println("===== PARABÉNS! Você Ganhou! =====\n");
+        System.out.println("Como recompensa, você recebeu:\n");
         Pokemon novoPkmn;
         while (true) {
             novoPkmn = Pokemon.getPokemonAleatorio();
@@ -22,7 +22,7 @@ public class TelaVitoria extends Tela {
             System.out.print(".");
             ConsoleUtils.sleep(0750);
         }
-        System.out.println(novoPkmn.getNome() + "!\n");
+        System.out.println("\n\n" + novoPkmn.getNome() + "!\n");
         this.contexto.getTreinador().addPokemon(novoPkmn);
         CadastroTreinador.atualizarTreinador(this.contexto.getTreinador());
         System.out.println("V- Voltar ao menu principal");

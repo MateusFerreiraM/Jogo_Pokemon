@@ -18,13 +18,20 @@ public class TelaCriarTreinador extends Tela {
 
                 String nome = this.contexto.getUserInput();
 
-                if ((nome.toLowerCase())
-                                .equals((JSONUtils.getObjectByName(nome.toLowerCase(), "assets/dados.json").get("Nome")
-                                                .toString())
-                                                .toLowerCase())) {
-                        System.out.println("Treinador já existente!");
+                boolean treinadorExiste = false;
+
+                try{
+                        treinadorExiste = nome.toLowerCase().equals((JSONUtils.getObjectByName(
+                                nome.toLowerCase(), "assets/dados.json"
+                        ).get("Nome").toString()).toLowerCase());
+                } catch(Exception e){
+                        treinadorExiste = false;
+                }
+
+                if (treinadorExiste) {
+                        System.out.println("\nTreinador já existente!\nPor favor, digite outro nome.");
                         try {
-                                Thread.sleep(1500);
+                                Thread.sleep(2000);
                         } catch (InterruptedException ex) {
                         }
                         return;

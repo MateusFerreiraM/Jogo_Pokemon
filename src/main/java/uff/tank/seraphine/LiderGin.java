@@ -26,13 +26,18 @@ public class LiderGin extends Treinador {// Lider de Ginásio é um tipo especia
         this.especialidade = especialidade;
     }
 
-    public static LiderGin getLiderFromJSONObject(JSONObject obj){
+    public static LiderGin getLiderFromJSONObject(JSONObject obj) {
         int id = Integer.parseInt(obj.get("Id").toString());
         String nome = obj.get("Nome").toString();
         String regiao = obj.get("Regiao").toString();
-        Pokemon pokemon = Pokemon.getPokemonFromJSONObject(
-                JSONUtils.getObjectByName(obj.get("Pokemon").toString(), "assets/pokemon.json")
-        );
+        Pokemon pokemon;
+        if (obj.get("Pokemon").toString().equals("random")) {
+            pokemon = Pokemon.getPokemonAleatorio();
+        } else {
+            pokemon = Pokemon.getPokemonFromJSONObject(
+                    JSONUtils.getObjectByName(obj.get("Pokemon").toString(), "assets/pokemon.json"));
+        }
+
         return new LiderGin(nome, regiao, id, pokemon);
     }
 }

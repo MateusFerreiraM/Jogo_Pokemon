@@ -36,9 +36,9 @@ public class Pokemon extends Identificacao {
         this.hpAtual = this.hp;
         this.movimentosList.add(new Movimentos(tipos.get(0), 1.0, Categoria.FISICO));
         if (tipos.size() == 1) {
-            this.movimentosList.add(new Movimentos(tipos.get(0), 1.25, Categoria.ESPECIAL));
+            this.movimentosList.add(new Movimentos(tipos.get(0), 1.15, Categoria.ESPECIAL));
         } else {
-            this.movimentosList.add(new Movimentos(tipos.get(1), 1.25, Categoria.ESPECIAL));
+            this.movimentosList.add(new Movimentos(tipos.get(1), 1.15, Categoria.ESPECIAL));
         }
 
     }

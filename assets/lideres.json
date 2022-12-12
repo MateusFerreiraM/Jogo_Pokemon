@@ -3,13 +3,13 @@
     "Id": 1,
     "Nome": "Mateus",
     "Regiao": "",
-    "Pokemon": "Arcanine"
+    "Pokemon": "Snorlax"
   },
   {
     "Id": 2,
     "Nome": "Vitoria",
     "Regiao": "",
-    "Pokemon": "Gengar"
+    "Pokemon": "Vulpix"
   },
   {
     "Id": 3,
@@ -27,6 +27,12 @@
     "Id": 5,
     "Nome": "Vania",
     "Regiao": "",
-    "Pokemon": "Meowth"
+    "Pokemon": "Mew"
+  },
+  {
+    "Id": 6,
+    "Nome": "Ash",
+    "Regiao": "",
+    "Pokemon": "random"
   }
 ]
