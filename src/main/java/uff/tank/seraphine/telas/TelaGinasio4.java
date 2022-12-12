@@ -1,9 +1,6 @@
 package uff.tank.seraphine.telas;
 
-<<<<<<< HEAD
 import uff.tank.seraphine.Batalha;
-=======
->>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
 import uff.tank.seraphine.LiderGin;
 import uff.tank.seraphine.utils.JSONUtils;
 
@@ -23,16 +20,10 @@ public class TelaGinasio4 extends Tela {
         switch (escolha) {
             case "1":
                 LiderGin oponente = LiderGin.getLiderFromJSONObject(
-<<<<<<< HEAD
                         JSONUtils.getObjectByID(4, "assets/lideres.json"));
                 Batalha batalha = new Batalha(this.contexto.getTreinador().getPokemonAtual(),
                         oponente.getPokemonAtual());
                 this.trocarTela(new TelaBatalha(this.contexto, oponente, batalha));
-=======
-                        JSONUtils.getObjectByID(4, "assets/lideres.json")
-                );
-                this.trocarTela(new TelaBatalha(this.contexto, oponente));
->>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
                 break;
             case "2":
                 this.trocarTela(new TelaEscolherGinasio(this.contexto));

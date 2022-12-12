@@ -2,77 +2,52 @@ package uff.tank.seraphine;
 
 import org.json.simple.JSONObject;
 
-<<<<<<< HEAD
 import uff.tank.seraphine.Movimentos.Categoria;
 import uff.tank.seraphine.utils.JSONUtils;
 
-=======
->>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
 import java.util.*;
 
 import static uff.tank.seraphine.utils.JSONUtils.tipoFromString;
 
-<<<<<<< HEAD
 public class Pokemon extends Identificacao {
 
     private List<Movimentos> movimentosList;
     private String regiao;
-=======
-
-public class Pokemon extends Identificacao {
-
-    public static final int NIVEL_EVOLUIR = 50;
-    private List<Movimentos> movimentosList;
-    private String regiao;
-    private int nivel;
->>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
     private int hp;
     private int hpAtual;
     private int ataque;
     private int defesa;
     private boolean lendario;
 
-<<<<<<< HEAD
     public Pokemon(String nome, List<Tipos> tipos) {
 
         this.nome = nome;
         this.tipos = tipos;
     }
 
-    public Pokemon(String nome, int id, List<Tipos> tipos, int ataque, int defesa, int hp) {
-        this.movimentosList = new List<Movimentos>();
-=======
-    public Pokemon(String nome, List<Tipos> tipos, List<Movimentos> lista) {
-
-        this.nome = nome;
-        this.tipos = tipos;
-        this.movimentosList = lista;
-    }
-    public Pokemon(String nome, int id, List<Tipos> tipos, int ataque, int defesa, int hp) {
->>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
+    public Pokemon(String nome, int id, ArrayList<Tipos> tipos, int ataque, int defesa, int hp) {
+        this.movimentosList = new ArrayList<Movimentos>();
         this.id = id;
         this.nome = nome;
         this.tipos = tipos;
         this.ataque = ataque;
         this.defesa = defesa;
         this.hp = hp;
-<<<<<<< HEAD
-        this.movimentosList.set(0, new Movimentos(tipos.get(0), 1.0, Categoria.FISICO));
-        this.movimentosList.set(1, new Movimentos(tipos.get(1), 1.25, Categoria.ESPECIAL));
+        this.hpAtual = this.hp;
+        this.movimentosList.add(new Movimentos(tipos.get(0), 1.0, Categoria.FISICO));
+        if (tipos.size() == 1) {
+            this.movimentosList.add(new Movimentos(tipos.get(0), 1.25, Categoria.ESPECIAL));
+        } else {
+            this.movimentosList.add(new Movimentos(tipos.get(1), 1.25, Categoria.ESPECIAL));
+        }
 
-=======
->>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
     }
 
     public List<Movimentos> getMovimentosList() {
         return movimentosList;
     }
 
-<<<<<<< HEAD
     public Movimentos getMovimento(int i) {
-=======
-    public Movimentos getMovimento(int i){
->>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
         return movimentosList.get(i);
     }
 
@@ -87,13 +62,6 @@ public class Pokemon extends Identificacao {
         return regiao;
     }
 
-<<<<<<< HEAD
-=======
-    public int getNivel() {
-        return nivel;
-    }
-
->>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
     public int getHp() {
         return hp;
     }
@@ -106,24 +74,16 @@ public class Pokemon extends Identificacao {
         this.hpAtual = hpAtual;
     }
 
-<<<<<<< HEAD
     public void perdeHp(double dano) {
-=======
-    public void perdeHp (double dano){
->>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
         int danoX = (int) dano;
         if (this.estaVivo()) {
             this.hpAtual -= danoX;
         }
     }
 
-<<<<<<< HEAD
     public int getAtaque() {
         return ataque;
     }
-=======
-    public int getAtaque(){return ataque;}
->>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
 
     public int getDefesa() {
         return defesa;
@@ -156,7 +116,7 @@ public class Pokemon extends Identificacao {
             return 11;
         else if (tipo == Tipos.ELETRICO)
             return 12;
-        else if (tipo == Tipos.PEDRA)
+        else if (tipo == Tipos.PSIQUICO)
             return 13;
         else if (tipo == Tipos.GELO)
             return 14;
@@ -167,7 +127,7 @@ public class Pokemon extends Identificacao {
         else if (tipo == Tipos.FADA)
             return 17;
         else
-            return -1;
+            return 0;
     }
 
     public double vantagem(Pokemon alvo, Movimentos ataque) {
@@ -191,7 +151,6 @@ public class Pokemon extends Identificacao {
                 { 1, m, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, m, m },
                 { 1, 2, 1, m, 1, 1, 1, 1, m, m, 1, 1, 1, 1, 1, 2, 2, 1 }
         };
-<<<<<<< HEAD
         int atk = associaTipo(ataque.getTipo()), dsf = associaTipo(alvo.getTipos().get(0));
         return vantagem[atk][dsf];
 
@@ -205,25 +164,13 @@ public class Pokemon extends Identificacao {
     }
 
     public static Pokemon getPokemonFromJSONObject(JSONObject obj) {
-=======
-        int pkm1 = associaTipo(ataque.getTipo()), pkm2 = associaTipo(alvo.getTipos().get(0));
-        return vantagem[pkm1][pkm2];
-
-    }
-
-    public static Pokemon getPokemonFromJSONObject(JSONObject obj){
->>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
         int id = Integer.parseInt(obj.get("Id").toString());
 
         ArrayList<Tipos> tipos = new ArrayList<Tipos>();
 
         tipos.add(tipoFromString(obj.get("Tipo 1").toString()));
 
-<<<<<<< HEAD
         if (obj.get("Tipo 2").toString() != "") {
-=======
-        if(obj.get("Tipo 2").toString() != ""){
->>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
             tipos.add(tipoFromString(obj.get("Tipo 2").toString()));
         }
 

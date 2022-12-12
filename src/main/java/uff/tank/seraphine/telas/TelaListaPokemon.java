@@ -8,11 +8,12 @@ public class TelaListaPokemon extends Tela {
     @Override
     public void mostrarTela() {
         System.out.println("---------- Selecione seu Pokemon ----------\n");
-        JSONObject obj = verPokedex.mostrarPokedex();
+        // JSONObject obj = verPokedex.mostrarPokedex();
         System.out.println("Lista de Pokemons: ");
         int i = 1;
-        for(Pokemon pkmn : this.contexto.getTreinador().getPokemons()){
+        for (Pokemon pkmn : this.contexto.getTreinador().getPokemons()) {
             System.out.println(i + " - " + pkmn.getNome() + "/" + pkmn.getTipos().get(0));
+            i++;
         }
         System.out.println("\nV - Voltar à Pokédex");
         System.out.println("X - Sair");

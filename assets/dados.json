@@ -1,7 +1,1 @@
-<<<<<<< HEAD
-[{"Pokemons":["Charmander"],"Id":1,"Nome":"vitoria","Regiao":"niteroi"},{"Pokemons":[],"Id":2,"Nome":"teste","Regiao":"aaaa"},{"Pokemons":[],"Id":3,"Nome":"vitoria","Regiao":"qqqqq"},{"Pokemons":[],"Id":4,"Nome":"vitoria","Regiao":"wwww"},{"Pokemons":[],"Id":5,"Nome":"vitoria","Regiao":"ewewewewe"}]
-=======
-[
-    
-]
->>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
+[{"Pokemons":["Charmander","Fearow","Tauros","Chansey","Gengar","Kakuna","Electabuzz","Weezing","Chansey"],"Id":1,"Nome":"vitoria","Regiao":"niteroi"},{"Pokemons":[],"Id":2,"Nome":"teste","Regiao":"aaaa"},{"Pokemons":["Squirtle"],"Id":3,"Nome":"maria","Regiao":"seropedica"}]

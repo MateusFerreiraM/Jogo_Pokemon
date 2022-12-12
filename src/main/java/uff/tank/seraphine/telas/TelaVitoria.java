@@ -1,6 +1,8 @@
 package uff.tank.seraphine.telas;
 
+import uff.tank.seraphine.CadastroTreinador;
 import uff.tank.seraphine.Pokemon;
+import uff.tank.seraphine.utils.ConsoleUtils;
 
 public class TelaVitoria extends Tela {
 
@@ -16,11 +18,13 @@ public class TelaVitoria extends Tela {
             }
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 6; i++) {
             System.out.print(".");
+            ConsoleUtils.sleep(0750);
         }
         System.out.println(novoPkmn.getNome() + "!\n");
         this.contexto.getTreinador().addPokemon(novoPkmn);
+        CadastroTreinador.atualizarTreinador(this.contexto.getTreinador());
         System.out.println("V- Voltar ao menu principal");
         System.out.println("X- Sair");
 

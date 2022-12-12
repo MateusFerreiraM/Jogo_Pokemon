@@ -8,7 +8,6 @@ public class Movimentos extends Identificacao {
         STATUS
     }
 
-<<<<<<< HEAD
     private Tipos tipo;
     public double forca;
     public Categoria categoria;
@@ -19,23 +18,6 @@ public class Movimentos extends Identificacao {
     }
 
     public double getForca() {
-=======
-    private static int movesCriados = 0; // O id de um movimento se baseia em quando ele foi criado
-    private Tipos tipo;
-    public int forca;
-    public Categoria categoria;
-
-    public Movimentos(Tipos tipo, int forca, Categoria categoria, int precisao) {
-
-        this.id = movesCriados;
-        this.forca = forca;
-        this.categoria = categoria;
-
-        movesCriados++;
-    }
-
-    public int getForca() {
->>>>>>> 7c396a327dedc009bd40a3c5838b40055d949381
         return forca;
     }
 
