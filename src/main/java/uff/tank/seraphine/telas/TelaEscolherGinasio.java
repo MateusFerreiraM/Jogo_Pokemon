@@ -1,6 +1,7 @@
 package uff.tank.seraphine.telas;
 
 public class TelaEscolherGinasio extends Tela {
+    
     @Override
     public void mostrarTela() {
         System.out.println("---------- Ginásios ----------\n");

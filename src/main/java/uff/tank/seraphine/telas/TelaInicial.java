@@ -2,6 +2,7 @@ package uff.tank.seraphine.telas;
 
 //Primeira tela que o programa abre
 public class TelaInicial extends Tela {
+    
     @Override
     public void mostrarTela() {
         System.out.println("---------- Tela Inicial ----------\n");

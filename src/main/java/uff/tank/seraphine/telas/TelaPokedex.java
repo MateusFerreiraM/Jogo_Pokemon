@@ -1,6 +1,7 @@
 package uff.tank.seraphine.telas;
 
 public class TelaPokedex extends Tela {
+    
     @Override
     public void mostrarTela() {
         System.out.println("---------- Pokédex ----------\n");

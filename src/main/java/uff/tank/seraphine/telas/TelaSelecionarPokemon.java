@@ -1,15 +1,10 @@
 package uff.tank.seraphine.telas;
 
-import org.json.simple.JSONObject;
-
 import uff.tank.seraphine.Pokemon;
-import uff.tank.seraphine.Treinador;
-import uff.tank.seraphine.utils.JSONUtils;
-import uff.tank.seraphine.verPokedex;
 
-import java.awt.*;
 
 public class TelaSelecionarPokemon extends Tela {
+    
     @Override
     public void mostrarTela() {
         System.out.println("---------- Selecionar Pokémon ----------\n");

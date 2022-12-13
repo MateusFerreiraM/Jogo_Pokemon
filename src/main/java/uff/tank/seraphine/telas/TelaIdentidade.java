@@ -1,11 +1,10 @@
 package uff.tank.seraphine.telas;
 
 import org.json.simple.JSONObject;
-import uff.tank.seraphine.CadastroTreinador;
-import uff.tank.seraphine.Treinador;
 import uff.tank.seraphine.utils.JSONUtils;
 
 public class TelaIdentidade extends Tela {
+    
     @Override
     public void mostrarTela() {
 

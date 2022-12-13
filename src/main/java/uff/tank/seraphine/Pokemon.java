@@ -1,12 +1,9 @@
 package uff.tank.seraphine;
 
 import org.json.simple.JSONObject;
-
 import uff.tank.seraphine.Movimentos.Categoria;
 import uff.tank.seraphine.utils.JSONUtils;
-
 import java.util.*;
-
 import static uff.tank.seraphine.utils.JSONUtils.tipoFromString;
 
 public class Pokemon extends Identificacao {

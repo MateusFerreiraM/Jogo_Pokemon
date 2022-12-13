@@ -1,28 +1,20 @@
 package uff.tank.seraphine.telas;
 
 import java.util.Random;
-
-import org.json.simple.JSONObject;
-
 import uff.tank.seraphine.Batalha;
-import uff.tank.seraphine.CadastroTreinador;
 import uff.tank.seraphine.LiderGin;
-import uff.tank.seraphine.Pokemon;
-import uff.tank.seraphine.Treinador;
 import uff.tank.seraphine.utils.ConsoleUtils;
-import uff.tank.seraphine.utils.JSONUtils;
 
 //Tela exibida durante a batalha
 public class TelaBatalha extends Tela {
+
     LiderGin oponente;
     Batalha batalha;
 
     @Override
     public void mostrarTela() {
-        Treinador treinador = this.contexto.getTreinador();
 
         // TODO: Sistema de batalha
-
         Random random = new Random();
         String randomLider = Integer.toString(random.nextInt(2) + 1);
 
@@ -59,13 +51,11 @@ public class TelaBatalha extends Tela {
                                 batalha.getPkmAmigo().getMovimento(1));
                         ConsoleUtils.sleep(2000);
                         batalha.decrementarContEspecial();
-                        ;
                     } else {
                         System.out.println("\nNão possui mais ataques especiais. Foi aplicado um ataque físico.");
                         batalha.atacar(batalha.getPkmAmigo(), batalha.getPkmInimigo(),
                                 batalha.getPkmAmigo().getMovimento(0));
                         ConsoleUtils.sleep(1500);
-
                     }
                     break;
                 case "x":
@@ -74,6 +64,7 @@ public class TelaBatalha extends Tela {
                     System.exit(0);
                 default:
                     System.out.println("\nPor favor insira um valor válido");
+                    ConsoleUtils.sleep(1500);
                     break;
             }
 

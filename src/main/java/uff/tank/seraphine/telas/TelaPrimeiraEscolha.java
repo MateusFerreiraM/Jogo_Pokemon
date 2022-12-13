@@ -2,6 +2,7 @@ package uff.tank.seraphine.telas;
 
 import uff.tank.seraphine.CadastroTreinador;
 import uff.tank.seraphine.Pokemon;
+import uff.tank.seraphine.utils.ConsoleUtils;
 import uff.tank.seraphine.utils.JSONUtils;
 
 public class TelaPrimeiraEscolha extends Tela {
@@ -16,7 +17,6 @@ public class TelaPrimeiraEscolha extends Tela {
         System.out.println("2 - Squirtle");
         System.out.println("3 - Bulbasaur");
         System.out.println("4 - Pikachu\n");
-        System.out.println("X - Sair");
 
         System.out.print("\n>");
         String escolha = contexto.getUserInput();
@@ -47,12 +47,9 @@ public class TelaPrimeiraEscolha extends Tela {
                 this.contexto.getTreinador().adicionarPokemon(pkmn);
                 this.trocarTela(new TelaMenuPrincipal(this.contexto));
                 break;
-            case "x":
-            case "X":
-                this.contexto.sairPrograma();
-                break;
             default:
                 System.out.println("Por favor insira um valor válido");
+                ConsoleUtils.sleep(1500);
         }
 
         CadastroTreinador.cadastrarTreinador(this.contexto.getTreinador());

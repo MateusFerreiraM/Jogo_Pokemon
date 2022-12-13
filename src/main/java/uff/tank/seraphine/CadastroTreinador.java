@@ -4,15 +4,11 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import uff.tank.seraphine.utils.JSONUtils;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Logger;
-import javax.print.DocFlavor.STRING;
-import org.json.*;
 
 public class CadastroTreinador {
 
@@ -22,7 +18,6 @@ public class CadastroTreinador {
         FileWriter writeFile = null;
         JSONObject obetoJson = new JSONObject();
         JSONArray objArray = null;
-        int id;
 
         ArrayList<String> pkmnNomes = new ArrayList<String>();
         for (Pokemon pkmn : treinador.getPokemons()) {
@@ -35,7 +30,6 @@ public class CadastroTreinador {
             obetoJson.put("Id", treinador.getId());
             obetoJson.put("Nome", treinador.getNome());
             obetoJson.put("Regiao", treinador.getRegiao());
-            // obetoJson.put("Pokemons", treinador.getPokemons());
             obetoJson.put("Pokemons", pkmnNomes);
 
             objArray.add(obetoJson);
@@ -87,13 +81,10 @@ public class CadastroTreinador {
 
             objArray = (JSONArray) parser.parse(new FileReader("assets/dados.json"));
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

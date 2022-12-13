@@ -25,8 +25,8 @@ public class TelaVitoria extends Tela {
         System.out.println("\n\n" + novoPkmn.getNome() + "!\n");
         this.contexto.getTreinador().addPokemon(novoPkmn);
         CadastroTreinador.atualizarTreinador(this.contexto.getTreinador());
-        System.out.println("V- Voltar ao menu principal");
-        System.out.println("X- Sair");
+        System.out.println("V - Voltar ao menu principal");
+        System.out.println("X - Sair");
 
         String escolha = this.contexto.getUserInput();
 

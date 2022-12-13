@@ -3,6 +3,7 @@ package uff.tank.seraphine.telas;
 //Menu pós login/criação de treinador
 
 public class TelaMenuPrincipal extends Tela {
+    
     public void mostrarTela() {
         System.out.println("---------- Menu Principal ----------\n");
         System.out.println("Olá, " + this.contexto.getTreinador().getNome() + "!\n");

@@ -6,11 +6,11 @@ import uff.tank.seraphine.utils.JSONUtils;
 
 public class TelaGinasio6 extends Tela {
 
-    // Tela do ginásio de Niteroi (Vania)
+    // Tela do ginásio misterioso
     @Override
     public void mostrarTela() {
         System.out.println("Oi, " + this.contexto.getTreinador().getNome()
-                + "? Estamos no Ginásio Misterioso!\nEsteja preparado para o que irá encontrar aí dentro!\nTem certeza que consegue enfrentá-la?\n");
+                + "! Estamos no Ginásio Misterioso!\nEsteja preparado para o que irá encontrar aí dentro!\nTem certeza que consegue enfrentá-la?\n");
         System.out.println("1 - Claro! Manda ver!");
         System.out.println("2 - Eh... Não tenho certeza, acho que vou voltar.\n");
         System.out.println("X - Sair");
