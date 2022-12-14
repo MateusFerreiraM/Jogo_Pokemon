@@ -1,6 +1,6 @@
 package uff.tank.seraphine;
 
-public class Movimentos extends Identificacao {
+public class Movimentos {
 
     static enum Categoria { // Esse enum diz respeito somente aos movimentos
         FISICO,

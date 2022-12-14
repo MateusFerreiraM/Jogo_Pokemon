@@ -5,7 +5,9 @@ import uff.tank.seraphine.utils.JSONUtils;
 import java.util.ArrayList;
 import static uff.tank.seraphine.utils.JSONUtils.getObjectByName;
 
-public class Treinador extends Identificacao {
+public class Treinador {
+    private String nome;
+    protected int id;
     private static int TotalTreinadores = 0;
     private String regiao;
     public ArrayList<Pokemon> pokemons;
@@ -34,19 +36,19 @@ public class Treinador extends Identificacao {
     }
 
     public int getQtdPokemon() {
-        return pokemons.size();
+        return this.pokemons.size();
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public String getRegiao() {
-        return regiao;
+        return this.regiao;
     }
 
     public ArrayList<Pokemon> getPokemons() {
-        return pokemons;
+        return this.pokemons;
     }
 
     public static int getTotalTreinadores() {
@@ -65,6 +67,9 @@ public class Treinador extends Identificacao {
         return this.pokemonAtual;
     }
 
+    public int getId(){
+        return this.id;
+    }
     public void adicionarPokemon(Pokemon pokemon) {
         if (pokemons.size() == 0) {
             // Quando não se tem outro pokemon na lista, o pokemon atual é o recebido

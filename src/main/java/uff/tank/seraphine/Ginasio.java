@@ -1,7 +1,7 @@
 package uff.tank.seraphine;
 
-public class Ginasio extends Identificacao {
-
+public class Ginasio {
+    private String nome;
     private String regiao;
     private LiderGin lider;
 

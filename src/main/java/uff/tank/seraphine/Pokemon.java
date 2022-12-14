@@ -3,11 +3,16 @@ package uff.tank.seraphine;
 import org.json.simple.JSONObject;
 import uff.tank.seraphine.Movimentos.Categoria;
 import uff.tank.seraphine.utils.JSONUtils;
+
+import javax.security.auth.login.CredentialException;
 import java.util.*;
 import static uff.tank.seraphine.utils.JSONUtils.tipoFromString;
 
-public class Pokemon extends Identificacao {
+public class Pokemon {
+    private String nome;
 
+    private int id;
+    private List<Tipos> tipos;
     private List<Movimentos> movimentosList;
     private String regiao;
     private int hp;
@@ -152,6 +157,17 @@ public class Pokemon extends Identificacao {
 
     }
 
+    public List<Tipos> getTipos(){
+        return  this.tipos;
+    }
+
+    public String getNome(){
+        return this.nome;
+    }
+
+    public int getId(){
+        return this.id;
+    }
     public static Pokemon getPokemonAleatorio() {
         Random random = new Random();
         int id = random.nextInt(152);
