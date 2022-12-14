@@ -25,13 +25,16 @@ public class TelaGinasio2 extends Tela {
                         oponente.getPokemonAtual());
                 this.trocarTela(new TelaBatalha(this.contexto, oponente, batalha));
                 break;
+
             case "2":
                 this.trocarTela(new TelaEscolherGinasio(this.contexto));
                 break;
+
             case "X":
             case "x":
                 this.contexto.sairPrograma();
                 break;
+
             default:
                 System.out.println("Por favor, insira um valor válido!");
         }

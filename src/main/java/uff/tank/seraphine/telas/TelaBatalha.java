@@ -43,81 +43,81 @@ public class TelaBatalha extends Tela {
                     batalha.atacar(batalha.getPkmAmigo(), batalha.getPkmInimigo(),
                             batalha.getPkmAmigo().getMovimento(0));
                     ConsoleUtils.sleep(2000);
+                    mostrarHpInimigo();
+                    ConsoleUtils.sleep(2000);
                     break;
+
                 case "2":
                     if (batalha.getContEspecial() > 0) {
                         System.out.println("\n" + batalha.getPkmAmigo().getNome() + " aplicou um ataque especial.");
                         batalha.atacar(batalha.getPkmAmigo(), batalha.getPkmInimigo(),
                                 batalha.getPkmAmigo().getMovimento(1));
                         ConsoleUtils.sleep(2000);
+                        mostrarHpInimigo();
+                        ConsoleUtils.sleep(2000);
                         batalha.decrementarContEspecial();
                     } else {
                         System.out.println("\nNão possui mais ataques especiais. Foi aplicado um ataque físico.");
                         batalha.atacar(batalha.getPkmAmigo(), batalha.getPkmInimigo(),
                                 batalha.getPkmAmigo().getMovimento(0));
-                        ConsoleUtils.sleep(1500);
+                        ConsoleUtils.sleep(2000);
+                        mostrarHpInimigo();
+                        ConsoleUtils.sleep(2000);
                     }
                     break;
+
                 case "x":
                 case "X":
                     this.contexto.sairPrograma();
                     System.exit(0);
+
                 default:
                     System.out.println("\nPor favor insira um valor válido");
-                    ConsoleUtils.sleep(1500);
+                    ConsoleUtils.sleep(2000);
                     break;
             }
 
-            if (batalha.getPkmInimigo().getHpAtual() <= 0) {
-                System.out.println("\nHP atual do inimigo: 0");
-                System.out.println("-----------------------------\n");
-            } else {
-                System.out.println("\nHP atual do inimigo: " + batalha.getPkmInimigo().getHpAtual());
-                System.out.println("-----------------------------\n");
-            }
-
-            ConsoleUtils.sleep(2000);
-
-            if (batalha.getPkmInimigo().getHpAtual() > 0) {
-                switch (randomLider) {
-                    case "1":
-                        System.out.println("\n" + batalha.getPkmInimigo().getNome() + " aplicou um ataque físico.");
-                        batalha.atacar(batalha.getPkmInimigo(), batalha.getPkmAmigo(),
-                                batalha.getPkmAmigo().getMovimento(0));
-                        ConsoleUtils.sleep(1500);
-                        break;
-                    case "2":
-                        if (batalha.getContEspecialLider() > 0) {
-                            System.out
-                                    .println("\n" + batalha.getPkmInimigo().getNome() + " aplicou um ataque especial.");
-                            batalha.atacar(batalha.getPkmInimigo(), batalha.getPkmAmigo(),
-                                    batalha.getPkmAmigo().getMovimento(1));
-                            ConsoleUtils.sleep(1500);
-                            batalha.decrementarContEspecialLider();
-                        } else {
-                            System.out.println("\nNão possui mais ataques especiais. Foi aplicado um ataque físico.");
+            if (escolha.equals("1") || escolha.equals("2")) {
+                if (batalha.getPkmInimigo().getHpAtual() > 0) {
+                    switch (randomLider) {
+                        case "1":
+                            System.out.println("\n" + batalha.getPkmInimigo().getNome() + " aplicou um ataque físico.");
                             batalha.atacar(batalha.getPkmInimigo(), batalha.getPkmAmigo(),
                                     batalha.getPkmAmigo().getMovimento(0));
-                            ConsoleUtils.sleep(1500);
+                            ConsoleUtils.sleep(2000);
+                            mostrarHpAmigo();
+                            ConsoleUtils.sleep(2000);
                             break;
-                        }
-                        break;
-                }
 
-                if (batalha.getPkmAmigo().getHpAtual() <= 0) {
-                    System.out.println("\nHP atual do seu pokemon: 0");
-                    System.out.println("-----------------------------\n");
+                        case "2":
+                            if (batalha.getContEspecialLider() > 0) {
+                                System.out
+                                        .println("\n" + batalha.getPkmInimigo().getNome()
+                                                + " aplicou um ataque especial.");
+                                batalha.atacar(batalha.getPkmInimigo(), batalha.getPkmAmigo(),
+                                        batalha.getPkmAmigo().getMovimento(1));
+                                ConsoleUtils.sleep(2000);
+                                mostrarHpAmigo();
+                                ConsoleUtils.sleep(2000);
+                                batalha.decrementarContEspecialLider();
+                            } else {
+                                System.out
+                                        .println("\nNão possui mais ataques especiais. Foi aplicado um ataque físico.");
+                                batalha.atacar(batalha.getPkmInimigo(), batalha.getPkmAmigo(),
+                                        batalha.getPkmAmigo().getMovimento(0));
+                                ConsoleUtils.sleep(2000);
+                                mostrarHpAmigo();
+                                ConsoleUtils.sleep(2000);
+                                break;
+                            }
+                            break;
+                    }
                 } else {
-                    System.out.println("\nHP atual do seu pokemon: " + batalha.getPkmAmigo().getHpAtual());
-                    System.out.println("-----------------------------\n");
+                    System.out.println("Inimigo derrotado!");
+                    ConsoleUtils.sleep(2000);
                 }
-
-                ConsoleUtils.sleep(2000);
-
-            } else {
-                System.out.println("Inimigo derrotado!");
-                ConsoleUtils.sleep(2000);
             }
+
         } else {
             if (batalha.getVitoria()) {
                 this.trocarTela(new TelaVitoria(this.contexto));
@@ -131,5 +131,25 @@ public class TelaBatalha extends Tela {
         super(context);
         this.oponente = oponente;
         this.batalha = batalha;
+    }
+
+    public void mostrarHpInimigo() {
+        if (batalha.getPkmInimigo().getHpAtual() <= 0) {
+            System.out.println("\nHP atual do inimigo: 0");
+            System.out.println("-----------------------------\n");
+        } else {
+            System.out.println("\nHP atual do inimigo: " + batalha.getPkmInimigo().getHpAtual());
+            System.out.println("-----------------------------\n");
+        }
+    }
+
+    public void mostrarHpAmigo() {
+        if (batalha.getPkmAmigo().getHpAtual() <= 0) {
+            System.out.println("\nHP atual do seu pokemon: 0");
+            System.out.println("-----------------------------\n");
+        } else {
+            System.out.println("\nHP atual do seu pokemon: " + batalha.getPkmAmigo().getHpAtual());
+            System.out.println("-----------------------------\n");
+        }
     }
 }

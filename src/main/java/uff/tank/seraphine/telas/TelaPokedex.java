@@ -1,7 +1,7 @@
 package uff.tank.seraphine.telas;
 
 public class TelaPokedex extends Tela {
-    
+
     @Override
     public void mostrarTela() {
         System.out.println("---------- Pokédex ----------\n");
@@ -16,17 +16,21 @@ public class TelaPokedex extends Tela {
             case "1":
                 this.trocarTela(new TelaListaPokemon(this.contexto));
                 break;
+
             case "2":
                 this.trocarTela(new TelaIdentidade(this.contexto));
                 break;
+
             case "v":
             case "V":
                 this.trocarTela(new TelaMenuPrincipal(this.contexto));
                 break;
+
             case "x":
             case "X":
                 this.contexto.sairPrograma();
                 break;
+
             default:
                 System.out.println("Por favor insira um valor válido");
                 break;

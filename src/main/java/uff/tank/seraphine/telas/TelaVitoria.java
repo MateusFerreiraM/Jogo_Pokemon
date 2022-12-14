@@ -11,6 +11,7 @@ public class TelaVitoria extends Tela {
         System.out.println("===== PARABÉNS! Você Ganhou! =====\n");
         System.out.println("Como recompensa, você recebeu:\n");
         Pokemon novoPkmn;
+
         while (true) {
             novoPkmn = Pokemon.getPokemonAleatorio();
             if (!this.contexto.getTreinador().getPokemons().contains(novoPkmn)) {
@@ -22,6 +23,7 @@ public class TelaVitoria extends Tela {
             System.out.print(".");
             ConsoleUtils.sleep(0750);
         }
+
         System.out.println("\n\n" + novoPkmn.getNome() + "!\n");
         this.contexto.getTreinador().addPokemon(novoPkmn);
         CadastroTreinador.atualizarTreinador(this.contexto.getTreinador());
@@ -35,10 +37,12 @@ public class TelaVitoria extends Tela {
             case "V":
                 this.trocarTela(new TelaMenuPrincipal(this.contexto));
                 break;
+
             case "x":
             case "X":
                 this.contexto.sairPrograma();
                 break;
+
             default:
                 System.out.println("Por favor insira um valor válido");
         }

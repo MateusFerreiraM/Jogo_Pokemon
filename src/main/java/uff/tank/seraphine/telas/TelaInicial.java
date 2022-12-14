@@ -2,7 +2,7 @@ package uff.tank.seraphine.telas;
 
 //Primeira tela que o programa abre
 public class TelaInicial extends Tela {
-    
+
     @Override
     public void mostrarTela() {
         System.out.println("---------- Tela Inicial ----------\n");
@@ -18,13 +18,16 @@ public class TelaInicial extends Tela {
             case "1":
                 this.trocarTela(new TelaSelecionaTreinador(this.contexto));
                 break;
+
             case "2":
                 this.trocarTela(new TelaCriarTreinador(this.contexto));
                 break;
+
             case "X":
             case "x":
                 this.contexto.sairPrograma();
                 break;
+                
             default:
                 System.out.println("Por favor, insira um valor válido!");
         }

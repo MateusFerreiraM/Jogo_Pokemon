@@ -2,7 +2,7 @@ package uff.tank.seraphine;
 
 import java.util.*;
 
-public class Identificacao {
+public abstract class Identificacao {
 
     protected int id;
     protected String nome;
@@ -19,5 +19,4 @@ public class Identificacao {
     public List<Tipos> getTipos() {
         return tipos;
     }
-
 }

@@ -2,9 +2,8 @@ package uff.tank.seraphine.telas;
 
 import uff.tank.seraphine.Pokemon;
 
-
 public class TelaSelecionarPokemon extends Tela {
-    
+
     @Override
     public void mostrarTela() {
         System.out.println("---------- Selecionar Pokémon ----------\n");
@@ -34,6 +33,7 @@ public class TelaSelecionarPokemon extends Tela {
         } catch (NumberFormatException e) {
             isNumber = false;
         }
+
         if (isNumber) {
             boolean naLista = false;
             for (Pokemon i : this.contexto.getTreinador().getPokemons()) {
@@ -53,10 +53,12 @@ public class TelaSelecionarPokemon extends Tela {
                 case "V":
                     this.trocarTela(new TelaMenuPrincipal(this.contexto));
                     break;
+
                 case "x":
                 case "X":
                     this.contexto.sairPrograma();
                     break;
+
                 default:
                     System.out.println("Por favor insira um valor válido");
                     break;

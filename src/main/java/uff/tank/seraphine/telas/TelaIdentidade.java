@@ -4,7 +4,7 @@ import org.json.simple.JSONObject;
 import uff.tank.seraphine.utils.JSONUtils;
 
 public class TelaIdentidade extends Tela {
-    
+
     @Override
     public void mostrarTela() {
 
@@ -25,10 +25,12 @@ public class TelaIdentidade extends Tela {
             case "V":
                 this.trocarTela(new TelaPokedex(this.contexto));
                 break;
+
             case "x":
             case "X":
                 this.contexto.sairPrograma();
                 break;
+                
             default:
                 System.out.println("Por favor insira um valor válido");
                 break;

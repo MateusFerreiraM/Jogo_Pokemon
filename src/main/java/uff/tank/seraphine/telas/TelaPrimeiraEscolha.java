@@ -29,24 +29,28 @@ public class TelaPrimeiraEscolha extends Tela {
                 this.contexto.getTreinador().adicionarPokemon(pkmn);
                 this.trocarTela(new TelaMenuPrincipal(this.contexto));
                 break;
+
             case "2": // squirtle
                 pkmn = Pokemon.getPokemonFromJSONObject(
                         JSONUtils.getObjectByID(7, POKEMON_PATH));
                 this.contexto.getTreinador().adicionarPokemon(pkmn);
                 this.trocarTela(new TelaMenuPrincipal(this.contexto));
                 break;
+
             case "3": // bulbasaur
                 pkmn = Pokemon.getPokemonFromJSONObject(
                         JSONUtils.getObjectByID(1, POKEMON_PATH));
                 this.contexto.getTreinador().adicionarPokemon(pkmn);
                 this.trocarTela(new TelaMenuPrincipal(this.contexto));
                 break;
+
             case "4": // pikachu
                 pkmn = Pokemon.getPokemonFromJSONObject(
                         JSONUtils.getObjectByID(25, POKEMON_PATH));
                 this.contexto.getTreinador().adicionarPokemon(pkmn);
                 this.trocarTela(new TelaMenuPrincipal(this.contexto));
                 break;
+
             default:
                 System.out.println("Por favor insira um valor válido");
                 ConsoleUtils.sleep(1500);

@@ -14,7 +14,6 @@ public class Pokemon extends Identificacao {
     private int hpAtual;
     private int ataque;
     private int defesa;
-    private boolean lendario;
 
     public Pokemon(String nome, List<Tipos> tipos) {
 

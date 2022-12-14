@@ -6,7 +6,6 @@ public class Batalha {
     Pokemon pkmAmigo;
     Pokemon pkmInimigo;
     Movimentos atk;
-    private int nTurnos;
     private boolean emExecucao;
     private boolean vitoria;
     int contEspecial;
@@ -15,20 +14,11 @@ public class Batalha {
     public Batalha(Pokemon pkmAmigo, Pokemon pkmInimigo) {
         this.pkmAmigo = pkmAmigo;
         this.pkmInimigo = pkmInimigo;
-        nTurnos = 0;
         this.pkmAmigo.setHpAtual(this.pkmAmigo.getHp());
         this.emExecucao = true;
         this.vitoria = false;
         this.contEspecial = 2;
         this.contEspecialLider = 2;
-    }
-
-    public void incrementaTurnos() {
-        this.nTurnos++;
-    }
-
-    public int getTurnos() {
-        return nTurnos;
     }
 
     public void atacar(Pokemon quemAtk, Pokemon alvo, Movimentos atk) {

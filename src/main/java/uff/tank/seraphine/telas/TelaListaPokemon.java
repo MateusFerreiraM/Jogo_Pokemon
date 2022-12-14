@@ -25,10 +25,12 @@ public class TelaListaPokemon extends Tela {
             case "V":
                 this.trocarTela(new TelaPokedex(this.contexto));
                 break;
+
             case "x":
             case "X":
                 this.contexto.sairPrograma();
                 break;
+                
             default:
                 System.out.println("Por favor insira um valor válido");
                 break;

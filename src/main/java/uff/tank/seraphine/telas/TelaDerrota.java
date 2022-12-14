@@ -15,10 +15,12 @@ public class TelaDerrota extends Tela {
             case "V":
                 this.trocarTela(new TelaMenuPrincipal(this.contexto));
                 break;
+
             case "x":
             case "X":
                 this.contexto.sairPrograma();
                 break;
+
             default:
                 System.out.println("Por favor insira um valor válido");
         }
