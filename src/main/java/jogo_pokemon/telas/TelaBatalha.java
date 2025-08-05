@@ -1,9 +1,9 @@
-package uff.tank.seraphine.telas;
+package jogo_pokemon.telas;
 
 import java.util.Random;
-import uff.tank.seraphine.Batalha;
-import uff.tank.seraphine.LiderGin;
-import uff.tank.seraphine.utils.ConsoleUtils;
+import jogo_pokemon.Batalha;
+import jogo_pokemon.LiderGin;
+import jogo_pokemon.utils.ConsoleUtils;
 
 public class TelaBatalha extends Tela {
 

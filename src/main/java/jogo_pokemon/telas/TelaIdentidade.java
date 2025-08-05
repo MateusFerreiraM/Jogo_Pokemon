@@ -1,6 +1,6 @@
-package uff.tank.seraphine.telas;
+package jogo_pokemon.telas;
 
-import uff.tank.seraphine.Treinador;
+import jogo_pokemon.Treinador;
 
 public class TelaIdentidade extends Tela {
 

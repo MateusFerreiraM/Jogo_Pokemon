@@ -1,6 +1,6 @@
-package uff.tank.seraphine.telas;
+package jogo_pokemon.telas;
 
-import uff.tank.seraphine.Pokemon;
+import jogo_pokemon.Pokemon;
 
 public class TelaListaPokemon extends Tela {
 

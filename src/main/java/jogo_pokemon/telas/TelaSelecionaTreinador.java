@@ -1,12 +1,12 @@
-package uff.tank.seraphine.telas;
+package jogo_pokemon.telas;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
-import uff.tank.seraphine.GerenciadorDados;
-import uff.tank.seraphine.Pokemon;
-import uff.tank.seraphine.Treinador;
-import uff.tank.seraphine.utils.ConsoleUtils;
+import jogo_pokemon.GerenciadorDados;
+import jogo_pokemon.Pokemon;
+import jogo_pokemon.Treinador;
+import jogo_pokemon.utils.ConsoleUtils;
 
 public class TelaSelecionaTreinador extends Tela {
 

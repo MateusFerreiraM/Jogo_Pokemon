@@ -1,7 +1,7 @@
-package uff.tank.seraphine.telas;
+package jogo_pokemon.telas;
 
-import uff.tank.seraphine.Treinador;
-import uff.tank.seraphine.utils.ConsoleUtils;
+import jogo_pokemon.Treinador;
+import jogo_pokemon.utils.ConsoleUtils;
 import java.util.Scanner;
 
 //Essa é a classe responsável por mostrar a tela e receber Inputs

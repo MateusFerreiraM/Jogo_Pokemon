@@ -1,6 +1,6 @@
-package uff.tank.seraphine;
+package jogo_pokemon;
 
-import uff.tank.seraphine.telas.TelaContext;
+import jogo_pokemon.telas.TelaContext;
 import java.util.Scanner;
 
 public class Main {
@@ -14,4 +14,4 @@ public class Main {
 
         input.close();
     }
-}
+}   

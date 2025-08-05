@@ -1,4 +1,4 @@
-package uff.tank.seraphine;
+package jogo_pokemon;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

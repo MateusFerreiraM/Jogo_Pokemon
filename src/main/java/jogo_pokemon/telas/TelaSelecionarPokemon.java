@@ -1,9 +1,9 @@
-package uff.tank.seraphine.telas;
+package jogo_pokemon.telas;
 
 import java.util.Optional;
 import java.util.stream.Collectors;
-import uff.tank.seraphine.Pokemon;
-import uff.tank.seraphine.utils.ConsoleUtils;
+import jogo_pokemon.Pokemon;
+import jogo_pokemon.utils.ConsoleUtils;
 
 public class TelaSelecionarPokemon extends Tela {
 

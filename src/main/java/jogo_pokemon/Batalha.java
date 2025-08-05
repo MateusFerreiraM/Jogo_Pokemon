@@ -1,6 +1,6 @@
-package uff.tank.seraphine;
+package jogo_pokemon;
 
-import uff.tank.seraphine.Movimentos.Categoria;
+import jogo_pokemon.Movimentos.Categoria;
 
 public class Batalha {
     Pokemon pkmAmigo;

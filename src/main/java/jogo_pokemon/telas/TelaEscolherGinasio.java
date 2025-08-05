@@ -1,8 +1,8 @@
-package uff.tank.seraphine.telas;
+package jogo_pokemon.telas;
 
-import uff.tank.seraphine.GerenciadorDados;
-import uff.tank.seraphine.LiderGin;
-import uff.tank.seraphine.utils.ConsoleUtils;
+import jogo_pokemon.GerenciadorDados;
+import jogo_pokemon.LiderGin;
+import jogo_pokemon.utils.ConsoleUtils;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;

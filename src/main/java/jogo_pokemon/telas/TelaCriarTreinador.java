@@ -1,7 +1,7 @@
-package uff.tank.seraphine.telas;
+package jogo_pokemon.telas;
 
-import uff.tank.seraphine.GerenciadorDados;
-import uff.tank.seraphine.Treinador;
+import jogo_pokemon.GerenciadorDados;
+import jogo_pokemon.Treinador;
 import java.io.IOException;
 import java.util.List;
 

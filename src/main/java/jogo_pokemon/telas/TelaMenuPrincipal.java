@@ -1,4 +1,4 @@
-package uff.tank.seraphine.telas;
+package jogo_pokemon.telas;
 
 //Menu pós login/criação de treinador
 

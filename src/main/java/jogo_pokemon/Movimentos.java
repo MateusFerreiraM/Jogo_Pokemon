@@ -1,4 +1,4 @@
-package uff.tank.seraphine;
+package jogo_pokemon;
 
 // Assumindo que a classe Movimentos ainda não existe ou pode ser substituída.
 // Se ela tiver mais lógica, podemos adaptar.

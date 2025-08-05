@@ -1,9 +1,9 @@
-package uff.tank.seraphine;
+package jogo_pokemon;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties; // 1. IMPORTE A ANOTAÇÃO
 import com.fasterxml.jackson.annotation.JsonProperty;
-import uff.tank.seraphine.Movimentos.Categoria;
+import jogo_pokemon.Movimentos.Categoria;
 import java.util.ArrayList;
 import java.util.List;
 

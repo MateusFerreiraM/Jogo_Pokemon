@@ -1,4 +1,4 @@
-package uff.tank.seraphine;
+package jogo_pokemon;
 
 public enum Tipos {
     NORMAL,

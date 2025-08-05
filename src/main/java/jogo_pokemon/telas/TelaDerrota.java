@@ -1,26 +1,16 @@
-package uff.tank.seraphine.telas;
+package jogo_pokemon.telas;
 
-public class TelaPokedex extends Tela {
+public class TelaDerrota extends Tela {
 
     @Override
     public void mostrarTela() {
-        System.out.println("---------- Pokédex ----------\n");
-        System.out.println("1 - Ver seus Pokémons");
-        System.out.println("2 - Ver Informações do Treinador");
+        System.out.println("===== Você perdeu =====\n\n Treine mais e volte mais forte!\n\n");
         System.out.println("V - Voltar ao menu principal");
         System.out.println("X - Sair");
 
         String escolha = this.contexto.getUserInput();
 
         switch (escolha) {
-            case "1":
-                this.trocarTela(new TelaListaPokemon(this.contexto));
-                break;
-
-            case "2":
-                this.trocarTela(new TelaIdentidade(this.contexto));
-                break;
-
             case "v":
             case "V":
                 this.trocarTela(new TelaMenuPrincipal(this.contexto));
@@ -33,11 +23,10 @@ public class TelaPokedex extends Tela {
 
             default:
                 System.out.println("Por favor insira um valor válido");
-                break;
         }
     }
 
-    public TelaPokedex(TelaContext context) {
+    public TelaDerrota(TelaContext context) {
         super(context);
     }
 }

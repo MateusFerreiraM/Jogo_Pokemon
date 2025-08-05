@@ -1,4 +1,4 @@
-package uff.tank.seraphine.utils;
+package jogo_pokemon.utils;
 
 import java.io.IOException;
 

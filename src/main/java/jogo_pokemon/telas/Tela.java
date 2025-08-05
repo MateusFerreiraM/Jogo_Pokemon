@@ -1,4 +1,4 @@
-package uff.tank.seraphine.telas;
+package jogo_pokemon.telas;
 //Classe abstrata que define as telas que o usuário vai interagir
 
 //A estrutura das telas segue o padrão de design chamado states: https://refactoring.guru/design-patterns/state

@@ -1,4 +1,4 @@
-package uff.tank.seraphine.telas;
+package jogo_pokemon.telas;
 
 //Primeira tela que o programa abre
 public class TelaInicial extends Tela {
