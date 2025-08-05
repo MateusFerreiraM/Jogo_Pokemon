@@ -1,66 +1,63 @@
 package uff.tank.seraphine.telas;
 
+import uff.tank.seraphine.GerenciadorDados;
+import uff.tank.seraphine.LiderGin;
+import uff.tank.seraphine.utils.ConsoleUtils;
+import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
+
 public class TelaEscolherGinasio extends Tela {
 
-    @Override
-    public void mostrarTela() {
-        System.out.println("---------- Ginásios ----------\n");
-        System.out.println("Selecione um Ginásio:");
-        System.out.println("1 - Guadalupe");
-        System.out.println("2 - Valadares");
-        System.out.println("3 - Boa Viagem");
-        System.out.println("4 - Seropedica");
-        System.out.println("5 - Niteroi");
-        System.out.println("6 - Misterioso");
-
-        // TODO: Função para recuperar o número de ginásios
-        // TODO: Função para listar os ginásios com paginação
-        System.out.println("\nV - Voltar ao menu principal");
-        System.out.println("X - Sair");
-
-        String escolha = contexto.getUserInput();
-
-        switch (escolha) {
-            case "1":
-                this.trocarTela(new TelaGinasio1(this.contexto));
-                break;
-
-            case "2":
-                this.trocarTela(new TelaGinasio2(this.contexto));
-                break;
-
-            case "3":
-                this.trocarTela(new TelaGinasio3(this.contexto));
-                break;
-
-            case "4":
-                this.trocarTela(new TelaGinasio4(this.contexto));
-                break;
-
-            case "5":
-                this.trocarTela(new TelaGinasio5(this.contexto));
-                break;
-
-            case "6":
-                this.trocarTela(new TelaGinasio6(this.contexto));
-                break;
-
-            case "v":
-            case "V":
-                this.trocarTela(new TelaMenuPrincipal(this.contexto));
-                break;
-
-            case "x":
-            case "X":
-                this.contexto.sairPrograma();
-                break;
-
-            default:
-                System.out.println("Por favor insira um valor válido");
-        }
-    }
+    private final GerenciadorDados gerenciador;
 
     public TelaEscolherGinasio(TelaContext context) {
         super(context);
+        this.gerenciador = new GerenciadorDados();
+    }
+
+    @Override
+    public void mostrarTela() {
+        try {
+            List<LiderGin> lideres = gerenciador.carregarLideres();
+
+            System.out.println("---------- Ginásios Disponíveis ----------\n");
+            lideres.forEach(lider -> 
+                System.out.println(lider.getId() + " - Ginásio de " + lider.getRegiao() + " (Líder: " + lider.getNome() + ")")
+            );
+
+            System.out.println("\nDigite o ID do ginásio para desafiar.");
+            System.out.println("V - Voltar ao menu principal");
+
+            String escolha = contexto.getUserInput();
+
+            if (escolha.equalsIgnoreCase("V")) {
+                this.trocarTela(new TelaMenuPrincipal(this.contexto));
+                return;
+            }
+
+            try {
+                int idEscolhido = Integer.parseInt(escolha);
+                Optional<LiderGin> liderEscolhido = lideres.stream()
+                    .filter(l -> l.getId() == idEscolhido)
+                    .findFirst();
+
+                if (liderEscolhido.isPresent()) {
+                    // Transiciona para a nova tela de confirmação genérica
+                    this.trocarTela(new TelaConfirmarBatalha(this.contexto, liderEscolhido.get()));
+                } else {
+                    System.out.println("ID de ginásio não encontrado.");
+                    ConsoleUtils.sleep(1500);
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Por favor, insira um valor válido.");
+                ConsoleUtils.sleep(1500);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Ocorreu um erro ao carregar os dados dos ginásios: " + e.getMessage());
+            ConsoleUtils.sleep(3000);
+            this.trocarTela(new TelaMenuPrincipal(this.contexto));
+        }
     }
 }

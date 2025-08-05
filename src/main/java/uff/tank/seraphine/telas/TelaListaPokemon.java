@@ -11,7 +11,12 @@ public class TelaListaPokemon extends Tela {
 
         int i = 1;
         for (Pokemon pkmn : this.contexto.getTreinador().getPokemons()) {
-            System.out.println(i + " - " + pkmn.getNome() + "/" + pkmn.getTipos().get(0));
+            // Transforma a lista de tipos numa string única, separada por "/"
+            String tiposFormatados = pkmn.getTipos().stream()
+                    .map(Enum::toString)
+                    .collect(java.util.stream.Collectors.joining(" / "));
+                    
+            System.out.println(i + " - " + pkmn.getNome() + " (" + tiposFormatados + ")");
             i++;
         }
         

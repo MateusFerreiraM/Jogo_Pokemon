@@ -1,1 +1,56 @@
-[]
+[ {
+  "Nome" : "a",
+  "Id" : 1,
+  "Regiao" : "b",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "AGUA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "AGUA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Squirtle",
+    "Id" : 7,
+    "tipos" : [ "AGUA" ],
+    "HP" : 44,
+    "Ataque" : 48,
+    "Defesa" : 65
+  }, {
+    "movimentosList" : [ ],
+    "Nome" : "NidoranãM",
+    "Id" : 32,
+    "tipos" : [ "VENENO" ],
+    "HP" : 46,
+    "Ataque" : 57,
+    "Defesa" : 40
+  } ]
+}, {
+  "Nome" : "b",
+  "Id" : 2,
+  "Regiao" : "b",
+  "Pokemons" : [ {
+    "movimentosList" : [ ],
+    "Nome" : "Squirtle",
+    "Id" : 7,
+    "tipos" : [ "AGUA" ],
+    "HP" : 44,
+    "Ataque" : 48,
+    "Defesa" : 65
+  } ]
+}, {
+  "Nome" : "",
+  "Id" : 3,
+  "Regiao" : "",
+  "Pokemons" : [ {
+    "movimentosList" : [ ],
+    "Nome" : "Charmander",
+    "Id" : 4,
+    "tipos" : [ "FOGO" ],
+    "HP" : 39,
+    "Ataque" : 52,
+    "Defesa" : 43
+  } ]
+} ]

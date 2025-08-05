@@ -7,8 +7,6 @@ import java.util.Scanner;
 //Essa é a classe responsável por mostrar a tela e receber Inputs
 //A estrutura das telas segue o padrão de design chamado states: https://refactoring.guru/design-patterns/state
 //Essa tela serve como contexto.
-
-//TODO: Delegar o recebimento do input a outra classe?
 public class TelaContext {
 
     private Tela telaAtual;

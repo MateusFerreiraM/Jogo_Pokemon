@@ -5,147 +5,87 @@ import uff.tank.seraphine.Movimentos.Categoria;
 public class Batalha {
     Pokemon pkmAmigo;
     Pokemon pkmInimigo;
-    Movimentos atk;
     private boolean emExecucao;
     private boolean vitoria;
     int contEspecial;
     int contEspecialLider;
 
+    // Tabela de vantagens, agora como uma constante estática
+    private static final double[][] VANTAGENS = {
+            { 1, 1, 1, 1, 1, 0.5, 1, 0, 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+            { 2, 1, 0.5, 0.5, 1, 2, 0.5, 0, 2, 1, 1, 1, 1, 0.5, 2, 1, 2, 0.5 },
+            { 1, 2, 1, 1, 1, 0.5, 2, 1, 0.5, 1, 1, 2, 0.5, 1, 1, 1, 1, 1 },
+            { 1, 1, 1, 0.5, 0.5, 0.5, 1, 0.5, 0, 1, 1, 2, 1, 1, 1, 1, 1, 2 },
+            { 1, 1, 0, 2, 1, 2, 0.5, 1, 2, 2, 1, 0.5, 2, 1, 1, 1, 1, 1 },
+            { 1, 0.5, 2, 1, 0.5, 1, 2, 1, 0.5, 2, 1, 1, 1, 1, 2, 1, 1, 1 },
+            { 1, 0.5, 0.5, 0.5, 1, 1, 1, 0.5, 0.5, 0.5, 1, 2, 1, 2, 1, 1, 2, 0.5 },
+            { 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 0.5, 1 },
+            { 1, 1, 1, 1, 1, 2, 1, 1, 0.5, 0.5, 0.5, 1, 0.5, 1, 2, 1, 1, 2 },
+            { 1, 1, 1, 1, 1, 0.5, 2, 1, 2, 0.5, 0.5, 2, 1, 1, 2, 0.5, 1, 1 },
+            { 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 0.5, 0.5, 1, 1, 1, 0.5, 1, 1 },
+            { 1, 1, 0.5, 0.5, 2, 2, 0.5, 1, 0.5, 0.5, 2, 0.5, 1, 1, 1, 0.5, 1, 1 },
+            { 1, 1, 2, 1, 0, 1, 1, 1, 1, 1, 2, 0.5, 0.5, 1, 1, 0.5, 1, 1 },
+            { 1, 2, 1, 2, 1, 1, 1, 1, 0.5, 1, 1, 1, 1, 0.5, 1, 1, 0, 1 },
+            { 1, 1, 2, 1, 2, 1, 1, 1, 0.5, 0.5, 0.5, 2, 1, 1, 0.5, 2, 1, 1 },
+            { 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 1, 1, 1, 1, 1, 1, 2, 1, 0 },
+            { 1, 0.5, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 0.5, 0.5 },
+            { 1, 2, 1, 0.5, 1, 1, 1, 1, 0.5, 0.5, 1, 1, 1, 1, 1, 2, 2, 1 }
+    };
+
     public Batalha(Pokemon pkmAmigo, Pokemon pkmInimigo) {
         this.pkmAmigo = pkmAmigo;
         this.pkmInimigo = pkmInimigo;
+        // Garante que o HP dos pokémons seja resetado no início de cada batalha
         this.pkmAmigo.setHpAtual(this.pkmAmigo.getHp());
+        this.pkmInimigo.setHpAtual(this.pkmInimigo.getHp());
         this.emExecucao = true;
         this.vitoria = false;
         this.contEspecial = 2;
         this.contEspecialLider = 2;
     }
 
-    public void atacar(Pokemon quemAtk, Pokemon alvo, Movimentos atk) {
-        int dano = calculoVantagem(quemAtk, alvo, atk);
+    public void atacar(Pokemon quemAtaca, Pokemon alvo, Movimentos atk) {
+        int dano = calculoDano(quemAtaca, alvo, atk);
         alvo.perdeHp(dano);
 
-        if (alvo.getHpAtual() <= 0) {
-            // Termina a batalha e declara a vitoria ou derrota
-            if (alvo.equals(this.pkmAmigo)) {
-                this.vitoria = false;
-            } else {
-                this.vitoria = true;
-            }
+        if (!alvo.estaVivo()) {
             this.emExecucao = false;
+            // Se o alvo derrotado for o inimigo, o jogador venceu.
+            this.vitoria = alvo.equals(this.pkmInimigo);
         }
-
     }
 
-    public int associaTipo(Tipos tipo) {
-        if (tipo == Tipos.NORMAL)
-            return 0;
-        else if (tipo == Tipos.LUTADOR)
-            return 1;
-        else if (tipo == Tipos.VOADOR)
-            return 2;
-        else if (tipo == Tipos.VENENO)
-            return 3;
-        else if (tipo == Tipos.TERRA)
-            return 4;
-        else if (tipo == Tipos.PEDRA)
-            return 5;
-        else if (tipo == Tipos.INSETO)
-            return 6;
-        else if (tipo == Tipos.FANTASMA)
-            return 7;
-        else if (tipo == Tipos.ACO)
-            return 8;
-        else if (tipo == Tipos.FOGO)
-            return 9;
-        else if (tipo == Tipos.AGUA)
-            return 10;
-        else if (tipo == Tipos.GRAMA)
-            return 11;
-        else if (tipo == Tipos.ELETRICO)
-            return 12;
-        else if (tipo == Tipos.PSIQUICO)
-            return 13;
-        else if (tipo == Tipos.GELO)
-            return 14;
-        else if (tipo == Tipos.DRAGAO)
-            return 15;
-        else if (tipo == Tipos.SOMBRIO)
-            return 16;
-        else if (tipo == Tipos.FADA)
-            return 17;
-        else
-            return 0;
+    private double getVantagem(Movimentos ataque, Pokemon alvo) {
+        // Usa o ordinal() do enum, que já é um número. É mais seguro e limpo.
+        int indiceAtaque = ataque.getTipo().ordinal();
+        int indiceDefesa = alvo.getTipos().get(0).ordinal();
+        return VANTAGENS[indiceAtaque][indiceDefesa];
     }
 
-    public double vantagem(Pokemon alvo, Movimentos ataque) {
-        double m = 0.5; // Constante "1/2"
-        double[][] vantagem = { { 1, 1, 1, 1, 1, m, 1, 0, m, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 2, 1, m, m, 1, 2, m, 0, 2, 1, 1, 1, 1, m, 2, 1, 2, m },
-                { 1, 2, 1, 1, 1, m, 2, 1, m, 1, 1, 2, m, 1, 1, 1, 1, 1 },
-                { 1, 1, 1, m, m, m, 1, m, 0, 1, 1, 2, 1, 1, 1, 1, 1, 2 },
-                { 1, 1, 0, 2, 1, 2, m, 1, 2, 2, 1, m, 2, 1, 1, 1, 1, 1 },
-                { 1, m, 2, 1, m, 1, 2, 1, m, 2, 1, 1, 1, 1, 2, 1, 1, 1 },
-                { 1, m, m, m, 1, 1, 1, m, m, m, 1, 2, 1, 2, 1, 1, 2, m },
-                { 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, m, 1 },
-                { 1, 1, 1, 1, 1, 2, 1, 1, m, m, m, 1, m, 1, 2, 1, 1, 2 },
-                { 1, 1, 1, 1, 1, m, 2, 1, 2, m, m, 2, 1, 1, 2, m, 1, 1 },
-                { 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, m, m, 1, 1, 1, m, 1, 1 },
-                { 1, 1, m, m, 2, 2, m, 1, m, m, 2, m, 1, 1, 1, m, 1, 1 },
-                { 1, 1, 2, 1, 0, 1, 1, 1, 1, 1, 2, m, m, 1, 1, m, 1, 1 },
-                { 1, 2, 1, 2, 1, 1, 1, 1, m, 1, 1, 1, 1, m, 1, 1, 0, 1 },
-                { 1, 1, 2, 1, 2, 1, 1, 1, m, m, m, 2, 1, 1, m, 2, 1, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, m, 1, 1, 1, 1, 1, 1, 2, 1, 0 },
-                { 1, m, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, m, m },
-                { 1, 2, 1, m, 1, 1, 1, 1, m, m, 1, 1, 1, 1, 1, 2, 2, 1 }
-        };
-        int atk = associaTipo(ataque.getTipo()), dsf = associaTipo(alvo.getTipos().get(0));
-        return vantagem[atk][dsf];
+    public int calculoDano(Pokemon quemAtaca, Pokemon alvo, Movimentos atk) {
+        double vantagem = getVantagem(atk, alvo);
+        int dano;
 
-    }
-
-    public int calculoVantagem(Pokemon quemAtk, Pokemon alvo, Movimentos atk) {
-        int dano = 0;
-        if (atk.categoria == Categoria.FISICO) {
-            dano = (int) (vantagem(alvo, atk) * quemAtk.getAtaque() * atk.forca) - alvo.getDefesa() / 2;
+        // CORREÇÃO: Fórmulas de dano diferenciadas
+        if (atk.getCategoria() == Categoria.FISICO) {
+            // Ataque físico foca mais no ataque do atacante
+            dano = (int) ((vantagem * quemAtaca.getAtaque() * atk.getForca()) - (alvo.getDefesa() * 0.5));
         } else {
-            dano = (int) (vantagem(alvo, atk) * quemAtk.getAtaque() * atk.forca) - alvo.getDefesa() / 2;
+            // Ataque especial ignora uma parte maior da defesa, mas tem um dano base ligeiramente menor
+            dano = (int) ((vantagem * quemAtaca.getAtaque() * (atk.getForca() * 0.8)) - (alvo.getDefesa() * 0.25));
         }
-        if (dano <= 0) {
-            return 5;
-        }
-        return dano;
+
+        // Garante que o ataque sempre cause um dano mínimo
+        return Math.max(5, dano);
     }
 
-    public Pokemon getPkmAmigo() {
-        return pkmAmigo;
-    }
-
-    public Pokemon getPkmInimigo() {
-        return pkmInimigo;
-    }
-
-    public boolean getEmExecucao() {
-        return this.emExecucao;
-    }
-
-    public boolean getVitoria() {
-        return this.vitoria;
-    }
-
-    public int getContEspecial() {
-        return this.contEspecial;
-    }
-
-    public int getContEspecialLider() {
-        return this.contEspecialLider;
-    }
-
-    public void decrementarContEspecial() {
-        this.contEspecial--;
-    }
-
-    public void decrementarContEspecialLider() {
-        this.contEspecialLider--;
-    }
+    // Getters e Setters
+    public Pokemon getPkmAmigo() { return pkmAmigo; }
+    public Pokemon getPkmInimigo() { return pkmInimigo; }
+    public boolean getEmExecucao() { return this.emExecucao; }
+    public boolean getVitoria() { return this.vitoria; }
+    public int getContEspecial() { return this.contEspecial; }
+    public int getContEspecialLider() { return this.contEspecialLider; }
+    public void decrementarContEspecial() { this.contEspecial--; }
+    public void decrementarContEspecialLider() { this.contEspecialLider--; }
 }

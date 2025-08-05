@@ -1,17 +1,27 @@
 package uff.tank.seraphine.telas;
 
-import uff.tank.seraphine.CadastroTreinador;
+import uff.tank.seraphine.GerenciadorDados;
 import uff.tank.seraphine.Pokemon;
+import uff.tank.seraphine.Treinador;
 import uff.tank.seraphine.utils.ConsoleUtils;
-import uff.tank.seraphine.utils.JSONUtils;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
 
 public class TelaPrimeiraEscolha extends Tela {
 
-    private final String POKEMON_PATH = "assets/pokemon.json";
+    private final GerenciadorDados gerenciador;
+
+    public TelaPrimeiraEscolha(TelaContext context) {
+        super(context);
+        this.gerenciador = new GerenciadorDados();
+    }
 
     @Override
     public void mostrarTela() {
-        System.out.println("Olá, " + this.contexto.getTreinador().getNome()
+        Treinador novoTreinador = this.contexto.getTreinador();
+        System.out.println("Olá, " + novoTreinador.getNome()
                 + "! Seja bem vindo(a) ao centro de escolha Pokémon!\nEscolha um dos Pokémons disponíveis em nosso laboratório para iniciar sua jornada.\n");
         System.out.println("1 - Charmander");
         System.out.println("2 - Squirtle");
@@ -21,46 +31,53 @@ public class TelaPrimeiraEscolha extends Tela {
         System.out.print("\n>");
         String escolha = contexto.getUserInput();
 
-        Pokemon pkmn = null;
+        int idEscolhido = 0;
         switch (escolha) {
-            case "1": // charmander
-                pkmn = Pokemon.getPokemonFromJSONObject(
-                        JSONUtils.getObjectByID(4, POKEMON_PATH));
-                this.contexto.getTreinador().adicionarPokemon(pkmn);
-                this.trocarTela(new TelaMenuPrincipal(this.contexto));
-                break;
-
-            case "2": // squirtle
-                pkmn = Pokemon.getPokemonFromJSONObject(
-                        JSONUtils.getObjectByID(7, POKEMON_PATH));
-                this.contexto.getTreinador().adicionarPokemon(pkmn);
-                this.trocarTela(new TelaMenuPrincipal(this.contexto));
-                break;
-
-            case "3": // bulbasaur
-                pkmn = Pokemon.getPokemonFromJSONObject(
-                        JSONUtils.getObjectByID(1, POKEMON_PATH));
-                this.contexto.getTreinador().adicionarPokemon(pkmn);
-                this.trocarTela(new TelaMenuPrincipal(this.contexto));
-                break;
-
-            case "4": // pikachu
-                pkmn = Pokemon.getPokemonFromJSONObject(
-                        JSONUtils.getObjectByID(25, POKEMON_PATH));
-                this.contexto.getTreinador().adicionarPokemon(pkmn);
-                this.trocarTela(new TelaMenuPrincipal(this.contexto));
-                break;
-
-            default:
-                System.out.println("Por favor insira um valor válido");
-                ConsoleUtils.sleep(1500);
+            case "1": idEscolhido = 4; break;
+            case "2": idEscolhido = 7; break;
+            case "3": idEscolhido = 1; break;
+            case "4": idEscolhido = 25; break;
         }
 
-        CadastroTreinador.cadastrarTreinador(this.contexto.getTreinador());
-        System.out.println(this.contexto.getTreinador().pokemonAtual);
-    }
+        // Se a escolha foi inválida, idEscolhido continuará 0.
+        if (idEscolhido == 0) {
+            System.out.println("Por favor insira um valor válido");
+            ConsoleUtils.sleep(1500);
+            return; // Encerra a execução do método aqui.
+        }
 
-    public TelaPrimeiraEscolha(TelaContext context) {
-        super(context);
+        // **A CORREÇÃO ESTÁ AQUI**
+        // Criamos uma variável final para ser usada na expressão lambda.
+        final int finalIdEscolhido = idEscolhido;
+
+        try {
+            List<Pokemon> pokemonsDisponiveis = gerenciador.carregarPokemonsDisponiveis();
+
+            // Usamos a variável final dentro do filter
+            Optional<Pokemon> pokemonEscolhido = pokemonsDisponiveis.stream()
+                    .filter(p -> p.getId() == finalIdEscolhido)
+                    .findFirst();
+
+            if (pokemonEscolhido.isPresent()) {
+                novoTreinador.adicionarPokemon(pokemonEscolhido.get());
+
+                List<Treinador> todosOsTreinadores = gerenciador.carregarTreinadores();
+                todosOsTreinadores.add(novoTreinador);
+                gerenciador.salvarTreinadores(todosOsTreinadores);
+
+                System.out.println("\nVocê escolheu o " + pokemonEscolhido.get().getNome() + "! Parabéns!");
+                System.out.println("Seu perfil de treinador foi salvo.");
+                ConsoleUtils.sleep(2500);
+                
+                this.trocarTela(new TelaMenuPrincipal(this.contexto));
+            } else {
+                System.out.println("Erro: O Pokémon com ID " + finalIdEscolhido + " não foi encontrado na base de dados.");
+                ConsoleUtils.sleep(2000);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Ocorreu um erro crítico ao salvar os dados: " + e.getMessage());
+            ConsoleUtils.sleep(3000);
+        }
     }
 }

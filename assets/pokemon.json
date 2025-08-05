@@ -2,1511 +2,1729 @@
   {
     "Id": 1,
     "Nome": "Bulbasaur",
-    "Tipo 1": "Grama",
-    "Tipo 2": "Veneno",
     "HP": 45,
     "Ataque": 49,
     "Defesa": 49,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "GRAMA",
+      "VENENO"
+    ]
   },
   {
     "Id": 2,
     "Nome": "Ivysaur",
-    "Tipo 1": "Grama",
-    "Tipo 2": "Veneno",
     "HP": 60,
     "Ataque": 62,
     "Defesa": 63,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "GRAMA",
+      "VENENO"
+    ]
   },
   {
     "Id": 3,
     "Nome": "Venusaur",
-    "Tipo 1": "Grama",
-    "Tipo 2": "Veneno",
     "HP": 80,
     "Ataque": 82,
     "Defesa": 83,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "GRAMA",
+      "VENENO"
+    ]
   },
   {
     "Id": 4,
     "Nome": "Charmander",
-    "Tipo 1": "Fogo",
-    "Tipo 2": "",
     "HP": 39,
     "Ataque": 52,
     "Defesa": 43,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "FOGO"
+    ]
   },
   {
     "Id": 5,
     "Nome": "Charmeleon",
-    "Tipo 1": "Fogo",
-    "Tipo 2": "",
     "HP": 58,
     "Ataque": 64,
     "Defesa": 58,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "FOGO"
+    ]
   },
   {
     "Id": 6,
     "Nome": "Charizard",
-    "Tipo 1": "Fogo",
-    "Tipo 2": "Voador",
     "HP": 78,
     "Ataque": 84,
     "Defesa": 78,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "FOGO",
+      "VOADOR"
+    ]
   },
   {
     "Id": 7,
     "Nome": "Squirtle",
-    "Tipo 1": "Agua",
-    "Tipo 2": "",
     "HP": 44,
     "Ataque": 48,
     "Defesa": 65,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA"
+    ]
   },
   {
     "Id": 8,
     "Nome": "Wartortle",
-    "Tipo 1": "Agua",
-    "Tipo 2": "",
     "HP": 59,
     "Ataque": 63,
     "Defesa": 80,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA"
+    ]
   },
   {
     "Id": 9,
     "Nome": "Blastoise",
-    "Tipo 1": "Agua",
-    "Tipo 2": "",
     "HP": 79,
     "Ataque": 83,
     "Defesa": 100,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA"
+    ]
   },
   {
     "Id": 10,
     "Nome": "Caterpie",
-    "Tipo 1": "Inseto",
-    "Tipo 2": "",
     "HP": 45,
     "Ataque": 30,
     "Defesa": 35,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "INSETO"
+    ]
   },
   {
     "Id": 11,
     "Nome": "Metapod",
-    "Tipo 1": "Inseto",
-    "Tipo 2": "",
     "HP": 50,
     "Ataque": 20,
     "Defesa": 55,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "INSETO"
+    ]
   },
   {
     "Id": 12,
     "Nome": "Butterfree",
-    "Tipo 1": "Inseto",
-    "Tipo 2": "Voador",
     "HP": 60,
     "Ataque": 45,
     "Defesa": 50,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "INSETO",
+      "VOADOR"
+    ]
   },
   {
     "Id": 13,
     "Nome": "Weedle",
-    "Tipo 1": "Inseto",
-    "Tipo 2": "Veneno",
     "HP": 40,
     "Ataque": 35,
     "Defesa": 30,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "INSETO",
+      "VENENO"
+    ]
   },
   {
     "Id": 14,
     "Nome": "Kakuna",
-    "Tipo 1": "Inseto",
-    "Tipo 2": "Veneno",
     "HP": 45,
     "Ataque": 25,
     "Defesa": 50,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "INSETO",
+      "VENENO"
+    ]
   },
   {
     "Id": 15,
     "Nome": "Beedrill",
-    "Tipo 1": "Inseto",
-    "Tipo 2": "Veneno",
     "HP": 65,
     "Ataque": 90,
     "Defesa": 40,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "INSETO",
+      "VENENO"
+    ]
   },
   {
     "Id": 16,
     "Nome": "Pidgey",
-    "Tipo 1": "Normal",
-    "Tipo 2": "Voador",
     "HP": 40,
     "Ataque": 45,
     "Defesa": 40,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL",
+      "VOADOR"
+    ]
   },
   {
     "Id": 17,
     "Nome": "Pidgeotto",
-    "Tipo 1": "Normal",
-    "Tipo 2": "Voador",
     "HP": 63,
     "Ataque": 60,
     "Defesa": 55,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL",
+      "VOADOR"
+    ]
   },
   {
     "Id": 18,
     "Nome": "Pidgeot",
-    "Tipo 1": "Normal",
-    "Tipo 2": "Voador",
     "HP": 83,
     "Ataque": 80,
     "Defesa": 75,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL",
+      "VOADOR"
+    ]
   },
   {
     "Id": 19,
     "Nome": "Rattata",
-    "Tipo 1": "Normal",
-    "Tipo 2": "",
     "HP": 30,
     "Ataque": 56,
     "Defesa": 35,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL"
+    ]
   },
   {
     "Id": 20,
     "Nome": "Raticate",
-    "Tipo 1": "Normal",
-    "Tipo 2": "",
     "HP": 55,
     "Ataque": 81,
     "Defesa": 60,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL"
+    ]
   },
   {
     "Id": 21,
     "Nome": "Spearow",
-    "Tipo 1": "Normal",
-    "Tipo 2": "Voador",
     "HP": 40,
     "Ataque": 60,
     "Defesa": 30,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL",
+      "VOADOR"
+    ]
   },
   {
     "Id": 22,
     "Nome": "Fearow",
-    "Tipo 1": "Normal",
-    "Tipo 2": "Voador",
     "HP": 65,
     "Ataque": 90,
     "Defesa": 65,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL",
+      "VOADOR"
+    ]
   },
   {
     "Id": 23,
     "Nome": "Ekans",
-    "Tipo 1": "Veneno",
-    "Tipo 2": "",
     "HP": 35,
     "Ataque": 60,
     "Defesa": 44,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "VENENO"
+    ]
   },
   {
     "Id": 24,
     "Nome": "Arbok",
-    "Tipo 1": "Veneno",
-    "Tipo 2": "",
     "HP": 60,
     "Ataque": 85,
     "Defesa": 69,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "VENENO"
+    ]
   },
   {
     "Id": 25,
     "Nome": "Pikachu",
-    "Tipo 1": "Eletrico",
-    "Tipo 2": "",
     "HP": 35,
     "Ataque": 55,
     "Defesa": 40,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "ELETRICO"
+    ]
   },
   {
     "Id": 26,
     "Nome": "Raichu",
-    "Tipo 1": "Eletrico",
-    "Tipo 2": "",
     "HP": 60,
     "Ataque": 90,
     "Defesa": 55,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "ELETRICO"
+    ]
   },
   {
     "Id": 27,
     "Nome": "Sandshrew",
-    "Tipo 1": "Terra",
-    "Tipo 2": "",
     "HP": 50,
     "Ataque": 75,
     "Defesa": 85,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "TERRA"
+    ]
   },
   {
     "Id": 28,
     "Nome": "Sandslash",
-    "Tipo 1": "Terra",
-    "Tipo 2": "",
     "HP": 75,
     "Ataque": 100,
     "Defesa": 110,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "TERRA"
+    ]
   },
   {
     "Id": 29,
     "Nome": "NidoranãF",
-    "Tipo 1": "Veneno",
-    "Tipo 2": "",
     "HP": 55,
     "Ataque": 47,
     "Defesa": 52,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "VENENO"
+    ]
   },
   {
     "Id": 30,
     "Nome": "Nidorina",
-    "Tipo 1": "Veneno",
-    "Tipo 2": "",
     "HP": 70,
     "Ataque": 62,
     "Defesa": 67,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "VENENO"
+    ]
   },
   {
     "Id": 31,
     "Nome": "Nidoqueen",
-    "Tipo 1": "Veneno",
-    "Tipo 2": "Terra",
     "HP": 90,
     "Ataque": 92,
     "Defesa": 87,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "VENENO",
+      "TERRA"
+    ]
   },
   {
     "Id": 32,
     "Nome": "NidoranãM",
-    "Tipo 1": "Veneno",
-    "Tipo 2": "",
     "HP": 46,
     "Ataque": 57,
     "Defesa": 40,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "VENENO"
+    ]
   },
   {
     "Id": 33,
     "Nome": "Nidorino",
-    "Tipo 1": "Veneno",
-    "Tipo 2": "",
     "HP": 61,
     "Ataque": 72,
     "Defesa": 57,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "VENENO"
+    ]
   },
   {
     "Id": 34,
     "Nome": "Nidoking",
-    "Tipo 1": "Veneno",
-    "Tipo 2": "Terra",
     "HP": 81,
     "Ataque": 102,
     "Defesa": 77,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "VENENO",
+      "TERRA"
+    ]
   },
   {
     "Id": 35,
     "Nome": "Clefairy",
-    "Tipo 1": "Fada",
-    "Tipo 2": "",
     "HP": 70,
     "Ataque": 45,
     "Defesa": 48,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "FADA"
+    ]
   },
   {
     "Id": 36,
     "Nome": "Clefable",
-    "Tipo 1": "Fada",
-    "Tipo 2": "",
     "HP": 95,
     "Ataque": 70,
     "Defesa": 73,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "FADA"
+    ]
   },
   {
     "Id": 37,
     "Nome": "Vulpix",
-    "Tipo 1": "Fogo",
-    "Tipo 2": "",
     "HP": 38,
     "Ataque": 41,
     "Defesa": 40,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "FOGO"
+    ]
   },
   {
     "Id": 38,
     "Nome": "Ninetales",
-    "Tipo 1": "Fogo",
-    "Tipo 2": "",
     "HP": 73,
     "Ataque": 76,
     "Defesa": 75,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "FOGO"
+    ]
   },
   {
     "Id": 39,
     "Nome": "Jigglypuff",
-    "Tipo 1": "Normal",
-    "Tipo 2": "Fada",
     "HP": 115,
     "Ataque": 45,
     "Defesa": 20,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL",
+      "FADA"
+    ]
   },
   {
     "Id": 40,
     "Nome": "Wigglytuff",
-    "Tipo 1": "Normal",
-    "Tipo 2": "Fada",
     "HP": 140,
     "Ataque": 70,
     "Defesa": 45,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL",
+      "FADA"
+    ]
   },
   {
     "Id": 41,
     "Nome": "Zubat",
-    "Tipo 1": "Veneno",
-    "Tipo 2": "Voador",
     "HP": 40,
     "Ataque": 45,
     "Defesa": 35,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "VENENO",
+      "VOADOR"
+    ]
   },
   {
     "Id": 42,
     "Nome": "Golbat",
-    "Tipo 1": "Veneno",
-    "Tipo 2": "Voador",
     "HP": 75,
     "Ataque": 80,
     "Defesa": 70,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "VENENO",
+      "VOADOR"
+    ]
   },
   {
     "Id": 43,
     "Nome": "Oddish",
-    "Tipo 1": "Grama",
-    "Tipo 2": "Veneno",
     "HP": 45,
     "Ataque": 50,
     "Defesa": 55,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "GRAMA",
+      "VENENO"
+    ]
   },
   {
     "Id": 44,
     "Nome": "Gloom",
-    "Tipo 1": "Grama",
-    "Tipo 2": "Veneno",
     "HP": 60,
     "Ataque": 65,
     "Defesa": 70,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "GRAMA",
+      "VENENO"
+    ]
   },
   {
     "Id": 45,
     "Nome": "Vileplume",
-    "Tipo 1": "Grama",
-    "Tipo 2": "Veneno",
     "HP": 75,
     "Ataque": 80,
     "Defesa": 85,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "GRAMA",
+      "VENENO"
+    ]
   },
   {
     "Id": 46,
     "Nome": "Paras",
-    "Tipo 1": "Inseto",
-    "Tipo 2": "Grama",
     "HP": 35,
     "Ataque": 70,
     "Defesa": 55,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "INSETO",
+      "GRAMA"
+    ]
   },
   {
     "Id": 47,
     "Nome": "Parasect",
-    "Tipo 1": "Inseto",
-    "Tipo 2": "Grama",
     "HP": 60,
     "Ataque": 95,
     "Defesa": 80,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "INSETO",
+      "GRAMA"
+    ]
   },
   {
     "Id": 48,
     "Nome": "Venonat",
-    "Tipo 1": "Inseto",
-    "Tipo 2": "Veneno",
     "HP": 60,
     "Ataque": 55,
     "Defesa": 50,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "INSETO",
+      "VENENO"
+    ]
   },
   {
     "Id": 49,
     "Nome": "Venomoth",
-    "Tipo 1": "Inseto",
-    "Tipo 2": "Veneno",
     "HP": 70,
     "Ataque": 65,
     "Defesa": 60,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "INSETO",
+      "VENENO"
+    ]
   },
   {
     "Id": 50,
     "Nome": "Diglett",
-    "Tipo 1": "Terra",
-    "Tipo 2": "",
     "HP": 10,
     "Ataque": 55,
     "Defesa": 25,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "TERRA"
+    ]
   },
   {
     "Id": 51,
     "Nome": "Dugtrio",
-    "Tipo 1": "Terra",
-    "Tipo 2": "",
     "HP": 35,
     "Ataque": 80,
     "Defesa": 50,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "TERRA"
+    ]
   },
   {
     "Id": 52,
     "Nome": "Meowth",
-    "Tipo 1": "Normal",
-    "Tipo 2": "",
     "HP": 40,
     "Ataque": 45,
     "Defesa": 35,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL"
+    ]
   },
   {
     "Id": 53,
     "Nome": "Persian",
-    "Tipo 1": "Normal",
-    "Tipo 2": "",
     "HP": 65,
     "Ataque": 70,
     "Defesa": 60,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL"
+    ]
   },
   {
     "Id": 54,
     "Nome": "Psyduck",
-    "Tipo 1": "Agua",
-    "Tipo 2": "",
     "HP": 50,
     "Ataque": 52,
     "Defesa": 48,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA"
+    ]
   },
   {
     "Id": 55,
     "Nome": "Golduck",
-    "Tipo 1": "Agua",
-    "Tipo 2": "",
     "HP": 80,
     "Ataque": 82,
     "Defesa": 78,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA"
+    ]
   },
   {
     "Id": 56,
     "Nome": "Mankey",
-    "Tipo 1": "Lutador",
-    "Tipo 2": "",
     "HP": 40,
     "Ataque": 80,
     "Defesa": 35,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "LUTADOR"
+    ]
   },
   {
     "Id": 57,
     "Nome": "Primeape",
-    "Tipo 1": "Lutador",
-    "Tipo 2": "",
     "HP": 65,
     "Ataque": 105,
     "Defesa": 60,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "LUTADOR"
+    ]
   },
   {
     "Id": 58,
     "Nome": "Growlithe",
-    "Tipo 1": "Fogo",
-    "Tipo 2": "",
     "HP": 55,
     "Ataque": 70,
     "Defesa": 45,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "FOGO"
+    ]
   },
   {
     "Id": 59,
     "Nome": "Arcanine",
-    "Tipo 1": "Fogo",
-    "Tipo 2": "",
     "HP": 90,
     "Ataque": 110,
     "Defesa": 80,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "FOGO"
+    ]
   },
   {
     "Id": 60,
     "Nome": "Poliwag",
-    "Tipo 1": "Agua",
-    "Tipo 2": "",
     "HP": 40,
     "Ataque": 50,
     "Defesa": 40,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA"
+    ]
   },
   {
     "Id": 61,
     "Nome": "Poliwhirl",
-    "Tipo 1": "Agua",
-    "Tipo 2": "",
     "HP": 65,
     "Ataque": 65,
     "Defesa": 65,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA"
+    ]
   },
   {
     "Id": 62,
     "Nome": "Poliwrath",
-    "Tipo 1": "Agua",
-    "Tipo 2": "Lutador",
     "HP": 90,
     "Ataque": 95,
     "Defesa": 95,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA",
+      "LUTADOR"
+    ]
   },
   {
     "Id": 63,
     "Nome": "Abra",
-    "Tipo 1": "Psiquico",
-    "Tipo 2": "",
     "HP": 25,
     "Ataque": 20,
     "Defesa": 15,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "PSIQUICO"
+    ]
   },
   {
     "Id": 64,
     "Nome": "Kadabra",
-    "Tipo 1": "Psiquico",
-    "Tipo 2": "",
     "HP": 40,
     "Ataque": 35,
     "Defesa": 30,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "PSIQUICO"
+    ]
   },
   {
     "Id": 65,
     "Nome": "Alakazam",
-    "Tipo 1": "Psiquico",
-    "Tipo 2": "",
     "HP": 55,
     "Ataque": 50,
     "Defesa": 45,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "PSIQUICO"
+    ]
   },
   {
     "Id": 66,
     "Nome": "Machop",
-    "Tipo 1": "Lutador",
-    "Tipo 2": "",
     "HP": 70,
     "Ataque": 80,
     "Defesa": 50,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "LUTADOR"
+    ]
   },
   {
     "Id": 67,
     "Nome": "Machoke",
-    "Tipo 1": "Lutador",
-    "Tipo 2": "",
     "HP": 80,
     "Ataque": 100,
     "Defesa": 70,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "LUTADOR"
+    ]
   },
   {
     "Id": 68,
     "Nome": "Machamp",
-    "Tipo 1": "Lutador",
-    "Tipo 2": "",
     "HP": 90,
     "Ataque": 130,
     "Defesa": 80,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "LUTADOR"
+    ]
   },
   {
     "Id": 69,
     "Nome": "Bellsprout",
-    "Tipo 1": "Grama",
-    "Tipo 2": "Veneno",
     "HP": 50,
     "Ataque": 75,
     "Defesa": 35,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "GRAMA",
+      "VENENO"
+    ]
   },
   {
     "Id": 70,
     "Nome": "Weepinbell",
-    "Tipo 1": "Grama",
-    "Tipo 2": "Veneno",
     "HP": 65,
     "Ataque": 90,
     "Defesa": 50,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "GRAMA",
+      "VENENO"
+    ]
   },
   {
     "Id": 71,
     "Nome": "Victreebel",
-    "Tipo 1": "Grama",
-    "Tipo 2": "Veneno",
     "HP": 80,
     "Ataque": 105,
     "Defesa": 65,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "GRAMA",
+      "VENENO"
+    ]
   },
   {
     "Id": 72,
     "Nome": "Tentacool",
-    "Tipo 1": "Agua",
-    "Tipo 2": "Veneno",
     "HP": 40,
     "Ataque": 40,
     "Defesa": 35,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA",
+      "VENENO"
+    ]
   },
   {
     "Id": 73,
     "Nome": "Tentacruel",
-    "Tipo 1": "Agua",
-    "Tipo 2": "Veneno",
     "HP": 80,
     "Ataque": 70,
     "Defesa": 65,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA",
+      "VENENO"
+    ]
   },
   {
     "Id": 74,
     "Nome": "Geodude",
-    "Tipo 1": "Pedra",
-    "Tipo 2": "Terra",
     "HP": 40,
     "Ataque": 80,
     "Defesa": 100,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "PEDRA",
+      "TERRA"
+    ]
   },
   {
     "Id": 75,
     "Nome": "Graveler",
-    "Tipo 1": "Pedra",
-    "Tipo 2": "Terra",
     "HP": 55,
     "Ataque": 95,
     "Defesa": 115,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "PEDRA",
+      "TERRA"
+    ]
   },
   {
     "Id": 76,
     "Nome": "Golem",
-    "Tipo 1": "Pedra",
-    "Tipo 2": "Terra",
     "HP": 80,
     "Ataque": 120,
     "Defesa": 130,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "PEDRA",
+      "TERRA"
+    ]
   },
   {
     "Id": 77,
     "Nome": "Ponyta",
-    "Tipo 1": "Fogo",
-    "Tipo 2": "",
     "HP": 50,
     "Ataque": 85,
     "Defesa": 55,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "FOGO"
+    ]
   },
   {
     "Id": 78,
     "Nome": "Rapidash",
-    "Tipo 1": "Fogo",
-    "Tipo 2": "",
     "HP": 65,
     "Ataque": 100,
     "Defesa": 70,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "FOGO"
+    ]
   },
   {
     "Id": 79,
     "Nome": "Slowpoke",
-    "Tipo 1": "Agua",
-    "Tipo 2": "Psiquico",
     "HP": 90,
     "Ataque": 65,
     "Defesa": 65,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA",
+      "PSIQUICO"
+    ]
   },
   {
     "Id": 80,
     "Nome": "Slowbro",
-    "Tipo 1": "Agua",
-    "Tipo 2": "Psiquico",
     "HP": 95,
     "Ataque": 75,
     "Defesa": 110,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA",
+      "PSIQUICO"
+    ]
   },
   {
     "Id": 81,
     "Nome": "Magnemite",
-    "Tipo 1": "Eletrico",
-    "Tipo 2": "Aco",
     "HP": 25,
     "Ataque": 35,
     "Defesa": 70,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "ELETRICO",
+      "ACO"
+    ]
   },
   {
     "Id": 82,
     "Nome": "Magneton",
-    "Tipo 1": "Eletrico",
-    "Tipo 2": "Aco",
     "HP": 50,
     "Ataque": 60,
     "Defesa": 95,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "ELETRICO",
+      "ACO"
+    ]
   },
   {
     "Id": 83,
     "Nome": "Farfetch'd",
-    "Tipo 1": "Normal",
-    "Tipo 2": "Voador",
     "HP": 52,
     "Ataque": 65,
     "Defesa": 55,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL",
+      "VOADOR"
+    ]
   },
   {
     "Id": 84,
     "Nome": "Doduo",
-    "Tipo 1": "Normal",
-    "Tipo 2": "Voador",
     "HP": 35,
     "Ataque": 85,
     "Defesa": 45,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL",
+      "VOADOR"
+    ]
   },
   {
     "Id": 85,
     "Nome": "Dodrio",
-    "Tipo 1": "Normal",
-    "Tipo 2": "Voador",
     "HP": 60,
     "Ataque": 110,
     "Defesa": 70,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL",
+      "VOADOR"
+    ]
   },
   {
     "Id": 86,
     "Nome": "Seel",
-    "Tipo 1": "Agua",
-    "Tipo 2": "",
     "HP": 65,
     "Ataque": 45,
     "Defesa": 55,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA"
+    ]
   },
   {
     "Id": 87,
     "Nome": "Dewgong",
-    "Tipo 1": "Agua",
-    "Tipo 2": "Gelo",
     "HP": 90,
     "Ataque": 70,
     "Defesa": 80,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA",
+      "GELO"
+    ]
   },
   {
     "Id": 88,
     "Nome": "Grimer",
-    "Tipo 1": "Veneno",
-    "Tipo 2": "",
     "HP": 80,
     "Ataque": 80,
     "Defesa": 50,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "VENENO"
+    ]
   },
   {
     "Id": 89,
     "Nome": "Muk",
-    "Tipo 1": "Veneno",
-    "Tipo 2": "",
     "HP": 105,
     "Ataque": 105,
     "Defesa": 75,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "VENENO"
+    ]
   },
   {
     "Id": 90,
     "Nome": "Shellder",
-    "Tipo 1": "Agua",
-    "Tipo 2": "",
     "HP": 30,
     "Ataque": 65,
     "Defesa": 100,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA"
+    ]
   },
   {
     "Id": 91,
     "Nome": "Cloyster",
-    "Tipo 1": "Agua",
-    "Tipo 2": "Gelo",
     "HP": 50,
     "Ataque": 95,
     "Defesa": 180,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA",
+      "GELO"
+    ]
   },
   {
     "Id": 92,
     "Nome": "Gastly",
-    "Tipo 1": "Fantasma",
-    "Tipo 2": "Veneno",
     "HP": 30,
     "Ataque": 35,
     "Defesa": 30,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "FANTASMA",
+      "VENENO"
+    ]
   },
   {
     "Id": 93,
     "Nome": "Haunter",
-    "Tipo 1": "Fantasma",
-    "Tipo 2": "Veneno",
     "HP": 45,
     "Ataque": 50,
     "Defesa": 45,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "FANTASMA",
+      "VENENO"
+    ]
   },
   {
     "Id": 94,
     "Nome": "Gengar",
-    "Tipo 1": "Fantasma",
-    "Tipo 2": "Veneno",
     "HP": 60,
     "Ataque": 65,
     "Defesa": 60,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "FANTASMA",
+      "VENENO"
+    ]
   },
   {
     "Id": 95,
     "Nome": "Onix",
-    "Tipo 1": "Pedra",
-    "Tipo 2": "Terra",
     "HP": 35,
     "Ataque": 45,
     "Defesa": 160,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "PEDRA",
+      "TERRA"
+    ]
   },
   {
     "Id": 96,
     "Nome": "Drowzee",
-    "Tipo 1": "Psiquico",
-    "Tipo 2": "",
     "HP": 60,
     "Ataque": 48,
     "Defesa": 45,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "PSIQUICO"
+    ]
   },
   {
     "Id": 97,
     "Nome": "Hypno",
-    "Tipo 1": "Psiquico",
-    "Tipo 2": "",
     "HP": 85,
     "Ataque": 73,
     "Defesa": 70,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "PSIQUICO"
+    ]
   },
   {
     "Id": 98,
     "Nome": "Krabby",
-    "Tipo 1": "Agua",
-    "Tipo 2": "",
     "HP": 30,
     "Ataque": 105,
     "Defesa": 90,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA"
+    ]
   },
   {
     "Id": 99,
     "Nome": "Kingler",
-    "Tipo 1": "Agua",
-    "Tipo 2": "",
     "HP": 55,
     "Ataque": 130,
     "Defesa": 115,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA"
+    ]
   },
   {
     "Id": 100,
     "Nome": "Voltorb",
-    "Tipo 1": "Eletrico",
-    "Tipo 2": "",
     "HP": 40,
     "Ataque": 30,
     "Defesa": 50,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "ELETRICO"
+    ]
   },
   {
     "Id": 101,
     "Nome": "Electrode",
-    "Tipo 1": "Eletrico",
-    "Tipo 2": "",
     "HP": 60,
     "Ataque": 50,
     "Defesa": 70,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "ELETRICO"
+    ]
   },
   {
     "Id": 102,
     "Nome": "Exeggcute",
-    "Tipo 1": "Grama",
-    "Tipo 2": "Psiquico",
     "HP": 60,
     "Ataque": 40,
     "Defesa": 80,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "GRAMA",
+      "PSIQUICO"
+    ]
   },
   {
     "Id": 103,
     "Nome": "Exeggutor",
-    "Tipo 1": "Grama",
-    "Tipo 2": "Psiquico",
     "HP": 95,
     "Ataque": 95,
     "Defesa": 85,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "GRAMA",
+      "PSIQUICO"
+    ]
   },
   {
     "Id": 104,
     "Nome": "Cubone",
-    "Tipo 1": "Terra",
-    "Tipo 2": "",
     "HP": 50,
     "Ataque": 50,
     "Defesa": 95,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "TERRA"
+    ]
   },
   {
     "Id": 105,
     "Nome": "Marowak",
-    "Tipo 1": "Terra",
-    "Tipo 2": "",
     "HP": 60,
     "Ataque": 80,
     "Defesa": 110,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "TERRA"
+    ]
   },
   {
     "Id": 106,
     "Nome": "Hitmonlee",
-    "Tipo 1": "Lutador",
-    "Tipo 2": "",
     "HP": 50,
     "Ataque": 120,
     "Defesa": 53,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "LUTADOR"
+    ]
   },
   {
     "Id": 107,
     "Nome": "Hitmonchan",
-    "Tipo 1": "Lutador",
-    "Tipo 2": "",
     "HP": 50,
     "Ataque": 105,
     "Defesa": 79,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "LUTADOR"
+    ]
   },
   {
     "Id": 108,
     "Nome": "Lickitung",
-    "Tipo 1": "Normal",
-    "Tipo 2": "",
     "HP": 90,
     "Ataque": 55,
     "Defesa": 75,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL"
+    ]
   },
   {
     "Id": 109,
     "Nome": "Koffing",
-    "Tipo 1": "Veneno",
-    "Tipo 2": "",
     "HP": 40,
     "Ataque": 65,
     "Defesa": 95,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "VENENO"
+    ]
   },
   {
     "Id": 110,
     "Nome": "Weezing",
-    "Tipo 1": "Veneno",
-    "Tipo 2": "",
     "HP": 65,
     "Ataque": 90,
     "Defesa": 120,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "VENENO"
+    ]
   },
   {
     "Id": 111,
     "Nome": "Rhyhorn",
-    "Tipo 1": "Terra",
-    "Tipo 2": "Pedra",
     "HP": 80,
     "Ataque": 85,
     "Defesa": 95,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "TERRA",
+      "PEDRA"
+    ]
   },
   {
     "Id": 112,
     "Nome": "Rhydon",
-    "Tipo 1": "Terra",
-    "Tipo 2": "Pedra",
     "HP": 105,
     "Ataque": 130,
     "Defesa": 120,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "TERRA",
+      "PEDRA"
+    ]
   },
   {
     "Id": 113,
     "Nome": "Chansey",
-    "Tipo 1": "Normal",
-    "Tipo 2": "",
     "HP": 250,
     "Ataque": 5,
     "Defesa": 5,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL"
+    ]
   },
   {
     "Id": 114,
     "Nome": "Tangela",
-    "Tipo 1": "Grama",
-    "Tipo 2": "",
     "HP": 65,
     "Ataque": 55,
     "Defesa": 115,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "GRAMA"
+    ]
   },
   {
     "Id": 115,
     "Nome": "Kangaskhan",
-    "Tipo 1": "Normal",
-    "Tipo 2": "",
     "HP": 105,
     "Ataque": 95,
     "Defesa": 80,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL"
+    ]
   },
   {
     "Id": 116,
     "Nome": "Horsea",
-    "Tipo 1": "Agua",
-    "Tipo 2": "",
     "HP": 30,
     "Ataque": 40,
     "Defesa": 70,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA"
+    ]
   },
   {
     "Id": 117,
     "Nome": "Seadra",
-    "Tipo 1": "Agua",
-    "Tipo 2": "",
     "HP": 55,
     "Ataque": 65,
     "Defesa": 95,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA"
+    ]
   },
   {
     "Id": 118,
     "Nome": "Goldeen",
-    "Tipo 1": "Agua",
-    "Tipo 2": "",
     "HP": 45,
     "Ataque": 67,
     "Defesa": 60,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA"
+    ]
   },
   {
     "Id": 119,
     "Nome": "Seaking",
-    "Tipo 1": "Agua",
-    "Tipo 2": "",
     "HP": 80,
     "Ataque": 92,
     "Defesa": 65,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA"
+    ]
   },
   {
     "Id": 120,
     "Nome": "Staryu",
-    "Tipo 1": "Agua",
-    "Tipo 2": "",
     "HP": 30,
     "Ataque": 45,
     "Defesa": 55,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA"
+    ]
   },
   {
     "Id": 121,
     "Nome": "Starmie",
-    "Tipo 1": "Agua",
-    "Tipo 2": "Psiquico",
     "HP": 60,
     "Ataque": 75,
     "Defesa": 85,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA",
+      "PSIQUICO"
+    ]
   },
   {
     "Id": 122,
     "Nome": "Mr. Mime",
-    "Tipo 1": "Psiquico",
-    "Tipo 2": "Fada",
     "HP": 40,
     "Ataque": 45,
     "Defesa": 65,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "PSIQUICO",
+      "FADA"
+    ]
   },
   {
     "Id": 123,
     "Nome": "Scyther",
-    "Tipo 1": "Inseto",
-    "Tipo 2": "Voador",
     "HP": 70,
     "Ataque": 110,
     "Defesa": 80,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "INSETO",
+      "VOADOR"
+    ]
   },
   {
     "Id": 124,
     "Nome": "Jynx",
-    "Tipo 1": "Gelo",
-    "Tipo 2": "Psiquico",
     "HP": 65,
     "Ataque": 50,
     "Defesa": 35,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "GELO",
+      "PSIQUICO"
+    ]
   },
   {
     "Id": 125,
     "Nome": "Electabuzz",
-    "Tipo 1": "Eletrico",
-    "Tipo 2": "",
     "HP": 65,
     "Ataque": 83,
     "Defesa": 57,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "ELETRICO"
+    ]
   },
   {
     "Id": 126,
     "Nome": "Magmar",
-    "Tipo 1": "Fogo",
-    "Tipo 2": "",
     "HP": 65,
     "Ataque": 95,
     "Defesa": 57,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "FOGO"
+    ]
   },
   {
     "Id": 127,
     "Nome": "Pinsir",
-    "Tipo 1": "Inseto",
-    "Tipo 2": "",
     "HP": 65,
     "Ataque": 125,
     "Defesa": 100,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "INSETO"
+    ]
   },
   {
     "Id": 128,
     "Nome": "Tauros",
-    "Tipo 1": "Normal",
-    "Tipo 2": "",
     "HP": 75,
     "Ataque": 100,
     "Defesa": 95,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL"
+    ]
   },
   {
     "Id": 129,
     "Nome": "Magikarp",
-    "Tipo 1": "Agua",
-    "Tipo 2": "",
     "HP": 20,
     "Ataque": 10,
     "Defesa": 55,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA"
+    ]
   },
   {
     "Id": 130,
     "Nome": "Gyarados",
-    "Tipo 1": "Agua",
-    "Tipo 2": "Voador",
     "HP": 95,
     "Ataque": 125,
     "Defesa": 79,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA",
+      "VOADOR"
+    ]
   },
   {
     "Id": 131,
     "Nome": "Lapras",
-    "Tipo 1": "Agua",
-    "Tipo 2": "Gelo",
     "HP": 130,
     "Ataque": 85,
     "Defesa": 80,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA",
+      "GELO"
+    ]
   },
   {
     "Id": 132,
     "Nome": "Ditto",
-    "Tipo 1": "Normal",
-    "Tipo 2": "",
     "HP": 48,
     "Ataque": 48,
     "Defesa": 48,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL"
+    ]
   },
   {
     "Id": 133,
     "Nome": "Eevee",
-    "Tipo 1": "Normal",
-    "Tipo 2": "",
     "HP": 55,
     "Ataque": 55,
     "Defesa": 50,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL"
+    ]
   },
   {
     "Id": 134,
     "Nome": "Vaporeon",
-    "Tipo 1": "Agua",
-    "Tipo 2": "",
     "HP": 130,
     "Ataque": 65,
     "Defesa": 60,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "AGUA"
+    ]
   },
   {
     "Id": 135,
     "Nome": "Jolteon",
-    "Tipo 1": "Eletrico",
-    "Tipo 2": "",
     "HP": 65,
     "Ataque": 65,
     "Defesa": 60,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "ELETRICO"
+    ]
   },
   {
     "Id": 136,
     "Nome": "Flareon",
-    "Tipo 1": "Fogo",
-    "Tipo 2": "",
     "HP": 65,
     "Ataque": 130,
     "Defesa": 60,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "FOGO"
+    ]
   },
   {
     "Id": 137,
     "Nome": "Porygon",
-    "Tipo 1": "Normal",
-    "Tipo 2": "",
     "HP": 65,
     "Ataque": 60,
     "Defesa": 70,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL"
+    ]
   },
   {
     "Id": 138,
     "Nome": "Omanyte",
-    "Tipo 1": "Pedra",
-    "Tipo 2": "Agua",
     "HP": 35,
     "Ataque": 40,
     "Defesa": 100,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "PEDRA",
+      "AGUA"
+    ]
   },
   {
     "Id": 139,
     "Nome": "Omastar",
-    "Tipo 1": "Pedra",
-    "Tipo 2": "Agua",
     "HP": 70,
     "Ataque": 60,
     "Defesa": 125,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "PEDRA",
+      "AGUA"
+    ]
   },
   {
     "Id": 140,
     "Nome": "Kabuto",
-    "Tipo 1": "Pedra",
-    "Tipo 2": "Agua",
     "HP": 30,
     "Ataque": 80,
     "Defesa": 90,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "PEDRA",
+      "AGUA"
+    ]
   },
   {
     "Id": 141,
     "Nome": "Kabutops",
-    "Tipo 1": "Pedra",
-    "Tipo 2": "Agua",
     "HP": 60,
     "Ataque": 115,
     "Defesa": 105,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "PEDRA",
+      "AGUA"
+    ]
   },
   {
     "Id": 142,
     "Nome": "Aerodactyl",
-    "Tipo 1": "Pedra",
-    "Tipo 2": "Voador",
     "HP": 80,
     "Ataque": 105,
     "Defesa": 65,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "PEDRA",
+      "VOADOR"
+    ]
   },
   {
     "Id": 143,
     "Nome": "Snorlax",
-    "Tipo 1": "Normal",
-    "Tipo 2": "",
     "HP": 160,
     "Ataque": 110,
     "Defesa": 65,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "NORMAL"
+    ]
   },
   {
     "Id": 144,
     "Nome": "Articuno",
-    "Tipo 1": "Gelo",
-    "Tipo 2": "Voador",
     "HP": 90,
     "Ataque": 85,
     "Defesa": 100,
-    "Lendario": "True"
+    "Lendario": "True",
+    "tipos": [
+      "GELO",
+      "VOADOR"
+    ]
   },
   {
     "Id": 145,
     "Nome": "Zapdos",
-    "Tipo 1": "Eletrico",
-    "Tipo 2": "Voador",
     "HP": 90,
     "Ataque": 90,
     "Defesa": 85,
-    "Lendario": "True"
+    "Lendario": "True",
+    "tipos": [
+      "ELETRICO",
+      "VOADOR"
+    ]
   },
   {
     "Id": 146,
     "Nome": "Moltres",
-    "Tipo 1": "Fogo",
-    "Tipo 2": "Voador",
     "HP": 90,
     "Ataque": 100,
     "Defesa": 90,
-    "Lendario": "True"
+    "Lendario": "True",
+    "tipos": [
+      "FOGO",
+      "VOADOR"
+    ]
   },
   {
     "Id": 147,
     "Nome": "Dratini",
-    "Tipo 1": "Dragao",
-    "Tipo 2": "",
     "HP": 41,
     "Ataque": 64,
     "Defesa": 45,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "DRAGAO"
+    ]
   },
   {
     "Id": 148,
     "Nome": "Dragonair",
-    "Tipo 1": "Dragao",
-    "Tipo 2": "",
     "HP": 61,
     "Ataque": 84,
     "Defesa": 65,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "DRAGAO"
+    ]
   },
   {
     "Id": 149,
     "Nome": "Dragonite",
-    "Tipo 1": "Dragao",
-    "Tipo 2": "Voador",
     "HP": 91,
     "Ataque": 134,
     "Defesa": 95,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "DRAGAO",
+      "VOADOR"
+    ]
   },
   {
     "Id": 150,
     "Nome": "Mewtwo",
-    "Tipo 1": "Psiquico",
-    "Tipo 2": "",
     "HP": 106,
     "Ataque": 110,
     "Defesa": 90,
-    "Lendario": "True"
+    "Lendario": "True",
+    "tipos": [
+      "PSIQUICO"
+    ]
   },
   {
     "Id": 151,
     "Nome": "Mew",
-    "Tipo 1": "Psiquico",
-    "Tipo 2": "",
     "HP": 100,
     "Ataque": 100,
     "Defesa": 100,
-    "Lendario": "False"
+    "Lendario": "False",
+    "tipos": [
+      "PSIQUICO"
+    ]
   }
 ]

@@ -1,88 +1,92 @@
 package uff.tank.seraphine.telas;
 
-import java.io.FileReader;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
+import uff.tank.seraphine.GerenciadorDados;
+import uff.tank.seraphine.Pokemon;
 import uff.tank.seraphine.Treinador;
-import uff.tank.seraphine.utils.JSONUtils;
+import uff.tank.seraphine.utils.ConsoleUtils;
 
 public class TelaSelecionaTreinador extends Tela {
 
-    @Override
-    public void mostrarTela() {
-        JSONArray objArray = null;
-        JSONParser parser = new JSONParser();
-        JSONObject obj = new JSONObject();
-
-        System.out.println("---------- Selecionar Treinador ----------\n");
-        System.out.println("Lista de Treinadores (pelo ID): ");
-
-        try {
-            objArray = (JSONArray) parser.parse(new FileReader("assets/dados.json"));
-
-            for (Object i : objArray) {
-                obj = (JSONObject) i;
-                System.out.println(
-                        obj.get("Id").toString() + " - " + obj.get("Nome").toString());
-            }
-
-            System.out.println("\nV - Voltar ao menu principal");
-            System.out.println("X - Sair");
-
-            System.out.print(">");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.exit(-3);
-        }
-
-        String escolha = this.contexto.getUserInput();
-        boolean isNumber = false;
-        String idEscolhido;
-
-        if (escolha != "x" && escolha != "v") {
-            idEscolhido = escolha;
-        }
-
-        try {
-            // Tenta ver se o input é um número que pode ser Id
-            // Se o parse falhar, a string contém letras, logo, não é um ID
-            Integer.parseInt(escolha);
-            isNumber = true;
-        } catch (NumberFormatException e) {
-            isNumber = false;
-        }
-        if (isNumber) {
-            this.contexto.setTreinador(
-                    Treinador.getTreinadorFromJSONObject(
-                            JSONUtils.getObjectByID(Integer.parseInt(escolha), "assets/dados.json")));
-            this.trocarTela(new TelaMenuPrincipal(this.contexto));
-        } else {
-            switch (escolha) {
-                case "A":
-                    this.trocarTela(new TelaMenuPrincipal(this.contexto));
-                    break;
-                case "v":
-                case "V":
-                    this.trocarTela(new TelaInicial(this.contexto));
-                    break;
-                case "x":
-                case "X":
-                    this.contexto.sairPrograma();
-                    break;
-                default:
-                    System.out.println("Por favor insira um valor válido");
-                    break;
-            }
-        }
-    }
-
-    public static void passarParaInt(String id) {
-        int idInt = Integer.valueOf(id);
-    }
+    private final GerenciadorDados gerenciador;
 
     public TelaSelecionaTreinador(TelaContext contexto) {
         super(contexto);
+        this.gerenciador = new GerenciadorDados();
+    }
+
+    @Override
+    public void mostrarTela() {
+        try {
+            List<Treinador> treinadores = gerenciador.carregarTreinadores();
+
+            System.out.println("---------- Selecionar Treinador ----------\n");
+
+            if (treinadores.isEmpty()) {
+                System.out.println("Nenhum treinador cadastrado ainda.");
+                System.out.println("Voltando ao menu inicial...");
+                ConsoleUtils.sleep(2000);
+                this.trocarTela(new TelaInicial(this.contexto));
+                return;
+            }
+
+            System.out.println("Lista de Treinadores:");
+            for (Treinador treinador : treinadores) {
+                System.out.println(treinador.getId() + " - " + treinador.getNome());
+            }
+
+            System.out.println("\nDigite o ID do treinador para continuar.");
+            System.out.println("V - Voltar ao menu inicial");
+            System.out.println("X - Sair");
+            System.out.print("\n>");
+
+            String escolha = this.contexto.getUserInput();
+
+            if (escolha.equalsIgnoreCase("X")) {
+                this.contexto.sairPrograma();
+                return;
+            }
+
+            if (escolha.equalsIgnoreCase("V")) {
+                this.trocarTela(new TelaInicial(this.contexto));
+                return;
+            }
+
+            try {
+                int idEscolhido = Integer.parseInt(escolha);
+
+                Optional<Treinador> treinadorEscolhido = treinadores.stream()
+                        .filter(t -> t.getId() == idEscolhido)
+                        .findFirst();
+
+                if (treinadorEscolhido.isPresent()) {
+                    Treinador treinador = treinadorEscolhido.get();
+
+                    // **A CORREÇÃO ESTÁ AQUI**
+                    // Para cada Pokémon do treinador carregado, garantimos que os movimentos sejam inicializados.
+                    for (Pokemon p : treinador.getPokemons()) {
+                        p.inicializarMovimentos();
+                    }
+
+                    this.contexto.setTreinador(treinador);
+                    System.out.println("\nBem-vindo de volta, " + treinador.getNome() + "!");
+                    ConsoleUtils.sleep(2000);
+                    this.trocarTela(new TelaMenuPrincipal(this.contexto));
+                } else {
+                    System.out.println("ID de treinador não encontrado.");
+                    ConsoleUtils.sleep(1500);
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Por favor, insira um valor válido.");
+                ConsoleUtils.sleep(1500);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Ocorreu um erro ao carregar os dados dos treinadores: " + e.getMessage());
+            ConsoleUtils.sleep(3000);
+            this.trocarTela(new TelaInicial(this.contexto));
+        }
     }
 }

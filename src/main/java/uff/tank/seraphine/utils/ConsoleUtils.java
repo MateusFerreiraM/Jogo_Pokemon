@@ -1,23 +1,29 @@
 package uff.tank.seraphine.utils;
 
+import java.io.IOException;
+
 public class ConsoleUtils {
     public static void clearConsole() {
-        // System.out.println("\033[H\033[2J");
         // Sequencia de escape para reposicionar o cursor e limpar o terminal
         try {
-            if (System.getProperty("os.name").contains("Windows"))
+            if (System.getProperty("os.name").contains("Windows")) {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            else
-                Runtime.getRuntime().exec("clear");
-        } catch (Exception e) {
+            } else {
+                // APLICAÇÃO DA FORMA MODERNA E CORRETA
+                new ProcessBuilder("clear").inheritIO().start().waitFor();
+            }
+        } catch (IOException | InterruptedException e) {
+            // Captura de exceções mais específicas, o que é uma boa prática
             e.printStackTrace();
         }
     }
 
     public static void sleep(int time) {
         try {
-            Thread.sleep(Long.valueOf(time));
-        } catch (Exception e) {
+            // A conversão para Long não é necessária, pois Thread.sleep aceita long
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            // Captura da exceção específica em vez de uma genérica
             e.printStackTrace();
         }
     }

@@ -1,98 +1,95 @@
 package uff.tank.seraphine;
 
-import org.json.simple.JSONObject;
-import uff.tank.seraphine.utils.JSONUtils;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty; // Importe a anotação
 import java.util.ArrayList;
-import static uff.tank.seraphine.utils.JSONUtils.getObjectByName;
+import java.util.List;
 
 public class Treinador {
+
+    @JsonProperty("Nome")
     private String nome;
-    protected int id;
-    private static int TotalTreinadores = 0;
+    
+    @JsonProperty("Id")
+    private int id;
+    
+    @JsonProperty("Regiao")
     private String regiao;
-    public ArrayList<Pokemon> pokemons;
-    public Pokemon pokemonAtual;
+    
+    @JsonProperty("Pokemons")
+    private List<Pokemon> pokemons;
 
-    public Treinador(String nome, String regiao) {
-        // Para criar um novo
-        this.nome = nome;
-        this.regiao = regiao;
-        this.id = JSONUtils.getLastId("assets/dados.json") + 1;
-        this.pokemons = new ArrayList<Pokemon>();
-        TotalTreinadores = JSONUtils.getTotalObjects("assets/dados.json");
+    @JsonIgnore
+    private Pokemon pokemonAtual;
 
-        // Cadastro treinado é chamado também em TelaPrimeiraEscolha, o que cria
-        // informação dobrada no dados.json
-        // CadastroTreinador.cadastrarTreinador(this);
+    // Construtor vazio é necessário para o Jackson
+    public Treinador() {
+        this.pokemons = new ArrayList<>();
     }
-
-    public Treinador(String nome, String regiao, int id, ArrayList<Pokemon> pokemons) {
-        // Instânciando treinador já existente
+    
+    // Construtor para criar um novo treinador
+    public Treinador(String nome, String regiao, int id) {
         this.nome = nome;
         this.regiao = regiao;
         this.id = id;
-        this.pokemons = pokemons;
-        this.pokemonAtual = pokemons.get(0);
+        this.pokemons = new ArrayList<>();
     }
 
-    public int getQtdPokemon() {
-        return this.pokemons.size();
-    }
-
+    // Getters e Setters para todos os campos que serão salvos no JSON
     public String getNome() {
-        return this.nome;
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getRegiao() {
-        return this.regiao;
+        return regiao;
     }
 
-    public ArrayList<Pokemon> getPokemons() {
-        return this.pokemons;
+    public void setRegiao(String regiao) {
+        this.regiao = regiao;
     }
 
-    public static int getTotalTreinadores() {
-        return TotalTreinadores;
+    public List<Pokemon> getPokemons() {
+        return pokemons;
     }
 
-    public void addPokemon(Pokemon pokemon) {
-        this.pokemons.add(pokemon);
+    public void setPokemons(List<Pokemon> pokemons) {
+        this.pokemons = pokemons;
     }
 
-    public void setPokemonAtual(Pokemon pkmn) {
-        this.pokemonAtual = pkmn;
-    }
-
+    // Métodos de negócio (não precisam de setter)
+    @JsonIgnore
     public Pokemon getPokemonAtual() {
-        return this.pokemonAtual;
+        // Lógica para garantir que sempre haja um pokemon atual se a lista não estiver vazia
+        if (pokemonAtual == null && !pokemons.isEmpty()) {
+            this.pokemonAtual = pokemons.get(0);
+        }
+        return pokemonAtual;
     }
 
-    public int getId(){
-        return this.id;
-    }
-    public void adicionarPokemon(Pokemon pokemon) {
-        if (pokemons.size() == 0) {
-            // Quando não se tem outro pokemon na lista, o pokemon atual é o recebido
+    public void setPokemonAtual(Pokemon pokemon) {
+        // Garante que o pokemon a ser definido como atual esteja na lista do treinador
+        if (this.pokemons.contains(pokemon)) {
             this.pokemonAtual = pokemon;
         }
-        this.pokemons.add(pokemon);
     }
 
-    public static Treinador getTreinadorFromJSONObject(JSONObject obj) {
-        int id = Integer.parseInt(obj.get("Id").toString());
-        String nome = obj.get("Nome").toString();
-        String regiao = obj.get("Regiao").toString();
-
-        ArrayList<String> listaPkmn = (ArrayList<String>) obj.get("Pokemons");
-        ArrayList<Pokemon> pkmns = new ArrayList<Pokemon>();
-
-        for (String pkmnNome : listaPkmn) {
-            pkmns.add(
-                    Pokemon.getPokemonFromJSONObject(
-                            getObjectByName(pkmnNome, "assets/pokemon.json")));
+    public void adicionarPokemon(Pokemon pokemon) {
+        if (this.pokemons.isEmpty()) {
+            this.pokemonAtual = pokemon; // O primeiro a ser adicionado se torna o atual
         }
-
-        return new Treinador(nome, regiao, id, pkmns);
+        this.pokemons.add(pokemon);
     }
 
     @Override

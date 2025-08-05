@@ -1,31 +1,35 @@
 package uff.tank.seraphine;
 
-import org.json.simple.JSONObject;
-import uff.tank.seraphine.utils.JSONUtils;
-import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 
-public class LiderGin extends Treinador {   // Lider de Ginásio é um tipo especial de treinador
+// LiderGin ainda herda de Treinador, mas terá seu próprio construtor para o Jackson
+public class LiderGin extends Treinador {
 
-    public LiderGin(String nome, String regiao, int id, Pokemon pkmn) {
-        super(nome, regiao);
-        this.id = id;
-        this.pokemonAtual = pkmn;
-        this.pokemons = new ArrayList<Pokemon>();
-        this.pokemons.add(pkmn);
+    // Este campo será lido do JSON ("Charmander" ou "random")
+    @JsonProperty("Pokemon")
+    private String pokemonName;
+
+    // Construtor vazio para o Jackson
+    public LiderGin() {
+        super();
     }
 
-    public static LiderGin getLiderFromJSONObject(JSONObject obj) {
-        int id = Integer.parseInt(obj.get("Id").toString());
-        String nome = obj.get("Nome").toString();
-        String regiao = obj.get("Regiao").toString();
-        Pokemon pokemon;
-        if (obj.get("Pokemon").toString().equals("random")) {
-            pokemon = Pokemon.getPokemonAleatorio();
+    /**
+     * Este método especial será chamado após o líder ser carregado do JSON.
+     * Ele pega o nome do Pokémon (pokemonName) e o transforma no objeto Pokemon real.
+     */
+    public void carregarPokemon(List<Pokemon> pokemonsDisponiveis) {
+        if ("random".equalsIgnoreCase(pokemonName)) {
+            // Lógica para pegar um pokemon aleatório da lista
+            int randomIndex = new java.util.Random().nextInt(pokemonsDisponiveis.size());
+            this.adicionarPokemon(pokemonsDisponiveis.get(randomIndex));
         } else {
-            pokemon = Pokemon.getPokemonFromJSONObject(
-                    JSONUtils.getObjectByName(obj.get("Pokemon").toString(), "assets/pokemon.json"));
+            // Procura o pokemon pelo nome na lista de todos os pokemons
+            pokemonsDisponiveis.stream()
+                .filter(p -> p.getNome().equalsIgnoreCase(this.pokemonName))
+                .findFirst()
+                .ifPresent(this::adicionarPokemon);
         }
-
-        return new LiderGin(nome, regiao, id, pokemon);
     }
 }

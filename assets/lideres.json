@@ -2,37 +2,37 @@
   {
     "Id": 1,
     "Nome": "Mateus",
-    "Regiao": "",
+    "Regiao": "Guadalupe",
     "Pokemon": "Arcanine"
   },
   {
     "Id": 2,
     "Nome": "Vitoria",
-    "Regiao": "",
+    "Regiao": "Valadares",
     "Pokemon": "Vulpix"
   },
   {
     "Id": 3,
     "Nome": "Cael",
-    "Regiao": "",
+    "Regiao": "Boa Viagem",
     "Pokemon": "Tangela"
   },
   {
     "Id": 4,
     "Nome": "Maria",
-    "Regiao": "",
+    "Regiao": "Seropedica",
     "Pokemon": "Alakazam"
   },
   {
     "Id": 5,
     "Nome": "Vania",
-    "Regiao": "",
+    "Regiao": "Niteroi",
     "Pokemon": "Meowth"
   },
   {
     "Id": 6,
     "Nome": "Ash",
-    "Regiao": "",
+    "Regiao": "Misterioso",
     "Pokemon": "random"
   }
 ]

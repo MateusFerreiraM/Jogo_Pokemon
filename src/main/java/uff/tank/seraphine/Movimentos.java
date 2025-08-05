@@ -1,32 +1,30 @@
 package uff.tank.seraphine;
 
+// Assumindo que a classe Movimentos ainda não existe ou pode ser substituída.
+// Se ela tiver mais lógica, podemos adaptar.
 public class Movimentos {
 
-    static enum Categoria { // Esse enum diz respeito somente aos movimentos
-        FISICO,
-        ESPECIAL,
-        STATUS
-    }
+    public enum Categoria { FISICO, ESPECIAL }
 
     private Tipos tipo;
-    public double forca;
-    public Categoria categoria;
+    private double forca; // Renomeado de 'multiplicador' para 'forca'
+    private Categoria categoria;
 
-    public Movimentos(Tipos tipo, Double forca, Categoria categoria) {
-        this.forca = forca;
+    public Movimentos() {}
+
+    public Movimentos(Tipos tipo, double forca, Categoria categoria) {
+        this.tipo = tipo;
+        this.forca = forca; // Ajustado aqui
         this.categoria = categoria;
     }
 
-    public double getForca() {
-        return forca;
-    }
+    // Getters e Setters
+    public Tipos getTipo() { return tipo; }
+    public void setTipo(Tipos tipo) { this.tipo = tipo; }
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
+    public double getForca() { return forca; } // Ajustado aqui
+    public void setForca(double forca) { this.forca = forca; } // Ajustado aqui
 
-    public Tipos getTipo() {
-        return tipo;
-    }
-
+    public Categoria getCategoria() { return categoria; }
+    public void setCategoria(Categoria categoria) { this.categoria = categoria; }
 }

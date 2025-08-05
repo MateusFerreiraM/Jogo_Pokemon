@@ -1,72 +1,64 @@
 package uff.tank.seraphine.telas;
 
+import java.util.Optional;
+import java.util.stream.Collectors;
 import uff.tank.seraphine.Pokemon;
+import uff.tank.seraphine.utils.ConsoleUtils;
 
 public class TelaSelecionarPokemon extends Tela {
+
+    public TelaSelecionarPokemon(TelaContext context) {
+        super(context);
+    }
 
     @Override
     public void mostrarTela() {
         System.out.println("---------- Selecionar Pokémon ----------\n");
-        if (this.contexto.getTreinador().pokemonAtual != null) {
-            System.out.println("Pokémon atual: " + this.contexto.getTreinador().pokemonAtual.getNome());
+        if (this.contexto.getTreinador().getPokemonAtual() != null) {
+            System.out.println("Pokémon atual: " + this.contexto.getTreinador().getPokemonAtual().getNome());
         } else {
-            System.out.println("Você não possuí nenhum Pokémon selecionado!");
+            System.out.println("Você não possui nenhum Pokémon selecionado!");
         }
 
-        System.out.println("\nLista de Pokemons : ");
-        for (Pokemon pkmn : this.contexto.getTreinador().getPokemons()) {
-            System.out.println(pkmn.getId() + " - " + pkmn.getNome() + "/" + pkmn.getTipos());
-        }
-        System.out.println("\nV - Voltar ao menu principal");
-        System.out.println("X - Sair");
-        System.out.print(">");
+        System.out.println("\nSeus Pokémons:");
+        // Itera e exibe a lista de pokémons que o jogador possui
+        this.contexto.getTreinador().getPokemons().forEach(pkmn -> {
+            String tiposFormatados = pkmn.getTipos().stream()
+                    .map(Enum::toString)
+                    .collect(Collectors.joining(" / "));
+            System.out.println(pkmn.getId() + " - " + pkmn.getNome() + " (" + tiposFormatados + ")");
+        });
+
+        System.out.println("\nDigite o ID do Pokémon que deseja como 'Atual'.");
+        System.out.println("V - Voltar ao menu principal");
+        System.out.print("\n>");
 
         String escolha = this.contexto.getUserInput();
 
-        boolean isNumber = false;
+        if (escolha.equalsIgnoreCase("V")) {
+            this.trocarTela(new TelaMenuPrincipal(this.contexto));
+            return;
+        }
 
         try {
-            // Tenta ver se o input é um número que pode ser Id
-            // Se o parse falhar, a string contém letras, logo, não é um Id
-            Integer.parseInt(escolha);
-            isNumber = true;
+            int idEscolhido = Integer.parseInt(escolha);
+            
+            // Usa streams para encontrar o Pokémon de forma mais limpa e eficiente
+            Optional<Pokemon> pokemonEscolhido = this.contexto.getTreinador().getPokemons().stream()
+                .filter(p -> p.getId() == idEscolhido)
+                .findFirst();
+
+            if (pokemonEscolhido.isPresent()) {
+                this.contexto.getTreinador().setPokemonAtual(pokemonEscolhido.get());
+                System.out.println("\n" + pokemonEscolhido.get().getNome() + " foi definido como seu Pokémon atual!");
+                ConsoleUtils.sleep(2000);
+            } else {
+                System.out.println("\nVocê não possui um Pokémon com esse ID.");
+                ConsoleUtils.sleep(1500);
+            }
         } catch (NumberFormatException e) {
-            isNumber = false;
+            System.out.println("\nEntrada inválida. Por favor, digite um ID ou 'V' para voltar.");
+            ConsoleUtils.sleep(1500);
         }
-
-        if (isNumber) {
-            boolean naLista = false;
-            for (Pokemon i : this.contexto.getTreinador().getPokemons()) {
-                if (i.getId() == Integer.parseInt(escolha)) {
-                    this.contexto.getTreinador().setPokemonAtual(i);
-                    naLista = true;
-                    break;
-                }
-            }
-
-            if (!naLista) {
-                System.out.println("Pokémon não encontrado!");
-            }
-        } else {
-            switch (escolha) {
-                case "v":
-                case "V":
-                    this.trocarTela(new TelaMenuPrincipal(this.contexto));
-                    break;
-
-                case "x":
-                case "X":
-                    this.contexto.sairPrograma();
-                    break;
-
-                default:
-                    System.out.println("Por favor insira um valor válido");
-                    break;
-            }
-        }
-    }
-
-    public TelaSelecionarPokemon(TelaContext context) {
-        super(context);
     }
 }
