@@ -117,8 +117,51 @@
     "Ataque" : 52,
     "Defesa" : 43,
     "ImagePath" : null
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "AGUA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "AGUA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Kingler",
+    "Id" : 99,
+    "tipos" : [ "AGUA" ],
+    "HP" : 55,
+    "Ataque" : 130,
+    "Defesa" : 115,
+    "ImagePath" : "Kingler.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "GRAMA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "VENENO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Bulbasaur",
+    "Id" : 1,
+    "tipos" : [ "GRAMA", "VENENO" ],
+    "HP" : 45,
+    "Ataque" : 49,
+    "Defesa" : 49,
+    "ImagePath" : "Bulbasaur.png"
+  }, {
+    "movimentosList" : [ ],
+    "Nome" : "Ditto",
+    "Id" : 132,
+    "tipos" : [ "NORMAL" ],
+    "HP" : 48,
+    "Ataque" : 48,
+    "Defesa" : 48,
+    "ImagePath" : "Ditto.png"
   } ],
-  "PokemonAtualId" : 0
+  "PokemonAtualId" : 1
 }, {
   "Nome" : "afsa",
   "Id" : 4,
@@ -310,6 +353,30 @@
     "Ataque" : 50,
     "Defesa" : 70,
     "ImagePath" : "Electrode.png"
+  }, {
+    "movimentosList" : [ ],
+    "Nome" : "Graveler",
+    "Id" : 75,
+    "tipos" : [ "PEDRA", "TERRA" ],
+    "HP" : 55,
+    "Ataque" : 95,
+    "Defesa" : 115,
+    "ImagePath" : "Graveler.png"
   } ],
-  "PokemonAtualId" : 121
+  "PokemonAtualId" : 16
+}, {
+  "Nome" : "gfadga",
+  "Id" : 5,
+  "Regiao" : "gasgas",
+  "Pokemons" : [ {
+    "movimentosList" : [ ],
+    "Nome" : "Squirtle",
+    "Id" : 7,
+    "tipos" : [ "AGUA" ],
+    "HP" : 44,
+    "Ataque" : 48,
+    "Defesa" : 65,
+    "ImagePath" : "Squirtle.png"
+  } ],
+  "PokemonAtualId" : 0
 } ]

@@ -1,15 +1,20 @@
 package jogo_pokemon.controller;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import jogo_pokemon.App;
 import jogo_pokemon.GerenciadorDados;
 import jogo_pokemon.GerenciadorDeTelas;
@@ -24,16 +29,15 @@ public class TelaMeusPokemonController {
     @FXML private Button btnDefinirAtual;
 
     private Treinador jogador;
+    private GerenciadorDados gerenciador = new GerenciadorDados(); // Adicionado para salvar
 
     @FXML
     public void initialize() {
         this.jogador = App.getTreinadorSessao();
-        btnDefinirAtual.setDisable(true); // Começa desativado
+        btnDefinirAtual.setDisable(true); 
 
         if (jogador != null) {
             atualizarTela();
-
-            // Adiciona um "ouvinte" para ativar o botão quando um item for selecionado
             listaMeusPokemon.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
                 btnDefinirAtual.setDisable(newSelection == null);
             });
@@ -44,16 +48,14 @@ public class TelaMeusPokemonController {
     void onDefinirAtualClick() {
         Pokemon pokemonSelecionado = listaMeusPokemon.getSelectionModel().getSelectedItem();
         if (pokemonSelecionado != null) {
-            // 1. Define o novo Pokémon atual na memória
             jogador.setPokemonAtual(pokemonSelecionado);
-
-            // 2. SALVA A ALTERAÇÃO NO FICHEIRO
+            
+            // Salva a alteração no ficheiro
             try {
-                GerenciadorDados gerenciador = new GerenciadorDados();
                 List<Treinador> todosOsTreinadores = gerenciador.carregarTreinadores();
                 for (int i = 0; i < todosOsTreinadores.size(); i++) {
                     if (todosOsTreinadores.get(i).getId() == jogador.getId()) {
-                        todosOsTreinadores.set(i, jogador); // Substitui o objeto antigo pelo atualizado
+                        todosOsTreinadores.set(i, jogador);
                         break;
                     }
                 }
@@ -64,40 +66,57 @@ public class TelaMeusPokemonController {
                 AlertUtils.mostrarAlerta("Erro ao Salvar", "Não foi possível guardar a alteração: " + e.getMessage());
                 e.printStackTrace();
             }
-
-            // 3. Atualiza a tela para refletir a mudança
+            
             atualizarTela();
         }
     }
 
     private void atualizarTela() {
-        // Atualiza a label do Pokémon atual
         if (jogador.getPokemonAtual() != null) {
             labelPokemonAtual.setText("Atual: " + jogador.getPokemonAtual().getNome());
         } else {
             labelPokemonAtual.setText("Atual: [Nenhum]");
         }
 
-        // Atualiza a lista de Pokémon
         ObservableList<Pokemon> observableList = FXCollections.observableArrayList(jogador.getPokemons());
         listaMeusPokemon.setItems(observableList);
 
-        // Formata a exibição, destacando o Pokémon atual
+        // **A CORREÇÃO ESTÁ AQUI**
         listaMeusPokemon.setCellFactory(param -> new ListCell<Pokemon>() {
+            // Estes elementos são agora criados para CADA CÉLULA, individualmente
+            private final ImageView imageView = new ImageView();
+            private final Label labelInfo = new Label();
+            private final HBox hbox = new HBox(10, imageView, labelInfo);
+            {
+                hbox.setAlignment(Pos.CENTER_LEFT);
+            }
+
             @Override
-            protected void updateItem(Pokemon item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty || item == null) {
+            protected void updateItem(Pokemon pokemon, boolean empty) {
+                super.updateItem(pokemon, empty);
+                if (empty || pokemon == null) {
                     setText(null);
+                    setGraphic(null);
                 } else {
-                    String prefixo = "";
-                    if (item.equals(jogador.getPokemonAtual())) {
-                        prefixo = "★ ATUAL | ";
+                    // Carrega a imagem
+                    try (InputStream stream = App.class.getResourceAsStream("images/" + pokemon.getImagePath())) {
+                        if (stream != null) {
+                            imageView.setImage(new Image(stream));
+                            imageView.setFitHeight(40);
+                            imageView.setFitWidth(40);
+                        }
+                    } catch (Exception e) {
+                        imageView.setImage(null);
                     }
-                    String tiposFormatados = item.getTipos().stream()
+
+                    // Formata o texto
+                    String prefixo = pokemon.equals(jogador.getPokemonAtual()) ? "★ ATUAL | " : "";
+                    String tiposFormatados = pokemon.getTipos().stream()
                             .map(Enum::toString)
                             .collect(Collectors.joining(" / "));
-                    setText(prefixo + item.getNome() + " (HP: " + item.getHpAtual() + "/" + item.getHp() + " | Tipos: " + tiposFormatados + ")");
+                    labelInfo.setText(prefixo + pokemon.getNome() + "\n(HP: " + pokemon.getHpAtual() + "/" + pokemon.getHp() + " | Tipos: " + tiposFormatados + ")");
+                    
+                    setGraphic(hbox);
                 }
             }
         });

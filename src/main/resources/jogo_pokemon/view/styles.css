@@ -1,0 +1,93 @@
+/* Fundo da tela com imagem */
+.menu-root {
+    -fx-background-image: url("/jogo_pokemon/images/menu.png");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+
+/* Título */
+.title-text {
+    -fx-font-family: 'Pokemon Solid', sans-serif;
+    -fx-font-size: 80px;
+    -fx-fill: #FFCC00; 
+    -fx-stroke: #0075BE;
+    -fx-stroke-width: 4;
+}
+
+.subtitle-text {
+    -fx-font-family: 'Pokemon Solid', sans-serif;
+    -fx-font-size: 50px; /* Tamanho da fonte menor */
+    -fx-fill: #FFCC00;
+    -fx-stroke: #0075BE;
+    -fx-stroke-width: 4;
+}
+
+/* Texto padrão */
+.label {
+    -fx-font-family: 'Pokemon Classic', sans-serif; 
+    -fx-font-size: 14px;
+}
+
+/* Botões estilo "Estampas Ilustradas" */
+.button {
+    -fx-font-family: 'Pokemon Classic', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 10px; /* Menor para caber melhor o texto */
+    -fx-text-fill: white;
+
+    /* Fundo gradiente vermelho claro → vermelho escuro */
+    -fx-background-color: linear-gradient(#FB1B1B, #CE2211);
+
+    /* Borda com gradiente azul claro → azul escuro */
+    -fx-border-color: linear-gradient(#0075BE, #0A285F);
+    -fx-border-width: 5px;
+
+    /* Sem cantos arredondados */
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+
+    /* Contorno preto externo */
+    -fx-effect: dropshadow(gaussian, black, 1.5, 0, 0, 0);
+
+    /* Espaçamento interno */
+    -fx-padding: 2px 2px;
+}
+
+/* Efeito hover */
+.button:hover {
+    -fx-background-color: linear-gradient(#ff6666, #cc0000);
+    -fx-border-color: linear-gradient(#66b3ff, #002244);
+    -fx-cursor: hand;
+}
+
+
+/* Estilo para a ListView */
+.list-view {
+    -fx-background-color: #f2f2f2; /* Cor de fundo */
+    -fx-border-color: #0075BE; /* Cor da borda */
+    -fx-border-width: 3px; /* Largura da borda */
+    -fx-border-radius: 5px; /* Cantos arredondados */
+}
+
+/* Estilo para cada célula da lista */
+.list-cell {
+    -fx-background-color: white; /* Cor de fundo das células */
+    -fx-text-fill: #333333; /* Cor do texto */
+    -fx-font-family: 'Pokemon Classic', sans-serif; /* Fonte do texto */
+    -fx-font-size: 14px; /* Tamanho da fonte */
+    -fx-padding: 8px; /* Espaçamento interno */
+    -fx-border-color: #dddddd; /* Borda entre as células */
+    -fx-border-width: 0 0 1px 0;
+}
+
+/* Estilo para a célula quando o mouse está sobre ela */
+.list-cell:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+/* Estilo para a célula selecionada */
+.list-cell:selected {
+    -fx-background-color: #FF6666; /* Um vermelho mais claro */
+    -fx-text-fill: #333333; /* Cor do texto mais escuro, para ser visível */
+}

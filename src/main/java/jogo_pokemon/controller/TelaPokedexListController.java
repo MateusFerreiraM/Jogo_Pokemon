@@ -1,6 +1,7 @@
 package jogo_pokemon.controller;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
@@ -8,6 +9,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.control.Label;
+import jogo_pokemon.App;
 import jogo_pokemon.GerenciadorDados;
 import jogo_pokemon.GerenciadorDeTelas;
 import jogo_pokemon.Pokemon;
@@ -23,24 +29,41 @@ public class TelaPokedexListController {
     @FXML
     public void initialize() {
         try {
-            // Carrega TODOS os pokémons disponíveis
             List<Pokemon> todosOsPokemon = gerenciador.carregarPokemonsDisponiveis();
-
             ObservableList<Pokemon> observableList = FXCollections.observableArrayList(todosOsPokemon);
             listaPokedexCompleta.setItems(observableList);
 
-            // Formata a exibição na lista para ser mais legível
+            // **A ALTERAÇÃO ESTÁ AQUI**
             listaPokedexCompleta.setCellFactory(param -> new ListCell<Pokemon>() {
+                private ImageView imageView = new ImageView();
+                private Label labelInfo = new Label();
+                private HBox hbox = new HBox(10, imageView, labelInfo);
+
                 @Override
-                protected void updateItem(Pokemon item, boolean empty) {
-                    super.updateItem(item, empty);
-                    if (empty || item == null || item.getNome() == null) {
+                protected void updateItem(Pokemon pokemon, boolean empty) {
+                    super.updateItem(pokemon, empty);
+                    if (empty || pokemon == null) {
                         setText(null);
+                        setGraphic(null);
                     } else {
-                        String tiposFormatados = item.getTipos().stream()
+                        // Carrega a imagem
+                        try (InputStream stream = App.class.getResourceAsStream("images/" + pokemon.getImagePath())) {
+                            if (stream != null) {
+                                imageView.setImage(new Image(stream));
+                                imageView.setFitHeight(40);
+                                imageView.setFitWidth(40);
+                            }
+                        } catch (Exception e) {
+                            imageView.setImage(null);
+                        }
+
+                        // Formata o texto
+                        String tiposFormatados = pokemon.getTipos().stream()
                                 .map(Enum::toString)
                                 .collect(Collectors.joining(" / "));
-                        setText(String.format("#%03d - %s (Tipos: %s)", item.getId(), item.getNome(), tiposFormatados));
+                        labelInfo.setText(String.format("#%03d - %s\n(Tipos: %s)", pokemon.getId(), pokemon.getNome(), tiposFormatados));
+                        
+                        setGraphic(hbox);
                     }
                 }
             });
@@ -52,7 +75,6 @@ public class TelaPokedexListController {
 
     @FXML
     void onVoltarClick() throws IOException {
-        // Volta para o menu da Pokédex
         GerenciadorDeTelas.mudarTela("TelaPokedex.fxml");
     }
 }
