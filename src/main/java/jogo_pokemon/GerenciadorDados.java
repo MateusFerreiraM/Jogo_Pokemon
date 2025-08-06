@@ -3,70 +3,66 @@ package jogo_pokemon;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GerenciadorDados {
 
-    private static final String DADOS_TREINADORES = "assets/dados.json";
+    // Caminhos para os ficheiros de recursos (apenas de leitura, dentro de src/main/resources)
+    private static final String POKEMON_RESOURCE_PATH = "/assets/pokemon.json";
+    private static final String LIDERES_RESOURCE_PATH = "/assets/lideres.json";
+
+    // Caminho para o ficheiro de dados do utilizador (leitura e escrita, na raiz do projeto)
+    private static final String SAVE_DATA_PATH = "assets/dados.json";
+
     private final ObjectMapper objectMapper;
 
     public GerenciadorDados() {
         this.objectMapper = new ObjectMapper();
-        // Configura o Jackson para 'pretty print' o JSON, facilitando a leitura
         this.objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
 
-    /**
-     * Carrega a lista de treinadores do arquivo dados.json.
-     * @return Uma lista de Treinadores. Se o arquivo não existir, retorna uma lista vazia.
-     */
-    public List<Treinador> carregarTreinadores() throws IOException {
-        File arquivo = new File(DADOS_TREINADORES);
-        if (!arquivo.exists() || arquivo.length() == 0) {
-            return new ArrayList<>(); // Retorna lista vazia se não existir ou estiver vazio
+    // --- MÉTODOS DE LEITURA DE RECURSOS ---
+
+    private <T> List<T> carregarRecurso(String resourcePath, TypeReference<List<T>> typeReference) throws IOException {
+        try (InputStream inputStream = GerenciadorDados.class.getResourceAsStream(resourcePath)) {
+            if (inputStream == null) {
+                throw new IOException("Ficheiro de recurso não encontrado em: " + resourcePath);
+            }
+            return objectMapper.readValue(inputStream, typeReference);
         }
-        // Converte o array de JSON diretamente para uma Lista de Treinadores
-        return objectMapper.readValue(arquivo, new TypeReference<List<Treinador>>() {});
     }
 
-    /**
-     * Salva a lista completa de treinadores no arquivo dados.json, sobrescrevendo o conteúdo.
-     * @param treinadores A lista de treinadores a ser salva.
-     */
-    public void salvarTreinadores(List<Treinador> treinadores) throws IOException {
-        // Converte a lista de objetos Java para JSON e salva no arquivo
-        objectMapper.writeValue(new File(DADOS_TREINADORES), treinadores);
-    }
-
-    private static final String POKEMON_PATH = "assets/pokemon.json";
-
-    /**
-     * Carrega a lista de todos os Pokémons disponíveis do arquivo pokemon.json.
-     * @return Uma lista de Pokémons.
-     */
     public List<Pokemon> carregarPokemonsDisponiveis() throws IOException {
-        File arquivo = new File(POKEMON_PATH);
-        if (!arquivo.exists()) {
-            throw new IOException("Arquivo de Pokémons não encontrado em: " + POKEMON_PATH);
-        }
-        return objectMapper.readValue(arquivo, new TypeReference<List<Pokemon>>() {});
+        return carregarRecurso(POKEMON_RESOURCE_PATH, new TypeReference<List<Pokemon>>() {});
     }
 
-    private static final String LIDERES_PATH = "assets/lideres.json";
-
-    /**
-     * Carrega a lista de todos os Líderes de Ginásio do arquivo lideres.json.
-     * @return Uma lista de LiderGin.
-     */
     public List<LiderGin> carregarLideres() throws IOException {
-        File arquivo = new File(LIDERES_PATH);
-        if (!arquivo.exists()) {
-            throw new IOException("Arquivo de Líderes não encontrado em: " + LIDERES_PATH);
-        }
-        return objectMapper.readValue(arquivo, new TypeReference<List<LiderGin>>() {});
+        return carregarRecurso(LIDERES_RESOURCE_PATH, new TypeReference<List<LiderGin>>() {});
     }
 
+    // --- MÉTODOS DE LEITURA E ESCRITA DOS DADOS DO UTILIZADOR (NA PASTA DO PROJETO) ---
+
+    public List<Treinador> carregarTreinadores() throws IOException {
+        File arquivoDeDados = new File(SAVE_DATA_PATH);
+
+        if (!arquivoDeDados.exists() || arquivoDeDados.length() == 0) {
+            return new ArrayList<>();
+        }
+        return objectMapper.readValue(arquivoDeDados, new TypeReference<List<Treinador>>() {});
+    }
+
+    public void salvarTreinadores(List<Treinador> treinadores) throws IOException {
+        File arquivoDeDados = new File(SAVE_DATA_PATH);
+        // Garante que a pasta 'assets' na raiz do projeto existe
+        File pastaAssets = arquivoDeDados.getParentFile();
+        if (!pastaAssets.exists()) {
+            pastaAssets.mkdirs();
+        }
+        objectMapper.writeValue(arquivoDeDados, treinadores);
+    }
 }

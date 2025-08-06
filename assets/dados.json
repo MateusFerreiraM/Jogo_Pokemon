@@ -1,0 +1,27 @@
+[ {
+  "Nome" : "a",
+  "Id" : 1,
+  "Regiao" : "a",
+  "Pokemons" : [ {
+    "movimentosList" : [ ],
+    "Nome" : "Charmander",
+    "Id" : 4,
+    "tipos" : [ "FOGO" ],
+    "HP" : 39,
+    "Ataque" : 52,
+    "Defesa" : 43
+  } ]
+}, {
+  "Nome" : "mateus",
+  "Id" : 2,
+  "Regiao" : "teste",
+  "Pokemons" : [ {
+    "movimentosList" : [ ],
+    "Nome" : "Pikachu",
+    "Id" : 25,
+    "tipos" : [ "ELETRICO" ],
+    "HP" : 35,
+    "Ataque" : 55,
+    "Defesa" : 40
+  } ]
+} ]

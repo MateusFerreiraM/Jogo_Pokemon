@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jogo_pokemon.controller.TelaMenuPrincipalController">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <children>
+      <Label fx:id="labelBoasVindas" text="Bem-vindo, [Treinador]!">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button onAction="#onBatalharClick" prefWidth="200.0" text="Batalhar Ginásio" />
+      <Button onAction="#onPokedexClick" prefWidth="200.0" text="Pokédex" />
+      <Button onAction="#onMeusPokemonClick" prefWidth="200.0" text="Meus Pokémon" />
+      <Button onAction="#onSairClick" prefWidth="200.0" text="Sair para Tela Inicial" />
+   </children>
+</VBox>
