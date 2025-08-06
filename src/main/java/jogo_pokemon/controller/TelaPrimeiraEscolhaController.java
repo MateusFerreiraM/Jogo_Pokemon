@@ -1,9 +1,10 @@
 package jogo_pokemon.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import jogo_pokemon.*;
+import jogo_pokemon.utils.AlertUtils; // 1. Importar a nova classe
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -26,46 +27,14 @@ public class TelaPrimeiraEscolhaController {
         }
     }
 
-    // A CORREÇÃO ESTÁ NOS MÉTODOS ABAIXO
-    @FXML
-    void onCharmanderClick() {
-        try {
-            escolherPokemon(4);
-        } catch (IOException e) {
-            tratarIOException(e);
-        }
-    }
+    @FXML void onCharmanderClick() { try { escolherPokemon(4); } catch (IOException e) { tratarIOException(e); } }
+    @FXML void onSquirtleClick() { try { escolherPokemon(7); } catch (IOException e) { tratarIOException(e); } }
+    @FXML void onBulbasaurClick() { try { escolherPokemon(1); } catch (IOException e) { tratarIOException(e); } }
+    @FXML void onPikachuClick() { try { escolherPokemon(25); } catch (IOException e) { tratarIOException(e); } }
 
-    @FXML
-    void onSquirtleClick() {
-        try {
-            escolherPokemon(7);
-        } catch (IOException e) {
-            tratarIOException(e);
-        }
-    }
-
-    @FXML
-    void onBulbasaurClick() {
-        try {
-            escolherPokemon(1);
-        } catch (IOException e) {
-            tratarIOException(e);
-        }
-    }
-
-    @FXML
-    void onPikachuClick() {
-        try {
-            escolherPokemon(25);
-        } catch (IOException e) {
-            tratarIOException(e);
-        }
-    }
-
-    private void escolherPokemon(int pokemonId) throws IOException { // Este método continua a poder lançar o erro
+    private void escolherPokemon(int pokemonId) throws IOException {
         if (novoTreinador == null) {
-            mostrarAlerta("Erro Crítico", "Não foi possível encontrar o treinador da sessão para adicionar o Pokémon.");
+            AlertUtils.mostrarAlerta("Erro Crítico", "Não foi possível encontrar o treinador da sessão para adicionar o Pokémon."); // 2. Usar a nova classe
             return;
         }
 
@@ -81,26 +50,19 @@ public class TelaPrimeiraEscolhaController {
             todosOsTreinadores.add(novoTreinador);
             gerenciador.salvarTreinadores(todosOsTreinadores);
 
-            mostrarAlerta("Sucesso!", novoTreinador.getNome() + " foi criado e o " + pokemonEscolhido.get().getNome() + " foi adicionado à sua equipe!");
+            AlertUtils.mostrarAlerta("Sucesso!", novoTreinador.getNome() + " foi criado e o " + pokemonEscolhido.get().getNome() + " foi adicionado à sua equipe!"); // 2. Usar a nova classe
             
             GerenciadorDeTelas.mudarTela("TelaMenuPrincipal.fxml");
 
         } else {
-             mostrarAlerta("Erro", "O Pokémon com o ID " + pokemonId + " não foi encontrado.");
+             AlertUtils.mostrarAlerta("Erro", "O Pokémon com o ID " + pokemonId + " não foi encontrado."); // 2. Usar a nova classe
         }
     }
 
-    // Método auxiliar para tratar o erro e mostrar um alerta
     private void tratarIOException(IOException e) {
-        mostrarAlerta("Erro de Ficheiro", "Ocorreu um erro ao ler ou salvar os dados: " + e.getMessage());
-        e.printStackTrace(); // Imprime o erro detalhado no terminal para debugging
+        AlertUtils.mostrarAlerta("Erro de Ficheiro", "Ocorreu um erro ao ler ou salvar os dados: " + e.getMessage()); // 2. Usar a nova classe
+        e.printStackTrace();
     }
 
-    private void mostrarAlerta(String titulo, String mensagem) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(titulo);
-        alert.setHeaderText(null);
-        alert.setContentText(mensagem);
-        alert.showAndWait();
-    }
+    // 3. O método privado 'mostrarAlerta' foi removido daqui
 }

@@ -55,6 +55,6 @@ public class TelaConfirmarBatalhaController {
     void onVoltarClick() throws IOException {
         // Limpa o líder selecionado e volta para a tela de escolha
         App.setLiderSelecionado(null);
-        GerenciadorDeTelas.mudarTela("TelaSelecionarTreinador.fxml");
+        GerenciadorDeTelas.mudarTela("TelaEscolherGinasio.fxml");
     }
 }

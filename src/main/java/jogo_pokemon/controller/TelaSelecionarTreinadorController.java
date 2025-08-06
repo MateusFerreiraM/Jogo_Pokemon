@@ -3,14 +3,14 @@ package jogo_pokemon.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import jogo_pokemon.App;
 import jogo_pokemon.GerenciadorDados;
 import jogo_pokemon.GerenciadorDeTelas;
-import jogo_pokemon.Pokemon;
 import jogo_pokemon.Treinador;
+import jogo_pokemon.utils.AlertUtils;
+import jogo_pokemon.Pokemon;
 
 import java.io.IOException;
 import java.util.List;
@@ -43,7 +43,7 @@ public class TelaSelecionarTreinadorController {
             });
             
         } catch (IOException e) {
-            mostrarAlerta("Erro Crítico", "Não foi possível carregar a lista de treinadores: " + e.getMessage());
+            AlertUtils.mostrarAlerta("Erro Crítico", "Não foi possível carregar a lista de treinadores: " + e.getMessage()); // 2. Usar a nova classe
         }
     }
 
@@ -52,17 +52,13 @@ public class TelaSelecionarTreinadorController {
         Treinador treinadorSelecionado = listaTreinadores.getSelectionModel().getSelectedItem();
 
         if (treinadorSelecionado != null) {
-            
-            // **A CORREÇÃO FINAL ESTÁ AQUI**
-            // Para cada Pokémon do treinador carregado, garantimos que os seus movimentos são inicializados.
             for (Pokemon pokemon : treinadorSelecionado.getPokemons()) {
                 pokemon.inicializarMovimentos();
             }
-
             App.setTreinadorSessao(treinadorSelecionado);
             GerenciadorDeTelas.mudarTela("TelaMenuPrincipal.fxml");
         } else {
-            mostrarAlerta("Nenhuma Seleção", "Por favor, selecione um treinador da lista.");
+            AlertUtils.mostrarAlerta("Nenhuma Seleção", "Por favor, selecione um treinador da lista."); // 2. Usar a nova classe
         }
     }
 
@@ -71,11 +67,5 @@ public class TelaSelecionarTreinadorController {
         GerenciadorDeTelas.mudarTela("TelaInicial.fxml");
     }
 
-    private void mostrarAlerta(String titulo, String mensagem) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(titulo);
-        alert.setHeaderText(null);
-        alert.setContentText(mensagem);
-        alert.showAndWait();
-    }
+    // 3. O método privado 'mostrarAlerta' foi removido daqui
 }

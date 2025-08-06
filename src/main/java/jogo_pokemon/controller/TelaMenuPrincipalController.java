@@ -28,15 +28,14 @@ public class TelaMenuPrincipalController {
     }
 
     @FXML
-    void onPokedexClick() {
-        System.out.println("Botão 'Pokédex' clicado!");
-        // Navegação para a tela da pokédex virá aqui
+    void onPokedexClick() throws IOException {
+        // CORREÇÃO: Adiciona a navegação que estava em falta
+        GerenciadorDeTelas.mudarTela("TelaPokedex.fxml");
     }
 
     @FXML
-    void onMeusPokemonClick() {
-        System.out.println("Botão 'Meus Pokémon' clicado!");
-        // Navegação para a tela de seus pokémons virá aqui
+    void onMeusPokemonClick() throws IOException {
+        GerenciadorDeTelas.mudarTela("TelaMeusPokemon.fxml");
     }
 
     @FXML

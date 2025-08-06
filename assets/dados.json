@@ -3,25 +3,110 @@
   "Id" : 1,
   "Regiao" : "a",
   "Pokemons" : [ {
-    "movimentosList" : [ ],
+    "movimentosList" : [ {
+      "tipo" : "FOGO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "FOGO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
     "Nome" : "Charmander",
     "Id" : 4,
     "tipos" : [ "FOGO" ],
     "HP" : 39,
     "Ataque" : 52,
     "Defesa" : 43
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "VENENO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "VENENO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Ekans",
+    "Id" : 23,
+    "tipos" : [ "VENENO" ],
+    "HP" : 35,
+    "Ataque" : 60,
+    "Defesa" : 44
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "NORMAL",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "NORMAL",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Raticate",
+    "Id" : 20,
+    "tipos" : [ "NORMAL" ],
+    "HP" : 55,
+    "Ataque" : 81,
+    "Defesa" : 60
+  }, {
+    "movimentosList" : [ ],
+    "Nome" : "Persian",
+    "Id" : 53,
+    "tipos" : [ "NORMAL" ],
+    "HP" : 65,
+    "Ataque" : 70,
+    "Defesa" : 60
   } ]
 }, {
   "Nome" : "mateus",
   "Id" : 2,
   "Regiao" : "teste",
   "Pokemons" : [ {
-    "movimentosList" : [ ],
+    "movimentosList" : [ {
+      "tipo" : "ELETRICO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "ELETRICO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
     "Nome" : "Pikachu",
     "Id" : 25,
     "tipos" : [ "ELETRICO" ],
     "HP" : 35,
     "Ataque" : 55,
     "Defesa" : 40
+  }, {
+    "movimentosList" : [ ],
+    "Nome" : "Caterpie",
+    "Id" : 10,
+    "tipos" : [ "INSETO" ],
+    "HP" : 45,
+    "Ataque" : 30,
+    "Defesa" : 35
+  } ]
+}, {
+  "Nome" : "hdgj",
+  "Id" : 3,
+  "Regiao" : "hdg",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "FOGO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "FOGO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Charmander",
+    "Id" : 4,
+    "tipos" : [ "FOGO" ],
+    "HP" : 39,
+    "Ataque" : 52,
+    "Defesa" : 43
   } ]
 } ]

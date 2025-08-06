@@ -1,12 +1,13 @@
 package jogo_pokemon.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import jogo_pokemon.App;
 import jogo_pokemon.GerenciadorDados;
 import jogo_pokemon.GerenciadorDeTelas;
 import jogo_pokemon.Treinador;
+import jogo_pokemon.utils.AlertUtils; // 1. Importar a nova classe
+
 import java.io.IOException;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class TelaCriarTreinadorController {
         String regiao = campoRegiao.getText().trim();
 
         if (nome.isEmpty() || regiao.isEmpty()) {
-            mostrarAlerta("Erro de Validação", "Os campos de nome e região não podem estar vazios.");
+            AlertUtils.mostrarAlerta("Erro de Validação", "Os campos de nome e região não podem estar vazios."); // 2. Usar a nova classe
             return;
         }
 
@@ -32,20 +33,15 @@ public class TelaCriarTreinadorController {
                     .anyMatch(t -> t.getNome().equalsIgnoreCase(nome));
 
             if (treinadorExiste) {
-                mostrarAlerta("Erro", "Já existe um treinador com este nome. Por favor, escolha outro.");
+                AlertUtils.mostrarAlerta("Erro", "Já existe um treinador com este nome. Por favor, escolha outro."); // 2. Usar a nova classe
             } else {
-                // SUCESSO! Agora criamos o treinador e avançamos.
                 int novoId = todosOsTreinadores.stream().mapToInt(Treinador::getId).max().orElse(0) + 1;
                 Treinador novoTreinador = new Treinador(nome, regiao, novoId);
-
-                // Guarda o novo treinador na sessão da aplicação
                 App.setTreinadorSessao(novoTreinador);
-
-                // Navega para a próxima tela
                 GerenciadorDeTelas.mudarTela("TelaPrimeiraEscolha.fxml");
             }
         } catch (IOException e) {
-            mostrarAlerta("Erro Crítico", "Não foi possível aceder aos dados dos treinadores: " + e.getMessage());
+            AlertUtils.mostrarAlerta("Erro Crítico", "Não foi possível aceder aos dados dos treinadores: " + e.getMessage()); // 2. Usar a nova classe
         }
     }
 
@@ -53,11 +49,5 @@ public class TelaCriarTreinadorController {
         GerenciadorDeTelas.mudarTela("TelaInicial.fxml");
     }
 
-    private void mostrarAlerta(String titulo, String mensagem) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(titulo);
-        alert.setHeaderText(null);
-        alert.setContentText(mensagem);
-        alert.showAndWait();
-    }
+    // 3. O método privado 'mostrarAlerta' foi removido daqui
 }

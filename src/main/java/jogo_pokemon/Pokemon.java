@@ -94,7 +94,10 @@ public class Pokemon {
     public void setMovimentosList(List<Movimentos> movimentosList) { this.movimentosList = movimentosList; }
 
     public int getHp() { return hp; }
-    public void setHp(int hp) { this.hp = hp; }
+    public void setHp(int hp) {
+        this.hp = hp;
+        this.hpAtual = hp;
+    }
     
     public int getAtaque() { return ataque; }
     public void setAtaque(int ataque) { this.ataque = ataque; }
