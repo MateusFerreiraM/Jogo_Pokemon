@@ -6,17 +6,28 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jogo_pokemon.controller.TelaDerrotaController">
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-   <children>
-      <Label text="DERROTA">
-         <font>
-            <Font name="System Bold" size="36.0" />
-         </font>
-      </Label>
-      <Label text="Treine mais e volte mais forte!" />
-      <Button onAction="#onVoltarAoMenuClick" text="Voltar ao Menu Principal" />
-   </children>
+<VBox alignment="CENTER" spacing="20.0" 
+      prefHeight="400.0" prefWidth="600.0" 
+      xmlns="http://javafx.com/javafx/21" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="jogo_pokemon.controller.TelaDerrotaController"
+      styleClass="derrota-root">
+
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <children>
+        <!-- Título principal da derrota -->
+        <Label text="DERROTA" styleClass="derrota-title" />
+
+        <!-- Mensagem motivacional -->
+        <Label text="Treine mais e volte mais forte!" styleClass="derrota-subtitle" />
+
+        <!-- Frase extra para reforçar o tema Pokémon -->
+        <Label text="Lembre-se: até o Pikachu já perdeu batalhas!" styleClass="derrota-frase" />
+
+        <!-- Botão para voltar -->
+        <Button onAction="#onVoltarAoMenuClick" text="Voltar ao Menu Principal" styleClass="button" />
+    </children>
 </VBox>

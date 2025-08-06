@@ -40,7 +40,7 @@ public class TelaConfirmarBatalha extends Tela {
 
         // Exibe a mensagem de desafio dinâmica
         System.out.println("Saudações, " + this.contexto.getTreinador().getNome() + "!");
-        System.out.println("Você chegou ao ginásio de " + oponente.getRegiao() + "!");
+        System.out.println("Você chegou ao ginásio " + oponente.getRegiao() + "!");
         System.out.println("O líder é " + oponente.getNome() + ", com seu astucioso " + oponente.getPokemonAtual().getNome() + ".");
         System.out.println("Tem certeza que consegue enfrentá-lo?\n");
         System.out.println("1 - Claro! Manda ver!");

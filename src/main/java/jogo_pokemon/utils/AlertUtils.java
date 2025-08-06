@@ -8,6 +8,11 @@ public class AlertUtils {
         alert.setTitle(titulo);
         alert.setHeaderText(null);
         alert.setContentText(mensagem);
+
+        // Aplica o CSS ao DialogPane
+        alert.getDialogPane().getStylesheets().add(
+            AlertUtils.class.getResource("/jogo_pokemon/view/styles.css").toExternalForm());
+
         alert.showAndWait();
     }
 }

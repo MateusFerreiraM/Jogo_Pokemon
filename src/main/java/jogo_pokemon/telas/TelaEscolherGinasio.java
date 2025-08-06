@@ -23,7 +23,7 @@ public class TelaEscolherGinasio extends Tela {
 
             System.out.println("---------- Ginásios Disponíveis ----------\n");
             lideres.forEach(lider -> 
-                System.out.println(lider.getId() + " - Ginásio de " + lider.getRegiao() + " (Líder: " + lider.getNome() + ")")
+                System.out.println(lider.getId() + " - Ginásio " + lider.getRegiao() + " (Líder: " + lider.getNome() + ")")
             );
 
             System.out.println("\nDigite o ID do ginásio para desafiar.");

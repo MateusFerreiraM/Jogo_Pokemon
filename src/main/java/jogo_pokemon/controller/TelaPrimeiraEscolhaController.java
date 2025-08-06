@@ -2,67 +2,119 @@ package jogo_pokemon.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import jogo_pokemon.*;
-import jogo_pokemon.utils.AlertUtils; // 1. Importar a nova classe
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import jogo_pokemon.App;
+import jogo_pokemon.GerenciadorDados;
+import jogo_pokemon.GerenciadorDeTelas;
+import jogo_pokemon.Pokemon;
+import jogo_pokemon.Treinador;
+import jogo_pokemon.utils.AlertUtils;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;
 
 public class TelaPrimeiraEscolhaController {
 
-    @FXML
-    private Label labelBoasVindas;
+    @FXML private Label labelBoasVindas;
+    @FXML private ImageView imgBulbasaur;
+    @FXML private ImageView imgCharmander;
+    @FXML private ImageView imgSquirtle;
+    @FXML private ImageView imgPikachu;
 
+    private Treinador treinador;
     private GerenciadorDados gerenciador = new GerenciadorDados();
-    private Treinador novoTreinador;
 
     @FXML
     public void initialize() {
-        this.novoTreinador = App.getTreinadorSessao();
-        if (this.novoTreinador != null) {
-            labelBoasVindas.setText("Olá, " + this.novoTreinador.getNome() + "! Escolha o seu primeiro Pokémon:");
+        this.treinador = App.getTreinadorSessao();
+        if (this.treinador != null) {
+            String nomeTreinador = this.treinador.getNome();
+            // Para resolver o erro e simplificar, vamos usar um Label
+            labelBoasVindas.setText("Olá, " + nomeTreinador + "! \nSeja bem-vindo(a) ao centro de escolha Pokémon!\nEscolha um dos Pokémons disponíveis em nosso laboratório para iniciar sua jornada.");
         } else {
             labelBoasVindas.setText("Erro: Nenhum treinador encontrado na sessão.");
         }
+
+        carregarImagem(imgBulbasaur, "bulbasaur.png");
+        carregarImagem(imgCharmander, "charmander.png");
+        carregarImagem(imgSquirtle, "squirtle.png");
+        carregarImagem(imgPikachu, "pikachu.png");
     }
 
-    @FXML void onCharmanderClick() { try { escolherPokemon(4); } catch (IOException e) { tratarIOException(e); } }
-    @FXML void onSquirtleClick() { try { escolherPokemon(7); } catch (IOException e) { tratarIOException(e); } }
-    @FXML void onBulbasaurClick() { try { escolherPokemon(1); } catch (IOException e) { tratarIOException(e); } }
-    @FXML void onPikachuClick() { try { escolherPokemon(25); } catch (IOException e) { tratarIOException(e); } }
+    @FXML
+    void onBulbasaurClick() throws IOException {
+        escolherPokemon(1);
+    }
+
+    @FXML
+    void onCharmanderClick() throws IOException {
+        escolherPokemon(4);
+    }
+
+    @FXML
+    void onSquirtleClick() throws IOException {
+        escolherPokemon(7);
+    }
+
+    @FXML
+    void onPikachuClick() throws IOException {
+        escolherPokemon(25);
+    }
 
     private void escolherPokemon(int pokemonId) throws IOException {
-        if (novoTreinador == null) {
-            AlertUtils.mostrarAlerta("Erro Crítico", "Não foi possível encontrar o treinador da sessão para adicionar o Pokémon."); // 2. Usar a nova classe
+        if (treinador == null) {
+            AlertUtils.mostrarAlerta("Erro Crítico", "Não foi possível encontrar o treinador da sessão.");
             return;
         }
 
         List<Pokemon> pokemonsDisponiveis = gerenciador.carregarPokemonsDisponiveis();
-        Optional<Pokemon> pokemonEscolhido = pokemonsDisponiveis.stream()
+        Optional<Pokemon> pokemonEscolhidoOptional = pokemonsDisponiveis.stream()
                 .filter(p -> p.getId() == pokemonId)
                 .findFirst();
 
-        if (pokemonEscolhido.isPresent()) {
-            novoTreinador.adicionarPokemon(pokemonEscolhido.get());
-            
+        if (pokemonEscolhidoOptional.isPresent()) {
+            Pokemon pokemonEscolhido = pokemonEscolhidoOptional.get();
+            pokemonEscolhido.inicializarMovimentos();
+            treinador.adicionarPokemon(pokemonEscolhido);
+
             List<Treinador> todosOsTreinadores = gerenciador.carregarTreinadores();
-            todosOsTreinadores.add(novoTreinador);
+            todosOsTreinadores.add(treinador);
             gerenciador.salvarTreinadores(todosOsTreinadores);
 
-            AlertUtils.mostrarAlerta("Sucesso!", novoTreinador.getNome() + " foi criado e o " + pokemonEscolhido.get().getNome() + " foi adicionado à sua equipe!"); // 2. Usar a nova classe
-            
+            AlertUtils.mostrarAlerta("Parabéns!", "Você escolheu o " + pokemonEscolhido.getNome() + " para ser seu primeiro Pokémon!\nSua jornada como treinador(a) acaba de começar.\nPrepare-se para grandes aventuras!");
             GerenciadorDeTelas.mudarTela("TelaMenuPrincipal.fxml");
-
         } else {
-             AlertUtils.mostrarAlerta("Erro", "O Pokémon com o ID " + pokemonId + " não foi encontrado."); // 2. Usar a nova classe
+            AlertUtils.mostrarAlerta("Erro", "O Pokémon com o ID " + pokemonId + " não foi encontrado.");
         }
     }
 
-    private void tratarIOException(IOException e) {
-        AlertUtils.mostrarAlerta("Erro de Ficheiro", "Ocorreu um erro ao ler ou salvar os dados: " + e.getMessage()); // 2. Usar a nova classe
-        e.printStackTrace();
+    @FXML
+    void onVoltarClick() throws IOException {
+        GerenciadorDeTelas.mudarTela("TelaInicial.fxml");
     }
 
-    // 3. O método privado 'mostrarAlerta' foi removido daqui
+    private void carregarImagem(ImageView imageView, String nomeImagem) {
+        if (nomeImagem != null && !nomeImagem.isEmpty()) {
+            try {
+                String caminhoCompleto = "/jogo_pokemon/images/" + nomeImagem;
+                InputStream stream = getClass().getResourceAsStream(caminhoCompleto);
+                if (stream != null) {
+                    imageView.setImage(new Image(stream));
+                } else {
+                    System.err.println("Imagem não encontrada no caminho: " + caminhoCompleto);
+                    imageView.setImage(null);
+                }
+            } catch (Exception e) {
+                System.err.println("Ocorreu um erro ao carregar a imagem: " + nomeImagem);
+                e.printStackTrace();
+                imageView.setImage(null);
+            }
+        } else {
+            imageView.setImage(null);
+        }
+    }
 }

@@ -38,7 +38,7 @@ public class TelaEscolherGinasioController {
                     if (empty || item == null || item.getNome() == null) {
                         setText(null);
                     } else {
-                        setText("Ginásio de " + item.getRegiao() + " (Líder: " + item.getNome() + ")");
+                        setText("Ginásio " + item.getRegiao() + " (Líder: " + item.getNome() + ")");
                     }
                 }
             });

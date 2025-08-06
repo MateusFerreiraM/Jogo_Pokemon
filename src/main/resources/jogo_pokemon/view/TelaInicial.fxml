@@ -23,9 +23,9 @@
    </padding>
 
    <children>
-      <Text text="Pokemon" styleClass="title-text" />      
-      <Button fx:id="btnSelecionarTreinador" onAction="#onSelecionarTreinadorClick" prefWidth="200.0" text="Selecionar Treinador" />
-      <Button fx:id="btnCriarTreinador" onAction="#onCriarTreinadorClick" prefWidth="200.0" text="Criar Treinador" />
-      <Button fx:id="btnSair" onAction="#onSairClick" prefWidth="200.0" text="Sair" />
+      <Text text="Pokemon" styleClass="title-text" />
+      <Button fx:id="btnSelecionarTreinador" onAction="#onSelecionarTreinadorClick" prefWidth="200.0" text="Selecionar Treinador" styleClass="button button-menu" />
+      <Button fx:id="btnCriarTreinador" onAction="#onCriarTreinadorClick" prefWidth="200.0" text="Criar Treinador" styleClass="button button-menu" />
+      <Button fx:id="btnSair" onAction="#onSairClick" prefWidth="200.0" text="Sair" styleClass="button button-menu" />
    </children>
 </VBox>

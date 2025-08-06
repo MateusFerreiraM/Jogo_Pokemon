@@ -39,7 +39,7 @@ public class TelaVitoriaController {
                 Pokemon novoPokemon = pokemonsDeRecompensa.get(new Random().nextInt(pokemonsDeRecompensa.size()));
                 
                 // Exibe o nome e a imagem do novo Pokémon
-                labelPokemonRecompensa.setText(novoPokemon.getNome() + "!");
+                labelPokemonRecompensa.setText(novoPokemon.getNome());
                 carregarImagem(novoPokemon.getImagePath());
                 
                 jogador.adicionarPokemon(novoPokemon);
