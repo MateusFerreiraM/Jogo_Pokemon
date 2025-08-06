@@ -15,6 +15,8 @@ import jogo_pokemon.GerenciadorDeTelas;
 import jogo_pokemon.Pokemon;
 import jogo_pokemon.Treinador;
 import jogo_pokemon.Movimentos;
+import javafx.scene.image.Image;
+import java.io.InputStream;
 
 public class TelaBatalhaController {
 
@@ -135,14 +137,39 @@ public class TelaBatalhaController {
     }
 
     private void atualizarTela() {
-        // A lógica de atualizar tela continua a mesma
         Pokemon jogador = batalha.getPkmAmigo();
         Pokemon inimigo = batalha.getPkmInimigo();
 
+        // Atualiza informações do jogador
         labelNomeJogador.setText(jogador.getNome() + " (" + jogador.getHpAtual() + "/" + jogador.getHp() + ")");
         barHPJogador.setProgress((double) jogador.getHpAtual() / jogador.getHp());
+        carregarImagem(imgJogador, jogador.getImagePath());
 
+        // Atualiza informações do inimigo
         labelNomeInimigo.setText(inimigo.getNome() + " (" + inimigo.getHpAtual() + "/" + inimigo.getHp() + ")");
         barHPInimigo.setProgress((double) inimigo.getHpAtual() / inimigo.getHp());
+        carregarImagem(imgInimigo, inimigo.getImagePath());
+    }
+
+    // Novo método auxiliar para carregar imagens de forma segura
+    private void carregarImagem(ImageView imageView, String nomeImagem) {
+        if (nomeImagem != null && !nomeImagem.isEmpty()) {
+            try {
+                String caminhoCompleto = "/jogo_pokemon/images/" + nomeImagem;
+                InputStream stream = getClass().getResourceAsStream(caminhoCompleto);
+                if (stream != null) {
+                    imageView.setImage(new Image(stream));
+                } else {
+                    System.err.println("Imagem não encontrada no caminho: " + caminhoCompleto);
+                    imageView.setImage(null); // Limpa a imagem se não for encontrada
+                }
+            } catch (Exception e) {
+                System.err.println("Ocorreu um erro ao carregar a imagem: " + nomeImagem);
+                e.printStackTrace();
+                imageView.setImage(null);
+            }
+        } else {
+            imageView.setImage(null); // Limpa a imagem se o caminho for nulo ou vazio
+        }
     }
 }

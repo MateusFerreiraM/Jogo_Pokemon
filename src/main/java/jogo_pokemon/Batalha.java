@@ -10,7 +10,7 @@ public class Batalha {
     int contEspecial;
     int contEspecialLider;
 
-    // Tabela de vantagens, agora como uma constante estática
+    // A matriz de vantagens continua a mesma
     private static final double[][] VANTAGENS = {
             { 1, 1, 1, 1, 1, 0.5, 1, 0, 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
             { 2, 1, 0.5, 0.5, 1, 2, 0.5, 0, 2, 1, 1, 1, 1, 0.5, 2, 1, 2, 0.5 },
@@ -32,10 +32,10 @@ public class Batalha {
             { 1, 2, 1, 0.5, 1, 1, 1, 1, 0.5, 0.5, 1, 1, 1, 1, 1, 2, 2, 1 }
     };
 
+    // O construtor continua igual
     public Batalha(Pokemon pkmAmigo, Pokemon pkmInimigo) {
         this.pkmAmigo = pkmAmigo;
         this.pkmInimigo = pkmInimigo;
-        // Garante que o HP dos pokémons seja resetado no início de cada batalha
         this.pkmAmigo.setHpAtual(this.pkmAmigo.getHp());
         this.pkmInimigo.setHpAtual(this.pkmInimigo.getHp());
         this.emExecucao = true;
@@ -44,42 +44,70 @@ public class Batalha {
         this.contEspecialLider = 2;
     }
 
+    private int associaTipo(Tipos tipo) {
+        // O método de associação continua igual
+        switch (tipo) {
+            case NORMAL: return 0;
+            case LUTADOR: return 1;
+            case VOADOR: return 2;
+            case VENENO: return 3;
+            case TERRA: return 4;
+            case PEDRA: return 5;
+            case INSETO: return 6;
+            case FANTASMA: return 7;
+            case ACO: return 8;
+            case FOGO: return 9;
+            case AGUA: return 10;
+            case GRAMA: return 11;
+            case ELETRICO: return 12;
+            case PSIQUICO: return 13;
+            case GELO: return 14;
+            case DRAGAO: return 15;
+            case SOMBRIO: return 16;
+            case FADA: return 17;
+            default: return 0;
+        }
+    }
+
+    // *** A CORREÇÃO PRINCIPAL ESTÁ AQUI ***
+    private double getVantagem(Movimentos ataque, Pokemon alvo) {
+        int indiceAtaque = associaTipo(ataque.getTipo());
+        double multiplicadorFinal = 1.0;
+
+        // Itera sobre TODOS os tipos do Pokémon alvo
+        for (Tipos tipoDefensor : alvo.getTipos()) {
+            int indiceDefesa = associaTipo(tipoDefensor);
+            // Multiplica as vantagens (ex: 2x contra um tipo e 0.5x contra outro)
+            multiplicadorFinal *= VANTAGENS[indiceAtaque][indiceDefesa];
+        }
+
+        return multiplicadorFinal;
+    }
+
+    // O resto da classe (atacar, calculoDano, getters, etc.) continua igual
     public void atacar(Pokemon quemAtaca, Pokemon alvo, Movimentos atk) {
         int dano = calculoDano(quemAtaca, alvo, atk);
         alvo.perdeHp(dano);
 
         if (!alvo.estaVivo()) {
             this.emExecucao = false;
-            // Se o alvo derrotado for o inimigo, o jogador venceu.
             this.vitoria = alvo.equals(this.pkmInimigo);
         }
-    }
-
-    private double getVantagem(Movimentos ataque, Pokemon alvo) {
-        // Usa o ordinal() do enum, que já é um número. É mais seguro e limpo.
-        int indiceAtaque = ataque.getTipo().ordinal();
-        int indiceDefesa = alvo.getTipos().get(0).ordinal();
-        return VANTAGENS[indiceAtaque][indiceDefesa];
     }
 
     public int calculoDano(Pokemon quemAtaca, Pokemon alvo, Movimentos atk) {
         double vantagem = getVantagem(atk, alvo);
         int dano;
 
-        // CORREÇÃO: Fórmulas de dano diferenciadas
         if (atk.getCategoria() == Categoria.FISICO) {
-            // Ataque físico foca mais no ataque do atacante
             dano = (int) ((vantagem * quemAtaca.getAtaque() * atk.getForca()) - (alvo.getDefesa() * 0.5));
         } else {
-            // Ataque especial ignora uma parte maior da defesa, mas tem um dano base ligeiramente menor
             dano = (int) ((vantagem * quemAtaca.getAtaque() * (atk.getForca() * 0.8)) - (alvo.getDefesa() * 0.25));
         }
 
-        // Garante que o ataque sempre cause um dano mínimo
         return Math.max(5, dano);
     }
 
-    // Getters e Setters
     public Pokemon getPkmAmigo() { return pkmAmigo; }
     public Pokemon getPkmInimigo() { return pkmInimigo; }
     public boolean getEmExecucao() { return this.emExecucao; }

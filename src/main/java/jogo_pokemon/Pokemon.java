@@ -33,6 +33,9 @@ public class Pokemon {
 
     @JsonIgnore
     private int hpAtual;
+
+    @JsonProperty("ImagePath")
+    private String imagePath;
     
     // Construtor vazio para o Jackson
     public Pokemon() {
@@ -99,6 +102,14 @@ public class Pokemon {
         this.hpAtual = hp;
     }
     
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
     public int getAtaque() { return ataque; }
     public void setAtaque(int ataque) { this.ataque = ataque; }
     

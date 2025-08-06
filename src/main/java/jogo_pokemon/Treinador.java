@@ -1,9 +1,10 @@
 package jogo_pokemon;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty; // Importe a anotação
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Treinador {
 
@@ -19,15 +20,17 @@ public class Treinador {
     @JsonProperty("Pokemons")
     private List<Pokemon> pokemons;
 
+    // NOVO CAMPO: Guarda o ID do Pokémon atual no JSON
+    @JsonProperty("PokemonAtualId")
+    private int pokemonAtualId;
+
     @JsonIgnore
     private Pokemon pokemonAtual;
 
-    // Construtor vazio é necessário para o Jackson
     public Treinador() {
         this.pokemons = new ArrayList<>();
     }
     
-    // Construtor para criar um novo treinador
     public Treinador(String nome, String regiao, int id) {
         this.nome = nome;
         this.regiao = regiao;
@@ -35,59 +38,45 @@ public class Treinador {
         this.pokemons = new ArrayList<>();
     }
 
-    // Getters e Setters para todos os campos que serão salvos no JSON
-    public String getNome() {
-        return nome;
-    }
+    // --- Getters e Setters ---
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    public String getRegiao() { return regiao; }
+    public void setRegiao(String regiao) { this.regiao = regiao; }
+    public List<Pokemon> getPokemons() { return pokemons; }
+    public void setPokemons(List<Pokemon> pokemons) { this.pokemons = pokemons; }
+    public int getPokemonAtualId() { return pokemonAtualId; }
+    public void setPokemonAtualId(int id) { this.pokemonAtualId = id; }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    // --- Lógica Corrigida para o Pokémon Atual ---
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getRegiao() {
-        return regiao;
-    }
-
-    public void setRegiao(String regiao) {
-        this.regiao = regiao;
-    }
-
-    public List<Pokemon> getPokemons() {
-        return pokemons;
-    }
-
-    public void setPokemons(List<Pokemon> pokemons) {
-        this.pokemons = pokemons;
-    }
-
-    // Métodos de negócio (não precisam de setter)
     @JsonIgnore
     public Pokemon getPokemonAtual() {
-        // Lógica para garantir que sempre haja um pokemon atual se a lista não estiver vazia
+        // Se o objeto pokemonAtual ainda não foi definido...
         if (pokemonAtual == null && !pokemons.isEmpty()) {
-            this.pokemonAtual = pokemons.get(0);
+            // ...procura na lista pelo Pokémon com o ID guardado.
+            Optional<Pokemon> encontrado = pokemons.stream()
+                .filter(p -> p.getId() == this.pokemonAtualId)
+                .findFirst();
+            
+            // Se o encontrar, define-o como o atual. Senão, usa o primeiro como fallback.
+            this.pokemonAtual = encontrado.orElse(pokemons.get(0));
         }
         return pokemonAtual;
     }
 
     public void setPokemonAtual(Pokemon pokemon) {
-        // Garante que o pokemon a ser definido como atual esteja na lista do treinador
-        if (this.pokemons.contains(pokemon)) {
+        if (pokemon != null && this.pokemons.contains(pokemon)) {
             this.pokemonAtual = pokemon;
+            this.pokemonAtualId = pokemon.getId(); // Atualiza também o ID a ser guardado
         }
     }
 
     public void adicionarPokemon(Pokemon pokemon) {
         if (this.pokemons.isEmpty()) {
-            this.pokemonAtual = pokemon; // O primeiro a ser adicionado se torna o atual
+            setPokemonAtual(pokemon); // Usa o novo método para definir o primeiro como atual
         }
         this.pokemons.add(pokemon);
     }
