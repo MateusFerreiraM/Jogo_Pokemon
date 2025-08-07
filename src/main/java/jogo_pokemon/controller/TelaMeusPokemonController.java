@@ -15,6 +15,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import jogo_pokemon.App;
 import jogo_pokemon.GerenciadorDados;
 import jogo_pokemon.GerenciadorDeTelas;
@@ -29,7 +31,7 @@ public class TelaMeusPokemonController {
     @FXML private Button btnDefinirAtual;
 
     private Treinador jogador;
-    private GerenciadorDados gerenciador = new GerenciadorDados(); // Adicionado para salvar
+    private GerenciadorDados gerenciador = new GerenciadorDados();
 
     @FXML
     public void initialize() {
@@ -50,7 +52,6 @@ public class TelaMeusPokemonController {
         if (pokemonSelecionado != null) {
             jogador.setPokemonAtual(pokemonSelecionado);
             
-            // Salva a alteração no ficheiro
             try {
                 List<Treinador> todosOsTreinadores = gerenciador.carregarTreinadores();
                 for (int i = 0; i < todosOsTreinadores.size(); i++) {
@@ -61,7 +62,6 @@ public class TelaMeusPokemonController {
                 }
                 gerenciador.salvarTreinadores(todosOsTreinadores);
                 AlertUtils.mostrarAlerta("Sucesso", pokemonSelecionado.getNome() + " é agora o seu Pokémon principal!");
-
             } catch (IOException e) {
                 AlertUtils.mostrarAlerta("Erro ao Salvar", "Não foi possível guardar a alteração: " + e.getMessage());
                 e.printStackTrace();
@@ -81,14 +81,15 @@ public class TelaMeusPokemonController {
         ObservableList<Pokemon> observableList = FXCollections.observableArrayList(jogador.getPokemons());
         listaMeusPokemon.setItems(observableList);
 
-        // **A CORREÇÃO ESTÁ AQUI**
+        // **A CORREÇÃO E MELHORIA ESTÁ AQUI**
         listaMeusPokemon.setCellFactory(param -> new ListCell<Pokemon>() {
-            // Estes elementos são agora criados para CADA CÉLULA, individualmente
             private final ImageView imageView = new ImageView();
-            private final Label labelInfo = new Label();
-            private final HBox hbox = new HBox(10, imageView, labelInfo);
+            private final Text nomeText = new Text();
+            private final Text infoText = new Text();
+            private final VBox textVBox = new VBox(nomeText, infoText);
+            private final HBox cellHBox = new HBox(10, imageView, textVBox);
             {
-                hbox.setAlignment(Pos.CENTER_LEFT);
+                cellHBox.setAlignment(Pos.CENTER_LEFT);
             }
 
             @Override
@@ -102,21 +103,28 @@ public class TelaMeusPokemonController {
                     try (InputStream stream = App.class.getResourceAsStream("images/" + pokemon.getImagePath())) {
                         if (stream != null) {
                             imageView.setImage(new Image(stream));
-                            imageView.setFitHeight(40);
-                            imageView.setFitWidth(40);
+                            imageView.setFitHeight(50);
+                            imageView.setFitWidth(50);
                         }
-                    } catch (Exception e) {
-                        imageView.setImage(null);
-                    }
+                    } catch (Exception e) { imageView.setImage(null); }
 
-                    // Formata o texto
-                    String prefixo = pokemon.equals(jogador.getPokemonAtual()) ? "★ ATUAL | " : "";
+                    // Formata os textos
+                    if (pokemon.equals(jogador.getPokemonAtual())) {
+                        nomeText.setText("\u2605 ATUAL | " + pokemon.getNome()); // ★ = \u2605
+                        nomeText.setStyle("-fx-fill: goldenrod;"); // Define a cor da estrela e do texto
+                    } else {
+                        nomeText.setText(pokemon.getNome());
+                        nomeText.setStyle(""); // Limpa estilo se não for o atual
+                    }
+                    nomeText.getStyleClass().add("list-item-title"); // Reutiliza o estilo do nome do ginásio
+
                     String tiposFormatados = pokemon.getTipos().stream()
                             .map(Enum::toString)
                             .collect(Collectors.joining(" / "));
-                    labelInfo.setText(prefixo + pokemon.getNome() + "\n(HP: " + pokemon.getHpAtual() + "/" + pokemon.getHp() + " | Tipos: " + tiposFormatados + ")");
-                    
-                    setGraphic(hbox);
+                    infoText.setText("HP: " + pokemon.getHpAtual() + "/" + pokemon.getHp() + " | Tipos: " + tiposFormatados);
+                    infoText.getStyleClass().add("list-item-subtitle"); // Reutiliza o estilo do nome do líder
+
+                    setGraphic(cellHBox);
                 }
             }
         });

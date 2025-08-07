@@ -20,29 +20,29 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <Label fx:id="labelBoasVindas" styleClass="boas-vindas-label" wrapText="true" />
+    <Label fx:id="labelBoasVindas" styleClass="label, TelaPrimeiraEscolha-label" wrapText="true" textAlignment="CENTER" />
 
     <HBox alignment="CENTER" spacing="20.0">
-        <VBox alignment="CENTER" spacing="10" styleClass="pokemon-choice">
-            <ImageView fx:id="imgBulbasaur" fitHeight="120.0" fitWidth="120.0" preserveRatio="true" />
-            <Button onAction="#onBulbasaurClick" styleClass="pokebola-button" />
+        <VBox alignment="CENTER" spacing="10" styleClass="choice">
+            <ImageView fx:id="imgBulbasaur" fitHeight="120.0" fitWidth="120.0" preserveRatio="true" styleClass="imagem-com-sombra"/>
+            <Button onAction="#onBulbasaurClick" styleClass="button, TelaPrimeiraEscolha-button" />
         </VBox>
 
-        <VBox alignment="CENTER" spacing="10" styleClass="pokemon-choice">
-            <ImageView fx:id="imgCharmander" fitHeight="120.0" fitWidth="120.0" preserveRatio="true" />
-            <Button onAction="#onCharmanderClick" styleClass="pokebola-button" />
+        <VBox alignment="CENTER" spacing="10" styleClass="choice">
+            <ImageView fx:id="imgCharmander" fitHeight="120.0" fitWidth="120.0" preserveRatio="true" styleClass="imagem-com-sombra"/>
+            <Button onAction="#onCharmanderClick" styleClass="button, TelaPrimeiraEscolha-button" />
         </VBox>
 
-        <VBox alignment="CENTER" spacing="10" styleClass="pokemon-choice">
-            <ImageView fx:id="imgSquirtle" fitHeight="120.0" fitWidth="120.0" preserveRatio="true" />
-            <Button onAction="#onSquirtleClick" styleClass="pokebola-button" />
+        <VBox alignment="CENTER" spacing="10" styleClass="choice">
+            <ImageView fx:id="imgSquirtle" fitHeight="120.0" fitWidth="120.0" preserveRatio="true" styleClass="imagem-com-sombra"/>
+            <Button onAction="#onSquirtleClick" styleClass="button, TelaPrimeiraEscolha-button" />
         </VBox>
 
-        <VBox alignment="CENTER" spacing="10" styleClass="pokemon-choice">
-            <ImageView fx:id="imgPikachu" fitHeight="120.0" fitWidth="120.0" preserveRatio="true" />
-            <Button onAction="#onPikachuClick" styleClass="pokebola-button" />
+        <VBox alignment="CENTER" spacing="10" styleClass="choice">
+            <ImageView fx:id="imgPikachu" fitHeight="120.0" fitWidth="120.0" preserveRatio="true" styleClass="imagem-com-sombra"/>
+            <Button onAction="#onPikachuClick" styleClass="button, TelaPrimeiraEscolha-button" />
         </VBox>
     </HBox>
 
-    <Button onAction="#onVoltarClick" text="Voltar" styleClass="button button-form" />
+    <Button onAction="#onVoltarClick" text="Voltar" styleClass="button, TelaPrimeiraEscolha-button2" />
 </VBox>

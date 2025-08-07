@@ -7,19 +7,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0" styleClass="menu-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jogo_pokemon.controller.TelaMenuPrincipalController">
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0" styleClass="background-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jogo_pokemon.controller.TelaMenuPrincipalController">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <children>
-      <Label fx:id="labelBoasVindas" text="Bem-vindo, [Treinador]!" styleClass="boas-vindas-label">
+      <Label fx:id="labelBoasVindas" text="Bem-vindo, [Treinador]!" styleClass="label, TelaMenuPrincipal-label">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button onAction="#onBatalharClick" prefWidth="200.0" text="Batalhar Ginásio" styleClass="button button-menu" />
-      <Button onAction="#onPokedexClick" prefWidth="200.0" text="Pokédex" styleClass="button button-menu" />
-      <Button onAction="#onMeusPokemonClick" prefWidth="200.0" text="Meus Pokémon" styleClass="button button-menu" />
-      <Button onAction="#onSairClick" prefWidth="200.0" text="Sair para Tela Inicial" styleClass="button button-menu" />
+      <Button onAction="#onBatalharClick" prefWidth="200.0" text="Batalhar" styleClass="button" />
+      <Button onAction="#onPokedexClick" prefWidth="200.0" text="Pokédex" styleClass="button" />
+      <Button onAction="#onMeusPokemonClick" prefWidth="200.0" text="Meus Pokémon" styleClass="button" />
+      <Button onAction="#onSairClick" prefWidth="200.0" text="Sair" styleClass="button" />
    </children>
 </VBox>

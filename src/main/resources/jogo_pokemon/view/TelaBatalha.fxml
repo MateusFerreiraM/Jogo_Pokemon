@@ -11,33 +11,28 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="batalha-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jogo_pokemon.controller.TelaBatalhaController">
     <children>
-        <!-- Painel do Inimigo -->
         <VBox alignment="TOP_RIGHT" spacing="5.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="60.0">
             <children>
-                <Label fx:id="labelNomeInimigo" text="Nome do Inimigo" styleClass="pokemon-info-label" />
+                <Label fx:id="labelNomeInimigo" text="Nome do Inimigo" styleClass="label, TelaBatalha-label" />
                 <ProgressBar fx:id="barHPInimigo" prefWidth="150.0" progress="1.0" styleClass="pokemon-hp-bar" />
             </children>
         </VBox>
 
-        <!-- Imagem do Inimigo -->
-        <ImageView fx:id="imgInimigo" fitHeight="150.0" fitWidth="150.0" preserveRatio="true" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="130.0" /> <!-- aumentei de 100 para 130 -->
+        <ImageView fx:id="imgInimigo" fitHeight="150.0" fitWidth="150.0" preserveRatio="true" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="130.0" styleClass="imagem-com-sombra"/> 
 
-        <!-- Painel do Jogador -->
         <VBox alignment="BOTTOM_LEFT" spacing="5.0" AnchorPane.leftAnchor="40.0" AnchorPane.bottomAnchor="240.0">
             <children>
-               <Label fx:id="labelNomeJogador" text="Nome do Jogador" styleClass="pokemon-info-label" />
+               <Label fx:id="labelNomeJogador" text="Nome do Jogador" styleClass="label, TelaBatalha-label" />
                <ProgressBar fx:id="barHPJogador" prefWidth="150.0" progress="1.0" styleClass="pokemon-hp-bar" />
             </children>
          </VBox>
 
-         <!-- Imagem do Jogador -->
-         <ImageView fx:id="imgJogador" fitHeight="150.0" fitWidth="150.0" preserveRatio="true" AnchorPane.leftAnchor="70.0" AnchorPane.bottomAnchor="80.0" />
+         <ImageView fx:id="imgJogador" fitHeight="150.0" fitWidth="150.0" preserveRatio="true" AnchorPane.leftAnchor="70.0" AnchorPane.bottomAnchor="80.0" styleClass="imagem-com-sombra"/>
 
-        <!-- Botões de Ataque -->
         <HBox alignment="CENTER" spacing="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <Button fx:id="btnAtaqueFisico" onAction="#onAtaqueFisicoClick" text="Ataque Físico" styleClass="button button-form" />
-                <Button fx:id="btnAtaqueEspecial" onAction="#onAtaqueEspecialClick" text="Ataque Especial" styleClass="button button-form" />
+                <Button fx:id="btnAtaqueFisico" onAction="#onAtaqueFisicoClick" text="Ataque Físico" styleClass="button, TelaBatalha-button" />
+                <Button fx:id="btnAtaqueEspecial" onAction="#onAtaqueEspecialClick" text="Ataque Especial" styleClass="button, TelaBatalha-button" />
             </children>
         </HBox>
     </children>

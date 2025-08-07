@@ -10,8 +10,6 @@ import jogo_pokemon.GerenciadorDeTelas;
 import jogo_pokemon.Pokemon;
 import jogo_pokemon.Treinador;
 import jogo_pokemon.utils.AlertUtils;
-import javafx.scene.text.Text;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -33,7 +31,6 @@ public class TelaPrimeiraEscolhaController {
         this.treinador = App.getTreinadorSessao();
         if (this.treinador != null) {
             String nomeTreinador = this.treinador.getNome();
-            // Para resolver o erro e simplificar, vamos usar um Label
             labelBoasVindas.setText("Olá, " + nomeTreinador + "! \nSeja bem-vindo(a) ao centro de escolha Pokémon!\nEscolha um dos Pokémons disponíveis em nosso laboratório para iniciar sua jornada.");
         } else {
             labelBoasVindas.setText("Erro: Nenhum treinador encontrado na sessão.");
@@ -85,7 +82,7 @@ public class TelaPrimeiraEscolhaController {
             todosOsTreinadores.add(treinador);
             gerenciador.salvarTreinadores(todosOsTreinadores);
 
-            AlertUtils.mostrarAlerta("Parabéns!", "Você escolheu o " + pokemonEscolhido.getNome() + " para ser seu primeiro Pokémon!\nSua jornada como treinador(a) acaba de começar.\nPrepare-se para grandes aventuras!");
+            AlertUtils.mostrarAlerta("Parabéns!", "Você escolheu o " + pokemonEscolhido.getNome() + " para ser seu primeiro Pokémon! Sua jornada como treinador(a) acaba de começar. Prepare-se para grandes aventuras!");
             GerenciadorDeTelas.mudarTela("TelaMenuPrincipal.fxml");
         } else {
             AlertUtils.mostrarAlerta("Erro", "O Pokémon com o ID " + pokemonId + " não foi encontrado.");

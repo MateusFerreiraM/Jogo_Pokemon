@@ -3,13 +3,11 @@ package jogo_pokemon.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import jogo_pokemon.App;
 import jogo_pokemon.GerenciadorDados;
 import jogo_pokemon.GerenciadorDeTelas;
@@ -18,6 +16,7 @@ import jogo_pokemon.utils.AlertUtils;
 import jogo_pokemon.Pokemon;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 public class TelaSelecionarTreinadorController {
@@ -27,7 +26,7 @@ public class TelaSelecionarTreinadorController {
 
     private GerenciadorDados gerenciador = new GerenciadorDados();
 
-    @FXML
+   @FXML
     public void initialize() {
         try {
             List<Treinador> treinadores = gerenciador.carregarTreinadores();
@@ -35,6 +34,32 @@ public class TelaSelecionarTreinadorController {
             listaTreinadores.setItems(observableList);
 
             listaTreinadores.setCellFactory(param -> new ListCell<Treinador>() {
+                private final Text nomeKeyText = new Text("Nome: ");
+                private final Text nomeValueText = new Text();
+                private final HBox nomeBox = new HBox(nomeKeyText, nomeValueText);
+
+                private final Text regiaoKeyText = new Text("Região: ");
+                private final Text regiaoValueText = new Text();
+                private final HBox regiaoBox = new HBox(regiaoKeyText, regiaoValueText);
+
+                private final Text pokemonCountKeyText = new Text("Pokémons Capturados: ");
+                private final Text pokemonCountValueText = new Text();
+                private final HBox pokemonCountBox = new HBox(pokemonCountKeyText, pokemonCountValueText);
+                
+                private final VBox cellBox = new VBox(nomeBox, regiaoBox, pokemonCountBox);
+
+                {
+                    nomeKeyText.getStyleClass().add("list-item-key");
+                    regiaoKeyText.getStyleClass().add("list-item-key");
+                    pokemonCountKeyText.getStyleClass().add("list-item-key");
+
+                    nomeValueText.getStyleClass().add("list-item-value");
+                    regiaoValueText.getStyleClass().add("list-item-value");
+                    pokemonCountValueText.getStyleClass().add("list-item-value");
+                    
+                    getStyleClass().add("treinador-list-cell");
+                }
+
                 @Override
                 protected void updateItem(Treinador item, boolean empty) {
                     super.updateItem(item, empty);
@@ -42,28 +67,17 @@ public class TelaSelecionarTreinadorController {
                         setText(null);
                         setGraphic(null);
                     } else {
-                        // Crie os Labels para o nome e a região
-                        Label nomeLabel = new Label(item.getNome());
-                        Label regiaoLabel = new Label("Região: " + item.getRegiao());
-
-                        // Estilize os Labels para combinar com o tema
-                        nomeLabel.setFont(Font.font("Pokemon Classic", FontWeight.BOLD, 14));
-                        nomeLabel.setTextFill(Color.web("#0075BE"));
-
-                        regiaoLabel.setFont(Font.font("Pokemon Classic", 12));
-                        regiaoLabel.setTextFill(Color.web("#555555"));
-
-                        // Crie um VBox para organizar os Labels verticalmente
-                        VBox cellBox = new VBox(nomeLabel, regiaoLabel);
+                        nomeValueText.setText(item.getNome());
+                        regiaoValueText.setText(item.getRegiao());
+                         pokemonCountValueText.setText(String.valueOf(item.getPokemons().size()));
                         
-                        // Defina o VBox como o gráfico da célula
                         setGraphic(cellBox);
-                        setText(null); // Limpe o texto da célula, pois agora estamos usando o gráfico
                     }
                 }
             });
         } catch (IOException e) {
             AlertUtils.mostrarAlerta("Erro Crítico", "Não foi possível carregar a lista de treinadores: " + e.getMessage());
+            listaTreinadores.setItems(FXCollections.observableArrayList(Collections.emptyList()));
         }
     }
 

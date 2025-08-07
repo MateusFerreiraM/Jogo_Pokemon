@@ -8,14 +8,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0" styleClass="menu-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jogo_pokemon.controller.TelaEscolherGinasioController">
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0" styleClass="background-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jogo_pokemon.controller.TelaEscolherGinasioController">
    <padding>
        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <children>
-       <Text text="Escolher Ginásio" styleClass="subtitle-text" />
+       <Text text="Escolher Ginásio" styleClass="title, TelaEscolherGinasio-title" />
        <ListView fx:id="listaGinasios" prefHeight="220.0" prefWidth="400.0" styleClass="list-view-sem-scroll" />
-       <Button onAction="#onConfirmarClick" text="Desafiar" prefWidth="200.0" styleClass="button button-menu" />
-       <Button onAction="#onVoltarClick" text="Voltar ao Menu" prefWidth="200.0" styleClass="button button-menu" />
+       <Button onAction="#onConfirmarClick" text="Batalhar" prefWidth="200.0" styleClass="button" />
+       <Button onAction="#onVoltarClick" text="Voltar ao Menu" prefWidth="200.0" styleClass="button" />
    </children>
 </VBox>

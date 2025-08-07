@@ -15,7 +15,7 @@
       prefHeight="400.0"
       prefWidth="600.0"
       spacing="20.0"
-      styleClass="menu-root"
+      styleClass="background-root"
       xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="jogo_pokemon.controller.TelaCriarTreinadorController">
@@ -25,21 +25,21 @@
     </padding>
 
     <children>
-        <Text text="Novo Treinador" styleClass="subtitle-text" />
+        <Text text="Novo Treinador" styleClass="title, TelaCriarTreinador-title" />
 
         <VBox alignment="CENTER" spacing="5">
-            <Label text="Nome do Treinador:" styleClass="label2" />
-            <TextField fx:id="campoNome" prefWidth="200.0" styleClass="text-field" />
+            <Label text="Nome do Treinador:" styleClass="label, TelaCriarTreinador-label" />
+            <TextField fx:id="campoNome" maxWidth="250.0" styleClass="text-field" />
         </VBox>
 
         <VBox alignment="CENTER" spacing="5">
-            <Label text="Região:" styleClass="label2" />
-            <TextField fx:id="campoRegiao" prefWidth="200.0" styleClass="text-field" />
+            <Label text="Região:" styleClass="label, TelaCriarTreinador-label" />
+            <TextField fx:id="campoRegiao" maxWidth="250.0" styleClass="text-field" />
         </VBox>
 
         <VBox alignment="CENTER" spacing="10">
-            <Button fx:id="btnConfirmar" onAction="#onConfirmarClick" prefWidth="200.0" text="Confirmar" styleClass="button" />
-            <Button fx:id="btnVoltar" onAction="#onVoltarClick" prefWidth="200.0" text="Voltar" styleClass="button" />
+            <Button fx:id="btnConfirmar" onAction="#onConfirmarClick" prefWidth="200.0" text="Confirmar" styleClass="button TelaCriarTreinador-button" />
+            <Button fx:id="btnVoltar" onAction="#onVoltarClick" prefWidth="200.0" text="Voltar" styleClass="button TelaCriarTreinador-button" />
         </VBox>
     </children>
 </VBox>

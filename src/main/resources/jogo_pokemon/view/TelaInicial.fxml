@@ -13,7 +13,7 @@
       prefHeight="400.0"
       prefWidth="600.0"
       spacing="20.0"
-      styleClass="menu-root"
+      styleClass="background-root"
       xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="jogo_pokemon.controller.TelaInicialController">
@@ -23,9 +23,9 @@
    </padding>
 
    <children>
-      <Text text="Pokemon" styleClass="title-text" />
-      <Button fx:id="btnSelecionarTreinador" onAction="#onSelecionarTreinadorClick" prefWidth="200.0" text="Selecionar Treinador" styleClass="button button-menu" />
-      <Button fx:id="btnCriarTreinador" onAction="#onCriarTreinadorClick" prefWidth="200.0" text="Criar Treinador" styleClass="button button-menu" />
-      <Button fx:id="btnSair" onAction="#onSairClick" prefWidth="200.0" text="Sair" styleClass="button button-menu" />
+      <Text text="Pokémon" styleClass="title" />
+      <Button fx:id="btnSelecionarTreinador" onAction="#onSelecionarTreinadorClick" maxWidth="250.0" text="Selecionar Treinador" styleClass="button" />
+      <Button fx:id="btnCriarTreinador" onAction="#onCriarTreinadorClick" maxWidth="250.0" text="Criar Treinador" styleClass="button" />
+      <Button fx:id="btnSair" onAction="#onSairClick" maxWidth="250.0" text="Sair" styleClass="button" />
    </children>
 </VBox>

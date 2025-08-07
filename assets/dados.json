@@ -546,6 +546,1081 @@
     "Ataque" : 90,
     "Defesa" : 120,
     "ImagePath" : "Weezing.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "AGUA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "AGUA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Seaking",
+    "Id" : 119,
+    "tipos" : [ "AGUA" ],
+    "HP" : 80,
+    "Ataque" : 92,
+    "Defesa" : 65,
+    "ImagePath" : "Seaking.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "PSIQUICO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "PSIQUICO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Hypno",
+    "Id" : 97,
+    "tipos" : [ "PSIQUICO" ],
+    "HP" : 85,
+    "Ataque" : 73,
+    "Defesa" : 70,
+    "ImagePath" : "Hypno.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "FOGO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "FOGO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Rapidash",
+    "Id" : 78,
+    "tipos" : [ "FOGO" ],
+    "HP" : 65,
+    "Ataque" : 100,
+    "Defesa" : 70,
+    "ImagePath" : "Rapidash.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "VENENO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "VENENO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Nidorina",
+    "Id" : 30,
+    "tipos" : [ "VENENO" ],
+    "HP" : 70,
+    "Ataque" : 62,
+    "Defesa" : 67,
+    "ImagePath" : "Nidorina.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "INSETO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "VOADOR",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Butterfree",
+    "Id" : 12,
+    "tipos" : [ "INSETO", "VOADOR" ],
+    "HP" : 60,
+    "Ataque" : 45,
+    "Defesa" : 50,
+    "ImagePath" : "Butterfree.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "AGUA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "PSIQUICO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Slowpoke",
+    "Id" : 79,
+    "tipos" : [ "AGUA", "PSIQUICO" ],
+    "HP" : 90,
+    "Ataque" : 65,
+    "Defesa" : 65,
+    "ImagePath" : "Slowpoke.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "INSETO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "VOADOR",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Scyther",
+    "Id" : 123,
+    "tipos" : [ "INSETO", "VOADOR" ],
+    "HP" : 70,
+    "Ataque" : 110,
+    "Defesa" : 80,
+    "ImagePath" : "Scyther.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "FADA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "FADA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Clefable",
+    "Id" : 36,
+    "tipos" : [ "FADA" ],
+    "HP" : 95,
+    "Ataque" : 70,
+    "Defesa" : 73,
+    "ImagePath" : "Clefable.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "FOGO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "VOADOR",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Moltres",
+    "Id" : 146,
+    "tipos" : [ "FOGO", "VOADOR" ],
+    "HP" : 90,
+    "Ataque" : 100,
+    "Defesa" : 90,
+    "ImagePath" : "Moltres.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "NORMAL",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "NORMAL",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Raticate",
+    "Id" : 20,
+    "tipos" : [ "NORMAL" ],
+    "HP" : 55,
+    "Ataque" : 81,
+    "Defesa" : 60,
+    "ImagePath" : "Raticate.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "FANTASMA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "VENENO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Gengar",
+    "Id" : 94,
+    "tipos" : [ "FANTASMA", "VENENO" ],
+    "HP" : 60,
+    "Ataque" : 65,
+    "Defesa" : 60,
+    "ImagePath" : "Gengar.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "ELETRICO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "ACO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Magnemite",
+    "Id" : 81,
+    "tipos" : [ "ELETRICO", "ACO" ],
+    "HP" : 25,
+    "Ataque" : 35,
+    "Defesa" : 70,
+    "ImagePath" : "Magnemite.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "VENENO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "VENENO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Muk",
+    "Id" : 89,
+    "tipos" : [ "VENENO" ],
+    "HP" : 105,
+    "Ataque" : 105,
+    "Defesa" : 75,
+    "ImagePath" : "Muk.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "AGUA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "AGUA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Krabby",
+    "Id" : 98,
+    "tipos" : [ "AGUA" ],
+    "HP" : 30,
+    "Ataque" : 105,
+    "Defesa" : 90,
+    "ImagePath" : "Krabby.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "NORMAL",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "NORMAL",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Lickitung",
+    "Id" : 108,
+    "tipos" : [ "NORMAL" ],
+    "HP" : 90,
+    "Ataque" : 55,
+    "Defesa" : 75,
+    "ImagePath" : "Lickitung.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "TERRA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "TERRA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Sandslash",
+    "Id" : 28,
+    "tipos" : [ "TERRA" ],
+    "HP" : 75,
+    "Ataque" : 100,
+    "Defesa" : 110,
+    "ImagePath" : "Sandslash.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "GRAMA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "PSIQUICO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Exeggcute",
+    "Id" : 102,
+    "tipos" : [ "GRAMA", "PSIQUICO" ],
+    "HP" : 60,
+    "Ataque" : 40,
+    "Defesa" : 80,
+    "ImagePath" : "Exeggcute.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "INSETO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "VENENO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Beedrill",
+    "Id" : 15,
+    "tipos" : [ "INSETO", "VENENO" ],
+    "HP" : 65,
+    "Ataque" : 90,
+    "Defesa" : 40,
+    "ImagePath" : "Beedrill.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "INSETO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "VENENO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Venonat",
+    "Id" : 48,
+    "tipos" : [ "INSETO", "VENENO" ],
+    "HP" : 60,
+    "Ataque" : 55,
+    "Defesa" : 50,
+    "ImagePath" : "Venonat.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "PSIQUICO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "PSIQUICO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Drowzee",
+    "Id" : 96,
+    "tipos" : [ "PSIQUICO" ],
+    "HP" : 60,
+    "Ataque" : 48,
+    "Defesa" : 45,
+    "ImagePath" : "Drowzee.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "AGUA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "AGUA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Blastoise",
+    "Id" : 9,
+    "tipos" : [ "AGUA" ],
+    "HP" : 79,
+    "Ataque" : 83,
+    "Defesa" : 100,
+    "ImagePath" : "Blastoise.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "LUTADOR",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "LUTADOR",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Mankey",
+    "Id" : 56,
+    "tipos" : [ "LUTADOR" ],
+    "HP" : 40,
+    "Ataque" : 80,
+    "Defesa" : 35,
+    "ImagePath" : "Mankey.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "PSIQUICO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "FADA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Mr. Mime",
+    "Id" : 122,
+    "tipos" : [ "PSIQUICO", "FADA" ],
+    "HP" : 40,
+    "Ataque" : 45,
+    "Defesa" : 65,
+    "ImagePath" : "MrMime.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "PSIQUICO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "PSIQUICO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Mew",
+    "Id" : 151,
+    "tipos" : [ "PSIQUICO" ],
+    "HP" : 100,
+    "Ataque" : 100,
+    "Defesa" : 100,
+    "ImagePath" : "Mew.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "AGUA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "GELO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Dewgong",
+    "Id" : 87,
+    "tipos" : [ "AGUA", "GELO" ],
+    "HP" : 90,
+    "Ataque" : 70,
+    "Defesa" : 80,
+    "ImagePath" : "Dewgong.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "NORMAL",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "NORMAL",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Eevee",
+    "Id" : 133,
+    "tipos" : [ "NORMAL" ],
+    "HP" : 55,
+    "Ataque" : 55,
+    "Defesa" : 50,
+    "ImagePath" : "Eevee.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "NORMAL",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "NORMAL",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Porygon",
+    "Id" : 137,
+    "tipos" : [ "NORMAL" ],
+    "HP" : 65,
+    "Ataque" : 60,
+    "Defesa" : 70,
+    "ImagePath" : "Porygon.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "AGUA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "AGUA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Squirtle",
+    "Id" : 7,
+    "tipos" : [ "AGUA" ],
+    "HP" : 44,
+    "Ataque" : 48,
+    "Defesa" : 65,
+    "ImagePath" : "Squirtle.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "NORMAL",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "FADA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Wigglytuff",
+    "Id" : 40,
+    "tipos" : [ "NORMAL", "FADA" ],
+    "HP" : 140,
+    "Ataque" : 70,
+    "Defesa" : 45,
+    "ImagePath" : "Wigglytuff.png"
   } ],
-  "PokemonAtualId" : 101
+  "PokemonAtualId" : 104
+}, {
+  "Nome" : "fasfas",
+  "Id" : 2,
+  "Regiao" : "fas",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "GRAMA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "VENENO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Bulbasaur",
+    "Id" : 1,
+    "tipos" : [ "GRAMA", "VENENO" ],
+    "HP" : 45,
+    "Ataque" : 49,
+    "Defesa" : 49,
+    "ImagePath" : "Bulbasaur.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "VENENO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "VENENO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Ekans",
+    "Id" : 23,
+    "tipos" : [ "VENENO" ],
+    "HP" : 35,
+    "Ataque" : 60,
+    "Defesa" : 44,
+    "ImagePath" : "Ekans.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "AGUA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "AGUA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Blastoise",
+    "Id" : 9,
+    "tipos" : [ "AGUA" ],
+    "HP" : 79,
+    "Ataque" : 83,
+    "Defesa" : 100,
+    "ImagePath" : "Blastoise.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "NORMAL",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "VOADOR",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Pidgeot",
+    "Id" : 18,
+    "tipos" : [ "NORMAL", "VOADOR" ],
+    "HP" : 83,
+    "Ataque" : 80,
+    "Defesa" : 75,
+    "ImagePath" : "Pidgeot.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "DRAGAO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "DRAGAO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Dragonair",
+    "Id" : 148,
+    "tipos" : [ "DRAGAO" ],
+    "HP" : 61,
+    "Ataque" : 84,
+    "Defesa" : 65,
+    "ImagePath" : "Dragonair.png"
+  }, {
+    "movimentosList" : [ ],
+    "Nome" : "Sandshrew",
+    "Id" : 27,
+    "tipos" : [ "TERRA" ],
+    "HP" : 50,
+    "Ataque" : 75,
+    "Defesa" : 85,
+    "ImagePath" : "Sandshrew.png"
+  }, {
+    "movimentosList" : [ ],
+    "Nome" : "Weezing",
+    "Id" : 110,
+    "tipos" : [ "VENENO" ],
+    "HP" : 65,
+    "Ataque" : 90,
+    "Defesa" : 120,
+    "ImagePath" : "Weezing.png"
+  } ],
+  "PokemonAtualId" : 0
+}, {
+  "Nome" : "Vitória Guidine",
+  "Id" : 3,
+  "Regiao" : "Valadares",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "FOGO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "FOGO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Charmander",
+    "Id" : 4,
+    "tipos" : [ "FOGO" ],
+    "HP" : 39,
+    "Ataque" : 52,
+    "Defesa" : 43,
+    "ImagePath" : "Charmander.png"
+  } ],
+  "PokemonAtualId" : 0
+}, {
+  "Nome" : "fas",
+  "Id" : 4,
+  "Regiao" : "fsa",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "FOGO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "FOGO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Charmander",
+    "Id" : 4,
+    "tipos" : [ "FOGO" ],
+    "HP" : 39,
+    "Ataque" : 52,
+    "Defesa" : 43,
+    "ImagePath" : "Charmander.png"
+  } ],
+  "PokemonAtualId" : 0
+}, {
+  "Nome" : "Jorge",
+  "Id" : 5,
+  "Regiao" : "pedro",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "GRAMA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "VENENO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Bulbasaur",
+    "Id" : 1,
+    "tipos" : [ "GRAMA", "VENENO" ],
+    "HP" : 45,
+    "Ataque" : 49,
+    "Defesa" : 49,
+    "ImagePath" : "Bulbasaur.png"
+  } ],
+  "PokemonAtualId" : 0
+}, {
+  "Nome" : "fass",
+  "Id" : 6,
+  "Regiao" : "fas",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "AGUA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "AGUA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Squirtle",
+    "Id" : 7,
+    "tipos" : [ "AGUA" ],
+    "HP" : 44,
+    "Ataque" : 48,
+    "Defesa" : 65,
+    "ImagePath" : "Squirtle.png"
+  }, {
+    "movimentosList" : [ ],
+    "Nome" : "Seaking",
+    "Id" : 119,
+    "tipos" : [ "AGUA" ],
+    "HP" : 80,
+    "Ataque" : 92,
+    "Defesa" : 65,
+    "ImagePath" : "Seaking.png"
+  } ],
+  "PokemonAtualId" : 0
+}, {
+  "Nome" : "a",
+  "Id" : 7,
+  "Regiao" : "a",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "AGUA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "AGUA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Squirtle",
+    "Id" : 7,
+    "tipos" : [ "AGUA" ],
+    "HP" : 44,
+    "Ataque" : 48,
+    "Defesa" : 65,
+    "ImagePath" : "Squirtle.png"
+  } ],
+  "PokemonAtualId" : 0
+}, {
+  "Nome" : "Pedro",
+  "Id" : 8,
+  "Regiao" : "Sampaio",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "FOGO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "FOGO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Charmander",
+    "Id" : 4,
+    "tipos" : [ "FOGO" ],
+    "HP" : 39,
+    "Ataque" : 52,
+    "Defesa" : 43,
+    "ImagePath" : "Charmander.png"
+  } ],
+  "PokemonAtualId" : 0
+}, {
+  "Nome" : "as",
+  "Id" : 9,
+  "Regiao" : "a",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "FOGO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "FOGO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Charmander",
+    "Id" : 4,
+    "tipos" : [ "FOGO" ],
+    "HP" : 39,
+    "Ataque" : 52,
+    "Defesa" : 43,
+    "ImagePath" : "Charmander.png"
+  }, {
+    "movimentosList" : [ ],
+    "Nome" : "Golduck",
+    "Id" : 55,
+    "tipos" : [ "AGUA" ],
+    "HP" : 80,
+    "Ataque" : 82,
+    "Defesa" : 78,
+    "ImagePath" : "Golduck.png"
+  } ],
+  "PokemonAtualId" : 4
+}, {
+  "Nome" : "fs",
+  "Id" : 10,
+  "Regiao" : "fs",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "AGUA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "AGUA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Squirtle",
+    "Id" : 7,
+    "tipos" : [ "AGUA" ],
+    "HP" : 44,
+    "Ataque" : 48,
+    "Defesa" : 65,
+    "ImagePath" : "Squirtle.png"
+  } ],
+  "PokemonAtualId" : 0
+}, {
+  "Nome" : "asd",
+  "Id" : 11,
+  "Regiao" : "as",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "ELETRICO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "ELETRICO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Pikachu",
+    "Id" : 25,
+    "tipos" : [ "ELETRICO" ],
+    "HP" : 35,
+    "Ataque" : 55,
+    "Defesa" : 40,
+    "ImagePath" : "Pikachu.png"
+  } ],
+  "PokemonAtualId" : 0
+}, {
+  "Nome" : "ass",
+  "Id" : 12,
+  "Regiao" : "a",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "AGUA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "AGUA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Squirtle",
+    "Id" : 7,
+    "tipos" : [ "AGUA" ],
+    "HP" : 44,
+    "Ataque" : 48,
+    "Defesa" : 65,
+    "ImagePath" : "Squirtle.png"
+  } ],
+  "PokemonAtualId" : 0
+}, {
+  "Nome" : "ahfd",
+  "Id" : 13,
+  "Regiao" : "a",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "FOGO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "FOGO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Charmander",
+    "Id" : 4,
+    "tipos" : [ "FOGO" ],
+    "HP" : 39,
+    "Ataque" : 52,
+    "Defesa" : 43,
+    "ImagePath" : "Charmander.png"
+  } ],
+  "PokemonAtualId" : 0
+}, {
+  "Nome" : "hjk",
+  "Id" : 14,
+  "Regiao" : "hj",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "FOGO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "FOGO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Charmander",
+    "Id" : 4,
+    "tipos" : [ "FOGO" ],
+    "HP" : 39,
+    "Ataque" : 52,
+    "Defesa" : 43,
+    "ImagePath" : "Charmander.png"
+  } ],
+  "PokemonAtualId" : 0
+}, {
+  "Nome" : "ljk",
+  "Id" : 15,
+  "Regiao" : "ljk",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "AGUA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "AGUA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Squirtle",
+    "Id" : 7,
+    "tipos" : [ "AGUA" ],
+    "HP" : 44,
+    "Ataque" : 48,
+    "Defesa" : 65,
+    "ImagePath" : "Squirtle.png"
+  } ],
+  "PokemonAtualId" : 0
+}, {
+  "Nome" : "fsa",
+  "Id" : 16,
+  "Regiao" : "fsa",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "GRAMA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "VENENO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Bulbasaur",
+    "Id" : 1,
+    "tipos" : [ "GRAMA", "VENENO" ],
+    "HP" : 45,
+    "Ataque" : 49,
+    "Defesa" : 49,
+    "ImagePath" : "Bulbasaur.png"
+  } ],
+  "PokemonAtualId" : 0
+}, {
+  "Nome" : "gfd",
+  "Id" : 17,
+  "Regiao" : "gfd",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "AGUA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "AGUA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Squirtle",
+    "Id" : 7,
+    "tipos" : [ "AGUA" ],
+    "HP" : 44,
+    "Ataque" : 48,
+    "Defesa" : 65,
+    "ImagePath" : "Squirtle.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "VENENO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "VOADOR",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Golbat",
+    "Id" : 42,
+    "tipos" : [ "VENENO", "VOADOR" ],
+    "HP" : 75,
+    "Ataque" : 80,
+    "Defesa" : 70,
+    "ImagePath" : "Golbat.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "AGUA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "AGUA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Shellder",
+    "Id" : 90,
+    "tipos" : [ "AGUA" ],
+    "HP" : 30,
+    "Ataque" : 65,
+    "Defesa" : 100,
+    "ImagePath" : "Shellder.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "ELETRICO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "ACO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Magneton",
+    "Id" : 82,
+    "tipos" : [ "ELETRICO", "ACO" ],
+    "HP" : 50,
+    "Ataque" : 60,
+    "Defesa" : 95,
+    "ImagePath" : "Magneton.png"
+  } ],
+  "PokemonAtualId" : 90
+}, {
+  "Nome" : "ljkljk",
+  "Id" : 18,
+  "Regiao" : "ljk",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "ELETRICO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "ELETRICO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Pikachu",
+    "Id" : 25,
+    "tipos" : [ "ELETRICO" ],
+    "HP" : 35,
+    "Ataque" : 55,
+    "Defesa" : 40,
+    "ImagePath" : "Pikachu.png"
+  }, {
+    "movimentosList" : [ ],
+    "Nome" : "Charmeleon",
+    "Id" : 5,
+    "tipos" : [ "FOGO" ],
+    "HP" : 58,
+    "Ataque" : 64,
+    "Defesa" : 58,
+    "ImagePath" : "Charmeleon.png"
+  }, {
+    "movimentosList" : [ ],
+    "Nome" : "Magneton",
+    "Id" : 82,
+    "tipos" : [ "ELETRICO", "ACO" ],
+    "HP" : 50,
+    "Ataque" : 60,
+    "Defesa" : 95,
+    "ImagePath" : "Magneton.png"
+  }, {
+    "movimentosList" : [ ],
+    "Nome" : "Magmar",
+    "Id" : 126,
+    "tipos" : [ "FOGO" ],
+    "HP" : 65,
+    "Ataque" : 95,
+    "Defesa" : 57,
+    "ImagePath" : "Magmar.png"
+  }, {
+    "movimentosList" : [ ],
+    "Nome" : "Fearow",
+    "Id" : 22,
+    "tipos" : [ "NORMAL", "VOADOR" ],
+    "HP" : 65,
+    "Ataque" : 90,
+    "Defesa" : 65,
+    "ImagePath" : "Fearow.png"
+  } ],
+  "PokemonAtualId" : 0
 } ]

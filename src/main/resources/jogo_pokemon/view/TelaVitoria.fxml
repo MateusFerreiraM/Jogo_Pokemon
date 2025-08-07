@@ -5,33 +5,35 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER_LEFT" prefHeight="400.0" prefWidth="600.0" spacing="10.0" 
+<VBox alignment="CENTER_LEFT" prefHeight="400.0" prefWidth="600.0" spacing="10.0"
+      stylesheets="@styles.css" 
+      styleClass="vitoria-root" 
       xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
-      fx:controller="jogo_pokemon.controller.TelaVitoriaController"
-      styleClass="vitoria-root">
-      
+      fx:controller="jogo_pokemon.controller.TelaVitoriaController">
+    
     <padding>
         <Insets bottom="20.0" left="30.0" right="20.0" top="20.0" />
     </padding>
 
     <children>
-        <Label text="VITÓRIA!" styleClass="vitoria-title" />
+        <Text styleClass="title, TelaVitoria-tttle" text="VITÓRIA" textAlignment="LEFT" />
+        
+        <Label styleClass="label, TelaVitoria-label" text="Como recompensa, você recebeu um:" />
 
-        <Label text="Como recompensa, você recebeu um" styleClass="vitoria-subtitle" />
-
-        <ImageView fx:id="imgPokemonRecompensa" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="imgPokemonRecompensa" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" styleClass="imagem-com-sombra">
             <VBox.margin>
-                <Insets left="15.0" />
+                <Insets left="55.0" />
             </VBox.margin>
         </ImageView>
 
-        <Label fx:id="labelPokemonRecompensa" text="[Pokémon]" styleClass="pokemon-recompensa-nome">
+        <Text fx:id="textPokemonRecompensa" styleClass="title, TelaVitoria-title2" text="[Pokémon]" textAlignment="LEFT">
             <VBox.margin>
-                <Insets left="30.0" />
+                <Insets left="70.0" />
             </VBox.margin>
-        </Label>
+        </Text>
 
-        <Button onAction="#onVoltarAoMenuClick" text="Voltar ao Menu Principal" styleClass="button, button-vitoria" />
+        <Button onAction="#onVoltarAoMenuClick" text="Voltar ao Menu Principal" styleClass="button, TelaVitoria-button"/>
     </children>
 </VBox>

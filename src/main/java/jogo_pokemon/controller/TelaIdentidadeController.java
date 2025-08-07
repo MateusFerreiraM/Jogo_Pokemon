@@ -2,17 +2,18 @@ package jogo_pokemon.controller;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.text.Text; // Importar Text em vez de Label
 import jogo_pokemon.App;
 import jogo_pokemon.GerenciadorDeTelas;
 import jogo_pokemon.Treinador;
 
 public class TelaIdentidadeController {
 
-    @FXML private Label labelNome;
-    @FXML private Label labelId;
-    @FXML private Label labelRegiao;
-    @FXML private Label labelQtdPokemon;
+    // CORRIGIDO para Text
+    @FXML private Text labelNome;
+    @FXML private Text labelId;
+    @FXML private Text labelRegiao;
+    @FXML private Text labelQtdPokemon;
 
     @FXML
     public void initialize() {
@@ -27,6 +28,6 @@ public class TelaIdentidadeController {
 
     @FXML
     void onVoltarClick() throws IOException {
-        GerenciadorDeTelas.mudarTela("TelaPokedex.fxml"); // Volta para o menu da Pokédex
+        GerenciadorDeTelas.mudarTela("TelaPokedex.fxml");
     }
 }

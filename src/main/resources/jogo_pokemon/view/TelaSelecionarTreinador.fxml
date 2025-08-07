@@ -10,7 +10,8 @@
       prefHeight="400.0"
       prefWidth="600.0"
       spacing="15.0"
-      styleClass="menu-root"
+      styleClass="background-root"
+      stylesheets="@styles.css"
       xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="jogo_pokemon.controller.TelaSelecionarTreinadorController">
@@ -19,8 +20,10 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <Text text="Selecionar Treinador" styleClass="subtitle-text" /> <ListView fx:id="listaTreinadores" prefHeight="200.0" styleClass="list-view" />
+    <Text text="Selecionar Treinador" styleClass="title, TelaSelecionarTreinador-title" /> 
 
-    <Button fx:id="btnConfirmar" onAction="#onConfirmarClick" text="Confirmar" prefWidth="200.0" />
-    <Button fx:id="btnVoltar" onAction="#onVoltarClick" text="Voltar" prefWidth="200.0" />
+    <ListView fx:id="listaTreinadores" prefHeight="200.0" styleClass="list-view" />
+
+    <Button fx:id="btnConfirmar" onAction="#onConfirmarClick" text="Confirmar" styleClass="button"/>
+    <Button fx:id="btnVoltar" onAction="#onVoltarClick" text="Voltar" styleClass="button"/>
 </VBox>

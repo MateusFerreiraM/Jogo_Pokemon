@@ -1,112 +1,53 @@
-/* Fundo da tela com imagem */
-.menu-root {
+.background-root {
    -fx-background-image: url("/jogo_pokemon/images/menu.png");
    -fx-background-size: cover;
-   -fx-background-position: center center;
-   -fx-background-repeat: no-repeat;
 }
 
-/* Título */
-.title-text {
-   -fx-font-family: 'Pokemon Solid', sans-serif;
-   -fx-font-size: 80px;
-   -fx-fill: #FFCC00;
-   -fx-stroke: #0075BE;
-   -fx-stroke-width: 4;
+.imagem-com-sombra {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 1), 40, 0, 0, 10);
 }
 
-.subtitle-text {
-   -fx-font-family: 'Pokemon Solid', sans-serif;
-   -fx-font-size: 50px; /* Tamanho da fonte menor */
-   -fx-fill: #FFCC00;
-   -fx-stroke: #0075BE;
-   -fx-stroke-width: 4;
-}
-
-.subtitle-text-inline {
-   -fx-font-family: 'Pokemon Classic', sans-serif;
-   -fx-font-size: 20px;
-   -fx-text-fill: black;
-}
-
-/* Texto padrão */
-.label {
-   -fx-font-family: 'Pokemon Classic', sans-serif;
-   -fx-font-size: 14px;
-   -fx-fill: white;
-   -fx-stroke: black; /* Adiciona um contorno preto */
-   -fx-stroke-width: 1; /* Largura do contorno */
-}
-
-.label2 {
-   -fx-font-family: 'Pokemon Classic', sans-serif;
-   -fx-font-size: 14px;
-   -fx-text-fill: white; /* Cor do texto */
-   -fx-background-color: rgba(0, 0, 0, 0.5); /* Fundo preto semitransparente */
-   -fx-padding: 5px; /* Espaçamento interno */
-   -fx-background-radius: 5px; /* Cantos arredondados */
-}
-
-/* Estilo para o nome do treinador em destaque */
-.nome-destaque {
-   -fx-font-family: 'Pokemon Solid', sans-serif;
-   -fx-font-size: 30px;
-   -fx-fill: #FFCC00;
-   -fx-stroke: #0075BE;
-   -fx-stroke-width: 2;
-}
-
-/* Botões estilo "Estampas Ilustradas" */
 .button {
    -fx-font-family: 'Pokemon Classic', sans-serif;
    -fx-font-weight: bold;
-   -fx-font-size: 10px; /* Menor para caber melhor o texto */
+   -fx-font-size: 18px;
    -fx-text-fill: white;
-
-   /* Fundo gradiente vermelho claro → vermelho escuro */
-   -fx-background-color: linear-gradient(#FB1B1B, #CE2211);
-
-   /* Borda com gradiente azul claro → azul escuro */
+   -fx-background-color: linear-gradient(#fc0000, #420c07);
    -fx-border-color: linear-gradient(#0075BE, #0A285F);
    -fx-border-width: 5px;
-
-   /* Sem cantos arredondados */
    -fx-border-radius: 0;
    -fx-background-radius: 0;
-
-   /* Contorno preto externo */
-   -fx-effect: null; /* Removido o dropshadow */
-
-   /* Espaçamento interno */
-   -fx-padding: 2px 2px 5px 2px; /* Ajusta o padding inferior para compensar */
+   -fx-padding: 2px 2px 5px 2px;
 }
 
-/* Efeito hover */
-.button:hover {
-   -fx-background-color: linear-gradient(#ff6666, #cc0000);
-   -fx-border-color: linear-gradient(#66b3ff, #002244);
-   -fx-cursor: hand;
+.title {
+   -fx-font-family: 'Pokemon Solid', sans-serif;
+   -fx-font-size: 90px;
+   -fx-fill: #FFCC00;
+   -fx-stroke: #0075BE;
+   -fx-stroke-width: 5;
 }
 
-/* Classe para botões do menu principal (fonte pequena) */
-.button-menu {
-   -fx-font-size: 10px;
-}
-
-/* Classe para botões de formulário (fonte maior) */
-.button-form {
+.label {
+   -fx-font-family: 'Pokemon Classic', sans-serif;
    -fx-font-size: 14px;
+   -fx-text-fill: white;
+   -fx-background-color: rgba(0, 0, 0, 0.5);
+   -fx-padding: 5px;
+   -fx-background-radius: 5px;
 }
 
-/* Estilo para a ListView */
+.choice {
+   -fx-background-color: transparent;
+   -fx-padding: 10px;
+}
+
 .list-view {
-   -fx-background-color: #f2f2f2; /* Cor de fundo */
-   -fx-border-color: #0075BE; /* Cor da borda */
-   -fx-border-width: 3px; /* Largura da borda */
-   -fx-border-radius: 5px; /* Cantos arredondados */
+    -fx-border-color: #FF0000;
+    -fx-border-width: 3px;
+    -fx-background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* Estilo para cada célula da lista */
 .list-cell {
    -fx-background-color: white; /* Cor de fundo das células */
    -fx-text-fill: #333333; /* Cor do texto */
@@ -128,44 +69,44 @@
    -fx-text-fill: #333333; /* Cor do texto mais escuro, para ser visível */
 }
 
-.text-field {
-   -fx-max-width: 300px; /* Reduz a largura máxima */
-   -fx-prompt-text-fill: gray;
+.list-view-sem-scroll {
    -fx-font-family: 'Pokemon Classic', sans-serif;
    -fx-font-size: 14px;
-}
-
-.dialog-pane {
-   -fx-background-color: #f0f0f0;
-   -fx-border-color: #0075BE;
+   -fx-background-color: transparent;
+   -fx-border-color: red;
    -fx-border-width: 2px;
+   -fx-pref-height: 220px;
+   -fx-pref-width: 400px;
+   -fx-padding: 0;
+   -fx-background-insets: 0;
 }
 
-.dialog-pane > .header-panel {
-   -fx-background-color: #0075BE;
+.list-view-sem-scroll .scroll-bar:vertical, .list-view-sem-scroll .scroll-bar:horizontal {
+   -fx-opacity: 0;
+   -fx-pref-width: 0;
+   -fx-pref-height: 0;
 }
 
-.dialog-pane > .header-panel > .label {
-   -fx-font-family: 'Pokemon Classic', sans-serif;
-   -fx-font-size: 16px;
-   -fx-text-fill: white;
+/* ===== Tela Criar Treinador ===== */
+/* title */
+.TelaCriarTreinador-title {
+   -fx-font-size: 50px;
+   -fx-stroke-width: 4;
 }
 
-.dialog-pane > .content.label {
-   -fx-font-family: 'Pokemon Classic', sans-serif;
-   -fx-font-size: 14px;
-   -fx-text-fill: #333333;
+/* label */
+.TelaCriarTreinador-label {
+   -fx-border-color: red;
+   -fx-border-width: 2px;
+   -fx-border-radius: 5px;
 }
 
-.dialog-pane .button {
-   -fx-font-family: 'Pokemon Classic', sans-serif;
-   -fx-font-weight: bold;
-   -fx-font-size: 12px;
-   -fx-background-color: linear-gradient(#FB1B1B, #CE2211);
-   -fx-text-fill: white;
+/* Button */
+.TelaCriarTreinador-button {
+   -fx-font-size: 15px;
 }
 
-/* Fundo para a tela de primeira escolha */
+/* ===== Tela Primeira Escolha ===== */
 .escolha-root {
    -fx-background-image: url("/jogo_pokemon/images/escolha.png");
    -fx-background-size: cover;
@@ -173,14 +114,16 @@
    -fx-background-repeat: no-repeat;
 }
 
-/* Estilo para as caixas de escolha dos Pokémon (sem bordas ou efeitos de hover) */
-.pokemon-choice {
-   -fx-background-color: transparent;
+/* Label */
+.TelaPrimeiraEscolha-label {
    -fx-padding: 10px;
+   -fx-border-color: #FB1B1B;
+   -fx-border-width: 2px;
+   -fx-border-radius: 5px;
 }
 
-/* Estilo para o botão de pokebola (removida a borda) */
-.pokebola-button {
+/* Button */
+.TelaPrimeiraEscolha-button {
    -fx-background-image: url("/jogo_pokemon/images/pokebola.png");
    -fx-background-size: cover;
    -fx-background-repeat: no-repeat;
@@ -191,57 +134,60 @@
    -fx-pref-height: 40px;
 }
 
-/* Efeito hover apenas no botão da pokebola */
-.pokebola-button:hover {
+.TelaPrimeiraEscolha-button2{
+   -fx-font-size: 14px;
+   -fx-padding: 3px 10px
+}
+
+/* Button Hover */
+.TelaPrimeiraEscolha-button:hover {
    -fx-cursor: hand;
-   -fx-background-color: transparent; /* Remove a cor de fundo no hover */
-   -fx-border-color: transparent; /* Remove a cor da borda no hover */
+   -fx-background-color: transparent;
+   -fx-border-color: transparent;
    -fx-scale-x: 1.1;
    -fx-scale-y: 1.1;
 }
 
-.pokemon-nome {
-   -fx-font-family: 'Pokemon Classic', sans-serif;
-   -fx-font-size: 14px;
-   -fx-text-fill: #333333;
+/* ===== Tela Menu Principal ===== */
+/* button */
+.button {
+   -fx-font-size: 13px;
 }
 
-/* Nova classe para o Label de boas-vindas do menu */
-.boas-vindas-label {
-   -fx-font-family: 'Pokemon Classic', sans-serif;
+/* Label */
+.TelaMenuPrincipal-label {
    -fx-font-size: 18px;
-   -fx-text-fill: white;
-   -fx-background-color: rgba(0, 0, 0, 0.5);
    -fx-padding: 10px;
-   -fx-background-radius: 5px;
    -fx-border-color: #FB1B1B;
    -fx-border-width: 2px;
    -fx-border-radius: 5px;
 }
 
-/* Alterando o estilo do Label de boas-vindas do menu para usar a nova classe */
-.boas-vindas-label > .text {
-   -fx-fill: white;
+/* ===== Tela Escolher Ginasio ===== */
+/* title */
+.TelaEscolherGinasio-title {
+   -fx-font-size: 50px;
+   -fx-stroke-width: 4;
 }
 
-/* Classe para a ListView sem a barra de rolagem */
-.list-view-sem-scroll {
-   -fx-background-color: transparent;
-   -fx-border-color: red; /* Adiciona a borda vermelha */
+/* ===== Tela Confirmar Batalha ===== */
+/* Label */
+.TelaConfirmarBatalha-label {
+   -fx-font-size: 18px;
+   -fx-text-fill: white;
+   -fx-padding: 10px;
+   -fx-border-color: #FB1B1B;
    -fx-border-width: 2px;
-   -fx-pref-height: 220px; /* Aumentado para caber mais itens */
-   -fx-pref-width: 400px;
-   -fx-padding: 0;
-   -fx-background-insets: 0;
+   -fx-border-radius: 5px;
 }
 
-/* Oculta as barras de rolagem vertical e horizontal */
-.list-view-sem-scroll .scroll-bar:vertical, .list-view-sem-scroll .scroll-bar:horizontal {
-   -fx-opacity: 0;
-   -fx-pref-width: 0;
-   -fx-pref-height: 0;
+/* button */
+.TelaConfirmarBatalha-button {
+   -fx-font-size: 14px;
 }
 
+/* ===== Tela Batalha ===== */
+/* root */
 .batalha-root {
     -fx-background-image: url("/jogo_pokemon/images/battle.png");
     -fx-background-size: cover;
@@ -249,68 +195,32 @@
     -fx-background-repeat: no-repeat;
 }
 
-/* Estilo para os rótulos de informações dos Pokémon */
-.pokemon-info-label {
-    -fx-font-family: 'Pokemon Classic', sans-serif;
-    -fx-font-size: 14px;
+/* Label */
+.TelaBatalha-label {
+    -fx-background-color: black;
+    -fx-border-color: red;
+    -fx-border-width: 1.5px;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-padding: 4 8 4 8;
     -fx-text-fill: white;
-    -fx-stroke: black;
-    -fx-stroke-width: 1;
-    -fx-background-color: rgba(0, 0, 0, 0.5);
-    -fx-padding: 5px;
-    -fx-background-radius: 5px;
 }
-
-/* Estilo para a barra de progresso (HP) */
+/* hp-bar */
 .pokemon-hp-bar {
-    -fx-accent: #00ff00; /* Cor verde para a barra */
-    -fx-control-inner-background: #666666; /* Fundo cinza */
+    -fx-accent: #00ff00;
+    -fx-control-inner-background: #666666;
     -fx-border-color: black;
     -fx-border-width: 1px;
     -fx-border-radius: 5px;
 }
 
-/* Estilo para a barra de progresso (HP) */
-.progress-bar {
-    -fx-accent: #00ff00; /* Cor verde para a barra */
-    -fx-control-inner-background: #666666; /* Fundo cinza */
+/* button */
+.TelaBatalha-button {
+   -fx-font-size: 14px;
 }
 
-/* Título DERROTA */
-.derrota-title {
-    -fx-font-family: 'Pokemon Solid', sans-serif;
-    -fx-font-size: 90px;
-    -fx-text-fill: #FF0000; /* Cor do preenchimento do texto */
-    -fx-stroke-width: 0;   /* Zeramos o stroke antigo para não ter conflito */
-    -fx-effect: dropshadow(gaussian, black, 2, 1.0, 0, 0);
-}
-
-/* Subtítulo "Treine mais e volte mais forte!" */
-.derrota-subtitle {
-    -fx-font-family: 'Pokemon Classic', sans-serif;
-    -fx-font-size: 22px;
-    -fx-text-fill: white;
-    -fx-background-color: rgba(0, 0, 0, 0.5);
-    -fx-padding: 8px 15px;
-    -fx-background-radius: 10px;
-    -fx-border-color: red;
-    -fx-border-width: 2px;
-    -fx-border-radius: 10px;
-}
-
-/* Frase adicional */
-.derrota-frase {
-    -fx-font-family: 'Pokemon Classic', sans-serif;
-    -fx-font-size: 16px;
-    -fx-text-fill: yellow;
-    -fx-effect: dropshadow( gaussian , black , 5 , 0.5 , 2 , 2 );
-}
-
-.button-derrota:hover {
-    -fx-background-color: linear-gradient(#FF7777, #CC0000);
-    -fx-cursor: hand;
-}
-
+/* ===== Tela Derrota ===== */
+/* root */
 .derrota-root {
     -fx-background-image: url("/jogo_pokemon/images/derrota.png");
     -fx-background-size: cover; /* Ajusta a imagem para cobrir todo o espaço */
@@ -318,184 +228,216 @@
     -fx-background-position: center;
 }
 
-/* ==========================================================================
-   Estilos da Tela de Vitória
-   ========================================================================== */
+/* title */
+.TelaDerrota-title {
+    -fx-font-family: 'Pokemon Solid', sans-serif;
+    -fx-font-size: 90px;
+    -fx-fill: red;
+    -fx-stroke: black;
+    -fx-stroke-width: 3;
+}
 
-/* Imagem de fundo da tela de vitória */
+/* label */
+.TelaDerrota-label {
+    -fx-font-size: 22px;
+    -fx-padding: 8px 15px;
+    -fx-background-radius: 10px;
+    -fx-border-color: red;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+}
+
+/* label */
+.TelaDerrota-label2 {
+    -fx-font-size: 14px;
+    -fx-text-fill: yellow;
+    -fx-effect: dropshadow( gaussian , black , 5 , 0.5 , 2 , 2 );
+}
+
+/* ===== Tela Vitoria ===== */
+/* root */
 .vitoria-root {
     -fx-background-image: url("/jogo_pokemon/images/vitoria.png");
     -fx-background-size: cover;
-    -fx-background-position: center center;
-    -fx-background-repeat: no-repeat;
 }
 
-/* Título "VITÓRIA!" */
-.vitoria-title {
+/* title */
+.TelaVitoria-title {
     -fx-font-family: 'Pokemon Solid', sans-serif;
     -fx-font-size: 60px;
-    -fx-text-fill: #FFCC00;
-    -fx-effect: dropshadow(gaussian, #0075BE, 4, 1.0, 0, 0);
+    -fx-fill: #FFCC00; /* Cor de preenchimento amarela */
+    -fx-stroke: #0075BE; /* Contorno azul */
+    -fx-stroke-width: 2.5;
+    -fx-effect: dropshadow(gaussian, black, 5, 0.5, 0, 2); /* Sombra suave */
 }
 
-/* Subtítulo "Como recompensa..." */
-.vitoria-subtitle {
-    -fx-font-family: 'Pokemon Classic', sans-serif;
+/* label */
+.TelaVitoria-label {
     -fx-font-size: 13px;
-    -fx-text-fill: white;
-    -fx-background-color: rgba(0, 0, 0, 0.5);
     -fx-padding: 0px 5px;
     -fx-background-radius: 7px;
 }
 
-/* Nome do Pokémon recebido */
-.pokemon-recompensa-nome {
-    -fx-font-family: 'Pokemon Solid', sans-serif;
+/* title2 */
+.TelaVitoria-title2 {
     -fx-font-size: 30px;
-    -fx-text-fill: #FFCC00; /* Define a cor do texto como preta */
-
-    /* Cria um contorno azul sólido usando um efeito de sombra */
-    -fx-effect: dropshadow(gaussian, #0075BE, 1.5, 1.0, 0, 0);
+    -fx-fill: #FFCC00; /* Cor de preenchimento amarela */
+    -fx-stroke: #0075BE; /* Contorno azul */
+    -fx-stroke-width: 2;
 }
 
-/* Estilo para o botão da tela de vitória (apenas ajusta a fonte) */
-.button-vitoria {
-    -fx-font-size: 10px;
-}   
-
-/* ==========================================================================
-   Estilos da Tela da Pokédex
-   ========================================================================== */
-
-/* Imagem de fundo da tela da Pokédex */
-.pokedex-root {
-    -fx-background-image: url("/jogo_pokemon/images/menu.png"); /* <<< Crie uma imagem de fundo para a pokedex */
-    -fx-background-size: cover;
-    -fx-background-position: center center;
-    -fx-background-repeat: no-repeat;
+/* button */
+.TelaVitoria-button {
+    -fx-font-size: 12px;
+    -fx-padding: 2px 2px;
 }
 
-/* Título "Pokédex" */
-.pokedex-title {
-    -fx-font-family: 'Pokemon Solid', sans-serif;
+/* ===== Tela Pokedex ===== */
+/* title */
+.TelaPokedex-title {
     -fx-font-size: 80px;
-    -fx-text-fill: #FFCC00; /* Vermelho */
-    -fx-effect: dropshadow(gaussian, #0075BE, 2, 1.0, 0, 0); /* Contorno branco */
+    -fx-text-fill: #FFCC00;
+    -fx-effect: dropshadow(gaussian, #0075BE, 2, 1.0, 0, 0);
 }
 
-/* Estilo para os botões da tela da Pokédex */
-.button-pokedex {
-    -fx-font-size: 12px; /* Fonte maior para melhor leitura */
-    -fx-pref-width: 350px; /* Largura fixa para todos os botões */
-    -fx-padding: 8px 15px; /* Mais espaçamento interno */
+/* button */
+.TelaPokedex-button {
+    -fx-font-size: 12px;
+    -fx-pref-width: 305px;
+    -fx-padding: 8px 15px;
 }
 
-/* ==========================================================================
-   Estilos da Tela de Lista da Pokédex
-   ========================================================================== */
-
-/* Imagem de fundo da tela de lista */
-.pokedex-list-title {
-    -fx-font-family: 'Pokemon Solid', sans-serif;
-    -fx-font-size: 60px;
-    -fx-text-fill: #FFCC00; /* Vermelho */
-    -fx-effect: dropshadow(gaussian, #0075BE, 2, 1.0, 0, 0); /* Contorno branco */
+/* ===== Tela Pokedex List ===== */
+/* title */
+.TelaPokedexList-title {
+    -fx-font-size: 50px;
+    -fx-stroke: #0075BE; /* Contorno azul */
+    -fx-stroke-width: 3;
 }
 
-.pokedex-list-root {
-    -fx-background-image: url("/jogo_pokemon/images/menu.png"); /* <<< Crie uma imagem de fundo para esta tela */
-    -fx-background-size: cover;
-    -fx-background-position: center center;
-    -fx-background-repeat: no-repeat;
-}
-
-/* Estilo para a ListView da Pokédex */
-.pokedex-list-view {
-    -fx-border-color: #FF0000; /* Borda vermelha */
-    -fx-border-width: 3px;
-    -fx-background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
-}
-
-/* Estilo para o botão de voltar da pokedex */
-.button-pokedex-voltar {
+/* button */
+.TelaPokedexList-button {
     -fx-font-size: 13px;
     -fx-pref-width: 150px;
 }
 
-/* ==========================================================================
-   Estilos da Tela Meus Pokémon
-   ========================================================================== */
-
-/* Fundo da tela */
-.meus-pokemon-root {
-    -fx-background-image: url("/jogo_pokemon/images/menu.png"); /* <<< Crie uma imagem de fundo para esta tela */
-    -fx-background-size: cover;
-    -fx-background-position: center center;
-    -fx-background-repeat: no-repeat;
-}
-
-.meus-pokemons-title {
-    -fx-font-family: 'Pokemon Solid', sans-serif;
+/* ===== Tela Meus Pokemons ===== */
+/* title */
+.TelaMeusPokemons-title {
     -fx-font-size: 60px;
-    -fx-text-fill: #FFCC00; /* Vermelho */
-    -fx-effect: dropshadow(gaussian, #0075BE, 2, 1.0, 0, 0); /* Contorno branco */
 }
 
-/* Estilo para o label que mostra o Pokémon atual */
-.pokemon-atual-label {
-    -fx-font-family: 'Pokemon Classic', sans-serif;
+/* label */
+.TelaMeusPokemons-label {
     -fx-font-size: 13px;
-    -fx-text-fill: white;
-    -fx-background-color: rgba(0, 0, 0, 0.6);
     -fx-padding: 4px 7px;
     -fx-background-radius: 8px;
-    -fx-border-color: #FFCC00;
+    -fx-border-color: red;
     -fx-border-width: 2px;
     -fx-border-radius: 8px;
 }
 
-/* Estilo para os botões desta tela */
-.button-meus-pokemon {
+/* button */
+.TelaMeusPokemons-button {
     -fx-font-size: 14px;
     -fx-pref-width: 200px;
 }
 
-/* ==========================================================================
-   Estilos da Tela de Identidade do Treinador
-   ========================================================================== */
-
-/* Fundo da tela */
-.identidade-root {
-    -fx-background-image: url("/jogo_pokemon/images/menu.png"); /* <<< Crie uma imagem de fundo para esta tela */
-    -fx-background-size: cover;
-    -fx-background-position: center center;
-    -fx-background-repeat: no-repeat;
-}
-
-.dados-title {
-    -fx-font-family: 'Pokemon Solid', sans-serif;
+/* ===== Tela Identidade ===== */
+/* title */
+.TelaIdentidade-title {
     -fx-font-size: 60px;
-    -fx-text-fill: #FFCC00; /* Vermelho */
-    -fx-effect: dropshadow(gaussian, #0075BE, 2, 1.0, 0, 0); /* Contorno branco */
+    -fx-text-fill: #FFCC00;
+    -fx-stroke: #0075BE;
+   -fx-stroke-width: 2;
 }
 
-/* Estilo para os títulos (Nome:, ID:, etc.) */
-.identidade-label-titulo {
-    -fx-font-family: 'Pokemon Classic', sans-serif;
+/* label */
+.TelaIdentidade-label {
     -fx-font-size: 15px;
-    -fx-text-fill: white;
-    -fx-background-color: rgba(0, 0, 0, 0.6);
-    -fx-padding: 5px 10px;
-    -fx-background-radius: 5px;
-    -fx-border-color: #FFCC00;
-    -fx-border-width: 1px;
+    -fx-border-color: red;
+    -fx-border-width: 2px;
     -fx-border-radius: 5px;
 }
 
-/* Estilo para os valores (o nome do treinador, o ID, etc.) */
-.identidade-label-valor {
+/* label2 */
+.TelaIdentidade-label2 {
     -fx-font-family: 'Pokemon Solid', sans-serif;
     -fx-font-size: 20px;
-    -fx-text-fill: #FFCC00;
+    -fx-fill: #FFCC00;
     -fx-effect: dropshadow(gaussian, black, 2, 1.0, 0, 0);
+}
+
+/* button */
+.TelaIdentidade-button {
+    -fx-font-size: 13px;
+    -fx-pref-width: 150px;
+}
+
+/* ===== Tela Selecionar Treinador ===== */
+/* title */
+.TelaSelecionarTreinador-title {
+   -fx-font-size: 50px;
+   -fx-fill: #FFCC00;
+   -fx-stroke: #0075BE;
+   -fx-stroke-width: 4;
+}
+
+.list-item-key {
+    -fx-font-family: 'Pokemon Text Font', sans-serif;
+    -fx-font-weight: bold;
+    -fx-fill: #333333;
+    -fx-font-size: 15px;
+}
+
+.list-item-value {
+    -fx-font-family: 'Pokemon Classic', sans-serif;
+    -fx-font-size: 12px;
+    -fx-fill: #0075BE;
+}
+
+
+.dialog-pane {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #0075BE;
+    -fx-border-width: 2px;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 2);
+}
+
+/* Cabeçalho azul */
+.dialog-pane > .header-panel {
+    -fx-background-color: #0075BE;
+    -fx-padding: 8px;
+}
+
+/* Título (texto do cabeçalho) */
+.dialog-pane > .header-panel > .label {
+    -fx-font-family: "Pokemon Classic", sans-serif;
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+}
+
+/* Texto do alerta */
+.dialog-pane .content {
+    -fx-font-family: "Arial", sans-serif; /* <- Troca temporária para melhorar leitura */
+    -fx-font-size: 14px;
+    -fx-text-fill: #222222;
+    -fx-padding: 12px 0 12px 0;
+    -fx-background-color: transparent;
+}
+
+/* Botão */
+.dialog-pane .button {
+    -fx-font-family: "Pokemon Classic", sans-serif;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(#FB1B1B, #C70000);
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-cursor: hand;
+    -fx-padding: 5px 14px;
 }

@@ -6,17 +6,16 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import jogo_pokemon.*;
 
 public class TelaVitoriaController {
 
     @FXML
-    private Label labelPokemonRecompensa;
+    private Text textPokemonRecompensa; 
     
-    // NOVO CAMPO LIGADO AO FXML
     @FXML
     private ImageView imgPokemonRecompensa;
 
@@ -39,7 +38,7 @@ public class TelaVitoriaController {
                 Pokemon novoPokemon = pokemonsDeRecompensa.get(new Random().nextInt(pokemonsDeRecompensa.size()));
                 
                 // Exibe o nome e a imagem do novo Pokémon
-                labelPokemonRecompensa.setText(novoPokemon.getNome());
+                textPokemonRecompensa.setText(novoPokemon.getNome());
                 carregarImagem(novoPokemon.getImagePath());
                 
                 jogador.adicionarPokemon(novoPokemon);
@@ -54,11 +53,11 @@ public class TelaVitoriaController {
                 }
                 gerenciador.salvarTreinadores(todosOsTreinadores);
             } else {
-                labelPokemonRecompensa.setText("Você já capturou todos os Pokémon!");
+                textPokemonRecompensa.setText("Você já capturou todos os Pokémon!");
             }
 
         } catch (IOException e) {
-            labelPokemonRecompensa.setText("Erro ao obter recompensa.");
+            textPokemonRecompensa.setText("Erro ao obter recompensa.");
             e.printStackTrace();
         }
     }

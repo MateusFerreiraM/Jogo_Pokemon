@@ -7,39 +7,41 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
 <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0"
+      stylesheets="@styles.css"
+      styleClass="background-root"
       xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="jogo_pokemon.controller.TelaIdentidadeController"
-      styleClass="identidade-root">
+      fx:controller="jogo_pokemon.controller.TelaIdentidadeController">
 
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
     <children>
-        <Label text="Dados do Treinador" styleClass="dados-title" />
+        <Text text="Treinador" styleClass="title, TelaIdentidade-title" />
 
-        <GridPane hgap="15.0" vgap="10.0" maxWidth="400.0">
+        <GridPane hgap="15.0" vgap="10.0" maxWidth="450.0">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="180.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="220.0" />
+                <ColumnConstraints hgrow="SOMETIMES" prefWidth="200.0" />
+                <ColumnConstraints hgrow="SOMETIMES" prefWidth="250.0" />
             </columnConstraints>
             <children>
-                <Label text="Nome:" styleClass="identidade-label-titulo" GridPane.rowIndex="0" />
-                <Label fx:id="labelNome" text="[Nome]" styleClass="identidade-label-valor" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <Label text="Nome:" styleClass="label, TelaIdentidade-label" GridPane.halignment="RIGHT" GridPane.rowIndex="0" />
+                <Text fx:id="labelNome" text="[Nome]" styleClass="label, TelaIdentidade-label2" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="0" />
 
-                <Label text="ID:" styleClass="identidade-label-titulo" GridPane.rowIndex="1" />
-                <Label fx:id="labelId" text="[ID]" styleClass="identidade-label-valor" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label text="ID:" styleClass="label, TelaIdentidade-label" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                <Text fx:id="labelId" text="[ID]" styleClass="label, TelaIdentidade-label2" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
 
-                <Label text="Região:" styleClass="identidade-label-titulo" GridPane.rowIndex="2" />
-                <Label fx:id="labelRegiao" text="[Região]" styleClass="identidade-label-valor" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label text="Região:" styleClass="label, TelaIdentidade-label" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                <Text fx:id="labelRegiao" text="[Região]" styleClass="label, TelaIdentidade-label2" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
 
-                <Label text="Pokémons:" styleClass="identidade-label-titulo" GridPane.rowIndex="3" />
-                <Label fx:id="labelQtdPokemon" text="[Qtd]" styleClass="identidade-label-valor" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label text="Pokémons:" styleClass="label, TelaIdentidade-label" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+                <Text fx:id="labelQtdPokemon" text="[Qtd]" styleClass="label, TelaIdentidade-label2" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
             </children>
         </GridPane>
 
-        <Button onAction="#onVoltarClick" text="Voltar" styleClass="button, button-pokedex-voltar" />
+        <Button onAction="#onVoltarClick" text="Voltar" styleClass="button, TelaIdentidade-button" />
     </children>
 </VBox>
