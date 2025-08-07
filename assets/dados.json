@@ -1039,8 +1039,26 @@
     "Ataque" : 70,
     "Defesa" : 45,
     "ImagePath" : "Wigglytuff.png"
+  }, {
+    "movimentosList" : [ ],
+    "Nome" : "Psyduck",
+    "Id" : 54,
+    "tipos" : [ "AGUA" ],
+    "HP" : 50,
+    "Ataque" : 52,
+    "Defesa" : 48,
+    "ImagePath" : "Psyduck.png"
+  }, {
+    "movimentosList" : [ ],
+    "Nome" : "Magikarp",
+    "Id" : 129,
+    "tipos" : [ "AGUA" ],
+    "HP" : 20,
+    "Ataque" : 10,
+    "Defesa" : 55,
+    "ImagePath" : "Magikarp.png"
   } ],
-  "PokemonAtualId" : 104
+  "PokemonAtualId" : 40
 }, {
   "Nome" : "fasfas",
   "Id" : 2,
