@@ -1,16 +1,22 @@
 package jogo_pokemon.model;
 
+import java.util.Random;
 import jogo_pokemon.model.Movimentos.Categoria;
 
+/**
+ * Representa o estado e a lógica de uma batalha entre dois Pokémon.
+ * Esta classe gere os turnos, o cálculo de dano e as condições de vitória.
+ */
 public class Batalha {
-    Pokemon pkmAmigo;
-    Pokemon pkmInimigo;
+    private Pokemon pkmAmigo;
+    private Pokemon pkmInimigo;
     private boolean emExecucao;
     private boolean vitoria;
-    int contEspecial;
-    int contEspecialLider;
+    private int contEspecial;
+    private int contEspecialLider;
+    private Random random = new Random();
 
-    // A matriz de vantagens continua a mesma
+    // Matriz de vantagens de tipo (Ataque x Defesa)
     private static final double[][] VANTAGENS = {
             { 1, 1, 1, 1, 1, 0.5, 1, 0, 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
             { 2, 1, 0.5, 0.5, 1, 2, 0.5, 0, 2, 1, 1, 1, 1, 0.5, 2, 1, 2, 0.5 },
@@ -32,7 +38,6 @@ public class Batalha {
             { 1, 2, 1, 0.5, 1, 1, 1, 1, 0.5, 0.5, 1, 1, 1, 1, 1, 2, 2, 1 }
     };
 
-    // O construtor continua igual
     public Batalha(Pokemon pkmAmigo, Pokemon pkmInimigo) {
         this.pkmAmigo = pkmAmigo;
         this.pkmInimigo = pkmInimigo;
@@ -44,8 +49,49 @@ public class Batalha {
         this.contEspecialLider = 2;
     }
 
+    /**
+     * Processa um ataque de um Pokémon contra outro, calculando o dano e atualizando o HP.
+     * @param quemAtaca O Pokémon que está a atacar.
+     * @param alvo O Pokémon que está a ser atacado.
+     * @param atk O movimento utilizado.
+     */
+    public void atacar(Pokemon quemAtaca, Pokemon alvo, Movimentos atk) {
+        int dano = calculoDano(quemAtaca, alvo, atk);
+        alvo.perdeHp(dano);
+
+        if (!alvo.estaVivo()) {
+            this.emExecucao = false;
+            this.vitoria = alvo.equals(this.pkmInimigo);
+        }
+    }
+
+    /**
+     * Calcula o dano de um ataque usando uma fórmula balanceada para batalhas mais longas.
+     * @return O dano final a ser infligido.
+     */
+    public int calculoDano(Pokemon quemAtaca, Pokemon alvo, Movimentos atk) {
+        double vantagem = getVantagem(atk, alvo);
+        double poderMovimento = 30.0;
+        double fatorDeBalanceamento = 4.0;
+
+        double danoCalculado = ((quemAtaca.getAtaque() * poderMovimento / alvo.getDefesa()) / fatorDeBalanceamento + 2) * vantagem * atk.getForca();
+
+        double variacao = 0.85 + (1.0 - 0.85) * random.nextDouble();
+        int danoFinal = (int) (danoCalculado * variacao);
+
+        if (vantagem >= 2.0) {
+            return Math.max(10, danoFinal);
+        }
+        
+        return Math.max(5, danoFinal);
+    }
+
+    /**
+     * Mapeia um Enum do tipo Tipos para o seu índice correspondente na matriz de vantagens.
+     * @param tipo O tipo do Pokémon ou do ataque.
+     * @return O índice inteiro (0-17).
+     */
     private int associaTipo(Tipos tipo) {
-        // O método de associação continua igual
         switch (tipo) {
             case NORMAL: return 0;
             case LUTADOR: return 1;
@@ -69,45 +115,23 @@ public class Batalha {
         }
     }
 
-    // *** A CORREÇÃO PRINCIPAL ESTÁ AQUI ***
+    /**
+     * Calcula o multiplicador de vantagem de um ataque contra um alvo, considerando todos os tipos do alvo.
+     * @param ataque O movimento a ser usado.
+     * @param alvo O Pokémon defensor.
+     * @return O multiplicador de dano final (ex: 2.0 para super eficaz, 0.5 para pouco eficaz).
+     */
     private double getVantagem(Movimentos ataque, Pokemon alvo) {
         int indiceAtaque = associaTipo(ataque.getTipo());
         double multiplicadorFinal = 1.0;
-
-        // Itera sobre TODOS os tipos do Pokémon alvo
         for (Tipos tipoDefensor : alvo.getTipos()) {
             int indiceDefesa = associaTipo(tipoDefensor);
-            // Multiplica as vantagens (ex: 2x contra um tipo e 0.5x contra outro)
             multiplicadorFinal *= VANTAGENS[indiceAtaque][indiceDefesa];
         }
-
         return multiplicadorFinal;
     }
 
-    // O resto da classe (atacar, calculoDano, getters, etc.) continua igual
-    public void atacar(Pokemon quemAtaca, Pokemon alvo, Movimentos atk) {
-        int dano = calculoDano(quemAtaca, alvo, atk);
-        alvo.perdeHp(dano);
-
-        if (!alvo.estaVivo()) {
-            this.emExecucao = false;
-            this.vitoria = alvo.equals(this.pkmInimigo);
-        }
-    }
-
-    public int calculoDano(Pokemon quemAtaca, Pokemon alvo, Movimentos atk) {
-        double vantagem = getVantagem(atk, alvo);
-        int dano;
-
-        if (atk.getCategoria() == Categoria.FISICO) {
-            dano = (int) ((vantagem * quemAtaca.getAtaque() * atk.getForca()) - (alvo.getDefesa() * 0.5));
-        } else {
-            dano = (int) ((vantagem * quemAtaca.getAtaque() * (atk.getForca() * 0.8)) - (alvo.getDefesa() * 0.25));
-        }
-
-        return Math.max(5, dano);
-    }
-
+    // --- Getters e Setters para o estado da batalha ---
     public Pokemon getPkmAmigo() { return pkmAmigo; }
     public Pokemon getPkmInimigo() { return pkmInimigo; }
     public boolean getEmExecucao() { return this.emExecucao; }

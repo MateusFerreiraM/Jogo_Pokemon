@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import jogo_pokemon.*;
+import jogo_pokemon.App;
 import jogo_pokemon.data.GerenciadorDados;
 import jogo_pokemon.model.Pokemon;
 import jogo_pokemon.model.Treinador;
@@ -40,32 +40,35 @@ public class TelaVitoriaController {
             if (!pokemonsDeRecompensa.isEmpty()) {
                 Pokemon novoPokemon = pokemonsDeRecompensa.get(new Random().nextInt(pokemonsDeRecompensa.size()));
                 
-                // Exibe o nome e a imagem do novo Pokémon
-                textPokemonRecompensa.setText(novoPokemon.getNome());
+                // **A CORREÇÃO ESTÁ AQUI**
+                // Garantimos que o novo Pokémon tenha os seus movimentos antes de ser adicionado.
+                novoPokemon.inicializarMovimentos();
+                
+                textPokemonRecompensa.setText(novoPokemon.getNome() + "!");
                 ImageUtils.carregarPokemonImage(imgPokemonRecompensa, novoPokemon.getImagePath());
                 ImageUtils.aplicarSombra(imgPokemonRecompensa);
                 
                 jogador.adicionarPokemon(novoPokemon);
-
-                // Salva o progresso
-                List<Treinador> todosOsTreinadores = gerenciador.carregarTreinadores();
-                for (int i = 0; i < todosOsTreinadores.size(); i++) {
-                    if (todosOsTreinadores.get(i).getId() == jogador.getId()) {
-                        todosOsTreinadores.set(i, jogador);
-                        break;
-                    }
-                }
-                gerenciador.salvarTreinadores(todosOsTreinadores);
+                salvarProgresso(jogador);
             } else {
                 textPokemonRecompensa.setText("Você já capturou todos os Pokémon!");
             }
-
         } catch (IOException e) {
             textPokemonRecompensa.setText("Erro ao obter recompensa.");
             e.printStackTrace();
         }
     }
     
+    private void salvarProgresso(Treinador jogador) throws IOException {
+        List<Treinador> todosOsTreinadores = gerenciador.carregarTreinadores();
+        for (int i = 0; i < todosOsTreinadores.size(); i++) {
+            if (todosOsTreinadores.get(i).getId() == jogador.getId()) {
+                todosOsTreinadores.set(i, jogador);
+                break;
+            }
+        }
+        gerenciador.salvarTreinadores(todosOsTreinadores);
+    }
 
     @FXML
     void onVoltarAoMenuClick() throws IOException {

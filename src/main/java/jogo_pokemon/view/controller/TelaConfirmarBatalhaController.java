@@ -11,9 +11,13 @@ import jogo_pokemon.data.GerenciadorDados;
 import jogo_pokemon.model.LiderGin;
 import jogo_pokemon.model.Pokemon;
 import jogo_pokemon.utils.AlertUtils;
-import jogo_pokemon.utils.ImageUtils; // Importar a nossa classe de utilitários
+import jogo_pokemon.utils.ImageUtils;
 import jogo_pokemon.view.GerenciadorDeTelas;
 
+/**
+ * Controlador para a tela que aparece antes de uma batalha de ginásio.
+ * Apresenta o oponente e pede a confirmação do jogador.
+ */
 public class TelaConfirmarBatalhaController {
 
     @FXML private Label labelDesafio;
@@ -22,6 +26,10 @@ public class TelaConfirmarBatalhaController {
     private LiderGin oponente;
     private GerenciadorDados gerenciador = new GerenciadorDados();
 
+    /**
+     * Método de inicialização. É chamado quando o FXML é carregado.
+     * Carrega o líder selecionado e prepara os dados do seu Pokémon para a batalha.
+     */
     @FXML
     public void initialize() {
         this.oponente = App.getLiderSelecionado();
@@ -32,6 +40,10 @@ public class TelaConfirmarBatalhaController {
         }
     }
     
+    /**
+     * Carrega as informações do Pokémon do oponente, inicializa os seus movimentos
+     * e atualiza a interface com os dados.
+     */
     private void carregarDadosOponente() {
         try {
             List<Pokemon> pokemonsDisponiveis = gerenciador.carregarPokemonsDisponiveis();
@@ -40,6 +52,7 @@ public class TelaConfirmarBatalhaController {
             Pokemon pokemonOponente = oponente.getPokemonAtual();
 
             if (pokemonOponente != null) {
+                // Garante que o Pokémon do oponente tenha os seus movimentos inicializados
                 pokemonOponente.inicializarMovimentos();
                 
                 String mensagem = String.format(
@@ -48,8 +61,6 @@ public class TelaConfirmarBatalhaController {
                 );
                 labelDesafio.setText(mensagem);
 
-                // **A CORREÇÃO ESTÁ AQUI**
-                // Usamos a nossa classe de utilitários para carregar a imagem e aplicar a sombra
                 ImageUtils.carregarPokemonImage(imgOponente, pokemonOponente.getImagePath());
                 ImageUtils.aplicarSombra(imgOponente);
 
@@ -75,6 +86,4 @@ public class TelaConfirmarBatalhaController {
         App.setLiderSelecionado(null);
         GerenciadorDeTelas.mudarTela("TelaEscolherGinasio.fxml");
     }
-    
-    // O método privado "carregarImagem()" foi removido daqui, como é correto.
 }
