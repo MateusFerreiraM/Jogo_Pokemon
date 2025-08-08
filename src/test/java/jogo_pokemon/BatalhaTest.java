@@ -1,6 +1,12 @@
 package jogo_pokemon;
 
 import org.junit.jupiter.api.Test;
+
+import jogo_pokemon.model.Batalha;
+import jogo_pokemon.model.Movimentos;
+import jogo_pokemon.model.Pokemon;
+import jogo_pokemon.model.Tipos;
+
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.Arrays;
 

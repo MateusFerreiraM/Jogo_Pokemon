@@ -6,26 +6,24 @@
 <?import javafx.scene.text.Text?>
 
 <VBox alignment="CENTER"
-      maxHeight="-Infinity"
-      maxWidth="-Infinity"
-      minHeight="-Infinity"
-      minWidth="-Infinity"
       prefHeight="400.0"
       prefWidth="600.0"
       spacing="20.0"
       styleClass="background-root"
+      stylesheets="@styles.css"
       xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="jogo_pokemon.controller.TelaInicialController">
+      fx:controller="jogo_pokemon.view.controller.TelaInicialController">
 
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
 
-   <children>
-      <Text text="Pokémon" styleClass="title" />
-      <Button fx:id="btnSelecionarTreinador" onAction="#onSelecionarTreinadorClick" maxWidth="250.0" text="Selecionar Treinador" styleClass="button" />
-      <Button fx:id="btnCriarTreinador" onAction="#onCriarTreinadorClick" maxWidth="250.0" text="Criar Treinador" styleClass="button" />
-      <Button fx:id="btnSair" onAction="#onSairClick" maxWidth="250.0" text="Sair" styleClass="button" />
-   </children>
+    <children>
+        <Text text="Pokémon" styleClass="title, TelaInicial-title" /> 
+
+        <Button onAction="#onSelecionarTreinadorClick" maxWidth="250.0" text="Selecionar Treinador" />
+        <Button onAction="#onCriarTreinadorClick" maxWidth="250.0" text="Criar Treinador" />
+        <Button onAction="#onSairClick" maxWidth="250.0" text="Sair" />
+    </children>
 </VBox>

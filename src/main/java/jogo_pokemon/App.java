@@ -6,6 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import jogo_pokemon.model.Batalha;
+import jogo_pokemon.model.LiderGin;
+import jogo_pokemon.model.Treinador;
+import jogo_pokemon.view.GerenciadorDeTelas;
+
 import java.io.IOException;
 import java.net.URL;
 
