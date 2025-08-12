@@ -2,17 +2,15 @@ package jogo_pokemon.view.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import jogo_pokemon.App;
 import jogo_pokemon.data.GerenciadorDados;
 import jogo_pokemon.model.Pokemon;
 import jogo_pokemon.model.Treinador;
 import jogo_pokemon.utils.AlertUtils;
+import jogo_pokemon.utils.ImageUtils;
 import jogo_pokemon.view.GerenciadorDeTelas;
-
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +31,7 @@ public class TelaPrimeiraEscolhaController {
 
     /**
      * Inicializa o controlador. Obtém o novo treinador da sessão, exibe uma mensagem
-     * de boas-vindas e carrega as imagens dos Pokémon iniciais.
+     * de boas-vindas e carrega as imagens dos Pokémon iniciais usando o ImageUtils.
      */
     @FXML
     public void initialize() {
@@ -45,10 +43,11 @@ public class TelaPrimeiraEscolhaController {
             labelBoasVindas.setText("Erro: Nenhum treinador encontrado na sessão.");
         }
 
-        carregarImagem(imgBulbasaur, "bulbasaur.png");
-        carregarImagem(imgCharmander, "charmander.png");
-        carregarImagem(imgSquirtle, "squirtle.png");
-        carregarImagem(imgPikachu, "pikachu.png");
+        // MODIFICADO: As chamadas agora usam o ImageUtils para consistência.
+        ImageUtils.carregarPokemonImage(imgBulbasaur, "bulbasaur.png");
+        ImageUtils.carregarPokemonImage(imgCharmander, "charmander.png");
+        ImageUtils.carregarPokemonImage(imgSquirtle, "squirtle.png");
+        ImageUtils.carregarPokemonImage(imgPikachu, "pikachu.png");
     }
 
     /**
@@ -128,27 +127,5 @@ public class TelaPrimeiraEscolhaController {
     @FXML
     void onVoltarClick() {
         GerenciadorDeTelas.irParaTelaInicial();
-    }
-
-    /**
-     * Carrega uma imagem da pasta de recursos para um determinado ImageView.
-     * @param imageView O componente onde a imagem será exibida.
-     * @param nomeImagem O nome do ficheiro da imagem (ex: "bulbasaur.png").
-     */
-    private void carregarImagem(ImageView imageView, String nomeImagem) {
-        if (nomeImagem != null && !nomeImagem.isEmpty()) {
-            try {
-                String caminhoCompleto = "/jogo_pokemon/images/" + nomeImagem;
-                InputStream stream = getClass().getResourceAsStream(caminhoCompleto);
-                if (stream != null) {
-                    imageView.setImage(new Image(stream));
-                } else {
-                    System.err.println("Imagem não encontrada no caminho: " + caminhoCompleto);
-                }
-            } catch (Exception e) {
-                System.err.println("Ocorreu um erro ao carregar a imagem: " + nomeImagem);
-                e.printStackTrace();
-            }
-        }
     }
 }

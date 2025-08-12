@@ -19,10 +19,10 @@ public class GerenciadorDeMusica {
     // --- Constantes de Configuração de Áudio ---
     private static final double VOLUME_MUSICA = 0.05; 
     private static final double VOLUME_SFX = 0.1; 
-    private static final String MUSICA_MENU_PATH = "/jogo_pokemon/audio/game.mp3";
-    private static final String MUSICA_BATALHA_PATH = "/jogo_pokemon/audio/battle.mp3";
-    private static final String SFX_VITORIA_PATH = "/jogo_pokemon/audio/win.mp3";
-    private static final String SFX_DERROTA_PATH = "/jogo_pokemon/audio/lose.mp3";
+    private static final String MUSICA_MENU_PATH = "/jogo_pokemon/audio/game.wav";
+    private static final String MUSICA_BATALHA_PATH = "/jogo_pokemon/audio/battle.wav";
+    private static final String SFX_VITORIA_PATH = "/jogo_pokemon/audio/win.wav";
+    private static final String SFX_DERROTA_PATH = "/jogo_pokemon/audio/lose.wav";
 
     /**
      * Carrega todos os ficheiros de áudio (músicas e SFX) e prepara os MediaPlayers.
