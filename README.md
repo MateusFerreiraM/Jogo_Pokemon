@@ -2,7 +2,7 @@
 
 | Menu Principal | Tela de Batalha | Pokédex |
 |:---:|:---:|:---:|
-| ![Tela de Menu](/jogo_pokemon/images/menu1.png) | ![Gameplay](/jogo_pokemon/images/gameplay.png) | ![Tela de Pokédex](/jogo_pokemon/images/pokedex.png) |
+| ![Tela de Menu](src/main/resources/jogo_pokemon/images/menu1.png) | ![Gameplay](src/main/resources/jogo_pokemon/images/gameplay.png) | ![Tela de Pokédex](src/main/resources/jogo_pokemon/images/pokedex.png) |
 
 Assuma o papel de um treinador Pokémon nesta aplicação de desktop desenvolvida em Java e JavaFX. 
 Crie o seu perfil, escolha o seu Pokémon inicial e embarque numa jornada para desafiar líderes de ginásio e capturar novos Pokémon. 
