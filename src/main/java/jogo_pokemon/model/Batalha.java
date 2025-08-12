@@ -57,7 +57,14 @@ public class Batalha {
      */
     public void atacar(Pokemon quemAtaca, Pokemon alvo, Movimentos atk) {
         int dano = calculoDano(quemAtaca, alvo, atk);
-        alvo.perdeHp(dano);
+        
+        // NOVO: Lógica para garantir que o HP não fique negativo
+        // Em vez de chamar alvo.perdeHp(dano), calculamos o novo HP aqui
+        int novoHp = alvo.getHpAtual() - dano;
+        // Usamos Math.max para garantir que o menor valor possível para o HP seja 0
+        alvo.setHpAtual(Math.max(0, novoHp));
+        
+        // A linha original 'alvo.perdeHp(dano);' foi substituída pela lógica acima.
 
         if (!alvo.estaVivo()) {
             this.emExecucao = false;
@@ -71,8 +78,9 @@ public class Batalha {
      */
     public int calculoDano(Pokemon quemAtaca, Pokemon alvo, Movimentos atk) {
         double vantagem = getVantagem(atk, alvo);
-        double poderMovimento = 30.0;
-        double fatorDeBalanceamento = 4.0;
+        // MODIFICADO: Aumentei um pouco o poder base dos movimentos para batalhas mais rápidas
+        double poderMovimento = 40.0;
+        double fatorDeBalanceamento = 5.0; // Ajustado para compensar o aumento de poder
 
         double danoCalculado = ((quemAtaca.getAtaque() * poderMovimento / alvo.getDefesa()) / fatorDeBalanceamento + 2) * vantagem * atk.getForca();
 
@@ -80,7 +88,12 @@ public class Batalha {
         int danoFinal = (int) (danoCalculado * variacao);
 
         if (vantagem >= 2.0) {
+            System.out.println("Super eficaz!");
             return Math.max(10, danoFinal);
+        } else if (vantagem > 0 && vantagem < 1.0) {
+            System.out.println("Pouco eficaz...");
+        } else if (vantagem == 0) {
+            System.out.println("Não tem efeito!");
         }
         
         return Math.max(5, danoFinal);

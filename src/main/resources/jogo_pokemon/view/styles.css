@@ -396,48 +396,45 @@
     -fx-fill: #0075BE;
 }
 
-
+/* Estilo para os painéis de diálogo (Alertas) */
 .dialog-pane {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #0075BE;
+    -fx-background-color: #F0F0F0; /* Um cinza claro para o fundo */
+    -fx-border-color: #A0A0A0;     /* Uma borda cinza escura */
     -fx-border-width: 2px;
-    -fx-padding: 10px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 2);
+    -fx-font-family: "Pokemon Classic"; /* Usando a tua fonte personalizada! */
 }
 
-/* Cabeçalho azul */
-.dialog-pane > .header-panel {
-    -fx-background-color: #0075BE;
-    -fx-padding: 8px;
-}
-
-/* Título (texto do cabeçalho) */
-.dialog-pane > .header-panel > .label {
-    -fx-font-family: "Pokemon Classic", sans-serif;
-    -fx-font-size: 16px;
-    -fx-text-fill: white;
-}
-
-/* Texto do alerta */
-.dialog-pane .content {
-    -fx-font-family: "Arial", sans-serif; /* <- Troca temporária para melhorar leitura */
+/* Estilo para o conteúdo do texto do alerta */
+.dialog-pane .content.label {
     -fx-font-size: 14px;
-    -fx-text-fill: #222222;
-    -fx-padding: 12px 0 12px 0;
-    -fx-background-color: transparent;
+    -fx-text-fill: #333333; /* Cor do texto quase preta */
 }
 
-/* Botão */
+/* Estilo para os botões dentro do alerta (ex: "OK") */
 .dialog-pane .button {
-    -fx-font-family: "Pokemon Classic", sans-serif;
-    -fx-font-size: 13px;
-    -fx-font-weight: bold;
+    -fx-background-color: #4A90E2; /* Um azul amigável */
     -fx-text-fill: white;
-    -fx-background-color: linear-gradient(#FB1B1B, #C70000);
-    -fx-background-radius: 6px;
-    -fx-border-radius: 6px;
-    -fx-border-color: black;
-    -fx-border-width: 1px;
-    -fx-cursor: hand;
-    -fx-padding: 5px 14px;
+    -fx-font-family: "Pokemon Classic";
+    -fx-font-size: 12px;
+    -fx-background-radius: 5px; /* Bordas arredondadas */
+}
+
+.dialog-pane .button:hover {
+    -fx-background-color: #357ABD; /* Cor mais escura ao passar o mouse */
+}
+
+/* NOVO: ESTILOS PARA BARRA DE VIDA ANIMADA */
+.progress-bar.green-bar > .bar {
+    -fx-background-color: #32CD32; /* Verde Lima */
+    -fx-accent: #32CD32;
+}
+
+.progress-bar.yellow-bar > .bar {
+    -fx-background-color: #FFD700; /* Amarelo Ouro */
+    -fx-accent: #FFD700;
+}
+
+.progress-bar.red-bar > .bar {
+    -fx-background-color: #DC143C; /* Vermelho Carmesim */
+    -fx-accent: #DC143C;
 }

@@ -138,6 +138,40 @@
     "Ataque" : 45,
     "Defesa" : 20,
     "ImagePath" : "Jigglypuff.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "AGUA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "GELO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Cloyster",
+    "Id" : 91,
+    "tipos" : [ "AGUA", "GELO" ],
+    "HP" : 50,
+    "Ataque" : 95,
+    "Defesa" : 180,
+    "ImagePath" : "Cloyster.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "FOGO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "VOADOR",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Moltres",
+    "Id" : 146,
+    "tipos" : [ "FOGO", "VOADOR" ],
+    "HP" : 90,
+    "Ataque" : 100,
+    "Defesa" : 90,
+    "ImagePath" : "Moltres.png"
   } ],
-  "PokemonAtualId" : 122
+  "PokemonAtualId" : 39
 } ]
