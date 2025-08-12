@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import jogo_pokemon.model.Batalha;
@@ -46,6 +47,13 @@ public class App extends Application {
             System.err.println("ERRO CRÍTICO: Falha ao carregar os ficheiros de fonte.");
             e.printStackTrace();
         }
+
+        try {
+    Image icon = new Image(App.class.getResourceAsStream("/jogo_pokemon/images/pokebola.png"));
+    stage.getIcons().add(icon);
+    } catch (Exception e) {
+        System.err.println("Aviso: Ícone da aplicação (pokebola.png) não encontrado.");
+    }
 
         GerenciadorDeMusica.carregarMusicas();
         GerenciadorDeMusica.tocarMusicaMenu();
