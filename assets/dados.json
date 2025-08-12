@@ -172,6 +172,46 @@
     "Ataque" : 100,
     "Defesa" : 90,
     "ImagePath" : "Moltres.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "FANTASMA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "VENENO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Gastly",
+    "Id" : 92,
+    "tipos" : [ "FANTASMA", "VENENO" ],
+    "HP" : 30,
+    "Ataque" : 35,
+    "Defesa" : 30,
+    "ImagePath" : "Gastly.png"
   } ],
   "PokemonAtualId" : 39
+}, {
+  "Nome" : "vivianefsa",
+  "Id" : 2,
+  "Regiao" : "asf",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "FOGO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "FOGO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Charmander",
+    "Id" : 4,
+    "tipos" : [ "FOGO" ],
+    "HP" : 39,
+    "Ataque" : 52,
+    "Defesa" : 43,
+    "ImagePath" : "Charmander.png"
+  } ],
+  "PokemonAtualId" : 0
 } ]

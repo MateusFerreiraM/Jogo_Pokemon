@@ -396,34 +396,58 @@
     -fx-fill: #0075BE;
 }
 
-/* Estilo para os painéis de diálogo (Alertas) */
-.dialog-pane {
-    -fx-background-color: #F0F0F0; /* Um cinza claro para o fundo */
-    -fx-border-color: #A0A0A0;     /* Uma borda cinza escura */
-    -fx-border-width: 2px;
-    -fx-font-family: "Pokemon Classic"; /* Usando a tua fonte personalizada! */
+
+/* ===== ESTILOS PARA ALERTAS (PAINÉIS DE DIÁLOGO) ===== */
+/* NOVO: Usamos a classe .pokemon-dialog que definimos no AlertUtils.java */
+.pokemon-dialog {
+    -fx-background-color: #0A285F; /* Azul escuro de fundo */
+    -fx-border-color: #FFCC00; /* Borda amarela */
+    -fx-border-width: 4px;
+    -fx-font-family: "Pokemon Classic"; /* Fonte padrão para todo o diálogo */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 15, 0, 0, 4);
 }
 
-/* Estilo para o conteúdo do texto do alerta */
-.dialog-pane .content.label {
+/* Estilo para o painel do cabeçalho (onde fica o título) */
+.pokemon-dialog > .header-panel {
+    -fx-background-color: #0075BE; /* Um tom de azul mais claro */
+}
+
+/* Estilo para o texto do título no cabeçalho */
+.pokemon-dialog > .header-panel .label {
+    -fx-font-size: 18px;
+    -fx-text-fill: #FFCC00; /* Texto do título em amarelo */
+    -fx-font-family: "Pokemon Solid";
+    -fx-stroke: #0A285F;
+    -fx-stroke-width: 1;
+}
+
+/* Estilo para o texto do conteúdo principal */
+.pokemon-dialog .content.label {
     -fx-font-size: 14px;
-    -fx-text-fill: #333333; /* Cor do texto quase preta */
+    -fx-text-fill: white; /* Texto do conteúdo em branco para contraste */
+    -fx-background-color: null; /* Remove o fundo cinza padrão do label */
 }
 
 /* Estilo para os botões dentro do alerta (ex: "OK") */
-.dialog-pane .button {
-    -fx-background-color: #4A90E2; /* Um azul amigável */
-    -fx-text-fill: white;
+.pokemon-dialog .button {
+    -fx-background-color: #FFCC00; /* Botão amarelo */
+    -fx-text-fill: #0075BE; /* Texto do botão em azul */
     -fx-font-family: "Pokemon Classic";
-    -fx-font-size: 12px;
-    -fx-background-radius: 5px; /* Bordas arredondadas */
+    -fx-font-size: 14px;
+    -fx-border-color: #0A285F;
+    -fx-border-width: 2px;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
 }
 
-.dialog-pane .button:hover {
-    -fx-background-color: #357ABD; /* Cor mais escura ao passar o mouse */
+/* Estilo para o botão quando o mouse passa por cima */
+.pokemon-dialog .button:hover {
+    -fx-background-color: #FFFFAA; /* Um amarelo mais claro no hover */
+    -fx-cursor: hand;
 }
 
-/* NOVO: ESTILOS PARA BARRA DE VIDA ANIMADA */
+
+/* ESTILOS PARA BARRA DE VIDA ANIMADA */
 .progress-bar.green-bar > .bar {
     -fx-background-color: #32CD32; /* Verde Lima */
     -fx-accent: #32CD32;

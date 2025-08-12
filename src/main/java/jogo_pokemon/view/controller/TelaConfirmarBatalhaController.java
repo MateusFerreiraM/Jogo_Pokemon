@@ -55,14 +55,28 @@ public class TelaConfirmarBatalhaController {
                 // Garante que o Pokémon do oponente tenha os seus movimentos inicializados
                 pokemonOponente.inicializarMovimentos();
                 
-                String mensagem = String.format(
-                    "Você está prestes a desafiar %s no Ginásio de %s!\nEle usará seu poderoso %s.",
-                    oponente.getNome(), oponente.getRegiao(), pokemonOponente.getNome()
-                );
-                labelDesafio.setText(mensagem);
+                // MODIFICADO: Adicionada lógica condicional para tratar o ginásio misterioso
+                if (oponente.getRegiao().equalsIgnoreCase("Misterioso")) {
+                    // LÓGICA PARA GINÁSIO MISTERIOSO
+                    String mensagem = String.format(
+                        "Você está prestes a desafiar %s no Ginásio de %s!\nEle usará um Pokémon misterioso...",
+                        oponente.getNome(), oponente.getRegiao()
+                    );
+                    labelDesafio.setText(mensagem);
 
-                ImageUtils.carregarPokemonImage(imgOponente, pokemonOponente.getImagePath());
-                ImageUtils.aplicarSombra(imgOponente);
+                    ImageUtils.carregarPokemonImage(imgOponente, "interrogacao.png");
+                    ImageUtils.aplicarSombra(imgOponente);
+                } else {
+                    // LÓGICA PARA GINÁSIOS NORMAIS
+                    String mensagem = String.format(
+                        "Você está prestes a desafiar %s no Ginásio de %s!\nEle usará seu poderoso %s.",
+                        oponente.getNome(), oponente.getRegiao(), pokemonOponente.getNome()
+                    );
+                    labelDesafio.setText(mensagem);
+
+                    ImageUtils.carregarPokemonImage(imgOponente, pokemonOponente.getImagePath());
+                    ImageUtils.aplicarSombra(imgOponente);
+                }
 
             } else {
                 labelDesafio.setText("Erro ao carregar o Pokémon do oponente " + oponente.getNome() + ".");
