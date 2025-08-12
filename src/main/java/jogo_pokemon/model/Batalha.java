@@ -13,30 +13,58 @@ public class Batalha {
     private boolean vitoria;
     private int contEspecial;
     private int contEspecialLider;
-    private Random random = new Random();
-
+    private final Random random;
+    
     /**
      * Matriz de vantagens de tipo. Cada linha representa um tipo de ataque
      * e cada coluna um tipo de defesa. O valor é o multiplicador de dano.
      */
     private static final double[][] VANTAGENS = {
-        // ... (matriz de vantagens)
+            { 1, 1, 1, 1, 1, 0.5, 1, 0, 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+            { 2, 1, 0.5, 0.5, 1, 2, 0.5, 0, 2, 1, 1, 1, 1, 0.5, 2, 1, 2, 0.5 },
+            { 1, 2, 1, 1, 1, 0.5, 2, 1, 0.5, 1, 1, 2, 0.5, 1, 1, 1, 1, 1 },
+            { 1, 1, 1, 0.5, 0.5, 0.5, 1, 0.5, 0, 1, 1, 2, 1, 1, 1, 1, 1, 2 },
+            { 1, 1, 0, 2, 1, 2, 0.5, 1, 2, 2, 1, 0.5, 2, 1, 1, 1, 1, 1 },
+            { 1, 0.5, 2, 1, 0.5, 1, 2, 1, 0.5, 2, 1, 1, 1, 1, 2, 1, 1, 1 },
+            { 1, 0.5, 0.5, 0.5, 1, 1, 1, 0.5, 0.5, 0.5, 1, 2, 1, 2, 1, 1, 2, 0.5 },
+            { 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 0.5, 1 },
+            { 1, 1, 1, 1, 1, 2, 1, 1, 0.5, 0.5, 0.5, 1, 0.5, 1, 2, 1, 1, 2 },
+            { 1, 1, 1, 1, 1, 0.5, 2, 1, 2, 0.5, 0.5, 2, 1, 1, 2, 0.5, 1, 1 },
+            { 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 0.5, 0.5, 1, 1, 1, 0.5, 1, 1 },
+            { 1, 1, 0.5, 0.5, 2, 2, 0.5, 1, 0.5, 0.5, 2, 0.5, 1, 1, 1, 0.5, 1, 1 },
+            { 1, 1, 2, 1, 0, 1, 1, 1, 1, 1, 2, 0.5, 0.5, 1, 1, 0.5, 1, 1 },
+            { 1, 2, 1, 2, 1, 1, 1, 1, 0.5, 1, 1, 1, 1, 0.5, 1, 1, 0, 1 },
+            { 1, 1, 2, 1, 2, 1, 1, 1, 0.5, 0.5, 0.5, 2, 1, 1, 0.5, 2, 1, 1 },
+            { 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 1, 1, 1, 1, 1, 1, 2, 1, 0 },
+            { 1, 0.5, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 0.5, 0.5 },
+            { 1, 2, 1, 0.5, 1, 1, 1, 1, 0.5, 0.5, 1, 1, 1, 1, 1, 2, 2, 1 }
     };
 
     /**
-     * Inicia uma nova batalha.
+     * Construtor principal para uso na aplicação. Inicia a batalha com aleatoriedade padrão.
      * @param pkmAmigo O Pokémon do jogador.
      * @param pkmInimigo O Pokémon do oponente.
      */
     public Batalha(Pokemon pkmAmigo, Pokemon pkmInimigo) {
+        // MODIFICADO: Chama o outro construtor, fornecendo um novo Random padrão.
+        this(pkmAmigo, pkmInimigo, new Random());
+    }
+
+    /**
+     * NOVO: Construtor para testes, permitindo a injeção de um gerador de números aleatórios.
+     * Isso torna os testes de cálculo de dano previsíveis.
+     * @param pkmAmigo O Pokémon do jogador.
+     * @param pkmInimigo O Pokémon do oponente.
+     * @param random A instância de Random a ser usada para o cálculo de variação de dano.
+     */
+    public Batalha(Pokemon pkmAmigo, Pokemon pkmInimigo, Random random) {
         this.pkmAmigo = pkmAmigo;
         this.pkmInimigo = pkmInimigo;
-        this.pkmAmigo.setHpAtual(this.pkmAmigo.getHp());
-        this.pkmInimigo.setHpAtual(this.pkmInimigo.getHp());
         this.emExecucao = true;
         this.vitoria = false;
         this.contEspecial = 2;
         this.contEspecialLider = 2;
+        this.random = random;
     }
 
     /**

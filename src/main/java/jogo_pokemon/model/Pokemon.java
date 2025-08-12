@@ -47,6 +47,26 @@ public class Pokemon {
         this.tipos = new ArrayList<>();
         this.movimentosList = new ArrayList<>();
     }
+    
+    /**
+     * NOVO: Construtor de conveniência para criar instâncias de Pokémon para testes.
+     * @param nome Nome do Pokémon.
+     * @param id ID do Pokémon.
+     * @param tipos Lista de tipos elementais.
+     * @param ataque Valor de ataque.
+     * @param defesa Valor de defesa.
+     * @param hp Pontos de vida máximos.
+     */
+    public Pokemon(String nome, int id, List<Tipos> tipos, int ataque, int defesa, int hp) {
+        this.nome = nome;
+        this.id = id;
+        this.tipos = tipos;
+        this.ataque = ataque;
+        this.defesa = defesa;
+        this.hp = hp;
+        this.hpAtual = hp;
+        this.movimentosList = new ArrayList<>();
+    }
 
     /**
      * Inicializa os movimentos de um Pokémon com base nos seus tipos.
@@ -54,7 +74,7 @@ public class Pokemon {
      */
     public void inicializarMovimentos() {
         if (this.movimentosList != null && !this.movimentosList.isEmpty()) {
-            return; // Já inicializado, não faz nada.
+            return; 
         }
 
         this.movimentosList = new ArrayList<>();

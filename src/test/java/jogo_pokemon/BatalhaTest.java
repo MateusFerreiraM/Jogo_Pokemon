@@ -1,57 +1,124 @@
 package jogo_pokemon;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import jogo_pokemon.model.Batalha;
 import jogo_pokemon.model.Movimentos;
 import jogo_pokemon.model.Pokemon;
 import jogo_pokemon.model.Tipos;
-
-import static org.junit.jupiter.api.Assertions.*;
 import java.util.Arrays;
+import java.util.Random;
+import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Testes de unidade para a classe Batalha.
+ * Foca-se em verificar se a lógica de cálculo de dano e os efeitos do ataque estão corretos.
+ */
 class BatalhaTest {
 
-    @Test
-    void testeCalculoDanoComVantagem() {
-        // ARRANGE (Preparar)
-        // Criamos um atacante de FOGO e um alvo de GRAMA (FOGO tem vantagem sobre GRAMA)
-        Pokemon charmander = new Pokemon("Charmander", 4, Arrays.asList(Tipos.FOGO), 52, 43, 39);
-        Pokemon bulbasaur = new Pokemon("Bulbasaur", 1, Arrays.asList(Tipos.GRAMA, Tipos.VENENO), 49, 49, 45);
-        charmander.inicializarMovimentos(); // Garante que os movimentos existem
+    private Pokemon charmander;
+    private Pokemon bulbasaur;
+    private Pokemon squirtle;
+    private Random randomParaTestes;
 
-        Batalha batalha = new Batalha(charmander, bulbasaur);
-        Movimentos ataqueDeFogo = charmander.getMovimentosList().get(0); // Ataque físico de FOGO
+    /**
+     * Método de setup, executado antes de cada teste.
+     * Cria os Pokémon e o Random previsível para garantir consistência nos testes.
+     */
+    @BeforeEach
+    void setUp() {
+        charmander = new Pokemon("Charmander", 4, Arrays.asList(Tipos.FOGO), 52, 43, 39);
+        bulbasaur = new Pokemon("Bulbasaur", 1, Arrays.asList(Tipos.GRAMA, Tipos.VENENO), 49, 49, 45);
+        squirtle = new Pokemon("Squirtle", 7, Arrays.asList(Tipos.AGUA), 48, 65, 44);
+        
+        charmander.inicializarMovimentos();
 
-        // ACT (Agir)
-        // Calculamos o dano que o Charmander causaria no Bulbasaur
-        int danoComVantagem = batalha.calculoDano(charmander, bulbasaur, ataqueDeFogo);
-
-        // ASSERT (Verificar)
-        // A vantagem de FOGO vs GRAMA é 2.0. A fórmula é (vantagem * ataque * força) - (defesa * 0.5)
-        // (2.0 * 52 * 1.0) - (49 * 0.5) = 104 - 24.5 = 79.5, que como int é 79.
-        assertEquals(79, danoComVantagem, "O dano com vantagem de tipo deve ser super eficaz.");
-        System.out.println("Teste de Dano com Vantagem: Sucesso! Dano calculado: " + danoComVantagem);
+        // Usamos um Random com uma semente fixa para tornar os testes previsíveis.
+        randomParaTestes = new Random(123L);
     }
 
+    /**
+     * Testa o cálculo de dano quando o atacante tem vantagem de tipo (super eficaz).
+     */
     @Test
-    void testeCalculoDanoSemVantagem() {
-        // ARRANGE
-        // Criamos um atacante Normal e um alvo Normal (sem vantagem)
-        Pokemon raticate = new Pokemon("Raticate", 20, Arrays.asList(Tipos.NORMAL), 81, 60, 55);
-        Pokemon snorlax = new Pokemon("Snorlax", 143, Arrays.asList(Tipos.NORMAL), 110, 65, 160);
-        raticate.inicializarMovimentos();
+    void testeCalculoDanoComVantagem() {
+        // Arrange
+        Batalha batalha = new Batalha(charmander, bulbasaur, randomParaTestes);
+        Movimentos ataqueDeFogo = charmander.getMovimentosList().get(0);
 
-        Batalha batalha = new Batalha(raticate, snorlax);
-        Movimentos ataqueNormal = raticate.getMovimentosList().get(0);
+        // Act
+        int danoCalculado = batalha.calculoDano(charmander, bulbasaur, ataqueDeFogo);
 
-        // ACT
-        int danoSemVantagem = batalha.calculoDano(raticate, snorlax, ataqueNormal);
+        // Assert
+        assertEquals(20, danoCalculado, "O dano com vantagem de tipo (FOGO vs GRAMA) deve ser 20.");
+    }
 
-        // ASSERT
-        // A vantagem de NORMAL vs NORMAL é 1.0. A fórmula é (vantagem * ataque * força) - (defesa * 0.5)
-        // (1.0 * 81 * 1.0) - (65 * 0.5) = 81 - 32.5 = 48.5, que como int é 48.
-        assertEquals(48, danoSemVantagem, "O dano sem vantagem de tipo deve ser normal.");
-        System.out.println("Teste de Dano Sem Vantagem: Sucesso! Dano calculado: " + danoSemVantagem);
+    /**
+     * Testa o cálculo de dano quando o atacante tem desvantagem de tipo (pouco eficaz).
+     */
+    @Test
+    void testeCalculoDanoComDesvantagem() {
+        // Arrange
+        Batalha batalha = new Batalha(charmander, squirtle, randomParaTestes);
+        Movimentos ataqueDeFogo = charmander.getMovimentosList().get(0);
+
+        // Act
+        int danoCalculado = batalha.calculoDano(charmander, squirtle, ataqueDeFogo);
+
+        // Assert
+        assertEquals(5, danoCalculado, "O dano com desvantagem (FOGO vs AGUA) deve ser o dano mínimo, 5.");
+    }
+
+    /**
+     * NOVO: Testa se o método atacar reduz corretamente o HP do alvo.
+     */
+    @Test
+    void testeAtaqueReduzHpCorretamente() {
+        // Arrange
+        Batalha batalha = new Batalha(charmander, bulbasaur, randomParaTestes);
+        Movimentos ataqueDeFogo = charmander.getMovimentosList().get(0);
+        int hpInicialDoAlvo = bulbasaur.getHpAtual(); // HP inicial = 45
+        int danoEsperado = 20; // Sabemos pelo teste de vantagem que o dano será 20
+
+        // Act
+        batalha.atacar(charmander, bulbasaur, ataqueDeFogo);
+
+        // Assert
+        assertEquals(hpInicialDoAlvo - danoEsperado, bulbasaur.getHpAtual(), "O HP do alvo deve ser reduzido pelo dano calculado.");
+    }
+
+    /**
+     * NOVO: Testa se o HP de um Pokémon derrotado é definido como 0 e nunca como um valor negativo.
+     */
+    @Test
+    void testePokemonDerrotadoHpNaoFicaNegativo() {
+        // Arrange
+        bulbasaur.setHpAtual(15); // HP baixo, menor que o dano do ataque
+        Batalha batalha = new Batalha(charmander, bulbasaur, randomParaTestes);
+        Movimentos ataqueDeFogo = charmander.getMovimentosList().get(0); // Dano será 20
+
+        // Act
+        batalha.atacar(charmander, bulbasaur, ataqueDeFogo);
+
+        // Assert
+        assertEquals(0, bulbasaur.getHpAtual(), "O HP do Pokémon derrotado deve ser 0, nunca negativo.");
+    }
+
+    /**
+     * NOVO: Testa se o estado da batalha é atualizado corretamente após um Pokémon ser derrotado.
+     */
+    @Test
+    void testeFimDeBatalhaAoDerrotarOponente() {
+        // Arrange
+        bulbasaur.setHpAtual(15); // Garante que o próximo ataque será fatal
+        Batalha batalha = new Batalha(charmander, bulbasaur, randomParaTestes);
+        Movimentos ataqueDeFogo = charmander.getMovimentosList().get(0);
+
+        // Act
+        batalha.atacar(charmander, bulbasaur, ataqueDeFogo);
+
+        // Assert
+        assertFalse(batalha.getEmExecucao(), "A batalha deve terminar quando um Pokémon é derrotado.");
+        assertTrue(batalha.getVitoria(), "Deve ser uma vitória para o jogador quando o oponente é derrotado.");
     }
 }
