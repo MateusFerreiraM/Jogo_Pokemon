@@ -16,6 +16,10 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Controlador para a tela de escolha do primeiro Pokémon.
+ * Esta tela é exibida após a criação de um novo treinador.
+ */
 public class TelaPrimeiraEscolhaController {
 
     @FXML private Label labelBoasVindas;
@@ -27,6 +31,10 @@ public class TelaPrimeiraEscolhaController {
     private Treinador treinador;
     private GerenciadorDados gerenciador = new GerenciadorDados();
 
+    /**
+     * Inicializa o controlador. Obtém o novo treinador da sessão, exibe uma mensagem
+     * de boas-vindas e carrega as imagens dos Pokémon iniciais.
+     */
     @FXML
     public void initialize() {
         this.treinador = App.getTreinadorSessao();
@@ -43,26 +51,49 @@ public class TelaPrimeiraEscolhaController {
         carregarImagem(imgPikachu, "pikachu.png");
     }
 
+    /**
+     * Handler para o clique na imagem do Bulbasaur.
+     * @throws IOException se ocorrer um erro ao guardar os dados.
+     */
     @FXML
     void onBulbasaurClick() throws IOException {
         escolherPokemon(1);
     }
 
+    /**
+     * Handler para o clique na imagem do Charmander.
+     * @throws IOException se ocorrer um erro ao guardar os dados.
+     */
     @FXML
     void onCharmanderClick() throws IOException {
         escolherPokemon(4);
     }
 
+    /**
+     * Handler para o clique na imagem do Squirtle.
+     * @throws IOException se ocorrer um erro ao guardar os dados.
+     */
     @FXML
     void onSquirtleClick() throws IOException {
         escolherPokemon(7);
     }
 
+    /**
+     * Handler para o clique na imagem do Pikachu.
+     * @throws IOException se ocorrer um erro ao guardar os dados.
+     */
     @FXML
     void onPikachuClick() throws IOException {
         escolherPokemon(25);
     }
-
+    
+    /**
+     * Lógica central para atribuir o Pokémon inicial ao novo treinador.
+     * Encontra o Pokémon pelo ID, adiciona-o ao treinador, guarda o novo treinador na lista
+     * de perfis, exibe um alerta de sucesso e navega para o menu principal.
+     * @param pokemonId O ID do Pokémon que foi escolhido.
+     * @throws IOException se ocorrer um erro ao carregar ou guardar os dados.
+     */
     private void escolherPokemon(int pokemonId) throws IOException {
         if (treinador == null) {
             AlertUtils.mostrarAlerta("Erro Crítico", "Não foi possível encontrar o treinador da sessão.");
@@ -90,11 +121,20 @@ public class TelaPrimeiraEscolhaController {
         }
     }
 
+    /**
+     * Handler do botão "Voltar".
+     * Retorna para a tela inicial, cancelando a criação do treinador.
+     */
     @FXML
     void onVoltarClick() {
         GerenciadorDeTelas.irParaTelaInicial();
     }
 
+    /**
+     * Carrega uma imagem da pasta de recursos para um determinado ImageView.
+     * @param imageView O componente onde a imagem será exibida.
+     * @param nomeImagem O nome do ficheiro da imagem (ex: "bulbasaur.png").
+     */
     private void carregarImagem(ImageView imageView, String nomeImagem) {
         if (nomeImagem != null && !nomeImagem.isEmpty()) {
             try {
@@ -104,15 +144,11 @@ public class TelaPrimeiraEscolhaController {
                     imageView.setImage(new Image(stream));
                 } else {
                     System.err.println("Imagem não encontrada no caminho: " + caminhoCompleto);
-                    imageView.setImage(null);
                 }
             } catch (Exception e) {
                 System.err.println("Ocorreu um erro ao carregar a imagem: " + nomeImagem);
                 e.printStackTrace();
-                imageView.setImage(null);
             }
-        } else {
-            imageView.setImage(null);
         }
     }
 }

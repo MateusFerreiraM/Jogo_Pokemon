@@ -24,6 +24,10 @@ import jogo_pokemon.utils.GerenciadorDeMusica;
 import jogo_pokemon.utils.ImageUtils;
 import jogo_pokemon.view.GerenciadorDeTelas;
 
+/**
+ * Controlador para a tela de batalha principal do jogo.
+ * Gere todas as interações do utilizador, animações e o fluxo dos turnos.
+ */
 public class TelaBatalhaController {
 
     @FXML private Label labelNomeInimigo;
@@ -40,10 +44,13 @@ public class TelaBatalhaController {
     private Batalha batalha;
     private Random random = new Random();
 
+    /**
+     * Inicializa o controlador da tela de batalha.
+     * Carrega a sessão de batalha atual ou redireciona para o menu se não houver batalha ativa.
+     */
     @FXML
     public void initialize() {
         this.batalha = App.getBatalhaAtual();
-        
         if (this.batalha == null) {
             System.err.println("ERRO: Tentativa de carregar a tela de batalha sem uma batalha em andamento.");
             GerenciadorDeTelas.irParaMenuPrincipal();
@@ -52,11 +59,17 @@ public class TelaBatalhaController {
         }
     }
     
+    /**
+     * Handler para o clique no botão de ataque físico.
+     */
     @FXML
     void onAtaqueFisicoClick() {
         executarTurnoJogador(batalha.getPkmAmigo().getMovimentosList().get(0));
     }
 
+    /**
+     * Handler para o clique no botão de ataque especial.
+     */
     @FXML
     void onAtaqueEspecialClick() {
         batalha.decrementarContEspecial();
@@ -64,21 +77,19 @@ public class TelaBatalhaController {
         executarTurnoJogador(batalha.getPkmAmigo().getMovimentosList().get(1));
     }
 
-    // MODIFICADO: O fluxo do turno agora inclui as novas animações
+    /**
+     * Executa a sequência completa e assíncrona do turno do jogador.
+     * A sequência inclui: animação de ataque, cálculo de dano, animação de dano e da barra de vida,
+     * e, por fim, a transição para o turno do inimigo ou para o fim da batalha.
+     * @param movimentoJogador O movimento selecionado pelo jogador.
+     */
     private void executarTurnoJogador(Movimentos movimentoJogador) {
         setBotoesAtaque(true);
-        // 1. Anima o ataque do jogador
         animarAtaque(imgJogador, () -> {
-            // 2. Quando a animação de ataque termina, calcula o dano
             batalha.atacar(batalha.getPkmAmigo(), batalha.getPkmInimigo(), movimentoJogador);
             atualizarLabelVida(labelNomeInimigo, batalha.getPkmInimigo());
-            
-            // 3. Inicia a animação de dano no inimigo (tremor)
             animarDano(imgInimigo);
-
-            // 4. Inicia a animação da barra de vida, que é mais longa
             animarBarraDeVida(barHPInimigo, batalha.getPkmInimigo(), () -> {
-                // 5. Quando a barra de vida termina de animar, verifica o estado da batalha
                 if (!batalha.getEmExecucao()) {
                     fimDeBatalha();
                 } else {
@@ -88,13 +99,11 @@ public class TelaBatalhaController {
         });
     }
 
-    // MODIFICADO: O fluxo do turno do inimigo também inclui as novas animações
+    /**
+     * Executa a sequência completa e assíncrona do turno do oponente.
+     */
     private void executarTurnoInimigo() {
-        System.out.println("Vez do inimigo...");
-        
-        // 1. Anima o ataque do inimigo
         animarAtaque(imgInimigo, () -> {
-            // 2. Quando a animação de ataque termina, escolhe o movimento e calcula o dano
             int escolhaInimigo = (batalha.getContEspecialLider() > 0 && random.nextBoolean()) ? 1 : 0;
             Movimentos movimentoInimigo = batalha.getPkmInimigo().getMovimentosList().get(escolhaInimigo);
             if (escolhaInimigo == 1) {
@@ -102,13 +111,8 @@ public class TelaBatalhaController {
             }
             batalha.atacar(batalha.getPkmInimigo(), batalha.getPkmAmigo(), movimentoInimigo);
             atualizarLabelVida(labelNomeJogador, batalha.getPkmAmigo());
-            
-            // 3. Inicia a animação de dano no jogador (tremor)
             animarDano(imgJogador);
-
-            // 4. Inicia a animação da barra de vida
             animarBarraDeVida(barHPJogador, batalha.getPkmAmigo(), () -> {
-                // 5. Quando a barra de vida termina, verifica o estado da batalha ou reativa os botões
                 if (!batalha.getEmExecucao()) {
                     fimDeBatalha();
                 } else {
@@ -118,42 +122,12 @@ public class TelaBatalhaController {
         });
     }
 
-    // NOVO: Método para animar o "salto" de ataque
-    private void animarAtaque(ImageView atacanteView, Runnable aoConcluir) {
-        TranslateTransition tt = new TranslateTransition(Duration.millis(150), atacanteView);
-        tt.setByX(20); // Move 20 pixels para a direita
-        tt.setByY(-10); // Move 10 pixels para cima
-        tt.setCycleCount(2); // Faz o movimento 2 vezes (ida e volta)
-        tt.setAutoReverse(true); // Garante que o segundo ciclo é o de retorno
-
-        tt.setOnFinished(event -> {
-            if (aoConcluir != null) {
-                aoConcluir.run(); // Executa a próxima ação da batalha
-            }
-        });
-
-        tt.play();
-    }
-
-    // NOVO: Método para animar o "tremor" de dano
-    private void animarDano(ImageView defensorView) {
-        TranslateTransition tt1 = new TranslateTransition(Duration.millis(50), defensorView);
-        tt1.setByX(5);
-        TranslateTransition tt2 = new TranslateTransition(Duration.millis(50), defensorView);
-        tt2.setByX(-10);
-        TranslateTransition tt3 = new TranslateTransition(Duration.millis(50), defensorView);
-        tt3.setByX(10);
-        TranslateTransition tt4 = new TranslateTransition(Duration.millis(50), defensorView);
-        tt4.setByX(-5);
-
-        // Executa as pequenas translações em sequência para criar o efeito de tremor   
-        SequentialTransition st = new SequentialTransition(tt1, tt2, tt3, tt4);
-        st.play();
-    }
-
+    /**
+     * Finaliza a batalha, toca o efeito sonoro apropriado, cura os Pokémon, guarda o progresso
+     * e navega para a tela de resultado (vitória ou derrota).
+     */
     private void fimDeBatalha() {
         try {
-            // MODIFICADO: Toca o efeito sonoro ANTES de qualquer outra coisa
             if (batalha.getVitoria()) {
                 GerenciadorDeMusica.tocarSfxVitoria();
             } else {
@@ -161,12 +135,10 @@ public class TelaBatalhaController {
             }
 
             Treinador jogador = App.getTreinadorSessao();
-            System.out.println("A curar os seus Pokémon...");
             for (Pokemon pokemon : jogador.getPokemons()) {
                 pokemon.setHpAtual(pokemon.getHp());
             }
 
-            System.out.println("A guardar o seu progresso...");
             GerenciadorDados gerenciador = new GerenciadorDados();
             List<Treinador> todosOsTreinadores = gerenciador.carregarTreinadores();
             for (int i = 0; i < todosOsTreinadores.size(); i++) {
@@ -179,7 +151,6 @@ public class TelaBatalhaController {
             
             App.setBatalhaAtual(null); 
             
-            // A transição de tela acontece enquanto o som de vitória/derrota toca
             if (batalha.getVitoria()) {
                 GerenciadorDeTelas.irParaTelaDeVitoria();
             } else {
@@ -189,7 +160,48 @@ public class TelaBatalhaController {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Cria e executa uma animação de "salto" para o ImageView do Pokémon atacante.
+     * @param atacanteView O ImageView do Pokémon que irá atacar.
+     * @param aoConcluir A ação (Runnable) a ser executada quando a animação terminar.
+     */
+    private void animarAtaque(ImageView atacanteView, Runnable aoConcluir) {
+        TranslateTransition tt = new TranslateTransition(Duration.millis(150), atacanteView);
+        tt.setByX(20);
+        tt.setByY(-10);
+        tt.setCycleCount(2);
+        tt.setAutoReverse(true);
+
+        tt.setOnFinished(event -> {
+            if (aoConcluir != null) {
+                aoConcluir.run();
+            }
+        });
+        tt.play();
+    }
+
+    /**
+     * Cria e executa uma animação de "tremor" para o ImageView do Pokémon que recebe dano.
+     * @param defensorView O ImageView do Pokémon que irá defender.
+     */
+    private void animarDano(ImageView defensorView) {
+        TranslateTransition tt1 = new TranslateTransition(Duration.millis(50), defensorView);
+        tt1.setByX(5);
+        TranslateTransition tt2 = new TranslateTransition(Duration.millis(50), defensorView);
+        tt2.setByX(-10);
+        TranslateTransition tt3 = new TranslateTransition(Duration.millis(50), defensorView);
+        tt3.setByX(10);
+        TranslateTransition tt4 = new TranslateTransition(Duration.millis(50), defensorView);
+        tt4.setByX(-5);
         
+        SequentialTransition st = new SequentialTransition(tt1, tt2, tt3, tt4);
+        st.play();
+    }
+        
+    /**
+     * Configura o estado visual inicial da tela, exibindo os dados dos Pokémon.
+     */
     private void configurarTelaInicial() {
         Pokemon jogador = batalha.getPkmAmigo();
         Pokemon inimigo = batalha.getPkmInimigo();
@@ -205,21 +217,40 @@ public class TelaBatalhaController {
         setBotoesAtaque(false);
     }
     
+    /**
+     * Atualiza o texto do botão de ataque especial com o contador de usos restantes.
+     */
     private void atualizarTextoBotaoEspecial() {
         int contador = batalha.getContEspecial();
         btnAtaqueEspecial.setText("Ataque Especial (" + contador + "/2)");
     }
 
+    /**
+     * Define o valor inicial de uma barra de vida e a sua cor correspondente.
+     * @param barra O ProgressBar a ser configurado.
+     * @param pokemon O Pokémon associado a esta barra de vida.
+     */
     private void configurarBarraDeVidaInicial(ProgressBar barra, Pokemon pokemon) {
         double porcentagem = (double) pokemon.getHpAtual() / pokemon.getHp();
         barra.setProgress(porcentagem);
         atualizarCorBarraVida(barra, porcentagem);
     }
     
+    /**
+     * Atualiza o texto de um Label para exibir o nome e o HP (atual/máximo) de um Pokémon.
+     * @param label O Label a ser atualizado.
+     * @param pokemon O Pokémon cujos dados serão exibidos.
+     */
     private void atualizarLabelVida(Label label, Pokemon pokemon) {
         label.setText(pokemon.getNome() + " (" + pokemon.getHpAtual() + "/" + pokemon.getHp() + ")");
     }
 
+    /**
+     * Anima a transição de uma barra de vida de seu valor atual para um novo valor.
+     * @param barra O ProgressBar a ser animado.
+     * @param pokemon O Pokémon associado, para calcular a percentagem final de HP.
+     * @param aoConcluir Ação a ser executada no final da animação.
+     */
     private void animarBarraDeVida(ProgressBar barra, Pokemon pokemon, Runnable aoConcluir) {
         double porcentagemFinal = Math.max(0.0, (double) pokemon.getHpAtual() / pokemon.getHp());
         Timeline timeline = new Timeline(
@@ -234,6 +265,11 @@ public class TelaBatalhaController {
         timeline.play();
     }
 
+    /**
+     * Atualiza a classe de estilo CSS de uma barra de vida com base na percentagem de HP.
+     * @param barra O ProgressBar a ser estilizado.
+     * @param porcentagem A percentagem de HP (0.0 a 1.0).
+     */
     private void atualizarCorBarraVida(ProgressBar barra, double porcentagem) {
         barra.getStyleClass().removeAll("green-bar", "yellow-bar", "red-bar");
         if (porcentagem > 0.5) {
@@ -245,6 +281,11 @@ public class TelaBatalhaController {
         }
     }
 
+    /**
+     * Ativa ou desativa os botões de ataque do jogador.
+     * O botão de ataque especial só é reativado se ainda houver usos disponíveis.
+     * @param desativar true para desativar os botões, false para ativar.
+     */
     private void setBotoesAtaque(boolean desativar) {
         btnAtaqueFisico.setDisable(desativar);
         if (desativar) {

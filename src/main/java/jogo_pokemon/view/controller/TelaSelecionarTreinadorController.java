@@ -14,11 +14,14 @@ import jogo_pokemon.model.Pokemon;
 import jogo_pokemon.model.Treinador;
 import jogo_pokemon.utils.AlertUtils;
 import jogo_pokemon.view.GerenciadorDeTelas;
-
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Controlador para a tela de seleção de treinador.
+ * Carrega e exibe os perfis de treinador existentes para que o jogador possa carregar o seu progresso.
+ */
 public class TelaSelecionarTreinadorController {
 
     @FXML
@@ -26,6 +29,11 @@ public class TelaSelecionarTreinadorController {
 
     private GerenciadorDados gerenciador = new GerenciadorDados();
 
+   /**
+    * Inicializa o controlador. Este método carrega a lista de treinadores guardados
+    * e configura uma fábrica de células (cellFactory) para exibir cada treinador na ListView
+    * com uma formatação personalizada, mostrando o nome, a região e a quantidade de Pokémon.
+    */
    @FXML
     public void initialize() {
         try {
@@ -69,8 +77,7 @@ public class TelaSelecionarTreinadorController {
                     } else {
                         nomeValueText.setText(item.getNome());
                         regiaoValueText.setText(item.getRegiao());
-                         pokemonCountValueText.setText(String.valueOf(item.getPokemons().size()));
-                        
+                        pokemonCountValueText.setText(String.valueOf(item.getPokemons().size()));
                         setGraphic(cellBox);
                     }
                 }
@@ -81,8 +88,13 @@ public class TelaSelecionarTreinadorController {
         }
     }
 
+    /**
+     * Handler do botão "Confirmar".
+     * Carrega o perfil do treinador selecionado para a sessão do jogo, inicializa os seus Pokémon
+     * e navega para o menu principal. Exibe um alerta se nenhum treinador for selecionado.
+     */
     @FXML
-    void onConfirmarClick() throws IOException {
+    void onConfirmarClick() {
         Treinador treinadorSelecionado = listaTreinadores.getSelectionModel().getSelectedItem();
 
         if (treinadorSelecionado != null) {
@@ -96,6 +108,10 @@ public class TelaSelecionarTreinadorController {
         }
     }
 
+    /**
+     * Handler do botão "Voltar".
+     * Navega o utilizador de volta para a tela inicial.
+     */
     @FXML
     void onVoltarClick() {
         GerenciadorDeTelas.irParaTelaInicial();

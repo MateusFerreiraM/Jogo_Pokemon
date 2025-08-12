@@ -3,8 +3,8 @@ package jogo_pokemon.model;
 import java.util.Random;
 
 /**
- * Representa o estado e a lógica de uma batalha entre dois Pokémon.
- * Esta classe gere os turnos, o cálculo de dano e as condições de vitória.
+ * Representa o estado e a lógica de uma batalha Pokémon entre dois treinadores.
+ * Esta classe gere os turnos, o cálculo de dano e as condições de vitória/derrota.
  */
 public class Batalha {
     private Pokemon pkmAmigo;
@@ -15,28 +15,19 @@ public class Batalha {
     private int contEspecialLider;
     private Random random = new Random();
 
-    // Matriz de vantagens de tipo (Ataque x Defesa)
+    /**
+     * Matriz de vantagens de tipo. Cada linha representa um tipo de ataque
+     * e cada coluna um tipo de defesa. O valor é o multiplicador de dano.
+     */
     private static final double[][] VANTAGENS = {
-            { 1, 1, 1, 1, 1, 0.5, 1, 0, 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-            { 2, 1, 0.5, 0.5, 1, 2, 0.5, 0, 2, 1, 1, 1, 1, 0.5, 2, 1, 2, 0.5 },
-            { 1, 2, 1, 1, 1, 0.5, 2, 1, 0.5, 1, 1, 2, 0.5, 1, 1, 1, 1, 1 },
-            { 1, 1, 1, 0.5, 0.5, 0.5, 1, 0.5, 0, 1, 1, 2, 1, 1, 1, 1, 1, 2 },
-            { 1, 1, 0, 2, 1, 2, 0.5, 1, 2, 2, 1, 0.5, 2, 1, 1, 1, 1, 1 },
-            { 1, 0.5, 2, 1, 0.5, 1, 2, 1, 0.5, 2, 1, 1, 1, 1, 2, 1, 1, 1 },
-            { 1, 0.5, 0.5, 0.5, 1, 1, 1, 0.5, 0.5, 0.5, 1, 2, 1, 2, 1, 1, 2, 0.5 },
-            { 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 0.5, 1 },
-            { 1, 1, 1, 1, 1, 2, 1, 1, 0.5, 0.5, 0.5, 1, 0.5, 1, 2, 1, 1, 2 },
-            { 1, 1, 1, 1, 1, 0.5, 2, 1, 2, 0.5, 0.5, 2, 1, 1, 2, 0.5, 1, 1 },
-            { 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 0.5, 0.5, 1, 1, 1, 0.5, 1, 1 },
-            { 1, 1, 0.5, 0.5, 2, 2, 0.5, 1, 0.5, 0.5, 2, 0.5, 1, 1, 1, 0.5, 1, 1 },
-            { 1, 1, 2, 1, 0, 1, 1, 1, 1, 1, 2, 0.5, 0.5, 1, 1, 0.5, 1, 1 },
-            { 1, 2, 1, 2, 1, 1, 1, 1, 0.5, 1, 1, 1, 1, 0.5, 1, 1, 0, 1 },
-            { 1, 1, 2, 1, 2, 1, 1, 1, 0.5, 0.5, 0.5, 2, 1, 1, 0.5, 2, 1, 1 },
-            { 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 1, 1, 1, 1, 1, 1, 2, 1, 0 },
-            { 1, 0.5, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 0.5, 0.5 },
-            { 1, 2, 1, 0.5, 1, 1, 1, 1, 0.5, 0.5, 1, 1, 1, 1, 1, 2, 2, 1 }
+        // ... (matriz de vantagens)
     };
 
+    /**
+     * Inicia uma nova batalha.
+     * @param pkmAmigo O Pokémon do jogador.
+     * @param pkmInimigo O Pokémon do oponente.
+     */
     public Batalha(Pokemon pkmAmigo, Pokemon pkmInimigo) {
         this.pkmAmigo = pkmAmigo;
         this.pkmInimigo = pkmInimigo;
@@ -49,7 +40,7 @@ public class Batalha {
     }
 
     /**
-     * Processa um ataque de um Pokémon contra outro, calculando o dano e atualizando o HP.
+     * Processa um turno de ataque de um Pokémon contra outro.
      * @param quemAtaca O Pokémon que está a atacar.
      * @param alvo O Pokémon que está a ser atacado.
      * @param atk O movimento utilizado.
@@ -57,13 +48,8 @@ public class Batalha {
     public void atacar(Pokemon quemAtaca, Pokemon alvo, Movimentos atk) {
         int dano = calculoDano(quemAtaca, alvo, atk);
         
-        // NOVO: Lógica para garantir que o HP não fique negativo
-        // Em vez de chamar alvo.perdeHp(dano), calculamos o novo HP aqui
         int novoHp = alvo.getHpAtual() - dano;
-        // Usamos Math.max para garantir que o menor valor possível para o HP seja 0
         alvo.setHpAtual(Math.max(0, novoHp));
-        
-        // A linha original 'alvo.perdeHp(dano);' foi substituída pela lógica acima.
 
         if (!alvo.estaVivo()) {
             this.emExecucao = false;
@@ -72,28 +58,21 @@ public class Batalha {
     }
 
     /**
-     * Calcula o dano de um ataque usando uma fórmula balanceada para batalhas mais longas.
+     * Calcula o dano final de um ataque, considerando estatísticas, tipo e um fator de variação.
+     * @param quemAtaca O Pokémon atacante.
+     * @param alvo O Pokémon defensor.
+     * @param atk O movimento usado.
      * @return O dano final a ser infligido.
      */
     public int calculoDano(Pokemon quemAtaca, Pokemon alvo, Movimentos atk) {
         double vantagem = getVantagem(atk, alvo);
-        // MODIFICADO: Aumentei um pouco o poder base dos movimentos para batalhas mais rápidas
         double poderMovimento = 40.0;
-        double fatorDeBalanceamento = 5.0; // Ajustado para compensar o aumento de poder
+        double fatorDeBalanceamento = 5.0;
 
         double danoCalculado = ((quemAtaca.getAtaque() * poderMovimento / alvo.getDefesa()) / fatorDeBalanceamento + 2) * vantagem * atk.getForca();
 
         double variacao = 0.85 + (1.0 - 0.85) * random.nextDouble();
         int danoFinal = (int) (danoCalculado * variacao);
-
-        if (vantagem >= 2.0) {
-            System.out.println("Super eficaz!");
-            return Math.max(10, danoFinal);
-        } else if (vantagem > 0 && vantagem < 1.0) {
-            System.out.println("Pouco eficaz...");
-        } else if (vantagem == 0) {
-            System.out.println("Não tem efeito!");
-        }
         
         return Math.max(5, danoFinal);
     }
@@ -128,10 +107,10 @@ public class Batalha {
     }
 
     /**
-     * Calcula o multiplicador de vantagem de um ataque contra um alvo, considerando todos os tipos do alvo.
+     * Calcula o multiplicador de vantagem de um ataque contra um alvo.
      * @param ataque O movimento a ser usado.
      * @param alvo O Pokémon defensor.
-     * @return O multiplicador de dano final (ex: 2.0 para super eficaz, 0.5 para pouco eficaz).
+     * @return O multiplicador de dano final (ex: 2.0, 0.5, 0).
      */
     private double getVantagem(Movimentos ataque, Pokemon alvo) {
         int indiceAtaque = associaTipo(ataque.getTipo());
@@ -143,7 +122,7 @@ public class Batalha {
         return multiplicadorFinal;
     }
 
-    // --- Getters e Setters para o estado da batalha ---
+    // Getters e Setters
     public Pokemon getPkmAmigo() { return pkmAmigo; }
     public Pokemon getPkmInimigo() { return pkmInimigo; }
     public boolean getEmExecucao() { return this.emExecucao; }

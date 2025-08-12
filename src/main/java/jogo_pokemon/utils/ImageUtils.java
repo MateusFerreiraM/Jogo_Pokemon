@@ -7,15 +7,18 @@ import javafx.scene.paint.Color;
 import jogo_pokemon.App;
 import java.io.InputStream;
 
+/**
+ * Classe utilitária para operações comuns com imagens, como carregar sprites e aplicar efeitos.
+ */
 public class ImageUtils {
 
     /**
-     * Carrega uma imagem de um Pokémon a partir da pasta de recursos e a aplica a um ImageView.
+     * Carrega uma imagem a partir da pasta de recursos e a aplica a um ImageView.
+     * Limpa qualquer imagem ou efeito anterior antes de carregar a nova.
      * @param imageView O componente ImageView a ser atualizado.
-     * @param nomeImagem O nome do ficheiro da imagem (ex: "1.png").
+     * @param nomeImagem O nome do ficheiro da imagem (ex: "bulbasaur.png").
      */
     public static void carregarPokemonImage(ImageView imageView, String nomeImagem) {
-        // Limpa a imagem e o efeito anteriores
         imageView.setImage(null);
         imageView.setEffect(null);
 
@@ -37,7 +40,7 @@ public class ImageUtils {
     }
 
     /**
-     * Aplica um efeito de sombra padrão a um ImageView.
+     * Aplica um efeito de sombra padrão a um ImageView para dar profundidade.
      * @param imageView O componente ImageView a receber o efeito.
      */
     public static void aplicarSombra(ImageView imageView) {

@@ -27,6 +27,10 @@ public class TelaConfirmarBatalhaController {
     private LiderGin oponente;
     private GerenciadorDados gerenciador = new GerenciadorDados();
 
+    /**
+     * Método de inicialização. É chamado quando o FXML é carregado.
+     * Carrega o líder selecionado a partir do estado global da aplicação.
+     */
     @FXML
     public void initialize() {
         this.oponente = App.getLiderSelecionado();
@@ -37,6 +41,11 @@ public class TelaConfirmarBatalhaController {
         }
     }
     
+    /**
+     * Carrega os dados do Pokémon do oponente e atualiza a interface.
+     * Se o ginásio for da região "Misterioso", exibe uma imagem e texto genéricos
+     * para manter o suspense. Caso contrário, exibe as informações reais do Pokémon.
+     */
     private void carregarDadosOponente() {
         try {
             List<Pokemon> pokemonsDisponiveis = gerenciador.carregarPokemonsDisponiveis();
@@ -77,6 +86,10 @@ public class TelaConfirmarBatalhaController {
         }
     }
     
+    /**
+     * Handler do botão "Lutar!". Inicia a música de batalha, cria uma nova instância de Batalha
+     * e transita para a tela de batalha principal.
+     */
     @FXML
     void onConfirmarClick() {
         GerenciadorDeMusica.tocarMusicaBatalha();
@@ -85,6 +98,10 @@ public class TelaConfirmarBatalhaController {
         GerenciadorDeTelas.irParaTelaDeBatalha();
     }
 
+    /**
+     * Handler do botão "Voltar". Limpa o líder selecionado do estado global da aplicação
+     * e retorna para a tela de escolha de ginásio.
+     */
     @FXML
     void onVoltarClick() {
         App.setLiderSelecionado(null);

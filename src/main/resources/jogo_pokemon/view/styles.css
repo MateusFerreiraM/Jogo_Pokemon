@@ -69,6 +69,11 @@
    -fx-text-fill: #333333; /* Cor do texto mais escuro, para ser visível */
 }
 
+.list-cell .pokemon-atual {
+    -fx-fill: goldenrod;
+    -fx-font-weight: bold;
+}
+
 .list-view-sem-scroll {
    -fx-font-family: 'Pokemon Classic', sans-serif;
    -fx-font-size: 14px;

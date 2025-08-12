@@ -12,11 +12,14 @@ import jogo_pokemon.data.GerenciadorDados;
 import jogo_pokemon.model.LiderGin;
 import jogo_pokemon.utils.AlertUtils;
 import jogo_pokemon.view.GerenciadorDeTelas;
-
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Controlador para a tela de seleção de ginásio.
+ * Carrega e exibe a lista de líderes disponíveis para desafio.
+ */
 public class TelaEscolherGinasioController {
 
     @FXML
@@ -24,20 +27,18 @@ public class TelaEscolherGinasioController {
 
     private GerenciadorDados gerenciador = new GerenciadorDados();
 
+    /**
+     * Inicializa o controlador, carregando a lista de líderes de ginásio a partir do
+     * ficheiro de dados e configurando a exibição personalizada na ListView.
+     */
     @FXML
     public void initialize() {
         try {
             List<LiderGin> lideres = gerenciador.carregarLideres();
-            
-            // DEBUG: Imprime o que foi carregado para o terminal
-            System.out.println("Líderes carregados: " + lideres.size());
-            for (LiderGin lider : lideres) {
-                System.out.println("  - ID: " + lider.getId() + ", Nome: " + lider.getNome() + ", Regiao: " + lider.getRegiao());
-            }
-
             ObservableList<LiderGin> observableList = FXCollections.observableArrayList(lideres);
             listaGinasios.setItems(observableList);
             
+            // Configura a fábrica de células para renderizar cada item da lista de forma personalizada.
             listaGinasios.setCellFactory(param -> new ListCell<LiderGin>() {
                 private final Text nomeGinasioText = new Text();
                 private final Text nomeLiderText = new Text();
@@ -53,7 +54,6 @@ public class TelaEscolherGinasioController {
                     if (empty || lider == null) {
                         setGraphic(null);
                     } else {
-                        // Código mais seguro que previne erros se um campo for nulo
                         String regiao = lider.getRegiao() != null ? lider.getRegiao() : "Região Desconhecida";
                         String nome = lider.getNome() != null ? lider.getNome() : "Líder Desconhecido";
 
@@ -72,6 +72,11 @@ public class TelaEscolherGinasioController {
         }
     }
 
+    /**
+     * Handler do botão "Confirmar".
+     * Verifica se um líder foi selecionado, guarda a seleção no estado global da aplicação
+     * e navega para a tela de confirmação de batalha.
+     */
     @FXML
     void onConfirmarClick() {
         LiderGin liderSelecionado = listaGinasios.getSelectionModel().getSelectedItem();
@@ -83,6 +88,10 @@ public class TelaEscolherGinasioController {
         }
     }
 
+    /**
+     * Handler do botão "Voltar".
+     * Navega o utilizador de volta para o menu principal.
+     */
     @FXML
     void onVoltarClick() {
         GerenciadorDeTelas.irParaMenuPrincipal();

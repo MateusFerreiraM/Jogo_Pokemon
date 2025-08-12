@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Representa um treinador de Pokémon, com os seus dados pessoais e a sua equipa de Pokémon.
+ */
 public class Treinador {
 
     @JsonProperty("Nome")
@@ -20,7 +23,6 @@ public class Treinador {
     @JsonProperty("Pokemons")
     private List<Pokemon> pokemons;
 
-    // NOVO CAMPO: Guarda o ID do Pokémon atual no JSON
     @JsonProperty("PokemonAtualId")
     private int pokemonAtualId;
 
@@ -38,7 +40,50 @@ public class Treinador {
         this.pokemons = new ArrayList<>();
     }
 
-    // --- Getters e Setters ---
+    /**
+     * Obtém o Pokémon atualmente selecionado pelo treinador para batalhas.
+     * Se o Pokémon atual não estiver definido, ele é carregado a partir do ID guardado (`pokemonAtualId`).
+     * Se o ID não for encontrado, o primeiro Pokémon da lista é usado como padrão.
+     * @return O Pokémon ativo do treinador.
+     */
+    @JsonIgnore
+    public Pokemon getPokemonAtual() {
+        if (pokemonAtual == null && !pokemons.isEmpty()) {
+            Optional<Pokemon> encontrado = pokemons.stream()
+                .filter(p -> p.getId() == this.pokemonAtualId)
+                .findFirst();
+            
+            this.pokemonAtual = encontrado.orElse(pokemons.get(0));
+        }
+        return pokemonAtual;
+    }
+
+    /**
+     * Define o Pokémon ativo do treinador e atualiza o ID correspondente.
+     * @param pokemon O Pokémon da equipa a ser definido como ativo.
+     */
+    public void setPokemonAtual(Pokemon pokemon) {
+        if (pokemon != null && this.pokemons.contains(pokemon)) {
+            this.pokemonAtual = pokemon;
+            this.pokemonAtualId = pokemon.getId();
+        }
+    }
+
+    /**
+     * Adiciona um novo Pokémon à equipa do treinador.
+     * Se for o primeiro Pokémon, ele é automaticamente definido como o ativo.
+     * @param pokemon O Pokémon a ser adicionado.
+     */
+    public void adicionarPokemon(Pokemon pokemon) {
+        if (this.pokemons.isEmpty()) {
+            // Define o primeiro Pokémon adicionado como o atual por padrão
+            this.pokemonAtual = pokemon;
+            this.pokemonAtualId = pokemon.getId();
+        }
+        this.pokemons.add(pokemon);
+    }
+
+    // Getters e Setters
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
     public int getId() { return id; }
@@ -49,37 +94,6 @@ public class Treinador {
     public void setPokemons(List<Pokemon> pokemons) { this.pokemons = pokemons; }
     public int getPokemonAtualId() { return pokemonAtualId; }
     public void setPokemonAtualId(int id) { this.pokemonAtualId = id; }
-
-    // --- Lógica Corrigida para o Pokémon Atual ---
-
-    @JsonIgnore
-    public Pokemon getPokemonAtual() {
-        // Se o objeto pokemonAtual ainda não foi definido...
-        if (pokemonAtual == null && !pokemons.isEmpty()) {
-            // ...procura na lista pelo Pokémon com o ID guardado.
-            Optional<Pokemon> encontrado = pokemons.stream()
-                .filter(p -> p.getId() == this.pokemonAtualId)
-                .findFirst();
-            
-            // Se o encontrar, define-o como o atual. Senão, usa o primeiro como fallback.
-            this.pokemonAtual = encontrado.orElse(pokemons.get(0));
-        }
-        return pokemonAtual;
-    }
-
-    public void setPokemonAtual(Pokemon pokemon) {
-        if (pokemon != null && this.pokemons.contains(pokemon)) {
-            this.pokemonAtual = pokemon;
-            this.pokemonAtualId = pokemon.getId(); // Atualiza também o ID a ser guardado
-        }
-    }
-
-    public void adicionarPokemon(Pokemon pokemon) {
-        if (this.pokemons.isEmpty()) {
-            setPokemonAtual(pokemon); // Usa o novo método para definir o primeiro como atual
-        }
-        this.pokemons.add(pokemon);
-    }
 
     @Override
     public String toString() {

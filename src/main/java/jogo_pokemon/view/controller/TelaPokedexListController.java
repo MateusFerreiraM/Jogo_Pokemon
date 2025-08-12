@@ -21,6 +21,9 @@ import jogo_pokemon.model.Pokemon;
 import jogo_pokemon.utils.AlertUtils;
 import jogo_pokemon.view.GerenciadorDeTelas;
 
+/**
+ * Controlador para a tela que exibe a lista completa de todos os Pokémon do jogo (Pokédex).
+ */
 public class TelaPokedexListController {
 
     @FXML
@@ -28,6 +31,12 @@ public class TelaPokedexListController {
 
     private GerenciadorDados gerenciador = new GerenciadorDados();
 
+    /**
+     * Inicializa o controlador. Este método carrega a lista completa de Pokémon
+     * do ficheiro de dados e configura uma fábrica de células (cellFactory) personalizada
+     * para exibir cada Pokémon na ListView com uma formatação rica, incluindo imagem,
+     * ID, nome e tipos.
+     */
     @FXML
     public void initialize() {
         try {
@@ -35,7 +44,6 @@ public class TelaPokedexListController {
             ObservableList<Pokemon> observableList = FXCollections.observableArrayList(todosOsPokemon);
             listaPokedexCompleta.setItems(observableList);
 
-            // REFATORAÇÃO VISUAL DA LISTA
             listaPokedexCompleta.setCellFactory(param -> new ListCell<Pokemon>() {
                 private final ImageView imageView = new ImageView();
                 
@@ -55,7 +63,6 @@ public class TelaPokedexListController {
                 private final HBox cellHBox = new HBox(15, imageView, textVBox);
 
                 {
-                    // Aplica as classes de estilo
                     idKeyText.getStyleClass().add("list-item-key");
                     nomeKeyText.getStyleClass().add("list-item-key");
                     tiposKeyText.getStyleClass().add("list-item-key");
@@ -74,7 +81,6 @@ public class TelaPokedexListController {
                         setText(null);
                         setGraphic(null);
                     } else {
-                        // Carrega a imagem
                         try (InputStream stream = App.class.getResourceAsStream("images/" + pokemon.getImagePath())) {
                             if (stream != null) {
                                 imageView.setImage(new Image(stream));
@@ -83,7 +89,6 @@ public class TelaPokedexListController {
                             }
                         } catch (Exception e) { imageView.setImage(null); }
 
-                        // Define os textos
                         idValueText.setText(String.format("%03d", pokemon.getId()));
                         nomeValueText.setText(pokemon.getNome());
                         String tiposFormatados = pokemon.getTipos().stream()
@@ -101,6 +106,10 @@ public class TelaPokedexListController {
         }
     }
 
+    /**
+     * Handler do botão "Voltar".
+     * Navega o utilizador de volta para a tela do menu do Pokédex.
+     */
     @FXML
     void onVoltarClick() {
         GerenciadorDeTelas.irParaPokedex();

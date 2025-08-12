@@ -11,10 +11,15 @@ import jogo_pokemon.App;
 import jogo_pokemon.data.GerenciadorDados;
 import jogo_pokemon.model.Pokemon;
 import jogo_pokemon.model.Treinador;
-import jogo_pokemon.utils.GerenciadorDeMusica; // NOVO: Importa o gerenciador de música
+import jogo_pokemon.utils.GerenciadorDeMusica;
 import jogo_pokemon.utils.ImageUtils;
 import jogo_pokemon.view.GerenciadorDeTelas;
 
+/**
+ * Controlador para a tela de vitória.
+ * É exibida quando o jogador vence uma batalha e gere a lógica de recompensa,
+ * que consiste em adicionar um novo Pokémon à equipa do jogador.
+ */
 public class TelaVitoriaController {
 
     @FXML
@@ -25,6 +30,15 @@ public class TelaVitoriaController {
 
     private GerenciadorDados gerenciador = new GerenciadorDados();
 
+    /**
+     * Inicializa a tela de vitória. Este método implementa a lógica de recompensa:
+     * 1. Carrega os Pokémon do jogador e todos os Pokémon disponíveis.
+     * 2. Filtra a lista para encontrar Pokémon que o jogador ainda não possui.
+     * 3. Se houver Pokémon disponíveis, seleciona um aleatoriamente como recompensa.
+     * 4. Exibe o Pokémon recompensa na tela.
+     * 5. Adiciona o novo Pokémon à equipa do jogador e guarda o progresso.
+     * 6. Se o jogador já tiver todos, exibe uma mensagem de conclusão.
+     */
     @FXML
     public void initialize() {
         try {
@@ -58,6 +72,11 @@ public class TelaVitoriaController {
         }
     }
     
+    /**
+     * Guarda o estado atual do treinador no ficheiro de dados.
+     * @param jogador O objeto Treinador com a equipa atualizada.
+     * @throws IOException se ocorrer um erro ao escrever no ficheiro.
+     */
     private void salvarProgresso(Treinador jogador) throws IOException {
         List<Treinador> todosOsTreinadores = gerenciador.carregarTreinadores();
         for (int i = 0; i < todosOsTreinadores.size(); i++) {
@@ -69,6 +88,10 @@ public class TelaVitoriaController {
         gerenciador.salvarTreinadores(todosOsTreinadores);
     }
 
+    /**
+     * Handler do botão "Voltar ao Menu Principal".
+     * Retoma a música de menu e navega o utilizador para a tela do menu principal.
+     */
     @FXML
     void onVoltarAoMenuClick() {
         GerenciadorDeMusica.tocarMusicaMenu();

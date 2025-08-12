@@ -24,6 +24,10 @@ import jogo_pokemon.model.Treinador;
 import jogo_pokemon.utils.AlertUtils;
 import jogo_pokemon.view.GerenciadorDeTelas;
 
+/**
+ * Controlador para a tela "Meus Pokémon".
+ * Permite ao jogador ver a sua equipa e definir qual Pokémon será o principal para as batalhas.
+ */
 public class TelaMeusPokemonController {
 
     @FXML private ListView<Pokemon> listaMeusPokemon;
@@ -33,6 +37,11 @@ public class TelaMeusPokemonController {
     private Treinador jogador;
     private GerenciadorDados gerenciador = new GerenciadorDados();
 
+    /**
+     * Inicializa o controlador. Carrega o treinador da sessão, atualiza a tela
+     * e adiciona um listener para habilitar o botão "Definir como Atual" apenas
+     * quando um Pokémon for selecionado na lista.
+     */
     @FXML
     public void initialize() {
         this.jogador = App.getTreinadorSessao();
@@ -46,6 +55,11 @@ public class TelaMeusPokemonController {
         }
     }
 
+    /**
+     * Handler do botão "Definir como Atual".
+     * Define o Pokémon selecionado como o ativo do jogador, guarda a alteração
+     * no ficheiro de dados e atualiza a tela.
+     */
     @FXML
     void onDefinirAtualClick() {
         Pokemon pokemonSelecionado = listaMeusPokemon.getSelectionModel().getSelectedItem();
@@ -71,6 +85,11 @@ public class TelaMeusPokemonController {
         }
     }
 
+    /**
+     * Atualiza todos os elementos visuais da tela.
+     * Recarrega a lista de Pokémon com uma formatação personalizada que destaca
+     * o Pokémon atualmente ativo com uma estrela e um estilo visual diferente.
+     */
     private void atualizarTela() {
         if (jogador.getPokemonAtual() != null) {
             labelPokemonAtual.setText("Atual: " + jogador.getPokemonAtual().getNome());
@@ -81,7 +100,6 @@ public class TelaMeusPokemonController {
         ObservableList<Pokemon> observableList = FXCollections.observableArrayList(jogador.getPokemons());
         listaMeusPokemon.setItems(observableList);
 
-        // **A CORREÇÃO E MELHORIA ESTÁ AQUI**
         listaMeusPokemon.setCellFactory(param -> new ListCell<Pokemon>() {
             private final ImageView imageView = new ImageView();
             private final Text nomeText = new Text();
@@ -99,7 +117,6 @@ public class TelaMeusPokemonController {
                     setText(null);
                     setGraphic(null);
                 } else {
-                    // Carrega a imagem
                     try (InputStream stream = App.class.getResourceAsStream("images/" + pokemon.getImagePath())) {
                         if (stream != null) {
                             imageView.setImage(new Image(stream));
@@ -108,21 +125,21 @@ public class TelaMeusPokemonController {
                         }
                     } catch (Exception e) { imageView.setImage(null); }
 
-                    // Formata os textos
+                    // Lógica para destacar o Pokémon atual
+                    nomeText.getStyleClass().remove("pokemon-atual");
                     if (pokemon.equals(jogador.getPokemonAtual())) {
-                        nomeText.setText("\u2605 ATUAL | " + pokemon.getNome()); // ★ = \u2605
-                        nomeText.setStyle("-fx-fill: goldenrod;"); // Define a cor da estrela e do texto
+                        nomeText.setText("\u2605 ATUAL | " + pokemon.getNome()); // Adiciona o ícone de estrela
+                        nomeText.getStyleClass().add("pokemon-atual"); // Aplica o estilo CSS
                     } else {
                         nomeText.setText(pokemon.getNome());
-                        nomeText.setStyle(""); // Limpa estilo se não for o atual
                     }
-                    nomeText.getStyleClass().add("list-item-title"); // Reutiliza o estilo do nome do ginásio
+                    nomeText.getStyleClass().add("list-item-title");
 
                     String tiposFormatados = pokemon.getTipos().stream()
                             .map(Enum::toString)
                             .collect(Collectors.joining(" / "));
                     infoText.setText("HP: " + pokemon.getHpAtual() + "/" + pokemon.getHp() + " | Tipos: " + tiposFormatados);
-                    infoText.getStyleClass().add("list-item-subtitle"); // Reutiliza o estilo do nome do líder
+                    infoText.getStyleClass().add("list-item-subtitle");
 
                     setGraphic(cellHBox);
                 }
@@ -130,6 +147,10 @@ public class TelaMeusPokemonController {
         });
     }
 
+    /**
+     * Handler do botão "Voltar".
+     * Navega o utilizador de volta para o menu principal.
+     */
     @FXML
     void onVoltarClick() {
         GerenciadorDeTelas.irParaMenuPrincipal();

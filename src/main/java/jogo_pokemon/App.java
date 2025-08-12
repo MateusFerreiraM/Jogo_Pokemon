@@ -9,38 +9,47 @@ import javafx.stage.Stage;
 import jogo_pokemon.model.Batalha;
 import jogo_pokemon.model.LiderGin;
 import jogo_pokemon.model.Treinador;
-// NOVO: Importa o gerenciador de música
 import jogo_pokemon.utils.GerenciadorDeMusica;
 import jogo_pokemon.view.GerenciadorDeTelas;
-
 import java.io.IOException;
 import java.net.URL;
 
+/**
+ * Classe principal da aplicação.
+ * Responsável por iniciar o JavaFX, carregar recursos iniciais (fontes, CSS, música)
+ * e gerir o estado global do jogo (sessão do treinador, batalha atual, etc.).
+ */
 public class App extends Application {
 
-    private static Treinador treinadorSessao; // Para guardar o treinador atual
+    /** Guarda a instância do treinador que está atualmente a jogar. */
+    private static Treinador treinadorSessao;
+    /** Guarda a instância da batalha que está a decorrer. */
+    private static Batalha batalhaAtual;
+    /** Guarda a instância do líder de ginásio selecionado para um desafio. */
+    private static LiderGin liderSelecionado;
 
+    /**
+     * Ponto de entrada principal para a aplicação JavaFX.
+     * Configura e lança a janela principal (Stage).
+     * @param stage O palco principal fornecido pelo runtime do JavaFX.
+     * @throws IOException se o ficheiro FXML inicial não puder ser carregado.
+     */
     @Override
     public void start(Stage stage) throws IOException {
-        // Define os caminhos exatos e corretos para os recursos das fontes
         final String FONT_TITLE_PATH = "/jogo_pokemon/fonts/Pokemon_Solid_Normal.ttf";
         final String FONT_TEXT_PATH = "/jogo_pokemon/fonts/Pokemon_Classic_Regular.ttf";
 
         try {
-            // Tenta carregar as fontes para a memória da aplicação
             Font.loadFont(getClass().getResourceAsStream(FONT_TITLE_PATH), 10);
             Font.loadFont(getClass().getResourceAsStream(FONT_TEXT_PATH), 10);
-            System.out.println("SUCESSO: Fontes personalizadas carregadas na aplicação!");
         } catch (Exception e) {
-            System.err.println("ERRO CRÍTICO: Falha ao carregar os ficheiros de fonte. Verifique os nomes e a localização.");
+            System.err.println("ERRO CRÍTICO: Falha ao carregar os ficheiros de fonte.");
             e.printStackTrace();
         }
 
-        // NOVO: Carrega as músicas e inicia a música de menu
         GerenciadorDeMusica.carregarMusicas();
         GerenciadorDeMusica.tocarMusicaMenu();
         
-        // O resto do código continua igual...
         Parent root = FXMLLoader.load(getClass().getResource("view/TelaInicial.fxml"));
         Scene scene = new Scene(root, 640, 480);
 
@@ -58,11 +67,14 @@ public class App extends Application {
         stage.show();
     }
 
-    // NOVO: Adiciona o método stop para parar a música ao fechar o jogo
+    /**
+     * Este método é chamado quando a aplicação está a fechar.
+     * Garante que os recursos, como a música, são parados corretamente.
+     */
     @Override
     public void stop() {
         GerenciadorDeMusica.pararTudo();
-        System.out.println("Aplicação encerrada. Música parada.");
+        System.out.println("Aplicação encerrada.");
     }
 
     public static Treinador getTreinadorSessao() {
@@ -73,12 +85,6 @@ public class App extends Application {
         treinadorSessao = treinador;
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
-
-    private static Batalha batalhaAtual; // Novo campo para a batalha
-
     public static Batalha getBatalhaAtual() {
         return batalhaAtual;
     }
@@ -87,7 +93,7 @@ public class App extends Application {
         batalhaAtual = batalha;
     }
 
-    private static LiderGin liderSelecionado; // Novo campo
+
 
     public static LiderGin getLiderSelecionado() {
         return liderSelecionado;
@@ -96,5 +102,12 @@ public class App extends Application {
     public static void setLiderSelecionado(LiderGin lider) {
         liderSelecionado = lider;
     }
-
+    
+    /**
+     * O método main, ponto de entrada da aplicação Java.
+     * @param args Argumentos de linha de comando (não utilizados).
+     */
+    public static void main(String[] args) {
+        launch();
+    }
 }

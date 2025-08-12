@@ -2,36 +2,39 @@ package jogo_pokemon.utils;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.util.Duration; // NOVO: Import necessário para o seek
+import javafx.util.Duration;
 import java.net.URL;
 
+/**
+ * Classe utilitária para gerir a reprodução de músicas de fundo e efeitos sonoros.
+ * Centraliza todo o controlo de áudio da aplicação.
+ */
 public class GerenciadorDeMusica {
 
     private static MediaPlayer menuPlayer;
     private static MediaPlayer batalhaPlayer;
-    // NOVO: MediaPlayers para os efeitos sonoros
     private static MediaPlayer vitoriaSfxPlayer;
     private static MediaPlayer derrotaSfxPlayer;
 
-    // Volume para músicas de fundo
+    // --- Constantes de Configuração de Áudio ---
     private static final double VOLUME_MUSICA = 0.05; 
-    // NOVO: Volume para efeitos sonoros (geralmente mais alto)
     private static final double VOLUME_SFX = 0.1; 
-
-    // Caminhos para as músicas
     private static final String MUSICA_MENU_PATH = "/jogo_pokemon/audio/game.mp3";
     private static final String MUSICA_BATALHA_PATH = "/jogo_pokemon/audio/battle.mp3";
-    // NOVO: Caminhos para os efeitos sonoros
     private static final String SFX_VITORIA_PATH = "/jogo_pokemon/audio/win.mp3";
     private static final String SFX_DERROTA_PATH = "/jogo_pokemon/audio/lose.mp3";
 
+    /**
+     * Carrega todos os ficheiros de áudio (músicas e SFX) e prepara os MediaPlayers.
+     * Este método deve ser chamado uma única vez no arranque do jogo.
+     */
     public static void carregarMusicas() {
         try {
-            // Carrega Músicas de Fundo
+            // Carrega Músicas de Fundo (com loop)
             URL menuUrl = GerenciadorDeMusica.class.getResource(MUSICA_MENU_PATH);
             if (menuUrl != null) {
                 menuPlayer = new MediaPlayer(new Media(menuUrl.toExternalForm()));
-                menuPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Repetir
+                menuPlayer.setCycleCount(MediaPlayer.INDEFINITE);
                 menuPlayer.setVolume(VOLUME_MUSICA);
             } else {
                 System.err.println("Erro: Ficheiro de música do menu não encontrado: " + MUSICA_MENU_PATH);
@@ -40,18 +43,17 @@ public class GerenciadorDeMusica {
             URL batalhaUrl = GerenciadorDeMusica.class.getResource(MUSICA_BATALHA_PATH);
             if (batalhaUrl != null) {
                 batalhaPlayer = new MediaPlayer(new Media(batalhaUrl.toExternalForm()));
-                batalhaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Repetir
+                batalhaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
                 batalhaPlayer.setVolume(VOLUME_MUSICA);
             } else {
                 System.err.println("Erro: Ficheiro de música de batalha não encontrado: " + MUSICA_BATALHA_PATH);
             }
 
-            // NOVO: Carrega Efeitos Sonoros (sem repetir)
+            // Carrega Efeitos Sonoros (sem loop)
             URL vitoriaUrl = GerenciadorDeMusica.class.getResource(SFX_VITORIA_PATH);
             if (vitoriaUrl != null) {
                 vitoriaSfxPlayer = new MediaPlayer(new Media(vitoriaUrl.toExternalForm()));
                 vitoriaSfxPlayer.setVolume(VOLUME_SFX);
-                // Não configuramos CycleCount, para tocar apenas uma vez
             } else {
                 System.err.println("Erro: Efeito sonoro de vitória não encontrado: " + SFX_VITORIA_PATH);
             }
@@ -60,7 +62,6 @@ public class GerenciadorDeMusica {
             if (derrotaUrl != null) {
                 derrotaSfxPlayer = new MediaPlayer(new Media(derrotaUrl.toExternalForm()));
                 derrotaSfxPlayer.setVolume(VOLUME_SFX);
-                // Não configuramos CycleCount, para tocar apenas uma vez
             } else {
                 System.err.println("Erro: Efeito sonoro de derrota não encontrado: " + SFX_DERROTA_PATH);
             }
@@ -71,38 +72,51 @@ public class GerenciadorDeMusica {
         }
     }
 
+    /**
+     * Para qualquer áudio em reprodução e inicia a música do menu.
+     */
     public static void tocarMusicaMenu() {
-        pararTudo(); // Para tudo antes de começar uma nova música de fundo
+        pararTudo();
         if (menuPlayer != null) {
             menuPlayer.play();
         }
     }
 
+    /**
+     * Para qualquer áudio em reprodução e inicia a música de batalha.
+     */
     public static void tocarMusicaBatalha() {
-        pararTudo(); // Para tudo antes de começar uma nova música de fundo
+        pararTudo();
         if (batalhaPlayer != null) {
             batalhaPlayer.play();
         }
     }
     
-    // NOVO: Método para tocar o SFX de vitória
+    /**
+     * Para qualquer áudio em reprodução e toca o efeito sonoro de vitória uma vez.
+     */
     public static void tocarSfxVitoria() {
-        pararTudo(); // Para a música de fundo
+        pararTudo();
         if (vitoriaSfxPlayer != null) {
-            vitoriaSfxPlayer.seek(Duration.ZERO); // Volta o áudio para o início
+            vitoriaSfxPlayer.seek(Duration.ZERO);
             vitoriaSfxPlayer.play();
         }
     }
 
-    // NOVO: Método para tocar o SFX de derrota
+    /**
+     * Para qualquer áudio em reprodução e toca o efeito sonoro de derrota uma vez.
+     */
     public static void tocarSfxDerrota() {
-        pararTudo(); // Para a música de fundo
+        pararTudo();
         if (derrotaSfxPlayer != null) {
-            derrotaSfxPlayer.seek(Duration.ZERO); // Volta o áudio para o início
+            derrotaSfxPlayer.seek(Duration.ZERO);
             derrotaSfxPlayer.play();
         }
     }
 
+    /**
+     * Para a reprodução de todos os MediaPlayers (músicas e SFX).
+     */
     public static void pararTudo() {
         if (menuPlayer != null && menuPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
             menuPlayer.stop();
@@ -110,7 +124,6 @@ public class GerenciadorDeMusica {
         if (batalhaPlayer != null && batalhaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
             batalhaPlayer.stop();
         }
-        // MODIFICADO: Garante que os SFX também parem se necessário
         if (vitoriaSfxPlayer != null && vitoriaSfxPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
             vitoriaSfxPlayer.stop();
         }
