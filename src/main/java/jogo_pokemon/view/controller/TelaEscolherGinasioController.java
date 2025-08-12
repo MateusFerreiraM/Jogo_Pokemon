@@ -73,18 +73,18 @@ public class TelaEscolherGinasioController {
     }
 
     @FXML
-    void onConfirmarClick() throws IOException {
+    void onConfirmarClick() {
         LiderGin liderSelecionado = listaGinasios.getSelectionModel().getSelectedItem();
         if (liderSelecionado != null) {
             App.setLiderSelecionado(liderSelecionado);
-            GerenciadorDeTelas.mudarTela("TelaConfirmarBatalha.fxml");
+            GerenciadorDeTelas.irParaTelaConfirmarBatalha();
         } else {
             AlertUtils.mostrarAlerta("Nenhuma Seleção", "Por favor, selecione um ginásio para desafiar.");
         }
     }
 
     @FXML
-    void onVoltarClick() throws IOException {
-        GerenciadorDeTelas.mudarTela("TelaMenuPrincipal.fxml");
+    void onVoltarClick() {
+        GerenciadorDeTelas.irParaMenuPrincipal();
     }
 }

@@ -4,18 +4,16 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import jogo_pokemon.view.GerenciadorDeTelas;
 
-import java.io.IOException;
-
 public class TelaInicialController {
 
     @FXML
-    void onSelecionarTreinadorClick() throws IOException {
-        GerenciadorDeTelas.mudarTela("TelaSelecionarTreinador.fxml");
+    void onSelecionarTreinadorClick() {
+        GerenciadorDeTelas.irParaTelaSelecionarTreinador();
     }
     
     @FXML
-    void onCriarTreinadorClick() throws IOException {
-        GerenciadorDeTelas.mudarTela("TelaCriarTreinador.fxml");
+    void onCriarTreinadorClick() {
+        GerenciadorDeTelas.irParaTelaCriarTreinador();
     }
 
     @FXML

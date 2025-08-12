@@ -248,4 +248,27 @@
     "ImagePath" : "Charmander.png"
   } ],
   "PokemonAtualId" : 0
+}, {
+  "Nome" : "lkj",
+  "Id" : 3,
+  "Regiao" : "lkj",
+  "Pokemons" : [ {
+    "movimentosList" : [ {
+      "tipo" : "AGUA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "AGUA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Squirtle",
+    "Id" : 7,
+    "tipos" : [ "AGUA" ],
+    "HP" : 44,
+    "Ataque" : 48,
+    "Defesa" : 65,
+    "ImagePath" : "Squirtle.png"
+  } ],
+  "PokemonAtualId" : 0
 } ]

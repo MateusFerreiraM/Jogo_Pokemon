@@ -1,8 +1,7 @@
 package jogo_pokemon.view.controller;
 
-import java.io.IOException;
 import javafx.fxml.FXML;
-import javafx.scene.text.Text; // Importar Text em vez de Label
+import javafx.scene.text.Text;
 import jogo_pokemon.App;
 import jogo_pokemon.model.Treinador;
 import jogo_pokemon.view.GerenciadorDeTelas;
@@ -27,7 +26,7 @@ public class TelaIdentidadeController {
     }
 
     @FXML
-    void onVoltarClick() throws IOException {
-        GerenciadorDeTelas.mudarTela("TelaPokedex.fxml");
+    void onVoltarClick() {
+        GerenciadorDeTelas.irParaPokedex();
     }
 }

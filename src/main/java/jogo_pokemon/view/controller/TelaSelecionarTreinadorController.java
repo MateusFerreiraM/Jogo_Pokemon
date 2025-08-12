@@ -90,14 +90,14 @@ public class TelaSelecionarTreinadorController {
                 pokemon.inicializarMovimentos();
             }
             App.setTreinadorSessao(treinadorSelecionado);
-            GerenciadorDeTelas.mudarTela("TelaMenuPrincipal.fxml");
+            GerenciadorDeTelas.irParaMenuPrincipal();
         } else {
             AlertUtils.mostrarAlerta("Nenhuma Seleção", "Por favor, selecione um treinador da lista.");
         }
     }
 
     @FXML
-    void onVoltarClick() throws IOException {
-        GerenciadorDeTelas.mudarTela("TelaInicial.fxml");
+    void onVoltarClick() {
+        GerenciadorDeTelas.irParaTelaInicial();
     }
 }

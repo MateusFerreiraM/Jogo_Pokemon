@@ -11,7 +11,7 @@ import jogo_pokemon.data.GerenciadorDados;
 import jogo_pokemon.model.LiderGin;
 import jogo_pokemon.model.Pokemon;
 import jogo_pokemon.utils.AlertUtils;
-import jogo_pokemon.utils.GerenciadorDeMusica; // NOVO: Importa o gerenciador de música
+import jogo_pokemon.utils.GerenciadorDeMusica;
 import jogo_pokemon.utils.ImageUtils;
 import jogo_pokemon.view.GerenciadorDeTelas;
 
@@ -78,18 +78,16 @@ public class TelaConfirmarBatalhaController {
     }
     
     @FXML
-    void onConfirmarClick() throws IOException {
-        // NOVO: Para a música de menu e toca a música de batalha
+    void onConfirmarClick() {
         GerenciadorDeMusica.tocarMusicaBatalha();
-
         Batalha batalha = new Batalha(App.getTreinadorSessao().getPokemonAtual(), oponente.getPokemonAtual());
         App.setBatalhaAtual(batalha);
-        GerenciadorDeTelas.mudarTela("TelaBatalha.fxml");
+        GerenciadorDeTelas.irParaTelaDeBatalha();
     }
 
     @FXML
-    void onVoltarClick() throws IOException {
+    void onVoltarClick() {
         App.setLiderSelecionado(null);
-        GerenciadorDeTelas.mudarTela("TelaEscolherGinasio.fxml");
+        GerenciadorDeTelas.irParaTelaEscolherGinasio();
     }
 }

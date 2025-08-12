@@ -70,10 +70,8 @@ public class TelaVitoriaController {
     }
 
     @FXML
-    void onVoltarAoMenuClick() throws IOException {
-        // NOVO: Para a música de batalha e volta a tocar a música de menu
+    void onVoltarAoMenuClick() {
         GerenciadorDeMusica.tocarMusicaMenu();
-        
-        GerenciadorDeTelas.mudarTela("TelaMenuPrincipal.fxml");
+        GerenciadorDeTelas.irParaMenuPrincipal();
     }
 }

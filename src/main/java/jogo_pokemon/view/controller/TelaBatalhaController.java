@@ -46,11 +46,7 @@ public class TelaBatalhaController {
         
         if (this.batalha == null) {
             System.err.println("ERRO: Tentativa de carregar a tela de batalha sem uma batalha em andamento.");
-            try {
-                GerenciadorDeTelas.mudarTela("TelaMenuPrincipal.fxml");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            GerenciadorDeTelas.irParaMenuPrincipal();
         } else {
             configurarTelaInicial();
         }
@@ -150,7 +146,7 @@ public class TelaBatalhaController {
         TranslateTransition tt4 = new TranslateTransition(Duration.millis(50), defensorView);
         tt4.setByX(-5);
 
-        // Executa as pequenas translações em sequência para criar o efeito de tremor
+        // Executa as pequenas translações em sequência para criar o efeito de tremor   
         SequentialTransition st = new SequentialTransition(tt1, tt2, tt3, tt4);
         st.play();
     }
@@ -185,17 +181,15 @@ public class TelaBatalhaController {
             
             // A transição de tela acontece enquanto o som de vitória/derrota toca
             if (batalha.getVitoria()) {
-                GerenciadorDeTelas.mudarTela("TelaVitoria.fxml");
+                GerenciadorDeTelas.irParaTelaDeVitoria();
             } else {
-                GerenciadorDeTelas.mudarTela("TelaDerrota.fxml");
+                GerenciadorDeTelas.irParaTelaDeDerrota();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-    // ... (o restante dos seus métodos de ajuda permanece igual)
-    
+        
     private void configurarTelaInicial() {
         Pokemon jogador = batalha.getPkmAmigo();
         Pokemon inimigo = batalha.getPkmInimigo();

@@ -131,7 +131,7 @@ public class TelaMeusPokemonController {
     }
 
     @FXML
-    void onVoltarClick() throws IOException {
-        GerenciadorDeTelas.mudarTela("TelaMenuPrincipal.fxml");
+    void onVoltarClick() {
+        GerenciadorDeTelas.irParaMenuPrincipal();
     }
 }

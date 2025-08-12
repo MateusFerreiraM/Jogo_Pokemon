@@ -102,7 +102,7 @@ public class TelaPokedexListController {
     }
 
     @FXML
-    void onVoltarClick() throws IOException {
-        GerenciadorDeTelas.mudarTela("TelaPokedex.fxml");
+    void onVoltarClick() {
+        GerenciadorDeTelas.irParaPokedex();
     }
 }

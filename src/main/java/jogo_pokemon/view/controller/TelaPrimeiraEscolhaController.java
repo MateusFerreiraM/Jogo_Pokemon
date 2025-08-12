@@ -84,15 +84,15 @@ public class TelaPrimeiraEscolhaController {
             gerenciador.salvarTreinadores(todosOsTreinadores);
 
             AlertUtils.mostrarAlerta("Parabéns!", "Você escolheu o " + pokemonEscolhido.getNome() + " para ser seu primeiro Pokémon! Sua jornada como treinador(a) acaba de começar. Prepare-se para grandes aventuras!");
-            GerenciadorDeTelas.mudarTela("TelaMenuPrincipal.fxml");
+            GerenciadorDeTelas.irParaMenuPrincipal();
         } else {
             AlertUtils.mostrarAlerta("Erro", "O Pokémon com o ID " + pokemonId + " não foi encontrado.");
         }
     }
 
     @FXML
-    void onVoltarClick() throws IOException {
-        GerenciadorDeTelas.mudarTela("TelaInicial.fxml");
+    void onVoltarClick() {
+        GerenciadorDeTelas.irParaTelaInicial();
     }
 
     private void carregarImagem(ImageView imageView, String nomeImagem) {

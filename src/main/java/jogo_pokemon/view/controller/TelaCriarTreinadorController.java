@@ -5,7 +5,7 @@ import javafx.scene.control.TextField;
 import jogo_pokemon.App;
 import jogo_pokemon.data.GerenciadorDados;
 import jogo_pokemon.model.Treinador;
-import jogo_pokemon.utils.AlertUtils; // 1. Importar a nova classe
+import jogo_pokemon.utils.AlertUtils;
 import jogo_pokemon.view.GerenciadorDeTelas;
 
 import java.io.IOException;
@@ -38,16 +38,15 @@ public class TelaCriarTreinadorController {
                 int novoId = todosOsTreinadores.stream().mapToInt(Treinador::getId).max().orElse(0) + 1;
                 Treinador novoTreinador = new Treinador(nome, regiao, novoId);
                 App.setTreinadorSessao(novoTreinador);
-                GerenciadorDeTelas.mudarTela("TelaPrimeiraEscolha.fxml");
+                GerenciadorDeTelas.irParaTelaPrimeiraEscolha();
             }
         } catch (IOException e) {
             AlertUtils.mostrarAlerta("Erro Crítico", "Não foi possível aceder aos dados dos treinadores: " + e.getMessage()); // 2. Usar a nova classe
         }
     }
 
-    @FXML void onVoltarClick() throws IOException {
-        GerenciadorDeTelas.mudarTela("TelaInicial.fxml");
+    @FXML void onVoltarClick() {
+        GerenciadorDeTelas.irParaTelaInicial();
     }
 
-    // 3. O método privado 'mostrarAlerta' foi removido daqui
 }

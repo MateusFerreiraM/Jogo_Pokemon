@@ -1,7 +1,6 @@
 package jogo_pokemon.model;
 
 import java.util.Random;
-import jogo_pokemon.model.Movimentos.Categoria;
 
 /**
  * Representa o estado e a lógica de uma batalha entre dois Pokémon.

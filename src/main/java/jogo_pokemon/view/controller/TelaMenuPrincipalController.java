@@ -1,6 +1,5 @@
 package jogo_pokemon.view.controller;
 
-import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import jogo_pokemon.App;
@@ -21,26 +20,23 @@ public class TelaMenuPrincipalController {
     }
 
     @FXML
-    void onBatalharClick() throws IOException {
-        // FINALIZANDO A LÓGICA DESTE BOTÃO:
-        // Garante que este botão leva para a tela de ESCOLHA DE GINÁSIO.
-        GerenciadorDeTelas.mudarTela("TelaEscolherGinasio.fxml");
+    void onBatalharClick() {
+        GerenciadorDeTelas.irParaTelaEscolherGinasio();
     }
 
     @FXML
-    void onPokedexClick() throws IOException {
-        // CORREÇÃO: Adiciona a navegação que estava em falta
-        GerenciadorDeTelas.mudarTela("TelaPokedex.fxml");
+    void onPokedexClick() {
+        GerenciadorDeTelas.irParaPokedex();
     }
 
     @FXML
-    void onMeusPokemonClick() throws IOException {
-        GerenciadorDeTelas.mudarTela("TelaMeusPokemon.fxml");
+    void onMeusPokemonClick() {
+        GerenciadorDeTelas.irParaMeusPokemon();
     }
 
     @FXML
-    void onSairClick() throws IOException {
+    void onSairClick() {
         App.setTreinadorSessao(null);
-        GerenciadorDeTelas.mudarTela("TelaInicial.fxml");
+        GerenciadorDeTelas.irParaTelaInicial();
     }
 }
