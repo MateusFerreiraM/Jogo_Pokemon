@@ -39,6 +39,12 @@
             <version>5.10.3</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>21</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -18,6 +18,7 @@ import jogo_pokemon.model.Batalha;
 import jogo_pokemon.model.Movimentos;
 import jogo_pokemon.model.Pokemon;
 import jogo_pokemon.model.Treinador;
+import jogo_pokemon.utils.GerenciadorDeMusica; // NOVO: Importa o gerenciador de música
 import jogo_pokemon.utils.ImageUtils;
 import jogo_pokemon.view.GerenciadorDeTelas;
 
@@ -30,10 +31,6 @@ public class TelaBatalhaController {
     @FXML private Label labelNomeJogador;
     @FXML private ProgressBar barHPJogador;
     @FXML private ImageView imgJogador;
-
-    // REMOVIDO: As Labels de contador não são mais necessárias
-    // @FXML private Label labelContadorEspecialInimigo;
-    // @FXML private Label labelContadorEspecialJogador;
 
     @FXML private Button btnAtaqueFisico;
     @FXML private Button btnAtaqueEspecial;
@@ -57,6 +54,8 @@ public class TelaBatalhaController {
         }
     }
 
+    // ... (os métodos onAtaqueFisicoClick, onAtaqueEspecialClick, executarTurnoJogador e executarTurnoInimigo permanecem iguais)
+    
     @FXML
     void onAtaqueFisicoClick() {
         executarTurnoJogador(batalha.getPkmAmigo().getMovimentosList().get(0));
@@ -65,17 +64,14 @@ public class TelaBatalhaController {
     @FXML
     void onAtaqueEspecialClick() {
         batalha.decrementarContEspecial();
-        // MODIFICADO: Agora atualiza o texto do próprio botão
         atualizarTextoBotaoEspecial();
         executarTurnoJogador(batalha.getPkmAmigo().getMovimentosList().get(1));
     }
 
     private void executarTurnoJogador(Movimentos movimentoJogador) {
         setBotoesAtaque(true);
-
         batalha.atacar(batalha.getPkmAmigo(), batalha.getPkmInimigo(), movimentoJogador);
         atualizarLabelVida(labelNomeInimigo, batalha.getPkmInimigo());
-
         animarBarraDeVida(barHPInimigo, batalha.getPkmInimigo(), () -> {
             if (!batalha.getEmExecucao()) {
                 fimDeBatalha();
@@ -89,15 +85,11 @@ public class TelaBatalhaController {
         System.out.println("Vez do inimigo...");
         int escolhaInimigo = (batalha.getContEspecialLider() > 0 && random.nextBoolean()) ? 1 : 0;
         Movimentos movimentoInimigo = batalha.getPkmInimigo().getMovimentosList().get(escolhaInimigo);
-        
         if (escolhaInimigo == 1) {
             batalha.decrementarContEspecialLider();
-            // REMOVIDO: A atualização do contador do inimigo não é mais visual
         }
-
         batalha.atacar(batalha.getPkmInimigo(), batalha.getPkmAmigo(), movimentoInimigo);
         atualizarLabelVida(labelNomeJogador, batalha.getPkmAmigo());
-        
         animarBarraDeVida(barHPJogador, batalha.getPkmAmigo(), () -> {
             if (!batalha.getEmExecucao()) {
                 fimDeBatalha();
@@ -106,9 +98,16 @@ public class TelaBatalhaController {
             }
         });
     }
-    
+
     private void fimDeBatalha() {
         try {
+            // MODIFICADO: Toca o efeito sonoro ANTES de qualquer outra coisa
+            if (batalha.getVitoria()) {
+                GerenciadorDeMusica.tocarSfxVitoria();
+            } else {
+                GerenciadorDeMusica.tocarSfxDerrota();
+            }
+
             Treinador jogador = App.getTreinadorSessao();
             System.out.println("A curar os seus Pokémon...");
             for (Pokemon pokemon : jogador.getPokemons()) {
@@ -128,6 +127,7 @@ public class TelaBatalhaController {
             
             App.setBatalhaAtual(null); 
             
+            // A transição de tela acontece enquanto o som de vitória/derrota toca
             if (batalha.getVitoria()) {
                 GerenciadorDeTelas.mudarTela("TelaVitoria.fxml");
             } else {
@@ -138,31 +138,23 @@ public class TelaBatalhaController {
         }
     }
     
+    // ... (o restante dos seus métodos de ajuda permanece igual)
+    
     private void configurarTelaInicial() {
         Pokemon jogador = batalha.getPkmAmigo();
         Pokemon inimigo = batalha.getPkmInimigo();
-
-        // Configura informações do jogador
         atualizarLabelVida(labelNomeJogador, jogador);
         configurarBarraDeVidaInicial(barHPJogador, jogador);
         ImageUtils.carregarPokemonImage(imgJogador, jogador.getImagePath());
         ImageUtils.aplicarSombra(imgJogador);
-
-        // Configura informações do inimigo
         atualizarLabelVida(labelNomeInimigo, inimigo);
         configurarBarraDeVidaInicial(barHPInimigo, inimigo);
         ImageUtils.carregarPokemonImage(imgInimigo, inimigo.getImagePath());
         ImageUtils.aplicarSombra(imgInimigo);
-
-        // MODIFICADO: A configuração inicial agora atualiza o texto do botão
         atualizarTextoBotaoEspecial();
         setBotoesAtaque(false);
     }
     
-    // REMOVIDO: O método para atualizar a label foi substituído pelo método que atualiza o botão
-    // private void atualizarContadorEspecialUI(Label label, int contador) { ... }
-
-    // NOVO: Método para formatar e exibir o contador diretamente no botão de ataque especial
     private void atualizarTextoBotaoEspecial() {
         int contador = batalha.getContEspecial();
         btnAtaqueEspecial.setText("Ataque Especial (" + contador + "/2)");
@@ -180,18 +172,15 @@ public class TelaBatalhaController {
 
     private void animarBarraDeVida(ProgressBar barra, Pokemon pokemon, Runnable aoConcluir) {
         double porcentagemFinal = Math.max(0.0, (double) pokemon.getHpAtual() / pokemon.getHp());
-
         Timeline timeline = new Timeline(
             new KeyFrame(Duration.seconds(0.8), new KeyValue(barra.progressProperty(), porcentagemFinal))
         );
-
         timeline.setOnFinished(event -> {
             atualizarCorBarraVida(barra, porcentagemFinal);
             if (aoConcluir != null) {
                 aoConcluir.run();
             }
         });
-
         timeline.play();
     }
 
@@ -208,7 +197,6 @@ public class TelaBatalhaController {
 
     private void setBotoesAtaque(boolean desativar) {
         btnAtaqueFisico.setDisable(desativar);
-
         if (desativar) {
             btnAtaqueEspecial.setDisable(true);
         } else {

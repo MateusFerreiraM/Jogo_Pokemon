@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 import jogo_pokemon.model.Batalha;
 import jogo_pokemon.model.LiderGin;
 import jogo_pokemon.model.Treinador;
+// NOVO: Importa o gerenciador de música
+import jogo_pokemon.utils.GerenciadorDeMusica;
 import jogo_pokemon.view.GerenciadorDeTelas;
 
 import java.io.IOException;
@@ -33,6 +35,10 @@ public class App extends Application {
             System.err.println("ERRO CRÍTICO: Falha ao carregar os ficheiros de fonte. Verifique os nomes e a localização.");
             e.printStackTrace();
         }
+
+        // NOVO: Carrega as músicas e inicia a música de menu
+        GerenciadorDeMusica.carregarMusicas();
+        GerenciadorDeMusica.tocarMusicaMenu();
         
         // O resto do código continua igual...
         Parent root = FXMLLoader.load(getClass().getResource("view/TelaInicial.fxml"));
@@ -50,6 +56,13 @@ public class App extends Application {
         stage.setTitle("Jogo Pokémon");
         stage.setScene(scene);
         stage.show();
+    }
+
+    // NOVO: Adiciona o método stop para parar a música ao fechar o jogo
+    @Override
+    public void stop() {
+        GerenciadorDeMusica.pararTudo();
+        System.out.println("Aplicação encerrada. Música parada.");
     }
 
     public static Treinador getTreinadorSessao() {

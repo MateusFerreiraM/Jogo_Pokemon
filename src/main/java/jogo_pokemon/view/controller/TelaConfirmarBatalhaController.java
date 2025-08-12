@@ -11,6 +11,7 @@ import jogo_pokemon.data.GerenciadorDados;
 import jogo_pokemon.model.LiderGin;
 import jogo_pokemon.model.Pokemon;
 import jogo_pokemon.utils.AlertUtils;
+import jogo_pokemon.utils.GerenciadorDeMusica; // NOVO: Importa o gerenciador de música
 import jogo_pokemon.utils.ImageUtils;
 import jogo_pokemon.view.GerenciadorDeTelas;
 
@@ -26,10 +27,6 @@ public class TelaConfirmarBatalhaController {
     private LiderGin oponente;
     private GerenciadorDados gerenciador = new GerenciadorDados();
 
-    /**
-     * Método de inicialização. É chamado quando o FXML é carregado.
-     * Carrega o líder selecionado e prepara os dados do seu Pokémon para a batalha.
-     */
     @FXML
     public void initialize() {
         this.oponente = App.getLiderSelecionado();
@@ -40,10 +37,6 @@ public class TelaConfirmarBatalhaController {
         }
     }
     
-    /**
-     * Carrega as informações do Pokémon do oponente, inicializa os seus movimentos
-     * e atualiza a interface com os dados.
-     */
     private void carregarDadosOponente() {
         try {
             List<Pokemon> pokemonsDisponiveis = gerenciador.carregarPokemonsDisponiveis();
@@ -52,12 +45,9 @@ public class TelaConfirmarBatalhaController {
             Pokemon pokemonOponente = oponente.getPokemonAtual();
 
             if (pokemonOponente != null) {
-                // Garante que o Pokémon do oponente tenha os seus movimentos inicializados
                 pokemonOponente.inicializarMovimentos();
                 
-                // MODIFICADO: Adicionada lógica condicional para tratar o ginásio misterioso
                 if (oponente.getRegiao().equalsIgnoreCase("Misterioso")) {
-                    // LÓGICA PARA GINÁSIO MISTERIOSO
                     String mensagem = String.format(
                         "Você está prestes a desafiar %s no Ginásio de %s!\nEle usará um Pokémon misterioso...",
                         oponente.getNome(), oponente.getRegiao()
@@ -67,7 +57,6 @@ public class TelaConfirmarBatalhaController {
                     ImageUtils.carregarPokemonImage(imgOponente, "interrogacao.png");
                     ImageUtils.aplicarSombra(imgOponente);
                 } else {
-                    // LÓGICA PARA GINÁSIOS NORMAIS
                     String mensagem = String.format(
                         "Você está prestes a desafiar %s no Ginásio de %s!\nEle usará seu poderoso %s.",
                         oponente.getNome(), oponente.getRegiao(), pokemonOponente.getNome()
@@ -90,6 +79,9 @@ public class TelaConfirmarBatalhaController {
     
     @FXML
     void onConfirmarClick() throws IOException {
+        // NOVO: Para a música de menu e toca a música de batalha
+        GerenciadorDeMusica.tocarMusicaBatalha();
+
         Batalha batalha = new Batalha(App.getTreinadorSessao().getPokemonAtual(), oponente.getPokemonAtual());
         App.setBatalhaAtual(batalha);
         GerenciadorDeTelas.mudarTela("TelaBatalha.fxml");

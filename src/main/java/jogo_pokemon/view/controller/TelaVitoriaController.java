@@ -11,6 +11,7 @@ import jogo_pokemon.App;
 import jogo_pokemon.data.GerenciadorDados;
 import jogo_pokemon.model.Pokemon;
 import jogo_pokemon.model.Treinador;
+import jogo_pokemon.utils.GerenciadorDeMusica; // NOVO: Importa o gerenciador de música
 import jogo_pokemon.utils.ImageUtils;
 import jogo_pokemon.view.GerenciadorDeTelas;
 
@@ -40,8 +41,6 @@ public class TelaVitoriaController {
             if (!pokemonsDeRecompensa.isEmpty()) {
                 Pokemon novoPokemon = pokemonsDeRecompensa.get(new Random().nextInt(pokemonsDeRecompensa.size()));
                 
-                // **A CORREÇÃO ESTÁ AQUI**
-                // Garantimos que o novo Pokémon tenha os seus movimentos antes de ser adicionado.
                 novoPokemon.inicializarMovimentos();
                 
                 textPokemonRecompensa.setText(novoPokemon.getNome() + "!");
@@ -72,6 +71,9 @@ public class TelaVitoriaController {
 
     @FXML
     void onVoltarAoMenuClick() throws IOException {
+        // NOVO: Para a música de batalha e volta a tocar a música de menu
+        GerenciadorDeMusica.tocarMusicaMenu();
+        
         GerenciadorDeTelas.mudarTela("TelaMenuPrincipal.fxml");
     }
 }

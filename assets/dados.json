@@ -189,8 +189,42 @@
     "Ataque" : 35,
     "Defesa" : 30,
     "ImagePath" : "Gastly.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "AGUA",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "AGUA",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Squirtle",
+    "Id" : 7,
+    "tipos" : [ "AGUA" ],
+    "HP" : 44,
+    "Ataque" : 48,
+    "Defesa" : 65,
+    "ImagePath" : "Squirtle.png"
+  }, {
+    "movimentosList" : [ {
+      "tipo" : "PSIQUICO",
+      "forca" : 1.0,
+      "categoria" : "FISICO"
+    }, {
+      "tipo" : "PSIQUICO",
+      "forca" : 1.15,
+      "categoria" : "ESPECIAL"
+    } ],
+    "Nome" : "Abra",
+    "Id" : 63,
+    "tipos" : [ "PSIQUICO" ],
+    "HP" : 25,
+    "Ataque" : 20,
+    "Defesa" : 15,
+    "ImagePath" : "Abra.png"
   } ],
-  "PokemonAtualId" : 39
+  "PokemonAtualId" : 4
 }, {
   "Nome" : "vivianefsa",
   "Id" : 2,
