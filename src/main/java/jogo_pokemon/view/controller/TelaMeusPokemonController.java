@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField; // Importação adicionada
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -33,14 +34,17 @@ public class TelaMeusPokemonController {
     @FXML private ListView<Pokemon> listaMeusPokemon;
     @FXML private Label labelPokemonAtual;
     @FXML private Button btnDefinirAtual;
+    @FXML private TextField campoPesquisa;
 
     private Treinador jogador;
     private GerenciadorDados gerenciador = new GerenciadorDados();
+    private List<Pokemon> pokemonsDoJogador;
 
     /**
      * Inicializa o controlador. Carrega o treinador da sessão, atualiza a tela
      * e adiciona um listener para habilitar o botão "Definir como Atual" apenas
      * quando um Pokémon for selecionado na lista.
+     * Adiciona também um listener para a caixa de pesquisa.
      */
     @FXML
     public void initialize() {
@@ -48,9 +52,15 @@ public class TelaMeusPokemonController {
         btnDefinirAtual.setDisable(true); 
 
         if (jogador != null) {
+            this.pokemonsDoJogador = jogador.getPokemons();
             atualizarTela();
             listaMeusPokemon.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
                 btnDefinirAtual.setDisable(newSelection == null);
+            });
+            
+            // Adiciona o listener para o campo de pesquisa
+            campoPesquisa.textProperty().addListener((observable, oldValue, newValue) -> {
+                filtrarPokemon(newValue);
             });
         }
     }
@@ -84,6 +94,28 @@ public class TelaMeusPokemonController {
             atualizarTela();
         }
     }
+    
+    /**
+     * Filtra a lista de Pokémons com base no texto da pesquisa e atualiza a ListView.
+     * @param nome O texto a ser usado para a pesquisa (não diferencia maiúsculas de minúsculas).
+     */
+    private void filtrarPokemon(String nome) {
+        // Se a lista de pokémons do jogador for nula ou o campo de pesquisa estiver vazio,
+        // exibe a lista completa.
+        if (pokemonsDoJogador == null || nome == null || nome.trim().isEmpty()) {
+            ObservableList<Pokemon> observableList = FXCollections.observableArrayList(pokemonsDoJogador);
+            listaMeusPokemon.setItems(observableList);
+        } else {
+            // Filtra a lista original (pokemonsDoJogador)
+            List<Pokemon> pokemonsFiltrados = pokemonsDoJogador.stream()
+                    .filter(p -> p.getNome().toLowerCase().contains(nome.toLowerCase()))
+                    .collect(Collectors.toList());
+            
+            // Atualiza a ListView com os pokemons filtrados
+            ObservableList<Pokemon> observableList = FXCollections.observableArrayList(pokemonsFiltrados);
+            listaMeusPokemon.setItems(observableList);
+        }
+    }
 
     /**
      * Atualiza todos os elementos visuais da tela.
@@ -97,8 +129,9 @@ public class TelaMeusPokemonController {
             labelPokemonAtual.setText("Atual: [Nenhum]");
         }
 
-        ObservableList<Pokemon> observableList = FXCollections.observableArrayList(jogador.getPokemons());
-        listaMeusPokemon.setItems(observableList);
+        // Não vamos mais carregar a lista diretamente aqui, mas sim através do filtro.
+        // Chamamos o método de filtragem com o texto atual do campo de pesquisa.
+        filtrarPokemon(campoPesquisa.getText());
 
         listaMeusPokemon.setCellFactory(param -> new ListCell<Pokemon>() {
             private final ImageView imageView = new ImageView();
@@ -138,7 +171,7 @@ public class TelaMeusPokemonController {
                     String tiposFormatados = pokemon.getTipos().stream()
                             .map(Enum::toString)
                             .collect(Collectors.joining(" / "));
-                    infoText.setText("HP: " + pokemon.getHpAtual() + "/" + pokemon.getHp() + " | Tipos: " + tiposFormatados);
+                    infoText.setText("Tipo: " + tiposFormatados);
                     infoText.getStyleClass().add("list-item-subtitle");
 
                     setGraphic(cellHBox);

@@ -74,24 +74,6 @@
     -fx-font-weight: bold;
 }
 
-.list-view-sem-scroll {
-   -fx-font-family: 'Pokemon Classic', sans-serif;
-   -fx-font-size: 14px;
-   -fx-background-color: transparent;
-   -fx-border-color: red;
-   -fx-border-width: 2px;
-   -fx-pref-height: 220px;
-   -fx-pref-width: 400px;
-   -fx-padding: 0;
-   -fx-background-insets: 0;
-}
-
-.list-view-sem-scroll .scroll-bar:vertical, .list-view-sem-scroll .scroll-bar:horizontal {
-   -fx-opacity: 0;
-   -fx-pref-width: 0;
-   -fx-pref-height: 0;
-}
-
 /* ===== Tela Criar Treinador ===== */
 /* title */
 .TelaCriarTreinador-title {

@@ -14,7 +14,7 @@
    </padding>
    <children>
        <Text text="Escolher Ginásio" styleClass="title, TelaEscolherGinasio-title" />
-       <ListView fx:id="listaGinasios" prefHeight="220.0" prefWidth="400.0" styleClass="list-view-sem-scroll" />
+       <ListView fx:id="listaGinasios" prefHeight="220.0" prefWidth="400.0" styleClass="list-view" />
        <Button onAction="#onConfirmarClick" text="Batalhar" prefWidth="200.0" styleClass="button" />
        <Button onAction="#onVoltarClick" text="Voltar ao Menu" prefWidth="200.0" styleClass="button" />
    </children>

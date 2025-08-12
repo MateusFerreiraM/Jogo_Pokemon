@@ -64,7 +64,9 @@ public class TelaVitoriaController {
                 jogador.adicionarPokemon(novoPokemon);
                 salvarProgresso(jogador);
             } else {
-                textPokemonRecompensa.setText("Você já capturou todos os Pokémon!");
+                textPokemonRecompensa.setText("");
+                ImageUtils.carregarPokemonImage(imgPokemonRecompensa, "insignia.png");
+                ImageUtils.aplicarSombra(imgPokemonRecompensa);
             }
         } catch (IOException e) {
             textPokemonRecompensa.setText("Erro ao obter recompensa.");

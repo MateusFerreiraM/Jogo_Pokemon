@@ -82,7 +82,6 @@ public class App extends Application {
     @Override
     public void stop() {
         GerenciadorDeMusica.pararTudo();
-        System.out.println("Aplicação encerrada.");
     }
 
     public static Treinador getTreinadorSessao() {
