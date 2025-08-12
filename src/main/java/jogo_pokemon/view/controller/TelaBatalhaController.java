@@ -3,6 +3,8 @@ package jogo_pokemon.view.controller;
 import java.io.IOException;
 import java.util.List;
 import java.util.Random;
+import javafx.animation.SequentialTransition;
+import javafx.animation.TranslateTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -18,7 +20,7 @@ import jogo_pokemon.model.Batalha;
 import jogo_pokemon.model.Movimentos;
 import jogo_pokemon.model.Pokemon;
 import jogo_pokemon.model.Treinador;
-import jogo_pokemon.utils.GerenciadorDeMusica; // NOVO: Importa o gerenciador de música
+import jogo_pokemon.utils.GerenciadorDeMusica;
 import jogo_pokemon.utils.ImageUtils;
 import jogo_pokemon.view.GerenciadorDeTelas;
 
@@ -53,8 +55,6 @@ public class TelaBatalhaController {
             configurarTelaInicial();
         }
     }
-
-    // ... (os métodos onAtaqueFisicoClick, onAtaqueEspecialClick, executarTurnoJogador e executarTurnoInimigo permanecem iguais)
     
     @FXML
     void onAtaqueFisicoClick() {
@@ -68,35 +68,91 @@ public class TelaBatalhaController {
         executarTurnoJogador(batalha.getPkmAmigo().getMovimentosList().get(1));
     }
 
+    // MODIFICADO: O fluxo do turno agora inclui as novas animações
     private void executarTurnoJogador(Movimentos movimentoJogador) {
         setBotoesAtaque(true);
-        batalha.atacar(batalha.getPkmAmigo(), batalha.getPkmInimigo(), movimentoJogador);
-        atualizarLabelVida(labelNomeInimigo, batalha.getPkmInimigo());
-        animarBarraDeVida(barHPInimigo, batalha.getPkmInimigo(), () -> {
-            if (!batalha.getEmExecucao()) {
-                fimDeBatalha();
-            } else {
-                executarTurnoInimigo();
-            }
+        // 1. Anima o ataque do jogador
+        animarAtaque(imgJogador, () -> {
+            // 2. Quando a animação de ataque termina, calcula o dano
+            batalha.atacar(batalha.getPkmAmigo(), batalha.getPkmInimigo(), movimentoJogador);
+            atualizarLabelVida(labelNomeInimigo, batalha.getPkmInimigo());
+            
+            // 3. Inicia a animação de dano no inimigo (tremor)
+            animarDano(imgInimigo);
+
+            // 4. Inicia a animação da barra de vida, que é mais longa
+            animarBarraDeVida(barHPInimigo, batalha.getPkmInimigo(), () -> {
+                // 5. Quando a barra de vida termina de animar, verifica o estado da batalha
+                if (!batalha.getEmExecucao()) {
+                    fimDeBatalha();
+                } else {
+                    executarTurnoInimigo();
+                }
+            });
         });
     }
 
+    // MODIFICADO: O fluxo do turno do inimigo também inclui as novas animações
     private void executarTurnoInimigo() {
         System.out.println("Vez do inimigo...");
-        int escolhaInimigo = (batalha.getContEspecialLider() > 0 && random.nextBoolean()) ? 1 : 0;
-        Movimentos movimentoInimigo = batalha.getPkmInimigo().getMovimentosList().get(escolhaInimigo);
-        if (escolhaInimigo == 1) {
-            batalha.decrementarContEspecialLider();
-        }
-        batalha.atacar(batalha.getPkmInimigo(), batalha.getPkmAmigo(), movimentoInimigo);
-        atualizarLabelVida(labelNomeJogador, batalha.getPkmAmigo());
-        animarBarraDeVida(barHPJogador, batalha.getPkmAmigo(), () -> {
-            if (!batalha.getEmExecucao()) {
-                fimDeBatalha();
-            } else {
-                setBotoesAtaque(false);
+        
+        // 1. Anima o ataque do inimigo
+        animarAtaque(imgInimigo, () -> {
+            // 2. Quando a animação de ataque termina, escolhe o movimento e calcula o dano
+            int escolhaInimigo = (batalha.getContEspecialLider() > 0 && random.nextBoolean()) ? 1 : 0;
+            Movimentos movimentoInimigo = batalha.getPkmInimigo().getMovimentosList().get(escolhaInimigo);
+            if (escolhaInimigo == 1) {
+                batalha.decrementarContEspecialLider();
+            }
+            batalha.atacar(batalha.getPkmInimigo(), batalha.getPkmAmigo(), movimentoInimigo);
+            atualizarLabelVida(labelNomeJogador, batalha.getPkmAmigo());
+            
+            // 3. Inicia a animação de dano no jogador (tremor)
+            animarDano(imgJogador);
+
+            // 4. Inicia a animação da barra de vida
+            animarBarraDeVida(barHPJogador, batalha.getPkmAmigo(), () -> {
+                // 5. Quando a barra de vida termina, verifica o estado da batalha ou reativa os botões
+                if (!batalha.getEmExecucao()) {
+                    fimDeBatalha();
+                } else {
+                    setBotoesAtaque(false);
+                }
+            });
+        });
+    }
+
+    // NOVO: Método para animar o "salto" de ataque
+    private void animarAtaque(ImageView atacanteView, Runnable aoConcluir) {
+        TranslateTransition tt = new TranslateTransition(Duration.millis(150), atacanteView);
+        tt.setByX(20); // Move 20 pixels para a direita
+        tt.setByY(-10); // Move 10 pixels para cima
+        tt.setCycleCount(2); // Faz o movimento 2 vezes (ida e volta)
+        tt.setAutoReverse(true); // Garante que o segundo ciclo é o de retorno
+
+        tt.setOnFinished(event -> {
+            if (aoConcluir != null) {
+                aoConcluir.run(); // Executa a próxima ação da batalha
             }
         });
+
+        tt.play();
+    }
+
+    // NOVO: Método para animar o "tremor" de dano
+    private void animarDano(ImageView defensorView) {
+        TranslateTransition tt1 = new TranslateTransition(Duration.millis(50), defensorView);
+        tt1.setByX(5);
+        TranslateTransition tt2 = new TranslateTransition(Duration.millis(50), defensorView);
+        tt2.setByX(-10);
+        TranslateTransition tt3 = new TranslateTransition(Duration.millis(50), defensorView);
+        tt3.setByX(10);
+        TranslateTransition tt4 = new TranslateTransition(Duration.millis(50), defensorView);
+        tt4.setByX(-5);
+
+        // Executa as pequenas translações em sequência para criar o efeito de tremor
+        SequentialTransition st = new SequentialTransition(tt1, tt2, tt3, tt4);
+        st.play();
     }
 
     private void fimDeBatalha() {
