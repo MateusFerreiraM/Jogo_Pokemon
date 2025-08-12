@@ -44,10 +44,10 @@ public class TelaPrimeiraEscolhaController {
         }
 
         // MODIFICADO: As chamadas agora usam o ImageUtils para consistência.
-        ImageUtils.carregarPokemonImage(imgBulbasaur, "bulbasaur.png");
-        ImageUtils.carregarPokemonImage(imgCharmander, "charmander.png");
-        ImageUtils.carregarPokemonImage(imgSquirtle, "squirtle.png");
-        ImageUtils.carregarPokemonImage(imgPikachu, "pikachu.png");
+        ImageUtils.carregarPokemonImage(imgBulbasaur, "Bulbasaur.png");
+        ImageUtils.carregarPokemonImage(imgCharmander, "Charmander.png");
+        ImageUtils.carregarPokemonImage(imgSquirtle, "Squirtle.png");
+        ImageUtils.carregarPokemonImage(imgPikachu, "Pikachu.png");
     }
 
     /**
