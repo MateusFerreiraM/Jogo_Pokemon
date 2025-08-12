@@ -3,6 +3,9 @@ package jogo_pokemon.view.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ButtonType;
+import java.util.Optional;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
@@ -26,6 +29,13 @@ public class TelaSelecionarTreinadorController {
 
     @FXML
     private ListView<Treinador> listaTreinadores;
+    
+    @FXML
+    private Button btnConfirmar;
+    
+    // Variável para o novo botão
+    @FXML
+    private Button btnExcluir;
 
     private GerenciadorDados gerenciador = new GerenciadorDados();
 
@@ -36,6 +46,14 @@ public class TelaSelecionarTreinadorController {
     */
    @FXML
     public void initialize() {
+        carregarTreinadores();
+    }
+    
+    /**
+     * Método auxiliar para carregar a lista de treinadores e configurar a ListView.
+     * Chamado em initialize() e após a exclusão de um treinador.
+     */
+    private void carregarTreinadores() {
         try {
             List<Treinador> treinadores = gerenciador.carregarTreinadores();
             ObservableList<Treinador> observableList = FXCollections.observableArrayList(treinadores);
@@ -88,6 +106,7 @@ public class TelaSelecionarTreinadorController {
         }
     }
 
+
     /**
      * Handler do botão "Confirmar".
      * Carrega o perfil do treinador selecionado para a sessão do jogo, inicializa os seus Pokémon
@@ -105,6 +124,37 @@ public class TelaSelecionarTreinadorController {
             GerenciadorDeTelas.irParaMenuPrincipal();
         } else {
             AlertUtils.mostrarAlerta("Nenhuma Seleção", "Por favor, selecione um treinador da lista.");
+        }
+    }
+
+    /**
+     * Handler do botão "Excluir".
+     * Remove o treinador selecionado da lista e do ficheiro de dados.
+     */
+    @FXML
+    void onExcluirClick() {
+        Treinador treinadorSelecionado = listaTreinadores.getSelectionModel().getSelectedItem();
+        
+        if (treinadorSelecionado != null) {
+            Optional<ButtonType> resultado = AlertUtils.mostrarAlertaDeConfirmacao(
+                "Confirmação de Exclusão",
+                "Tem a certeza que deseja excluir o treinador " + treinadorSelecionado.getNome() + "? Esta ação é irreversível."
+            );
+
+            if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
+                try {
+                    List<Treinador> todosTreinadores = gerenciador.carregarTreinadores();
+                    todosTreinadores.removeIf(t -> t.getId() == treinadorSelecionado.getId());
+                    gerenciador.salvarTreinadores(todosTreinadores);
+                    carregarTreinadores(); // Recarrega a lista para mostrar a alteração
+                    AlertUtils.mostrarAlerta("Exclusão Concluída", "O treinador " + treinadorSelecionado.getNome() + " foi excluído com sucesso.");
+                } catch (IOException e) {
+                    AlertUtils.mostrarAlerta("Erro", "Não foi possível excluir o treinador: " + e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        } else {
+            AlertUtils.mostrarAlerta("Nenhuma Seleção", "Por favor, selecione um treinador para excluir.");
         }
     }
 
