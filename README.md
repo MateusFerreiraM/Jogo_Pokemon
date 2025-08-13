@@ -120,7 +120,7 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 
 ## 👥 Agradecimentos
 
-Este projeto é uma significativa refatoração e modernização de um trabalho académico da disciplina de Programação Orientada a Objetos, originalmente desenvolvido em grupo.
+Este projeto é uma significativa refatoração e modernização de um trabalho acadêmico da disciplina de Programação Orientada a Objetos, originalmente desenvolvido em grupo.
 A versão inicial, baseada em terminal, serviu como fundação e inspiração para esta nova aplicação com interface gráfica completa, aproveitando conceitos e a lógica de negócio do projeto original.
 Agradecimentos aos membros do projeto fonte pela base e pelos conceitos iniciais.
 * [Repositório do Projeto Original (Terminal)](https://github.com/B-Cut/trabalho-poo.git)
